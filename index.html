@@ -26,7 +26,6 @@ nav{background:black;padding:15px;}
 nav a{color:#ffcc00;margin:15px;text-decoration:none;font-weight:bold;}
 
 .hero{padding:120px 20px;}
-.hero h1{font-size:60px;letter-spacing:3px;}
 
 .section{padding:70px 20px;max-width:900px;margin:auto;}
 
@@ -35,63 +34,50 @@ background:linear-gradient(45deg,#ffcc00,#ff512f);
 padding:15px 35px;border-radius:50px;
 text-decoration:none;color:black;font-weight:bold;
 font-size:18px;display:inline-block;
+box-shadow:0 0 20px rgba(255,204,0,0.6);
 }
 
-.poster{width:350px;border-radius:20px;box-shadow:0px 0px 30px rgba(255,255,255,0.3);}
-
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.gallery img{width:100%;border-radius:15px;}
-
-.schedule{display:flex;flex-direction:column;gap:20px;max-width:500px;margin:auto;}
-.item{background:rgba(255,255,255,0.05);padding:20px;border-radius:15px;}
-
-.whatsapp{
-position:fixed;bottom:20px;right:20px;
-background:#25D366;color:white;padding:15px 20px;
-border-radius:50px;text-decoration:none;font-weight:bold;
+canvas{
+width:100%;
+max-width:600px;
+height:150px;
+margin-top:30px;
 }
 
-.visualizer{
-display:flex;justify-content:center;gap:10px;
-height:100px;align-items:flex-end;
+.timeline{
+position:relative;
+max-width:700px;
+margin:auto;
 }
 
-.visualizer div{
-width:15px;background:#ffcc00;
-animation:sound 1s infinite ease-in-out;
+.timeline::before{
+content:'';
+position:absolute;
+left:50%;
+top:0;
+bottom:0;
+width:3px;
+background:#ffcc00;
 }
 
-.visualizer div:nth-child(2){animation-delay:0.2s;}
-.visualizer div:nth-child(3){animation-delay:0.4s;}
-.visualizer div:nth-child(4){animation-delay:0.6s;}
-.visualizer div:nth-child(5){animation-delay:0.8s;}
-
-@keyframes sound{
-0%{height:20px;}
-50%{height:100px;}
-100%{height:20px;}
-}
-
-/* STATS STYLE */
-.stats{
+.timeline-item{
 display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:40px;
-margin-top:40px;
+justify-content:space-between;
+margin:40px 0;
 }
 
-.stats div{
+.timeline-time{
+background:#ff512f;
+padding:10px 18px;
+border-radius:20px;
+font-weight:bold;
+}
+
+.timeline-content{
 background:rgba(255,255,255,0.05);
-padding:30px;
+padding:20px;
 border-radius:15px;
-min-width:150px;
-}
-
-.stats h1{
-font-size:50px;
-color:#ffcc00;
-margin:0;
+width:45%;
 }
 
 </style>
@@ -107,144 +93,89 @@ margin:0;
 </nav>
 
 <div class="hero">
-<button onclick="playMusic()" class="btn">🎶 Click to Feel the Vibe</button>
 
-<audio id="bgmusic" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
+<button onclick="startMusic()" class="btn">🎶 Click to Feel the Vibe</button>
 
-<h1 id="title"></h1>
+<audio id="bgmusic" src="music.mp3" loop></audio>
+
+<h1>GAANA BAJAANA 🎶</h1>
 <p>Sing • Jam • Vibe</p>
 
-<a class="btn" href="https://forms.gle/Ls1kxJGaEMtfmMf27">Register Now</a>
-<br><br>
-<a href="register.html">Go to Registration Page</a>
-<br><br>
-<a href="gallery.html">View Gallery</a>
-</div>
-
-<div class="section">
-<h2>Feel The Vibe 🎶</h2>
-<div class="visualizer">
-<div></div><div></div><div></div><div></div><div></div>
-</div>
-</div>
-
-<div class="section">
-<h2>Event Poster</h2>
-<img class="poster" src="poster.jpg">
-</div>
-
-<div class="section">
-<h2>Event Starts In</h2>
-<h1 id="countdown"></h1>
-</div>
-
-<div class="section">
-<h2>How Registration Works 🎟️</h2>
-<p>1️⃣ Fill the registration form</p>
-<p>2️⃣ Receive confirmation email instantly</p>
-<p>3️⃣ Get your personal QR entry pass</p>
-<p>4️⃣ Show QR at entry for seamless access</p>
-</div>
-
-<div class="section">
-<h2>About Event</h2>
-<p>Gaana Bajaana is a vibrant Telugu music jam where music lovers come together to sing, perform and experience live musical energy.</p>
-</div>
-
-<div class="section">
-<h2>Event Vibes 🎥</h2>
-<div class="gallery">
-<iframe src="https://www.instagram.com/reel/DVtiyu7D1uP/embed" width="320" height="550"></iframe>
-<iframe src="https://www.instagram.com/reel/DVwCqbaD5OS/embed" width="320" height="550"></iframe>
-</div>
-</div>
-
-<div class="section">
-<h2>Gaana Bajaana Impact ✨</h2>
-<div class="stats">
-<div><h1 class="counter" data-target="60">0</h1><p>Attendees</p></div>
-<div><h1 class="counter" data-target="20">0</h1><p>Songs Performed</p></div>
-<div><h1 class="counter" data-target="1">0</h1><p>Music Band</p></div>
-<div><h1 class="counter" data-target="5">0</h1><p>Collaborations</p></div>
-</div>
-</div>
-
-<div class="section">
-<h2>Event Schedule 🎶</h2>
-
-<div class="schedule">
-
-<div class="item">
-<h3>6:00 PM</h3>
-<p>Welcome & Registration Confirmation</p>
-</div>
-<div class="item">
-<h3>6:15 PM</h3>
-<p>Music Jam Begins 🎤</p>
-</div>
-<div class="item">
-<h3>8:30 PM</h3>
-<p>Networking & Closing</p>
-</div>
-
-</div>
+<canvas id="visualizer"></canvas>
 
 </div>
 
 <div class="section">
-<h2>Join Our Community 💬</h2>
-<a href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" class="btn" target="_blank">
-Join WhatsApp Community
-</a>
+<h2>Event Timeline 🎶</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-time">6:00 PM</div>
+<div class="timeline-content">
+<h3>Welcome & Registration Confirmation</h3>
+</div>
 </div>
 
-<a href="https://wa.me/918367463908" class="whatsapp">Chat</a>
+<div class="timeline-item">
+<div class="timeline-time">6:15 PM</div>
+<div class="timeline-content">
+<h3>Music Jam Begins</h3>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-time">8:30 PM</div>
+<div class="timeline-content">
+<h3>Networking & Closing</h3>
+</div>
+</div>
+
+</div>
+</div>
 
 <script>
-function playMusic(){
+
+let audioCtx, analyser, source, dataArray, canvas, ctx;
+
+function startMusic(){
+
 let audio = document.getElementById("bgmusic");
-audio.volume = 0.5;
 audio.play();
+
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+source = audioCtx.createMediaElementSource(audio);
+analyser = audioCtx.createAnalyser();
+source.connect(analyser);
+analyser.connect(audioCtx.destination);
+
+analyser.fftSize = 64;
+dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+canvas = document.getElementById("visualizer");
+ctx = canvas.getContext("2d");
+
+animate();
 }
 
-let counters = document.querySelectorAll('.counter');
-counters.forEach(counter => {
-let updateCount = () => {
-let target = +counter.getAttribute('data-target');
-let count = +counter.innerText;
-let speed = target / 100;
-if(count < target){
-counter.innerText = Math.ceil(count + speed);
-setTimeout(updateCount, 20);
-}else{
-counter.innerText = target + "+";
-}
-}
-updateCount();
-});
+function animate(){
+requestAnimationFrame(animate);
 
-var eventDate = new Date("April 4, 2026 18:00:00").getTime();
-setInterval(function(){
-var now = new Date().getTime();
-var distance = eventDate - now;
-var days = Math.floor(distance/(1000*60*60*24));
-var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("countdown").innerHTML = days+"d "+hours+"h "+minutes+"m";
-},1000);
+analyser.getByteFrequencyData(dataArray);
 
-var text="GAANA BAJAANA 🎶";
-var i=0;
-function typeWriter(){
-if(i<text.length){
-document.getElementById("title").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typeWriter,100);
+ctx.fillStyle="#0f0f0f";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+let barWidth = canvas.width / dataArray.length;
+
+for(let i=0;i<dataArray.length;i++){
+let barHeight = dataArray[i];
+
+ctx.fillStyle = "#ffcc00";
+ctx.fillRect(i*barWidth, canvas.height-barHeight, barWidth-2, barHeight);
 }
 }
-typeWriter();
+
 </script>
 
 </body>
