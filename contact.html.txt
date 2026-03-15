@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact</title>
+</head>
+
+<body style="text-align:center;font-family:Arial;background:black;color:white;">
+
+<h1>Contact Gaana Bajaana 🎶</h1>
+
+<p>Organizer: Anji</p>
+<p>WhatsApp: +91 8367463908</p>
+
+<br><br>
+
+<a href="index.html">Back Home</a>
+
+</body>
+</html>
