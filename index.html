@@ -5,104 +5,122 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
 body{
 margin:0;
-font-family:'Segoe UI', sans-serif;
-background: linear-gradient(-45deg,#0f0f0f,#1a1a2e,#16213e,#0f3460);
-background-size:400% 400%;
-animation:gradient 15s ease infinite;
+font-family: 'Segoe UI', sans-serif;
+background:#07070a;
 color:white;
+overflow-x:hidden;
+}
+
+/* animated gradient aura */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background: radial-gradient(circle at center,#ffcc00 0%,transparent 40%);
+animation: pulse 8s infinite alternate;
+opacity:0.08;
+z-index:-1;
+}
+
+@keyframes pulse{
+from{transform:scale(1);}
+to{transform:scale(1.4);}
+}
+
+/* floating particles */
+canvas#bg{
+position:fixed;
+top:0;
+left:0;
+z-index:-2;
+}
+
+/* hero */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
 }
 
-@keyframes gradient{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-nav{background:black;padding:15px;}
-nav a{color:#ffcc00;margin:15px;text-decoration:none;font-weight:bold;}
-
-.hero{padding:120px 20px;}
-
-.section{padding:70px 20px;max-width:900px;margin:auto;}
-
-.btn{
-background:linear-gradient(45deg,#ffcc00,#ff512f);
-padding:15px 35px;border-radius:50px;
-text-decoration:none;color:black;font-weight:bold;
-font-size:18px;display:inline-block;
-box-shadow:0 0 20px rgba(255,204,0,0.6);
-}
-
-.poster{width:350px;border-radius:20px;box-shadow:0px 0px 30px rgba(255,255,255,0.3);}
-
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-
-.stats{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:40px;
-margin-top:40px;
-}
-
-.stats div{
-background:rgba(255,255,255,0.05);
-padding:30px;
-border-radius:15px;
-min-width:150px;
-}
-
-.stats h1{
-font-size:50px;
-color:#ffcc00;
+h1{
+font-size:70px;
+letter-spacing:4px;
+text-shadow:0 0 20px #ffcc00;
 margin:0;
 }
 
-canvas{
-width:100%;
-max-width:600px;
-height:150px;
-margin-top:30px;
+.tag{
+opacity:0.7;
+margin-top:10px;
 }
 
-.timeline{
-position:relative;
-max-width:700px;
-margin:auto;
-}
-
-.timeline::before{
-content:'';
-position:absolute;
-left:50%;
-top:0;
-bottom:0;
-width:3px;
-background:#ffcc00;
-}
-
-.timeline-item{
-display:flex;
-justify-content:space-between;
-margin:40px 0;
-}
-
-.timeline-time{
-background:#ff512f;
-padding:10px 18px;
-border-radius:20px;
+.btn{
+margin-top:40px;
+background:linear-gradient(45deg,#ffcc00,#ff512f);
+padding:15px 35px;
+border-radius:40px;
+border:none;
 font-weight:bold;
+cursor:pointer;
+font-size:18px;
+box-shadow:0 0 25px rgba(255,204,0,0.6);
 }
 
-.timeline-content{
-background:rgba(255,255,255,0.05);
-padding:20px;
+/* waveform visualizer */
+#wave{
+width:80%;
+max-width:600px;
+height:120px;
+margin-top:50px;
+}
+
+/* glass section */
+.section{
+backdrop-filter: blur(20px);
+background: rgba(255,255,255,0.03);
+margin:60px auto;
+padding:40px;
+border-radius:20px;
+max-width:900px;
+}
+
+h2{
+text-shadow:0 0 12px #ffcc00;
+}
+
+/* instagram strip */
+.insta{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+iframe{
 border-radius:15px;
-width:45%;
+}
+
+/* stats */
+.stats{
+display:flex;
+gap:40px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.stat{
+text-align:center;
+}
+
+.stat h1{
+color:#ffcc00;
+font-size:50px;
 }
 
 </style>
@@ -110,161 +128,112 @@ width:45%;
 
 <body>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="gallery.html">Gallery</a>
-<a href="register.html">Register</a>
-<a href="contact.html">Contact</a>
-</nav>
+<canvas id="bg"></canvas>
 
 <div class="hero">
+<h1>GAANA BAJAANA</h1>
+<div class="tag">Sing • Jam • Vibe</div>
 
-<button onclick="startMusic()" class="btn">🎶 Click to Feel the Vibe</button>
+<button class="btn" onclick="startExperience()">🎧 Enter the Vibe</button>
 
-<audio id="bgmusic" src="music.mp3" loop></audio>
-
-<h1 id="title"></h1>
-<p>Sing • Jam • Vibe</p>
-
-<canvas id="visualizer"></canvas>
-
-<a class="btn" href="https://forms.gle/Ls1kxJGaEMtfmMf27">Register Now</a>
-
-</div>
-
-<div class="section">
-<h2>Event Poster</h2>
-<img class="poster" src="poster.jpg">
-</div>
-
-<div class="section">
-<h2>Event Starts In</h2>
-<h1 id="countdown"></h1>
+<canvas id="wave"></canvas>
 </div>
 
 <div class="section">
 <h2>Event Vibes 🎥</h2>
-<div class="gallery">
+<div class="insta">
 <iframe src="https://www.instagram.com/reel/DVtiyu7D1uP/embed" width="320" height="550"></iframe>
 <iframe src="https://www.instagram.com/reel/DVwCqbaD5OS/embed" width="320" height="550"></iframe>
 </div>
 </div>
 
 <div class="section">
-<h2>Gaana Bajaana Impact ✨</h2>
+<h2>Impact ✨</h2>
 <div class="stats">
-<div><h1 class="counter" data-target="60">0</h1><p>Attendees</p></div>
-<div><h1 class="counter" data-target="20">0</h1><p>Songs</p></div>
-<div><h1 class="counter" data-target="1">0</h1><p>Music Band</p></div>
-<div><h1 class="counter" data-target="5">0</h1><p>Collaborations</p></div>
+<div class="stat"><h1>60+</h1><p>Attendees</p></div>
+<div class="stat"><h1>20+</h1><p>Songs</p></div>
+<div class="stat"><h1>1</h1><p>Band</p></div>
+<div class="stat"><h1>5+</h1><p>Collabs</p></div>
 </div>
-</div>
-
-<div class="section">
-<h2>Event Timeline 🎶</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<div class="timeline-time">6:00 PM</div>
-<div class="timeline-content">Welcome & Registration</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-time">6:15 PM</div>
-<div class="timeline-content">Music Jam Begins</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-time">8:30 PM</div>
-<div class="timeline-content">Networking & Closing</div>
-</div>
-
-</div>
-</div>
-
-<div class="section">
-<h2>Join Our Community 💬</h2>
-<a href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" class="btn">Join WhatsApp</a>
 </div>
 
 <script>
 
-function startMusic(){
+/* particles background */
+const canvasBg = document.getElementById("bg");
+const ctxBg = canvasBg.getContext("2d");
+canvasBg.width = window.innerWidth;
+canvasBg.height = window.innerHeight;
 
-let audio = document.getElementById("bgmusic");
+let particles = [];
+for(let i=0;i<60;i++){
+particles.push({
+x:Math.random()*canvasBg.width,
+y:Math.random()*canvasBg.height,
+r:Math.random()*2,
+v:Math.random()*0.5
+});
+}
+
+function animateBg(){
+ctxBg.clearRect(0,0,canvasBg.width,canvasBg.height);
+particles.forEach(p=>{
+p.y -= p.v;
+if(p.y<0)p.y=canvasBg.height;
+ctxBg.fillStyle="#ffcc00";
+ctxBg.beginPath();
+ctxBg.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctxBg.fill();
+});
+requestAnimationFrame(animateBg);
+}
+animateBg();
+
+/* waveform visualizer */
+let audio,ctx,analyser,data,waveCtx;
+
+function startExperience(){
+
+audio = new Audio("music.mp3");
+audio.loop=true;
 audio.play();
 
-let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let source = audioCtx.createMediaElementSource(audio);
-let analyser = audioCtx.createAnalyser();
+ctx = new (window.AudioContext || window.webkitAudioContext)();
+analyser = ctx.createAnalyser();
+let source = ctx.createMediaElementSource(audio);
 
 source.connect(analyser);
-analyser.connect(audioCtx.destination);
+analyser.connect(ctx.destination);
 
-analyser.fftSize = 64;
+data = new Uint8Array(analyser.frequencyBinCount);
 
-let bufferLength = analyser.frequencyBinCount;
-let dataArray = new Uint8Array(bufferLength);
+waveCtx = document.getElementById("wave").getContext("2d");
 
-let canvas = document.getElementById("visualizer");
-let ctx = canvas.getContext("2d");
-
-function animate(){
-requestAnimationFrame(animate);
-analyser.getByteFrequencyData(dataArray);
-
-ctx.fillStyle="#0f0f0f";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-let barWidth = canvas.width / bufferLength;
-
-for(let i=0;i<bufferLength;i++){
-let barHeight = dataArray[i];
-ctx.fillStyle="#ffcc00";
-ctx.fillRect(i*barWidth, canvas.height-barHeight, barWidth-2, barHeight);
-}
+drawWave();
 }
 
-animate();
+function drawWave(){
+requestAnimationFrame(drawWave);
+analyser.getByteTimeDomainData(data);
+
+waveCtx.clearRect(0,0,600,120);
+waveCtx.beginPath();
+
+let slice = 600/data.length;
+let x = 0;
+
+for(let i=0;i<data.length;i++){
+let v = data[i]/128.0;
+let y = v*60;
+
+i===0 ? waveCtx.moveTo(x,y) : waveCtx.lineTo(x,y);
+x+=slice;
 }
 
-let counters = document.querySelectorAll('.counter');
-counters.forEach(counter => {
-let updateCount = () => {
-let target = +counter.getAttribute('data-target');
-let count = +counter.innerText;
-let speed = target / 100;
-if(count < target){
-counter.innerText = Math.ceil(count + speed);
-setTimeout(updateCount, 20);
-}else{
-counter.innerText = target + "+";
+waveCtx.strokeStyle="#ffcc00";
+waveCtx.lineWidth=2;
+waveCtx.stroke();
 }
-}
-updateCount();
-});
-
-var eventDate = new Date("April 4, 2026 18:00:00").getTime();
-setInterval(function(){
-var now = new Date().getTime();
-var distance = eventDate - now;
-var days = Math.floor(distance/(1000*60*60*24));
-var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("countdown").innerHTML = days+"d "+hours+"h "+minutes+"m";
-},1000);
-
-var text="GAANA BAJAANA 🎶";
-var i=0;
-function typeWriter(){
-if(i<text.length){
-document.getElementById("title").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typeWriter,100);
-}
-}
-typeWriter();
 
 </script>
 
