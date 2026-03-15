@@ -7,20 +7,20 @@
 <style>
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI', sans-serif;
 background:#07070a;
 color:white;
 overflow-x:hidden;
 }
 
-/* animated gradient aura */
+/* animated aura */
 body::before{
 content:"";
 position:fixed;
 width:200%;
 height:200%;
-background: radial-gradient(circle at center,#ffcc00 0%,transparent 40%);
-animation: pulse 8s infinite alternate;
+background: radial-gradient(circle,#ffcc00 0%,transparent 40%);
+animation:pulse 8s infinite alternate;
 opacity:0.08;
 z-index:-1;
 }
@@ -30,12 +30,26 @@ from{transform:scale(1);}
 to{transform:scale(1.4);}
 }
 
-/* floating particles */
-canvas#bg{
+/* particles bg */
+#bg{
 position:fixed;
 top:0;
 left:0;
 z-index:-2;
+}
+
+/* nav */
+nav{
+background:black;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:#ffcc00;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
 }
 
 /* hero */
@@ -52,35 +66,28 @@ h1{
 font-size:70px;
 letter-spacing:4px;
 text-shadow:0 0 20px #ffcc00;
-margin:0;
-}
-
-.tag{
-opacity:0.7;
-margin-top:10px;
 }
 
 .btn{
-margin-top:40px;
+margin-top:30px;
 background:linear-gradient(45deg,#ffcc00,#ff512f);
 padding:15px 35px;
 border-radius:40px;
 border:none;
 font-weight:bold;
 cursor:pointer;
-font-size:18px;
 box-shadow:0 0 25px rgba(255,204,0,0.6);
 }
 
-/* waveform visualizer */
+/* waveform */
 #wave{
 width:80%;
 max-width:600px;
 height:120px;
-margin-top:50px;
+margin-top:40px;
 }
 
-/* glass section */
+/* section glass */
 .section{
 backdrop-filter: blur(20px);
 background: rgba(255,255,255,0.03);
@@ -88,25 +95,22 @@ margin:60px auto;
 padding:40px;
 border-radius:20px;
 max-width:900px;
+text-align:center;
 }
 
-h2{
-text-shadow:0 0 12px #ffcc00;
+.poster{
+width:350px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,255,255,0.3);
 }
 
-/* instagram strip */
 .insta{
 display:flex;
+flex-wrap:wrap;
 justify-content:center;
 gap:20px;
-flex-wrap:wrap;
 }
 
-iframe{
-border-radius:15px;
-}
-
-/* stats */
 .stats{
 display:flex;
 gap:40px;
@@ -114,13 +118,46 @@ justify-content:center;
 flex-wrap:wrap;
 }
 
-.stat{
-text-align:center;
-}
-
 .stat h1{
 color:#ffcc00;
 font-size:50px;
+}
+
+/* timeline */
+.timeline{
+position:relative;
+max-width:700px;
+margin:auto;
+}
+
+.timeline::before{
+content:'';
+position:absolute;
+left:50%;
+top:0;
+bottom:0;
+width:3px;
+background:#ffcc00;
+}
+
+.timeline-item{
+display:flex;
+justify-content:space-between;
+margin:40px 0;
+}
+
+.timeline-time{
+background:#ff512f;
+padding:10px 18px;
+border-radius:20px;
+font-weight:bold;
+}
+
+.timeline-content{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+width:45%;
 }
 
 </style>
@@ -130,13 +167,30 @@ font-size:50px;
 
 <canvas id="bg"></canvas>
 
+<nav>
+<a href="index.html">Home</a>
+<a href="gallery.html">Gallery</a>
+<a href="register.html">Register</a>
+<a href="contact.html">Contact</a>
+</nav>
+
 <div class="hero">
 <h1>GAANA BAJAANA</h1>
-<div class="tag">Sing • Jam • Vibe</div>
+<p>Sing • Jam • Vibe</p>
 
 <button class="btn" onclick="startExperience()">🎧 Enter the Vibe</button>
 
 <canvas id="wave"></canvas>
+</div>
+
+<div class="section">
+<h2>Event Poster</h2>
+<img class="poster" src="poster.jpg">
+</div>
+
+<div class="section">
+<h2>Event Starts In</h2>
+<h1 id="countdown"></h1>
 </div>
 
 <div class="section">
@@ -157,29 +211,53 @@ font-size:50px;
 </div>
 </div>
 
+<div class="section">
+<h2>Event Timeline 🎶</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-time">6:00 PM</div>
+<div class="timeline-content">Welcome & Registration</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-time">6:15 PM</div>
+<div class="timeline-content">Music Jam Begins</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-time">8:30 PM</div>
+<div class="timeline-content">Networking & Closing</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>How Registration Works 🎟️</h2>
+<p>Fill form → Receive QR pass → Show at entry</p>
+<a class="btn" href="https://forms.gle/Ls1kxJGaEMtfmMf27">Register Now</a>
+</div>
+
+<div class="section">
+<h2>Join Community 💬</h2>
+<a class="btn" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD">Join WhatsApp</a>
+</div>
+
 <script>
 
-/* particles background */
-const canvasBg = document.getElementById("bg");
-const ctxBg = canvasBg.getContext("2d");
-canvasBg.width = window.innerWidth;
-canvasBg.height = window.innerHeight;
+/* particles */
+const bg = document.getElementById("bg");
+const ctxBg = bg.getContext("2d");
+bg.width = window.innerWidth;
+bg.height = window.innerHeight;
 
-let particles = [];
-for(let i=0;i<60;i++){
-particles.push({
-x:Math.random()*canvasBg.width,
-y:Math.random()*canvasBg.height,
-r:Math.random()*2,
-v:Math.random()*0.5
-});
+let particles=[];
+for(let i=0;i<70;i++){
+particles.push({x:Math.random()*bg.width,y:Math.random()*bg.height,r:Math.random()*2,v:Math.random()*0.5});
 }
 
 function animateBg(){
-ctxBg.clearRect(0,0,canvasBg.width,canvasBg.height);
+ctxBg.clearRect(0,0,bg.width,bg.height);
 particles.forEach(p=>{
-p.y -= p.v;
-if(p.y<0)p.y=canvasBg.height;
+p.y-=p.v;
+if(p.y<0)p.y=bg.height;
 ctxBg.fillStyle="#ffcc00";
 ctxBg.beginPath();
 ctxBg.arc(p.x,p.y,p.r,0,Math.PI*2);
@@ -189,24 +267,21 @@ requestAnimationFrame(animateBg);
 }
 animateBg();
 
-/* waveform visualizer */
-let audio,ctx,analyser,data,waveCtx;
+/* waveform */
+let audioCtx, analyser, data, waveCtx;
 
 function startExperience(){
-
-audio = new Audio("music.mp3");
+let audio = new Audio("music.mp3");
 audio.loop=true;
 audio.play();
 
-ctx = new (window.AudioContext || window.webkitAudioContext)();
-analyser = ctx.createAnalyser();
-let source = ctx.createMediaElementSource(audio);
-
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+analyser = audioCtx.createAnalyser();
+let source = audioCtx.createMediaElementSource(audio);
 source.connect(analyser);
-analyser.connect(ctx.destination);
+analyser.connect(audioCtx.destination);
 
 data = new Uint8Array(analyser.frequencyBinCount);
-
 waveCtx = document.getElementById("wave").getContext("2d");
 
 drawWave();
@@ -219,13 +294,12 @@ analyser.getByteTimeDomainData(data);
 waveCtx.clearRect(0,0,600,120);
 waveCtx.beginPath();
 
-let slice = 600/data.length;
-let x = 0;
+let slice=600/data.length;
+let x=0;
 
 for(let i=0;i<data.length;i++){
-let v = data[i]/128.0;
-let y = v*60;
-
+let v=data[i]/128.0;
+let y=v*60;
 i===0 ? waveCtx.moveTo(x,y) : waveCtx.lineTo(x,y);
 x+=slice;
 }
@@ -234,6 +308,17 @@ waveCtx.strokeStyle="#ffcc00";
 waveCtx.lineWidth=2;
 waveCtx.stroke();
 }
+
+/* countdown */
+var eventDate = new Date("April 4, 2026 18:00:00").getTime();
+setInterval(function(){
+var now = new Date().getTime();
+var distance = eventDate - now;
+var days = Math.floor(distance/(1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("countdown").innerHTML = days+"d "+hours+"h "+minutes+"m";
+},1000);
 
 </script>
 
