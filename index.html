@@ -140,6 +140,16 @@ animation: sound 1s infinite ease-in-out;
 </nav>
 
 <div class="hero">
+<div style="margin-top:20px;">
+<button onclick="document.getElementById('bgmusic').play()" 
+style="padding:10px 20px;border-radius:20px;background:#ffcc00;border:none;font-weight:bold;">
+🎶 Click to Feel the Vibe
+</button>
+</div>
+
+<audio id="bgmusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 <h1 id="title"></h1>
 <p>Sing • Jam • Vibe</p>
 
