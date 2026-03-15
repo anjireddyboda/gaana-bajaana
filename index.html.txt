@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gaana Bajaana</title>
+</head>
+
+<body style="text-align:center; font-family:Arial;">
+
+<h1>GAANA BAJAANA 🎶</h1>
+
+<p>Telugu Music Jam Night</p>
+
+<p>Date: 7 March</p>
+<p>Time: 6 PM</p>
+<p>Venue: McDonald's</p>
+
+<a href="PUT_YOUR_GOOGLE_FORM_LINK">
+<button style="padding:15px;">Register Now</button>
+</a>
+
+</body>
+</html>
