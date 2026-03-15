@@ -1,3 +1,6 @@
+Here's the complete final code with all your changes:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +29,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(7,7,9,0.95),transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--gold);text-decoration:none;}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:38px;width:auto;object-fit:contain;}
+.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--gold);text-decoration:none;}
 .nav-links{display:flex;gap:28px;align-items:center;}
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
 .nav-links a:hover{color:var(--gold);}
@@ -35,9 +40,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-#mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,7,9,0.97);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:36px;}
+
+/* MOBILE MENU — reduced font size for cleaner look */
+#mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,7,9,0.97);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:20px;}
 #mobile-menu.open{display:flex;}
-#mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:4px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;}
+#mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;padding:6px 0;}
 #mobile-menu a:hover{color:var(--gold);}
 
 /* SOCIAL BAR */
@@ -52,6 +59,7 @@ canvas#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;po
 /* HERO */
 .hero{position:relative;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;z-index:2;}
 .hero-eyebrow{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
+.hero-logo-img{max-width:min(480px,85vw);width:100%;height:auto;object-fit:contain;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 40px rgba(245,200,66,0.3));margin-bottom:8px;}
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,14vw,180px);line-height:0.88;letter-spacing:6px;background:linear-gradient(135deg,#fff 0%,var(--gold) 50%,var(--coral) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 60px rgba(245,200,66,0.25));}
 .hero-sub{font-size:clamp(14px,2vw,18px);letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:20px;opacity:0;animation:fadeUp 0.9s 0.7s forwards;}
 .hero-date-badge{margin-top:32px;display:inline-flex;gap:12px;align-items:center;background:var(--glass);border:1px solid var(--border);padding:12px 28px;border-radius:60px;font-size:14px;color:rgba(255,255,255,0.7);letter-spacing:1px;opacity:0;animation:fadeUp 0.9s 0.9s forwards;}
@@ -137,17 +145,17 @@ section{position:relative;z-index:2;padding:100px 20px;}
 #lightbox-close:hover{color:#fff;}
 
 /* TEAM */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;margin-top:60px;}
-.team-card{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;margin-top:60px;}
+.team-card{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:28px 20px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
 .team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--coral));transform:scaleX(0);transition:transform 0.4s ease;}
 .team-card:hover{transform:translateY(-4px);border-color:rgba(245,200,66,0.2);}
 .team-card:hover::before{transform:scaleX(1);}
-.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;border:2px solid rgba(245,200,66,0.2);background:linear-gradient(135deg,var(--dark3),var(--dark2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);overflow:hidden;}
+.team-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;border:2px solid rgba(245,200,66,0.2);background:linear-gradient(135deg,var(--dark3),var(--dark2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--gold);overflow:hidden;}
 .team-avatar img{width:100%;height:100%;object-fit:cover;}
-.team-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
-.team-role{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.team-bio{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;}
-.team-social{display:flex;gap:10px;justify-content:center;margin-top:16px;}
+.team-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.team-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.team-bio{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;}
+.team-social{display:flex;gap:10px;justify-content:center;margin-top:14px;}
 .team-social a{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;}
 .team-social a:hover{border-color:var(--gold);background:rgba(245,200,66,0.08);}
 .team-social a svg{width:13px;height:13px;fill:rgba(255,255,255,0.4);}
@@ -212,7 +220,8 @@ section{position:relative;z-index:2;padding:100px 20px;}
 /* FOOTER */
 footer{background:var(--dark);border-top:1px solid var(--border);padding:60px 20px 40px;z-index:2;position:relative;}
 .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:40px;}
-.footer-brand .nav-logo{font-size:36px;display:block;margin-bottom:12px;}
+.footer-brand a{display:block;margin-bottom:12px;}
+.footer-brand a img{height:36px;width:auto;object-fit:contain;}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.7;max-width:300px;}
 .footer-links{display:flex;flex-direction:column;gap:10px;text-align:right;}
 .footer-links a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
@@ -253,6 +262,10 @@ footer span{color:var(--gold);}
 @keyframes pulse-ring{0%{transform:scale(1);opacity:0.5;}100%{transform:scale(2);opacity:0;}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
+/* LINKEDIN SVG path helper */
+.li-svg{width:13px;height:13px;fill:rgba(255,255,255,0.4);}
+.team-social a:hover .li-svg{fill:var(--gold);}
+
 @media(max-width:768px){
 nav{padding:16px 20px;}
 .nav-links{display:none;}
@@ -275,6 +288,8 @@ nav{padding:16px 20px;}
 .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
 .map-wrap iframe{height:280px;}
 .testi-grid{grid-template-columns:1fr;}
+.team-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+.hero-logo-img{max-width:75vw;}
 }
 </style>
 </head>
@@ -296,8 +311,8 @@ nav{padding:16px 20px;}
   <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
   <a href="#team" onclick="closeMobileMenu()">Team</a>
   <a href="#vibes" onclick="closeMobileMenu()">Vibes</a>
-  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="#register" onclick="closeMobileMenu()">Register</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="https://wa.me/+918367463908" target="_blank" onclick="closeMobileMenu()">Contact</a>
 </div>
 
@@ -339,17 +354,19 @@ nav{padding:16px 20px;}
   </a>
 </div>
 
-<!-- NAV -->
+<!-- NAV — uses logo.png, falls back to text if missing -->
 <nav>
-  <a class="nav-logo" href="#">GB</a>
+  <a class="nav-logo" href="#">
+    <img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span class=nav-logo-text>GB</span>'">
+  </a>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
     <a href="#timeline">Schedule</a>
     <a href="#team">Team</a>
     <a href="#vibes">Vibes</a>
-    <a href="#faq">FAQ</a>
     <a href="#register">Register</a>
+    <a href="#faq">FAQ</a>
     <a href="https://wa.me/+918367463908" target="_blank">Contact</a>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
@@ -357,10 +374,10 @@ nav{padding:16px 20px;}
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — uses logo.png as main title, falls back to text -->
 <div class="hero">
   <p class="hero-eyebrow">🎵 An Intimate Music Experience</p>
-  <h1 class="hero-title">GAANA<br>BAJAANA</h1>
+  <img class="hero-logo-img" src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<h1 class=hero-title>GAANA<br>BAJAANA</h1>'">
   <p class="hero-sub">Sing &nbsp;·&nbsp; Jam &nbsp;·&nbsp; Vibe</p>
   <div class="hero-date-badge"><span>April 4, 2026</span>&nbsp;·&nbsp;6:00 PM Onwards&nbsp;·&nbsp;<span>Hyderabad</span></div>
   <div class="hero-cta">
@@ -427,7 +444,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- PHOTO GALLERY — add photo1.jpg to photo6.jpg in your repo -->
+<!-- PHOTO GALLERY -->
 <section id="gallery">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -476,7 +493,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- MEET THE TEAM — replace names/bios and add team1.jpg–team4.jpg to your repo -->
+<!-- MEET THE TEAM — 6 members with LinkedIn, add team1.jpg–team6.jpg to repo -->
 <section id="team">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -485,44 +502,90 @@ nav{padding:16px 20px;}
       <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-top:-8px;">The minds and hearts behind Gaana Bajaana</p>
     </div>
     <div class="team-grid reveal">
+
+      <!-- 1 -->
       <div class="team-card">
-        <div class="team-avatar"><img src="team1.jpg" alt="" onerror="this.parentElement.textContent='AK'"></div>
-        <div class="team-name">Arjun Kumar</div>
-        <div class="team-role">Founder &amp; Host</div>
-        <div class="team-bio">Music lover, community builder, and the one who makes the jam happen every time.</div>
-        <div class="team-social"><a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></div>
+        <div class="team-avatar"><img src="team1.jpg" alt="" onerror="this.parentElement.textContent='SJ'"></div>
+        <div class="team-name">Sainandhan Jilla</div>
+        <div class="team-role">Team Member</div>
+        <div class="team-bio">Passionate about music and bringing people together through unforgettable experiences.</div>
+        <div class="team-social">
+          <a href="https://www.linkedin.com/in/sainandhan-jilla-21a816224/" target="_blank">
+            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
       </div>
+
+      <!-- 2 -->
       <div class="team-card">
-        <div class="team-avatar"><img src="team2.jpg" alt="" onerror="this.parentElement.textContent='SR'"></div>
-        <div class="team-name">Sneha Reddy</div>
-        <div class="team-role">Music Director</div>
-        <div class="team-bio">Guitar maestro and the creative soul who curates the setlists and spontaneous collabs.</div>
-        <div class="team-social"><a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></div>
+        <div class="team-avatar"><img src="team2.jpg" alt="" onerror="this.parentElement.textContent='AD'"></div>
+        <div class="team-name">Akhil Davula</div>
+        <div class="team-role">Team Member</div>
+        <div class="team-bio">Creative energy and dedication poured into every event, making each session unforgettable.</div>
+        <div class="team-social">
+          <a href="https://www.linkedin.com/in/akhil-davula" target="_blank">
+            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
       </div>
+
+      <!-- 3 -->
       <div class="team-card">
-        <div class="team-avatar"><img src="team3.jpg" alt="" onerror="this.parentElement.textContent='VP'"></div>
-        <div class="team-name">Boda Anji Reddy</div>
+        <div class="team-avatar"><img src="team3.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div>
+        <div class="team-name">Anji Reddy Boda</div>
         <div class="team-role">Operations Lead</div>
         <div class="team-bio">The backbone of the event — logistics, registrations, and everything that keeps it smooth.</div>
         <div class="team-social">
-   <a href="https://www.linkedin.com/in/anjireddyboda/" target="_blank">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-      <path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-    </svg>
-  </a>
-</div>
-      <div class="team-card">
-        <div class="team-avatar"><img src="team4.jpg" alt="" onerror="this.parentElement.textContent='PM'"></div>
-        <div class="team-name">Priya Mehta</div>
-        <div class="team-role">Community Manager</div>
-        <div class="team-bio">Keeps the WhatsApp group alive, the vibes high, and everyone in the loop always.</div>
-        <div class="team-social"><a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></div>
+          <a href="https://www.linkedin.com/in/anjireddyboda" target="_blank">
+            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
       </div>
+
+      <!-- 4 -->
+      <div class="team-card">
+        <div class="team-avatar"><img src="team4.jpg" alt="" onerror="this.parentElement.textContent='SB'"></div>
+        <div class="team-name">Shiva Sai Balbari</div>
+        <div class="team-role">Team Member</div>
+        <div class="team-bio">Bringing rhythm and structure to everything we do, on stage and behind the scenes.</div>
+        <div class="team-social">
+          <a href="https://www.linkedin.com/in/shiva-sai-balbari" target="_blank">
+            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="team-card">
+        <div class="team-avatar"><img src="team5.jpg" alt="" onerror="this.parentElement.textContent='AS'"></div>
+        <div class="team-name">Agrati Sheela</div>
+        <div class="team-role">Team Member</div>
+        <div class="team-bio">Keeps the community connected and the creative spark alive at every Gaana Bajaana event.</div>
+        <div class="team-social">
+          <a href="https://www.linkedin.com/in/agrati-sheela-01b874253" target="_blank">
+            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="team-card">
+        <div class="team-avatar"><img src="team6.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div>
+        <div class="team-name">Abhiram Beemari</div>
+        <div class="team-role">Team Member</div>
+        <div class="team-bio">Fuels the energy and passion that makes every jam session a night to remember.</div>
+        <div class="team-social">
+          <a href="https://www.linkedin.com/in/abhiram-beemari" target="_blank">
+            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS — replace with real quotes from your attendees -->
+<!-- TESTIMONIALS -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="testimonials">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -563,7 +626,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- VENUE MAP — replace iframe src with your actual Google Maps embed URL -->
+<!-- VENUE MAP -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="venue">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -582,7 +645,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- SPONSORS — replace "YOUR BRAND" / "PARTNER X" with actual names or logo images -->
+<!-- SPONSORS -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="sponsors">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -615,22 +678,6 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="container">
-    <div class="reveal" style="text-align:center;"><span class="section-label">Got Questions?</span><h2 class="section-title">FAQ</h2></div>
-    <div class="faq-list reveal">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is registration free?<span class="faq-icon">+</span></div><div class="faq-a">Yes! Gaana Bajaana is completely free to attend. Just fill the registration form, receive your QR pass, and show it at entry.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely not! Gaana Bajaana welcomes everyone — from total beginners to seasoned performers. The only requirement is a love for music.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring my instrument?<span class="faq-icon">+</span></div><div class="faq-a">Yes, please do! Guitars, keyboards, tabla, cajon — all welcome. Basic equipment like mics and amps will be provided at the venue.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get my QR pass after registering?<span class="faq-icon">+</span></div><div class="faq-a">After submitting the form, you'll receive a confirmation with your QR pass. If you don't see it in 24 hours, check spam or reach out on WhatsApp.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I come with a group of friends?<span class="faq-icon">+</span></div><div class="faq-a">Of course! Groups are welcome. Each person needs their own QR pass, so make sure everyone registers individually.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will there be food and beverages?<span class="faq-icon">+</span></div><div class="faq-a">Light refreshments will be available. Stay tuned to the WhatsApp community group for specific details closer to the event.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated about future events?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community group for real-time updates and to find jam partners. Also follow us on Instagram and YouTube!</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- REGISTER -->
 <section class="register-section" id="register">
   <div class="container">
@@ -650,7 +697,23 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- COMMUNITY -->
+<!-- FAQ — moved here, just before contact -->
+<section id="faq" style="background:var(--dark2);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="reveal" style="text-align:center;"><span class="section-label">Got Questions?</span><h2 class="section-title">FAQ</h2></div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is registration free?<span class="faq-icon">+</span></div><div class="faq-a">Yes! Gaana Bajaana is completely free to attend. Just fill the registration form, receive your QR pass, and show it at entry.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely not! Gaana Bajaana welcomes everyone — from total beginners to seasoned performers. The only requirement is a love for music.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring my instrument?<span class="faq-icon">+</span></div><div class="faq-a">Yes, please do! Guitars, keyboards, tabla, cajon — all welcome. Basic equipment like mics and amps will be provided at the venue.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get my QR pass after registering?<span class="faq-icon">+</span></div><div class="faq-a">After submitting the form, you'll receive a confirmation with your QR pass. If you don't see it in 24 hours, check spam or reach out on WhatsApp.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I come with a group of friends?<span class="faq-icon">+</span></div><div class="faq-a">Of course! Groups are welcome. Each person needs their own QR pass, so make sure everyone registers individually.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will there be food and beverages?<span class="faq-icon">+</span></div><div class="faq-a">Light refreshments will be available. Stay tuned to the WhatsApp community group for specific details closer to the event.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated about future events?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community group for real-time updates and to find jam partners. Also follow us on Instagram!</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY / CONTACT -->
 <section>
   <div class="container">
     <div class="community-card reveal">
@@ -669,7 +732,9 @@ nav{padding:16px 20px;}
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class="nav-logo" href="#">GAANA BAJAANA</a>
+      <a href="#">
+        <img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span style=\'font-family:Bebas Neue,sans-serif;font-size:32px;letter-spacing:3px;color:#F5C842;\'>GAANA BAJAANA</span>'">
+      </a>
       <p>An intimate music experience for those who live and breathe music. Hyderabad's most vibrant jam community.</p>
     </div>
     <div class="footer-links">
@@ -677,9 +742,9 @@ nav{padding:16px 20px;}
       <a href="#gallery">Gallery</a>
       <a href="#timeline">Schedule</a>
       <a href="#team">Team</a>
-      <a href="#faq">FAQ</a>
       <a href="#sponsors">Sponsors</a>
       <a href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Register</a>
+      <a href="#faq">FAQ</a>
       <a href="https://wa.me/+918367463908" target="_blank">Contact</a>
     </div>
   </div>
@@ -744,3 +809,4 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 </script>
 </body>
 </html>
+```
