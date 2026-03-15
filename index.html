@@ -174,17 +174,6 @@ section{position:relative;z-index:2;padding:100px 20px;}
 .map-info-key{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:6px;}
 .map-info-val{font-size:14px;font-weight:600;color:#fff;}
 
-/* FAQ */
-.faq-list{max-width:800px;margin:60px auto 0;display:flex;flex-direction:column;gap:8px;}
-.faq-item{background:var(--dark2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s;}
-.faq-item.open{border-color:rgba(245,200,66,0.2);}
-.faq-q{padding:22px 28px;display:flex;justify-content:space-between;align-items:center;cursor:none;font-size:15px;font-weight:600;color:#fff;gap:16px;}
-.faq-q:hover{color:var(--gold);}
-.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;font-size:18px;color:rgba(255,255,255,0.3);}
-.faq-item.open .faq-icon{background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.3);color:var(--gold);transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;padding:0 28px;}
-.faq-item.open .faq-a{max-height:300px;padding:0 28px 22px;}
-
 /* SPONSORS */
 .sponsor-tiers{margin-top:60px;display:flex;flex-direction:column;gap:48px;}
 .sponsor-tier-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-align:center;margin-bottom:24px;}
@@ -197,6 +186,17 @@ section{position:relative;z-index:2;padding:100px 20px;}
 .sponsor-logo.large span{font-size:30px;}
 .sponsor-cta{text-align:center;margin-top:48px;padding-top:40px;border-top:1px solid var(--border);}
 .sponsor-cta p{color:rgba(255,255,255,0.35);font-size:14px;margin-bottom:20px;}
+
+/* FAQ */
+.faq-list{max-width:800px;margin:60px auto 0;display:flex;flex-direction:column;gap:8px;}
+.faq-item{background:var(--dark2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s;}
+.faq-item.open{border-color:rgba(245,200,66,0.2);}
+.faq-q{padding:22px 28px;display:flex;justify-content:space-between;align-items:center;cursor:none;font-size:15px;font-weight:600;color:#fff;gap:16px;}
+.faq-q:hover{color:var(--gold);}
+.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;font-size:18px;color:rgba(255,255,255,0.3);}
+.faq-item.open .faq-icon{background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.3);color:var(--gold);transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;padding:0 28px;}
+.faq-item.open .faq-a{max-height:300px;padding:0 28px 22px;}
 
 .register-section{background:var(--dark2);border-top:1px solid var(--border);}
 .register-inner{max-width:700px;margin:0 auto;text-align:center;}
@@ -577,22 +577,6 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="container">
-    <div class="reveal" style="text-align:center;"><span class="section-label">Got Questions?</span><h2 class="section-title">FAQ</h2></div>
-    <div class="faq-list reveal">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is registration free?<span class="faq-icon">+</span></div><div class="faq-a">Yes! Gaana Bajaana is completely free to attend. Just fill the registration form, receive your QR pass, and show it at entry.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely not! Gaana Bajaana welcomes everyone — from total beginners to seasoned performers. The only requirement is a love for music.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring my instrument?<span class="faq-icon">+</span></div><div class="faq-a">Yes, please do! Guitars, keyboards, tabla, cajon — all welcome. Basic equipment like mics and amps will be provided at the venue.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get my QR pass after registering?<span class="faq-icon">+</span></div><div class="faq-a">After submitting the form, you'll receive a confirmation with your QR pass. If you don't see it in 24 hours, check spam or reach out on WhatsApp.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I come with a group of friends?<span class="faq-icon">+</span></div><div class="faq-a">Of course! Groups are welcome. Each person needs their own QR pass, so make sure everyone registers individually.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will there be food and beverages?<span class="faq-icon">+</span></div><div class="faq-a">Light refreshments will be available. Stay tuned to the WhatsApp community group for specific details closer to the event.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated about future events?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community group for real-time updates and to find jam partners. Also follow us on Instagram and YouTube!</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- SPONSORS — replace "YOUR BRAND" / "PARTNER X" with actual names or logo images -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="sponsors">
   <div class="container">
@@ -622,6 +606,22 @@ nav{padding:16px 20px;}
     <div class="sponsor-cta reveal">
       <p>Interested in sponsoring Gaana Bajaana?</p>
       <a class="btn-outline" href="https://wa.me/+918367463908?text=Hi!%20I'm%20interested%20in%20sponsoring%20Gaana%20Bajaana" target="_blank">Get in Touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;"><span class="section-label">Got Questions?</span><h2 class="section-title">FAQ</h2></div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is registration free?<span class="faq-icon">+</span></div><div class="faq-a">Yes! Gaana Bajaana is completely free to attend. Just fill the registration form, receive your QR pass, and show it at entry.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely not! Gaana Bajaana welcomes everyone — from total beginners to seasoned performers. The only requirement is a love for music.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring my instrument?<span class="faq-icon">+</span></div><div class="faq-a">Yes, please do! Guitars, keyboards, tabla, cajon — all welcome. Basic equipment like mics and amps will be provided at the venue.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get my QR pass after registering?<span class="faq-icon">+</span></div><div class="faq-a">After submitting the form, you'll receive a confirmation with your QR pass. If you don't see it in 24 hours, check spam or reach out on WhatsApp.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I come with a group of friends?<span class="faq-icon">+</span></div><div class="faq-a">Of course! Groups are welcome. Each person needs their own QR pass, so make sure everyone registers individually.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will there be food and beverages?<span class="faq-icon">+</span></div><div class="faq-a">Light refreshments will be available. Stay tuned to the WhatsApp community group for specific details closer to the event.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated about future events?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community group for real-time updates and to find jam partners. Also follow us on Instagram and YouTube!</div></div>
     </div>
   </div>
 </section>
