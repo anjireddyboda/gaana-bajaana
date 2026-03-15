@@ -477,6 +477,133 @@ z-index:2;
 position:relative;
 }
 footer span{color:var(--gold);}
+
+/* ===================== MUSIC PLAYER ===================== */
+#music-player{
+position:fixed;
+bottom:32px;
+left:32px;
+z-index:500;
+display:flex;
+align-items:center;
+gap:12px;
+background:rgba(10,10,14,0.85);
+border:1px solid rgba(245,200,66,0.25);
+backdrop-filter:blur(16px);
+padding:12px 20px;
+border-radius:60px;
+cursor:none;
+transition:all 0.3s;
+animation:waPop 0.6s 2.2s both;
+box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+#music-player:hover{border-color:rgba(245,200,66,0.6);box-shadow:0 8px 40px rgba(245,200,66,0.15);}
+
+#music-toggle{
+width:38px;height:38px;
+border-radius:50%;
+background:linear-gradient(135deg,var(--gold),var(--amber));
+border:none;
+cursor:none;
+display:flex;align-items:center;justify-content:center;
+flex-shrink:0;
+transition:transform 0.2s;
+box-shadow:0 0 20px rgba(245,200,66,0.4);
+}
+#music-toggle:hover{transform:scale(1.1);}
+#music-toggle svg{width:16px;height:16px;fill:#000;}
+
+.music-info{
+display:flex;
+flex-direction:column;
+gap:2px;
+min-width:0;
+}
+.music-title{
+font-size:12px;
+font-weight:600;
+color:#fff;
+letter-spacing:0.5px;
+white-space:nowrap;
+}
+.music-status{
+font-size:10px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:rgba(255,255,255,0.35);
+}
+
+/* animated bars shown when playing */
+.music-bars{
+display:flex;
+align-items:flex-end;
+gap:3px;
+height:20px;
+}
+.music-bars span{
+width:3px;
+background:var(--gold);
+border-radius:2px;
+animation:none;
+height:4px;
+transition:height 0.2s;
+}
+.music-bars.playing span:nth-child(1){animation:bar1 0.8s ease-in-out infinite;}
+.music-bars.playing span:nth-child(2){animation:bar2 0.9s ease-in-out infinite 0.1s;}
+.music-bars.playing span:nth-child(3){animation:bar1 0.7s ease-in-out infinite 0.2s;}
+.music-bars.playing span:nth-child(4){animation:bar2 1s ease-in-out infinite 0.05s;}
+@keyframes bar1{
+0%,100%{height:4px;}
+50%{height:18px;}
+}
+@keyframes bar2{
+0%,100%{height:10px;}
+50%{height:6px;}
+}
+
+/* volume slider */
+#vol-wrap{
+display:flex;
+align-items:center;
+gap:8px;
+}
+#vol-icon svg{width:14px;height:14px;fill:rgba(255,255,255,0.3);}
+#vol-slider{
+-webkit-appearance:none;
+appearance:none;
+width:70px;
+height:3px;
+border-radius:2px;
+background:rgba(255,255,255,0.15);
+outline:none;
+cursor:none;
+}
+#vol-slider::-webkit-slider-thumb{
+-webkit-appearance:none;
+width:12px;height:12px;
+border-radius:50%;
+background:var(--gold);
+cursor:none;
+}
+#vol-slider::-moz-range-thumb{
+width:12px;height:12px;
+border-radius:50%;
+background:var(--gold);
+border:none;
+cursor:none;
+}
+
+@media(max-width:768px){
+#music-player{
+left:16px;bottom:16px;
+padding:10px 14px;
+gap:8px;
+}
+#vol-wrap{display:none;}
+.music-info{display:none;}
+}
+/* ===================== END MUSIC PLAYER ===================== */
+
 #wa-btn{
 position:fixed;
 bottom:32px;right:32px;
@@ -592,7 +719,31 @@ nav{padding:16px 20px;}
 <div id="cursor-trail"></div>
 <canvas id="bg-canvas"></canvas>
 
-<!-- ✅ REPLACE +918367463908 with your actual WhatsApp number below (2 places) -->
+<!-- MUSIC PLAYER -->
+<audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+<div id="music-player">
+  <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">
+    <!-- Play icon (shown when paused) -->
+    <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <!-- Pause icon (shown when playing) -->
+    <svg id="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <div class="music-info">
+    <div class="music-title">Gaana Bajaana Vibes</div>
+    <div class="music-status" id="music-status">Click to play</div>
+  </div>
+  <div class="music-bars" id="music-bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div id="vol-wrap">
+    <div id="vol-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+    </div>
+    <input type="range" id="vol-slider" min="0" max="100" value="60" oninput="setVolume(this.value)">
+  </div>
+</div>
+
+<!-- WHATSAPP BUTTON -->
 <a id="wa-btn" href="https://wa.me/+918367463908?text=Hi!%20I%20have%20a%20query%20about%20Gaana%20Bajaana%20%F0%9F%8E%B5" target="_blank" rel="noopener">
   <div class="wa-pulse"></div>
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -764,7 +915,7 @@ nav{padding:16px 20px;}
         <div class="tl-content">The Jam Begins — Where Voices Become Memories.</div>
       </div>
       <div class="tl-item">
-        <div class="tl-content">Wind down, connect with fellow music lovrers, build your tribe.</div>
+        <div class="tl-content">Wind down, connect with fellow music lovers, build your tribe.</div>
         <div class="tl-dot"></div>
         <div class="tl-time">8:30 PM</div>
       </div>
@@ -814,7 +965,7 @@ nav{padding:16px 20px;}
         </div>
       </div>
       <div class="reveal">
-        <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now </a>
+        <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a>
       </div>
     </div>
   </div>
@@ -842,6 +993,7 @@ nav{padding:16px 20px;}
 </footer>
 
 <script>
+/* === CURSOR === */
 const cur = document.getElementById('cursor');
 const trail = document.getElementById('cursor-trail');
 let mx=0,my=0,tx=0,ty=0;
@@ -863,6 +1015,7 @@ document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');
 });
 
+/* === BACKGROUND PARTICLES === */
 const bgCanvas = document.getElementById('bg-canvas');
 const bgCtx = bgCanvas.getContext('2d');
 bgCanvas.width = window.innerWidth;
@@ -903,6 +1056,7 @@ window.addEventListener('resize',()=>{
   bgCanvas.height=window.innerHeight;
 });
 
+/* === WAVEFORM === */
 const wCanvas = document.getElementById('wave-canvas');
 const wCtx = wCanvas.getContext('2d');
 let phase = 0;
@@ -929,6 +1083,7 @@ function drawDecorWave(){
 }
 drawDecorWave();
 
+/* === COUNTDOWN === */
 function updateCountdown(){
   const target = new Date('April 4, 2026 18:00:00').getTime();
   const now = Date.now();
@@ -949,11 +1104,70 @@ function updateCountdown(){
 updateCountdown();
 setInterval(updateCountdown,1000);
 
+/* === SCROLL REVEAL === */
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:0.12});
 revealEls.forEach(el=>observer.observe(el));
+
+/* === MUSIC PLAYER === */
+const audio = document.getElementById('bg-music');
+const playIcon = document.getElementById('icon-play');
+const pauseIcon = document.getElementById('icon-pause');
+const musicStatus = document.getElementById('music-status');
+const musicBars = document.getElementById('music-bars');
+let isPlaying = false;
+
+audio.volume = 0.6;
+
+function toggleMusic(){
+  if(isPlaying){
+    audio.pause();
+    isPlaying = false;
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    musicStatus.textContent = 'Paused';
+    musicBars.classList.remove('playing');
+  } else {
+    audio.play().then(()=>{
+      isPlaying = true;
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      musicStatus.textContent = 'Now Playing';
+      musicBars.classList.add('playing');
+    }).catch(()=>{
+      musicStatus.textContent = 'Click to play';
+    });
+  }
+}
+
+function setVolume(val){
+  audio.volume = val / 100;
+}
+
+/* Auto-play on first user interaction anywhere on page */
+let autoPlayed = false;
+document.addEventListener('click', function tryAutoPlay(){
+  if(!autoPlayed){
+    autoPlayed = true;
+    audio.play().then(()=>{
+      isPlaying = true;
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      musicStatus.textContent = 'Now Playing';
+      musicBars.classList.add('playing');
+    }).catch(()=>{});
+  }
+}, { once: true });
 </script>
 </body>
 </html>
+```
+
+---
+
+**Make sure your repo has both files:**
+```
+index.html
+music.mp3   ← same folder
