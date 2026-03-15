@@ -8,10 +8,10 @@
 
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI', sans-serif;
 background: linear-gradient(-45deg,#0f0f0f,#1a1a2e,#16213e,#0f3460);
-background-size: 400% 400%;
-animation: gradient 15s ease infinite;
+background-size:400% 400%;
+animation:gradient 15s ease infinite;
 color:white;
 text-align:center;
 }
@@ -35,7 +35,7 @@ font-weight:bold;
 }
 
 .hero{
-padding:140px 20px;
+padding:120px 20px;
 }
 
 .hero h1{
@@ -44,7 +44,7 @@ letter-spacing:3px;
 }
 
 .section{
-padding:80px 20px;
+padding:70px 20px;
 max-width:900px;
 margin:auto;
 }
@@ -57,6 +57,7 @@ text-decoration:none;
 color:black;
 font-weight:bold;
 font-size:18px;
+display:inline-block;
 }
 
 .poster{
@@ -113,7 +114,7 @@ align-items:flex-end;
 .visualizer div{
 width:15px;
 background:#ffcc00;
-animation: sound 1s infinite ease-in-out;
+animation:sound 1s infinite ease-in-out;
 }
 
 .visualizer div:nth-child(2){animation-delay:0.2s;}
@@ -140,19 +141,13 @@ animation: sound 1s infinite ease-in-out;
 </nav>
 
 <div class="hero">
-<div style="margin-top:20px;">
-<button onclick="document.getElementById('bgmusic').play()" 
-style="padding:10px 20px;border-radius:20px;background:#ffcc00;border:none;font-weight:bold;">
-🎶 Click to Feel the Vibe
-</button>
-</div>
+
+<button onclick="playMusic()" class="btn">🎶 Click to Feel the Vibe</button>
 
 <audio id="bgmusic" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
-<button onclick="document.getElementById('bgmusic').play()">
-Play Music
-</button>
+
 <h1 id="title"></h1>
 <p>Sing • Jam • Vibe</p>
 
@@ -162,6 +157,7 @@ Play Music
 <a href="register.html">Go to Registration Page</a>
 <br><br>
 <a href="gallery.html">View Gallery</a>
+
 </div>
 
 <div class="section">
@@ -182,49 +178,32 @@ Play Music
 </div>
 
 <div class="section">
-<h2>About Event</h2>
-<div class="section">
 <h2>How Registration Works 🎟️</h2>
-
 <p>1️⃣ Fill the registration form</p>
 <p>2️⃣ Receive confirmation email instantly</p>
 <p>3️⃣ Get your personal QR entry pass</p>
 <p>4️⃣ Show QR at entry for seamless access</p>
-
 </div>
+
+<div class="section">
+<h2>About Event</h2>
 <p>Gaana Bajaana is a vibrant Telugu music jam where music lovers come together to sing, perform and experience live musical energy.</p>
 </div>
 
 <div class="section">
 <h2>Gaana Bajaana Memories 🎶</h2>
-<div class="section">
-<h2>What People Said ❤️</h2>
-
-<div class="gallery">
-
-<div>
-<p>"One of the best musical evenings I attended!"</p>
-<b>– Participant</b>
-</div>
-
-<div>
-<p>"The vibe, people, and music were unforgettable."</p>
-<b>– Attendee</b>
-</div>
-
-<div>
-<p>"Felt like a real concert experience."</p>
-<b>– Performer</b>
-</div>
-
-</div>
-
-</div>
 <div class="gallery">
 <img src="photo1.jpg">
 <img src="photo2.jpg">
 <img src="photo3.jpg">
 </div>
+</div>
+
+<div class="section">
+<h2>What People Said ❤️</h2>
+<p>"One of the best musical evenings I attended!" – Participant</p>
+<p>"The vibe, people, and music were unforgettable." – Attendee</p>
+<p>"Felt like a real concert experience." – Performer</p>
 </div>
 
 <div class="section">
@@ -261,6 +240,12 @@ Play Music
 <a href="https://wa.me/918367463908" class="whatsapp">Chat</a>
 
 <script>
+function playMusic(){
+let audio = document.getElementById("bgmusic");
+audio.volume = 0.5;
+audio.play();
+}
+
 var eventDate = new Date("April 4, 2026 18:00:00").getTime();
 
 setInterval(function(){
