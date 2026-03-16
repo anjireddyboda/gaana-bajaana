@@ -37,8 +37,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-/* MOBILE MENU — reduced font size for cleaner look */
 #mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,7,9,0.97);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:20px;}
 #mobile-menu.open{display:flex;}
 #mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;padding:6px 0;}
@@ -52,6 +50,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .social-bar a:hover svg{fill:var(--gold);}
 
 canvas#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+/* CONFETTI CANVAS */
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:8000;pointer-events:none;}
 
 /* HERO */
 .hero{position:relative;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;z-index:2;}
@@ -94,6 +95,7 @@ section{position:relative;z-index:2;padding:100px 20px;}
 .count-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:8px;}
 .count-sep{font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(255,255,255,0.1);align-self:center;}
 
+/* ANIMATED STAT NUMBERS */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:60px;}
 .stat-item{background:var(--dark2);padding:50px 40px;text-align:center;transition:background 0.3s;}
 .stat-item:hover{background:var(--dark3);}
@@ -257,9 +259,69 @@ footer span{color:var(--gold);}
 .wa-pulse{position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:#25D366;border-radius:50%;}
 .wa-pulse::before{content:'';position:absolute;inset:-4px;background:#25D366;border-radius:50%;opacity:0.5;animation:pulse-ring 2s infinite;}
 @keyframes pulse-ring{0%{transform:scale(1);opacity:0.5;}100%{transform:scale(2);opacity:0;}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
-/* LINKEDIN SVG path helper */
+/* ===================== SHARE BUTTON ===================== */
+#share-btn{
+  position:fixed;
+  bottom:96px;
+  right:32px;
+  z-index:500;
+  width:48px;height:48px;
+  background:rgba(10,10,14,0.85);
+  border:1px solid rgba(245,200,66,0.25);
+  backdrop-filter:blur(16px);
+  border-radius:50%;
+  cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;
+  animation:waPop 0.6s 2.4s both;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+#share-btn:hover{border-color:rgba(245,200,66,0.6);background:rgba(245,200,66,0.1);transform:scale(1.1);}
+#share-btn svg{width:18px;height:18px;fill:rgba(255,255,255,0.6);transition:fill 0.3s;}
+#share-btn:hover svg{fill:var(--gold);}
+
+/* share popup */
+#share-popup{
+  position:fixed;
+  bottom:154px;
+  right:26px;
+  z-index:501;
+  background:rgba(10,10,14,0.95);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  border-radius:16px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:190px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(10px) scale(0.95);
+  transition:all 0.25s ease;
+  box-shadow:0 16px 40px rgba(0,0,0,0.6);
+}
+#share-popup.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+.share-option{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--glass);
+  cursor:none;
+  text-decoration:none;
+  transition:all 0.2s;
+  font-size:13px;font-weight:500;
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.3px;
+}
+.share-option:hover{border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.06);color:#fff;}
+.share-option svg{width:16px;height:16px;flex-shrink:0;}
+.share-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 4px;margin-bottom:2px;}
+/* ===================== END SHARE BUTTON ===================== */
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 .li-svg{width:13px;height:13px;fill:rgba(255,255,255,0.4);}
 .team-social a:hover .li-svg{fill:var(--gold);}
 
@@ -276,6 +338,8 @@ nav{padding:16px 20px;}
 .count-sep{display:none;}
 #wa-btn-text{display:none;}
 #wa-btn{padding:14px;}
+#share-btn{bottom:88px;right:24px;}
+#share-popup{right:18px;bottom:146px;min-width:170px;}
 .steps-row{gap:0;}
 #music-player{left:16px;bottom:16px;padding:10px 14px;gap:8px;}
 #vol-wrap,.music-info{display:none;}
@@ -301,6 +365,7 @@ nav{padding:16px 20px;}
 <div id="cursor"></div>
 <div id="cursor-trail"></div>
 <canvas id="bg-canvas"></canvas>
+<canvas id="confetti-canvas"></canvas>
 
 <!-- MOBILE MENU -->
 <div id="mobile-menu">
@@ -338,6 +403,30 @@ nav{padding:16px 20px;}
   <span id="wa-btn-text">Chat with Us</span>
 </a>
 
+<!-- SHARE BUTTON -->
+<button id="share-btn" onclick="toggleSharePopup()" title="Share this event">
+  <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+</button>
+
+<div id="share-popup">
+  <div class="share-label">Share this event</div>
+  <a class="share-option" id="share-wa" href="#" target="_blank">
+    <svg viewBox="0 0 24 24" style="fill:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    Share on WhatsApp
+  </a>
+  <a class="share-option" id="share-ig" href="https://www.instagram.com/gaanabajaana._" target="_blank">
+    <svg viewBox="0 0 24 24" style="fill:url(#ig-grad)">
+      <defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="25%" style="stop-color:#e6683c"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="75%" style="stop-color:#cc2366"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+    Visit our Instagram
+  </a>
+  <a class="share-option" id="share-copy" href="#" onclick="copyLink(event)">
+    <svg viewBox="0 0 24 24" style="fill:rgba(255,255,255,0.5)"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+    <span id="copy-label">Copy Link</span>
+  </a>
+</div>
+
 <!-- SOCIAL BAR -->
 <div class="social-bar">
   <a href="https://www.instagram.com/gaanabajaana._?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
@@ -351,10 +440,10 @@ nav{padding:16px 20px;}
   </a>
 </div>
 
-<!-- NAV — uses logo.png, falls back to text if missing -->
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <img src="logo.jpg" alt="Gaana Bajaana" onerror="this.outerHTML='<span class=nav-logo-text>GB</span>'">
+    <img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span class=nav-logo-text>GB</span>'">
   </a>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -371,14 +460,14 @@ nav{padding:16px 20px;}
   </button>
 </nav>
 
-<!-- HERO — uses logo.png as main title, falls back to text -->
+<!-- HERO -->
 <div class="hero">
   <p class="hero-eyebrow">🎵 An Intimate Music Experience</p>
-  <img class="hero-logo-img" src="logo.jpg" alt="Gaana Bajaana" onerror="this.outerHTML='<h1 class=hero-title>GAANA<br>BAJAANA</h1>'">
+  <img class="hero-logo-img" src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<h1 class=hero-title>GAANA<br>BAJAANA</h1>'">
   <p class="hero-sub">Sing &nbsp;·&nbsp; Jam &nbsp;·&nbsp; Vibe</p>
   <div class="hero-date-badge"><span>April 4, 2026</span>&nbsp;·&nbsp;6:00 PM Onwards&nbsp;·&nbsp;<span>Hyderabad</span></div>
   <div class="hero-cta">
-    <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a>
+    <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" onclick="triggerConfetti()">🎟 Register Now</a>
     <a class="btn-outline" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">Join Community</a>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -410,15 +499,15 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- STATS -->
+<!-- STATS — numbers animate on scroll -->
 <section>
   <div class="container">
     <div class="reveal"><span class="section-label">The Numbers</span><h2 class="section-title">IMPACT &amp;<br>ENERGY</h2></div>
-    <div class="stats-grid reveal">
-      <div class="stat-item"><div class="stat-num">60+</div><div class="stat-desc">Attendees</div></div>
-      <div class="stat-item"><div class="stat-num">20+</div><div class="stat-desc">Songs Played</div></div>
-      <div class="stat-item"><div class="stat-num">1</div><div class="stat-desc">Live Band</div></div>
-      <div class="stat-item"><div class="stat-num">5+</div><div class="stat-desc">Collabs</div></div>
+    <div class="stats-grid reveal" id="stats-grid">
+      <div class="stat-item"><div class="stat-num" data-target="60" data-suffix="+">0+</div><div class="stat-desc">Attendees</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="20" data-suffix="+">0+</div><div class="stat-desc">Songs Played</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="1" data-suffix="">0</div><div class="stat-desc">Live Band</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="5" data-suffix="+">0+</div><div class="stat-desc">Collabs</div></div>
     </div>
   </div>
 </section>
@@ -435,7 +524,7 @@ nav{padding:16px 20px;}
         <div class="detail-row"><div class="detail-key">Time</div><div class="detail-val">6:00 PM – 8:30 PM</div></div>
         <div class="detail-row"><div class="detail-key">Experience</div><div class="detail-val">Sing · Jam · Vibe</div></div>
         <div class="detail-row"><div class="detail-key">Entry</div><div class="detail-val">QR Pass via Registration</div></div>
-        <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" style="margin-top:8px;text-align:center;">Get Your Pass →</a>
+        <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" style="margin-top:8px;text-align:center;" onclick="triggerConfetti()">Get Your Pass →</a>
       </div>
     </div>
   </div>
@@ -460,7 +549,6 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <button id="lightbox-close" onclick="closeLightbox()">×</button>
   <img id="lightbox-img" src="" alt="">
@@ -490,7 +578,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- MEET THE TEAM — 6 members with LinkedIn, add team1.jpg–team6.jpg to repo -->
+<!-- TEAM -->
 <section id="team">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -499,91 +587,54 @@ nav{padding:16px 20px;}
       <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-top:-8px;">The minds and hearts behind Gaana Bajaana</p>
     </div>
     <div class="team-grid reveal">
-
-      <!-- 1 -->
       <div class="team-card">
         <div class="team-avatar"><img src="team1.jpg" alt="" onerror="this.parentElement.textContent='SJ'"></div>
         <div class="team-name">Sainandhan Jilla</div>
         <div class="team-role">Team Member</div>
         <div class="team-bio">Passionate about music and bringing people together through unforgettable experiences.</div>
-        <div class="team-social">
-          <a href="https://www.linkedin.com/in/sainandhan-jilla-21a816224/" target="_blank">
-            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+        <div class="team-social"><a href="https://www.linkedin.com/in/sainandhan-jilla-21a816224/" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
       </div>
-
-      <!-- 2 -->
       <div class="team-card">
         <div class="team-avatar"><img src="team2.jpg" alt="" onerror="this.parentElement.textContent='AD'"></div>
         <div class="team-name">Akhil Davula</div>
         <div class="team-role">Team Member</div>
         <div class="team-bio">Creative energy and dedication poured into every event, making each session unforgettable.</div>
-        <div class="team-social">
-          <a href="https://www.linkedin.com/in/akhil-davula" target="_blank">
-            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+        <div class="team-social"><a href="https://www.linkedin.com/in/akhil-davula" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
       </div>
-
-      <!-- 3 -->
       <div class="team-card">
         <div class="team-avatar"><img src="team3.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div>
         <div class="team-name">Anji Reddy Boda</div>
-        <div class="team-role">Team Member.</div>
+        <div class="team-role">Operations Lead</div>
         <div class="team-bio">The backbone of the event — logistics, registrations, and everything that keeps it smooth.</div>
-        <div class="team-social">
-          <a href="https://www.linkedin.com/in/anjireddyboda" target="_blank">
-            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+        <div class="team-social"><a href="https://www.linkedin.com/in/anjireddyboda" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
       </div>
-
-      <!-- 4 -->
       <div class="team-card">
         <div class="team-avatar"><img src="team4.jpg" alt="" onerror="this.parentElement.textContent='SB'"></div>
         <div class="team-name">Shiva Sai Balbari</div>
         <div class="team-role">Team Member</div>
         <div class="team-bio">Bringing rhythm and structure to everything we do, on stage and behind the scenes.</div>
-        <div class="team-social">
-          <a href="https://www.linkedin.com/in/shiva-sai-balbari" target="_blank">
-            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+        <div class="team-social"><a href="https://www.linkedin.com/in/shiva-sai-balbari" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
       </div>
-
-      <!-- 5 -->
       <div class="team-card">
         <div class="team-avatar"><img src="team5.jpg" alt="" onerror="this.parentElement.textContent='AS'"></div>
         <div class="team-name">Agrati Sheela</div>
         <div class="team-role">Team Member</div>
         <div class="team-bio">Keeps the community connected and the creative spark alive at every Gaana Bajaana event.</div>
-        <div class="team-social">
-          <a href="https://www.linkedin.com/in/agrati-sheela-01b874253" target="_blank">
-            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+        <div class="team-social"><a href="https://www.linkedin.com/in/agrati-sheela-01b874253" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
       </div>
-
-      <!-- 6 -->
       <div class="team-card">
         <div class="team-avatar"><img src="team6.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div>
         <div class="team-name">Abhiram Beemari</div>
         <div class="team-role">Team Member</div>
         <div class="team-bio">Fuels the energy and passion that makes every jam session a night to remember.</div>
-        <div class="team-social">
-          <a href="https://www.linkedin.com/in/abhiram-beemari" target="_blank">
-            <svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+        <div class="team-social"><a href="https://www.linkedin.com/in/abhiram-beemari" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section style="background:var(--dark2);border-top:1px solid var(--border);" id="testimonials">
+<section style="background:var(--dark2);border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Heard It From Them</span>
@@ -612,7 +663,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- VIBES / REELS -->
+<!-- VIBES -->
 <section id="vibes" style="border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal" style="text-align:center;"><span class="section-label">From Last Time</span><h2 class="section-title">CATCH THE<br>VIBES 🎥</h2></div>
@@ -626,10 +677,7 @@ nav{padding:16px 20px;}
 <!-- VENUE MAP -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="venue">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">Find Us</span>
-      <h2 class="section-title">VENUE &amp;<br>LOCATION</h2>
-    </div>
+    <div class="reveal" style="text-align:center;"><span class="section-label">Find Us</span><h2 class="section-title">VENUE &amp;<br>LOCATION</h2></div>
     <div class="map-wrap reveal">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.31604600744!2d78.24323035!3d17.4122722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <div class="map-info">
@@ -689,12 +737,14 @@ nav{padding:16px 20px;}
         <div class="step"><div class="step-num">2</div><div class="step-text">Receive QR pass</div></div>
         <div class="step"><div class="step-num">3</div><div class="step-text">Show at entry</div></div>
       </div>
-      <div class="reveal"><a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a></div>
+      <div class="reveal">
+        <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" onclick="triggerConfetti()">🎟 Register Now</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ — moved here, just before contact -->
+<!-- FAQ -->
 <section id="faq" style="background:var(--dark2);border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal" style="text-align:center;"><span class="section-label">Got Questions?</span><h2 class="section-title">FAQ</h2></div>
@@ -729,9 +779,7 @@ nav{padding:16px 20px;}
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="#">
-        <img src="logo.jpg" alt="Gaana Bajaana" onerror="this.outerHTML='<span style=\'font-family:Bebas Neue,sans-serif;font-size:32px;letter-spacing:3px;color:#F5C842;\'>GAANA BAJAANA</span>'">
-      </a>
+      <a href="#"><img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span style=\'font-family:Bebas Neue,sans-serif;font-size:32px;letter-spacing:3px;color:#F5C842;\'>GAANA BAJAANA</span>'"></a>
       <p>An intimate music experience for those who live and breathe music. Hyderabad's most vibrant jam community.</p>
     </div>
     <div class="footer-links">
@@ -803,6 +851,111 @@ function toggleFaq(el){const item=el.parentElement;document.querySelectorAll('.f
 function openLightbox(el){const img=el.querySelector('img');if(!img||!img.complete||img.naturalWidth===0)return;document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+
+/* ============================================
+   FEATURE 1 — CONFETTI ON REGISTER CLICK
+   ============================================ */
+const confC=document.getElementById('confetti-canvas');
+const confX=confC.getContext('2d');
+confC.width=window.innerWidth;confC.height=window.innerHeight;
+window.addEventListener('resize',()=>{confC.width=window.innerWidth;confC.height=window.innerHeight;});
+
+let confetti=[];
+const confColors=['#F5C842','#FF5733','#E8900A','#fff','#ff9f43','#ee5a24'];
+
+function triggerConfetti(){
+  confetti=[];
+  for(let i=0;i<160;i++){
+    confetti.push({
+      x:Math.random()*confC.width,
+      y:-10,
+      w:Math.random()*10+4,
+      h:Math.random()*6+3,
+      color:confColors[Math.floor(Math.random()*confColors.length)],
+      vx:(Math.random()-0.5)*6,
+      vy:Math.random()*4+2,
+      angle:Math.random()*360,
+      spin:Math.random()*6-3,
+      alpha:1
+    });
+  }
+  animConfetti();
+}
+
+let confAF;
+function animConfetti(){
+  confX.clearRect(0,0,confC.width,confC.height);
+  confetti.forEach((c,i)=>{
+    c.x+=c.vx;c.y+=c.vy;c.angle+=c.spin;c.vy+=0.08;
+    c.alpha-=0.008;
+    if(c.alpha<=0||c.y>confC.height+20){confetti.splice(i,1);return;}
+    confX.save();
+    confX.globalAlpha=c.alpha;
+    confX.translate(c.x,c.y);
+    confX.rotate(c.angle*Math.PI/180);
+    confX.fillStyle=c.color;
+    confX.fillRect(-c.w/2,-c.h/2,c.w,c.h);
+    confX.restore();
+  });
+  if(confetti.length>0)confAF=requestAnimationFrame(animConfetti);
+  else confX.clearRect(0,0,confC.width,confC.height);
+}
+
+/* ============================================
+   FEATURE 2 — ANIMATED STAT COUNTERS
+   ============================================ */
+let statsAnimated=false;
+const statsObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!statsAnimated){
+      statsAnimated=true;
+      document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+        const target=parseInt(el.dataset.target);
+        const suffix=el.dataset.suffix||'';
+        const duration=1800;
+        const start=performance.now();
+        function step(now){
+          const progress=Math.min((now-start)/duration,1);
+          const ease=1-Math.pow(1-progress,3);
+          el.textContent=Math.floor(ease*target)+suffix;
+          if(progress<1)requestAnimationFrame(step);
+          else el.textContent=target+suffix;
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  });
+},{threshold:0.3});
+const statsGrid=document.getElementById('stats-grid');
+if(statsGrid)statsObs.observe(statsGrid);
+
+/* ============================================
+   FEATURE 3 — SHARE BUTTON
+   ============================================ */
+const siteURL=encodeURIComponent(window.location.href);
+const shareMsg=encodeURIComponent('🎵 Check out Gaana Bajaana — an intimate music jam session in Hyderabad! Register now 👇');
+document.getElementById('share-wa').href=`https://wa.me/?text=${shareMsg}%20${siteURL}`;
+
+let shareOpen=false;
+function toggleSharePopup(){
+  shareOpen=!shareOpen;
+  document.getElementById('share-popup').classList.toggle('open',shareOpen);
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#share-btn')&&!e.target.closest('#share-popup')){
+    shareOpen=false;
+    document.getElementById('share-popup').classList.remove('open');
+  }
+});
+
+function copyLink(e){
+  e.preventDefault();
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    const lbl=document.getElementById('copy-label');
+    lbl.textContent='Copied!';
+    setTimeout(()=>{lbl.textContent='Copy Link';},2000);
+  });
+}
 </script>
 </body>
 </html>
