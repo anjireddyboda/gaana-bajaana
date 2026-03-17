@@ -16,21 +16,23 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--dark);color:#ff
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;z-index:1;pointer-events:none;}
 
 /* LOADER */
-#loader{position:fixed;inset:0;background:var(--dark);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity 0.6s ease,visibility 0.6s ease;}
+#loader{position:fixed;inset:0;background:var(--dark);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity 0.6s ease,visibility 0.6s ease;}
 #loader.hidden{opacity:0;visibility:hidden;}
-.loader-logo{font-family:'Bebas Neue',sans-serif;font-size:60px;letter-spacing:6px;background:linear-gradient(135deg,#fff,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:loaderPulse 1.5s ease-in-out infinite;}
-.loader-bar{width:200px;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.loader-logo-img{height:80px;width:auto;object-fit:contain;background:transparent;animation:loaderPulse 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(245,200,66,0.4));}
+.loader-logo-text{font-family:'Bebas Neue',sans-serif;font-size:60px;letter-spacing:6px;background:linear-gradient(135deg,#fff,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:loaderPulse 1.5s ease-in-out infinite;}
+.loader-welcome{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;}
+.loader-bar{width:180px;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
 .loader-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--coral));animation:loaderFill 1.8s ease forwards;}
 @keyframes loaderPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
 @keyframes loaderFill{from{width:0;}to{width:100%;}}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(7,7,9,0.95),transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(7,7,9,0.95),transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{text-decoration:none;display:flex;align-items:center;background:transparent;}
-.nav-logo img{height:38px;width:auto;object-fit:contain;background:transparent;display:block;}
-.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--gold);text-decoration:none;}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
+.nav-logo img{height:32px;width:auto;object-fit:contain;background:transparent;display:block;}
+.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--gold);}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
 .nav-links a:hover{color:var(--gold);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
 .hamburger span{display:block;width:24px;height:2px;background:var(--gold);border-radius:2px;transition:all 0.3s ease;}
@@ -39,9 +41,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 /* MOBILE MENU */
-#mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,7,9,0.97);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:16px;overflow-y:auto;padding:80px 20px 40px;}
+#mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,7,9,0.97);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow-y:auto;padding:80px 20px 40px;}
 #mobile-menu.open{display:flex;}
-#mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;padding:4px 0;}
+#mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;padding:3px 0;}
 #mobile-menu a:hover{color:var(--gold);}
 .mobile-social{display:flex;gap:20px;margin-top:12px;padding-top:16px;border-top:1px solid var(--border);}
 .mobile-social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.3s;}
@@ -50,215 +52,249 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:fl
 .mobile-social a:hover svg{fill:var(--gold);}
 
 /* SOCIAL BAR */
-.social-bar{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:16px;}
-.social-bar a{width:36px;height:36px;background:var(--glass);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;}
+.social-bar{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:14px;}
+.social-bar a{width:34px;height:34px;background:var(--glass);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;}
 .social-bar a:hover{background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.4);}
-.social-bar a svg{width:15px;height:15px;fill:rgba(255,255,255,0.5);transition:fill 0.3s;}
+.social-bar a svg{width:14px;height:14px;fill:rgba(255,255,255,0.5);transition:fill 0.3s;}
 .social-bar a:hover svg{fill:var(--gold);}
 
 canvas#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 
 /* HERO */
 .hero{position:relative;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;z-index:2;}
-.hero-eyebrow{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
-.hero-logo-img{max-width:min(480px,85vw);width:100%;height:auto;object-fit:contain;background:transparent;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 40px rgba(245,200,66,0.3));margin-bottom:8px;}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,14vw,180px);line-height:0.88;letter-spacing:6px;background:linear-gradient(135deg,#fff 0%,var(--gold) 50%,var(--coral) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 60px rgba(245,200,66,0.25));}
-.hero-sub{font-size:clamp(14px,2vw,18px);letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:20px;opacity:0;animation:fadeUp 0.9s 0.7s forwards;}
-.hero-date-badge{margin-top:32px;display:inline-flex;gap:12px;align-items:center;background:var(--glass);border:1px solid var(--border);padding:12px 28px;border-radius:60px;font-size:14px;color:rgba(255,255,255,0.7);letter-spacing:1px;opacity:0;animation:fadeUp 0.9s 0.9s forwards;}
+.hero-eyebrow{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
+.hero-logo-img{max-width:min(400px,80vw);width:100%;height:auto;object-fit:contain;background:transparent;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 40px rgba(245,200,66,0.3));margin-bottom:8px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,11vw,140px);line-height:0.88;letter-spacing:6px;background:linear-gradient(135deg,#fff 0%,var(--gold) 50%,var(--coral) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 60px rgba(245,200,66,0.25));}
+.hero-sub{font-size:clamp(12px,1.8vw,16px);letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:16px;opacity:0;animation:fadeUp 0.9s 0.7s forwards;}
+.hero-date-badge{margin-top:24px;display:inline-flex;gap:12px;align-items:center;background:var(--glass);border:1px solid var(--border);padding:10px 24px;border-radius:60px;font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:1px;opacity:0;animation:fadeUp 0.9s 0.9s forwards;}
 .hero-date-badge span{color:var(--gold);font-weight:600;}
-.hero-cta{margin-top:40px;display:flex;gap:16px;opacity:0;animation:fadeUp 0.9s 1.1s forwards;flex-wrap:wrap;justify-content:center;}
-.btn-primary{background:linear-gradient(135deg,var(--gold),var(--coral));color:#000;border:none;padding:16px 40px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 0 40px rgba(245,200,66,0.3);}
-.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(245,200,66,0.5);}
-.btn-outline{background:transparent;color:#fff;border:1px solid var(--border);padding:16px 40px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:all 0.3s;}
+.hero-cta{margin-top:32px;display:flex;gap:14px;opacity:0;animation:fadeUp 0.9s 1.1s forwards;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--coral));color:#000;border:none;padding:13px 32px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 0 30px rgba(245,200,66,0.3);}
+.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 50px rgba(245,200,66,0.5);}
+.btn-outline{background:transparent;color:#fff;border:1px solid var(--border);padding:13px 32px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:all 0.3s;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.4;animation:fadeUp 1s 1.5s forwards;}
-.scroll-hint span{font-size:10px;letter-spacing:3px;text-transform:uppercase;}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite;}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.4;animation:fadeUp 1s 1.5s forwards;}
+.scroll-hint span{font-size:9px;letter-spacing:3px;text-transform:uppercase;}
+.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite;}
 @keyframes scrollPulse{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 
-section{position:relative;z-index:2;padding:100px 20px;}
+section{position:relative;z-index:2;padding:70px 20px;}
 .container{max-width:1100px;margin:0 auto;}
-.section-label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block;}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,90px);letter-spacing:4px;line-height:0.95;margin-bottom:24px;}
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.section-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,68px);letter-spacing:4px;line-height:0.95;margin-bottom:20px;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
-.marquee-wrap{overflow:hidden;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--dark2);z-index:2;position:relative;}
-.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 20s linear infinite;}
-.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:rgba(255,255,255,0.12);}
+/* MARQUEE — centered */
+.marquee-wrap{overflow:hidden;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--dark2);z-index:2;position:relative;display:flex;align-items:center;justify-content:center;}
+.marquee-track{display:flex;gap:40px;white-space:nowrap;animation:marquee 20s linear infinite;width:100%;}
+.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:rgba(255,255,255,0.12);}
 .marquee-item span{color:var(--gold);}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-.wave-section{text-align:center;padding:40px 20px 0;z-index:2;position:relative;}
-#wave-canvas{width:min(600px,90vw);height:80px;opacity:0.7;}
+.wave-section{text-align:center;padding:32px 20px 0;z-index:2;position:relative;}
+#wave-canvas{width:min(600px,90vw);height:60px;opacity:0.7;}
 
-.countdown-section{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 20px;}
-.countdown-grid{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
-.count-block{text-align:center;min-width:110px;}
-.count-number{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,100px);line-height:1;color:var(--gold);text-shadow:0 0 40px rgba(245,200,66,0.4);}
-.count-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:8px;}
-.count-sep{font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(255,255,255,0.1);align-self:center;}
+/* COUNTDOWN */
+.countdown-section{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 20px;}
+.countdown-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
+.count-block{text-align:center;min-width:90px;}
+.count-number{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,80px);line-height:1;color:var(--gold);text-shadow:0 0 30px rgba(245,200,66,0.4);}
+.count-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:6px;}
+.count-sep{font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(255,255,255,0.1);align-self:center;}
 
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:60px;}
-.stat-item{background:var(--dark2);padding:50px 40px;text-align:center;transition:background 0.3s;}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:40px;}
+.stat-item{background:var(--dark2);padding:36px 28px;text-align:center;transition:background 0.3s;}
 .stat-item:hover{background:var(--dark3);}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:80px;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
-.stat-desc{font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;margin-top:8px;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:60px;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.stat-desc{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;margin-top:6px;}
 
 /* EVENT DETAILS */
-.event-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:0;}
-.event-detail-item{background:var(--dark2);padding:32px 36px;transition:background 0.3s;}
+.event-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:0;}
+.event-detail-item{background:var(--dark2);padding:24px 28px;transition:background 0.3s;}
 .event-detail-item:hover{background:var(--dark3);}
-.event-detail-key{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px;}
-.event-detail-val{font-size:20px;font-weight:700;color:#fff;}
+.event-detail-key{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:6px;}
+.event-detail-val{font-size:17px;font-weight:700;color:#fff;}
 .event-detail-val.gold{color:var(--gold);}
 
-.timeline{max-width:700px;margin:60px auto 0;position:relative;}
+/* TIMELINE */
+.timeline{max-width:700px;margin:50px auto 0;position:relative;}
 .timeline::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),var(--amber),var(--coral),transparent);}
-.tl-item{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:20px;margin-bottom:48px;}
+.tl-item{display:grid;grid-template-columns:1fr 50px 1fr;align-items:center;gap:16px;margin-bottom:36px;}
 .tl-item:nth-child(odd) .tl-content{grid-column:1;text-align:right;}
 .tl-item:nth-child(odd) .tl-dot{grid-column:2;}
 .tl-item:nth-child(odd) .tl-time{grid-column:3;text-align:left;}
 .tl-item:nth-child(even) .tl-time{grid-column:1;text-align:right;}
 .tl-item:nth-child(even) .tl-dot{grid-column:2;}
 .tl-item:nth-child(even) .tl-content{grid-column:3;text-align:left;}
-.tl-dot{width:14px;height:14px;background:var(--gold);border-radius:50%;margin:0 auto;box-shadow:0 0 16px rgba(245,200,66,0.6);position:relative;z-index:2;}
-.tl-time{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);letter-spacing:2px;}
-.tl-content{background:var(--glass);border:1px solid var(--border);padding:18px 24px;border-radius:14px;font-size:14px;color:rgba(255,255,255,0.75);font-weight:500;}
+.tl-dot{width:12px;height:12px;background:var(--gold);border-radius:50%;margin:0 auto;box-shadow:0 0 14px rgba(245,200,66,0.6);position:relative;z-index:2;}
+.tl-time{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--gold);letter-spacing:2px;}
+.tl-content{background:var(--glass);border:1px solid var(--border);padding:14px 18px;border-radius:12px;font-size:13px;color:rgba(255,255,255,0.75);font-weight:500;}
 
-.reels-grid{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:60px;}
-.reel-frame{border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 40px rgba(0,0,0,0.5);}
+/* MOBILE TIMELINE FIX */
+@media(max-width:768px){
+.timeline::before{left:16px;transform:none;}
+.tl-item{grid-template-columns:32px 1fr !important;gap:12px !important;}
+.tl-item .tl-dot{grid-column:1 !important;grid-row:1;margin:0;}
+.tl-item .tl-time{grid-column:2 !important;grid-row:1;text-align:left !important;font-size:20px;}
+.tl-item .tl-content{grid-column:2 !important;grid-row:2;text-align:left !important;}
+}
+
+/* MUSIC ANIMATION for timeline */
+.music-anim{display:flex;align-items:flex-end;gap:4px;height:32px;justify-content:center;margin:0 auto 32px;}
+.music-anim span{width:4px;background:linear-gradient(to top,var(--amber),var(--gold));border-radius:2px;}
+.music-anim span:nth-child(1){animation:mbar 0.8s ease-in-out infinite;}
+.music-anim span:nth-child(2){animation:mbar 0.9s ease-in-out infinite 0.15s;}
+.music-anim span:nth-child(3){animation:mbar 0.7s ease-in-out infinite 0.3s;}
+.music-anim span:nth-child(4){animation:mbar 1s ease-in-out infinite 0.1s;}
+.music-anim span:nth-child(5){animation:mbar 0.85s ease-in-out infinite 0.25s;}
+.music-anim span:nth-child(6){animation:mbar 0.75s ease-in-out infinite 0.05s;}
+.music-anim span:nth-child(7){animation:mbar 0.95s ease-in-out infinite 0.2s;}
+@keyframes mbar{0%,100%{height:6px;}50%{height:28px;}}
+
+.reels-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+.reel-frame{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 30px rgba(0,0,0,0.5);}
 
 /* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:60px;}
-.gallery-item{aspect-ratio:4/3;border-radius:16px;overflow:hidden;position:relative;background:var(--dark3);border:1px solid var(--border);cursor:none;}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:40px;}
+.gallery-item{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;background:var(--dark3);border:1px solid var(--border);cursor:none;}
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;display:block;}
 .gallery-item:hover img{transform:scale(1.06);}
-.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:20px;}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:16px;}
 .gallery-item:hover .gallery-overlay{opacity:1;}
-.gallery-overlay span{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--dark2),var(--dark3));}
-.gallery-placeholder span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.1);}
+.gallery-overlay span{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--dark2),var(--dark3));}
+.gallery-placeholder span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.1);}
 #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9000;align-items:center;justify-content:center;}
 #lightbox.open{display:flex;}
 #lightbox img{max-width:90vw;max-height:88vh;border-radius:12px;object-fit:contain;}
 #lightbox-close{position:absolute;top:24px;right:32px;font-size:36px;color:rgba(255,255,255,0.5);cursor:none;background:none;border:none;transition:color 0.2s;}
 #lightbox-close:hover{color:#fff;}
 
-/* TEAM */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;margin-top:60px;}
-.team-card{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:28px 20px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
+/* TEAM — COLLAPSIBLE */
+.accordion-section{border-top:1px solid var(--border);}
+.accordion-header{display:flex;align-items:center;justify-content:space-between;padding:28px 0;cursor:none;gap:20px;}
+.accordion-header:hover .section-title{color:var(--gold);}
+.accordion-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--glass);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;cursor:none;}
+.accordion-toggle svg{width:18px;height:18px;fill:rgba(255,255,255,0.4);transition:transform 0.4s ease;}
+.accordion-section.open .accordion-toggle{background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.3);}
+.accordion-section.open .accordion-toggle svg{transform:rotate(45deg);fill:var(--gold);}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height 0.6s ease;}
+.accordion-section.open .accordion-body{max-height:2000px;}
+
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;margin-top:0;padding-bottom:40px;}
+.team-card{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:24px 16px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
 .team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--coral));transform:scaleX(0);transition:transform 0.4s ease;}
-.team-card:hover{transform:translateY(-4px);border-color:rgba(245,200,66,0.2);}
+.team-card:hover{transform:translateY(-3px);border-color:rgba(245,200,66,0.2);}
 .team-card:hover::before{transform:scaleX(1);}
-.team-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;border:2px solid rgba(245,200,66,0.2);background:linear-gradient(135deg,var(--dark3),var(--dark2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--gold);overflow:hidden;}
+.team-avatar{width:64px;height:64px;border-radius:50%;margin:0 auto 12px;border:2px solid rgba(245,200,66,0.2);background:linear-gradient(135deg,var(--dark3),var(--dark2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);overflow:hidden;}
 .team-avatar img{width:100%;height:100%;object-fit:cover;}
-.team-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
-.team-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.team-bio{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;}
-.team-social{display:flex;gap:10px;justify-content:center;margin-top:14px;}
-.team-social a{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;}
+.team-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
+.team-role{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.team-bio{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;}
+.team-social{display:flex;gap:8px;justify-content:center;margin-top:12px;}
+.team-social a{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;}
 .team-social a:hover{border-color:var(--gold);background:rgba(245,200,66,0.08);}
-.team-social a svg{width:13px;height:13px;fill:rgba(255,255,255,0.4);}
+.team-social a svg{width:12px;height:12px;fill:rgba(255,255,255,0.4);}
 .team-social a:hover svg{fill:var(--gold);}
-.li-svg{width:13px;height:13px;fill:rgba(255,255,255,0.4);}
+.li-svg{width:12px;height:12px;fill:rgba(255,255,255,0.4);}
 .team-social a:hover .li-svg{fill:var(--gold);}
 
 /* TESTIMONIALS */
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:60px;}
-.testi-card{background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:20px;transition:all 0.3s;}
-.testi-card:hover{border-color:rgba(245,200,66,0.15);transform:translateY(-3px);}
-.testi-quote{font-size:32px;line-height:1;color:var(--gold);opacity:0.25;font-family:'Bebas Neue',sans-serif;margin-bottom:4px;}
-.testi-text{font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);font-style:italic;margin-bottom:14px;}
-.testi-stars{display:flex;gap:3px;margin-bottom:10px;}
-.testi-stars span{color:var(--gold);font-size:12px;}
-.testi-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:16px;}
-.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--coral));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:16px;color:#000;flex-shrink:0;}
-.testi-name{font-size:14px;font-weight:600;color:#fff;}
-.testi-handle{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:40px;}
+.testi-card{background:var(--dark3);border:1px solid var(--border);border-radius:14px;padding:18px;transition:all 0.3s;}
+.testi-card:hover{border-color:rgba(245,200,66,0.15);transform:translateY(-2px);}
+.testi-quote{font-size:30px;line-height:1;color:var(--gold);opacity:0.25;font-family:'Bebas Neue',sans-serif;margin-bottom:4px;}
+.testi-text{font-size:12px;line-height:1.6;color:rgba(255,255,255,0.7);font-style:italic;margin-bottom:12px;}
+.testi-stars{display:flex;gap:3px;margin-bottom:8px;}
+.testi-stars span{color:var(--gold);font-size:11px;}
+.testi-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:12px;}
+.testi-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--coral));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:#000;flex-shrink:0;}
+.testi-name{font-size:13px;font-weight:600;color:#fff;}
+.testi-handle{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px;}
 
-/* PAST EDITIONS */
-.editions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:60px;}
-.edition-card{background:var(--dark2);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s;position:relative;}
-.edition-card:hover{transform:translateY(-4px);border-color:rgba(245,200,66,0.2);box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+/* PAST EDITIONS — COLLAPSIBLE */
+.editions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;padding-bottom:40px;}
+.edition-card{background:var(--dark2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.3s;}
+.edition-card:hover{transform:translateY(-3px);border-color:rgba(245,200,66,0.2);}
 .edition-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--dark3);}
 .edition-thumb-placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--dark3),var(--dark2));display:flex;align-items:center;justify-content:center;}
-.edition-body{padding:24px;}
-.edition-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--amber));color:#000;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:4px 14px;border-radius:20px;margin-bottom:12px;}
-.edition-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px;}
-.edition-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
-.edition-meta span{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;}
+.edition-body{padding:20px;}
+.edition-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--amber));color:#000;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;padding:3px 12px;border-radius:20px;margin-bottom:10px;}
+.edition-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#fff;margin-bottom:6px;}
+.edition-meta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.edition-meta span{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;}
 .edition-meta span strong{color:rgba(255,255,255,0.7);}
-.edition-stats{display:flex;gap:20px;}
+.edition-stats{display:flex;gap:16px;}
 .edition-stat{text-align:center;}
-.edition-stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1;}
-.edition-stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.edition-stat-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);line-height:1;}
+.edition-stat-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
 
 /* VENUE MAP */
-.map-wrap{margin-top:60px;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 60px rgba(0,0,0,0.5);}
-.map-wrap iframe{width:100%;height:420px;display:block;filter:grayscale(1) invert(0.88) contrast(0.9);}
-.map-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;background:var(--border);}
-.map-info-item{background:var(--dark2);padding:20px 28px;}
-.map-info-key{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:6px;}
-.map-info-val{font-size:14px;font-weight:600;color:#fff;}
+.map-wrap{margin-top:40px;border-radius:16px;overflow:hidden;border:1px solid var(--border);}
+.map-wrap iframe{width:100%;height:380px;display:block;filter:grayscale(1) invert(0.88) contrast(0.9);}
+.map-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:var(--border);}
+.map-info-item{background:var(--dark2);padding:16px 22px;}
+.map-info-key{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:4px;}
+.map-info-val{font-size:13px;font-weight:600;color:#fff;}
 
-/* SPONSORS */
-.sponsor-tiers{margin-top:60px;display:flex;flex-direction:column;gap:48px;}
-.sponsor-tier-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-align:center;margin-bottom:24px;}
-.sponsor-row{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;}
-.sponsor-card{background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:24px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:160px;transition:all 0.3s;text-decoration:none;}
+/* SPONSORS — equal scrolling row */
+.sponsors-scroll-wrap{overflow:hidden;margin-top:40px;padding:4px 0;}
+.sponsors-scroll-track{display:flex;gap:20px;animation:sponsorScroll 25s linear infinite;width:max-content;}
+.sponsors-scroll-track:hover{animation-play-state:paused;}
+.sponsor-card{background:var(--dark3);border:1px solid var(--border);border-radius:14px;padding:20px 28px;display:flex;flex-direction:column;align-items:center;gap:10px;width:180px;flex-shrink:0;transition:all 0.3s;text-decoration:none;}
 .sponsor-card:hover{border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.04);transform:translateY(-3px);}
-.sponsor-card.large{min-width:200px;padding:28px 48px;}
-.sponsor-card img{height:48px;width:auto;max-width:140px;object-fit:contain;filter:brightness(0.7) grayscale(0.3);transition:filter 0.3s;}
+.sponsor-card img{height:44px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0.7) grayscale(0.3);transition:filter 0.3s;}
 .sponsor-card:hover img{filter:brightness(1) grayscale(0);}
-.sponsor-card.large img{height:60px;max-width:180px;}
-.sponsor-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:rgba(255,255,255,0.4);transition:color 0.3s;text-align:center;}
+.sponsor-name{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:rgba(255,255,255,0.4);transition:color 0.3s;text-align:center;}
 .sponsor-card:hover .sponsor-name{color:rgba(255,255,255,0.8);}
 .sponsor-link{font-size:10px;letter-spacing:1px;color:rgba(245,200,66,0.5);text-align:center;transition:color 0.3s;}
 .sponsor-card:hover .sponsor-link{color:var(--gold);}
-.sponsor-cta{text-align:center;margin-top:48px;padding-top:40px;border-top:1px solid var(--border);}
-.sponsor-cta p{color:rgba(255,255,255,0.35);font-size:14px;margin-bottom:20px;}
+@keyframes sponsorScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.sponsor-cta{text-align:center;margin-top:32px;padding-top:28px;border-top:1px solid var(--border);}
+.sponsor-cta p{color:rgba(255,255,255,0.35);font-size:13px;margin-bottom:16px;}
 
 /* FAQ */
-.faq-list{max-width:800px;margin:60px auto 0;display:flex;flex-direction:column;gap:8px;}
-.faq-item{background:var(--dark2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s;}
+.faq-list{max-width:800px;margin:40px auto 0;display:flex;flex-direction:column;gap:7px;}
+.faq-item{background:var(--dark2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.3s;}
 .faq-item.open{border-color:rgba(245,200,66,0.2);}
-.faq-q{padding:22px 28px;display:flex;justify-content:space-between;align-items:center;cursor:none;font-size:15px;font-weight:600;color:#fff;gap:16px;}
+.faq-q{padding:18px 24px;display:flex;justify-content:space-between;align-items:center;cursor:none;font-size:14px;font-weight:600;color:#fff;gap:16px;}
 .faq-q:hover{color:var(--gold);}
-.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;font-size:18px;color:rgba(255,255,255,0.3);}
+.faq-icon{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;font-size:16px;color:rgba(255,255,255,0.3);}
 .faq-item.open .faq-icon{background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.3);color:var(--gold);transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;padding:0 28px;}
-.faq-item.open .faq-a{max-height:300px;padding:0 28px 22px;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;padding:0 24px;}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 18px;}
 
 /* REGISTER */
 .register-section{background:var(--dark2);border-top:1px solid var(--border);}
 .register-inner{max-width:700px;margin:0 auto;text-align:center;}
-.steps-row{display:flex;gap:0;justify-content:center;margin:48px 0;}
+.steps-row{display:flex;gap:0;justify-content:center;margin:36px 0;}
 .step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;}
-.step:not(:last-child)::after{content:'';position:absolute;right:0;top:22px;width:50%;height:1px;background:linear-gradient(to right,var(--gold),transparent);}
-.step:not(:first-child)::before{content:'';position:absolute;left:0;top:22px;width:50%;height:1px;background:linear-gradient(to right,transparent,var(--gold));}
-.step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--amber));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px;color:#000;margin-bottom:12px;box-shadow:0 0 24px rgba(245,200,66,0.3);}
-.step-text{font-size:12px;letter-spacing:1px;text-align:center;color:rgba(255,255,255,0.5);max-width:90px;}
+.step:not(:last-child)::after{content:'';position:absolute;right:0;top:20px;width:50%;height:1px;background:linear-gradient(to right,var(--gold),transparent);}
+.step:not(:first-child)::before{content:'';position:absolute;left:0;top:20px;width:50%;height:1px;background:linear-gradient(to right,transparent,var(--gold));}
+.step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--amber));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#000;margin-bottom:10px;box-shadow:0 0 20px rgba(245,200,66,0.3);}
+.step-text{font-size:11px;letter-spacing:1px;text-align:center;color:rgba(255,255,255,0.5);max-width:80px;}
 
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px;}
-.contact-info{display:flex;flex-direction:column;gap:16px;}
-.contact-item{display:flex;align-items:flex-start;gap:16px;background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:20px 24px;text-decoration:none;transition:all 0.3s;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;}
+.contact-info{display:flex;flex-direction:column;gap:12px;}
+.contact-item{display:flex;align-items:flex-start;gap:14px;background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:16px 20px;text-decoration:none;transition:all 0.3s;}
 .contact-item:hover{border-color:rgba(245,200,66,0.3);background:var(--dark3);transform:translateX(4px);}
-.contact-icon{width:40px;height:40px;border-radius:50%;background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.contact-icon svg{width:18px;height:18px;}
-.contact-detail-key{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;}
-.contact-detail-val{font-size:15px;font-weight:600;color:#fff;}
-.contact-detail-sub{font-size:12px;color:rgba(255,255,255,0.35);margin-top:2px;}
-.contact-cta{background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(255,87,51,0.06));border:1px solid rgba(245,200,66,0.15);border-radius:20px;padding:40px 36px;display:flex;flex-direction:column;gap:20px;justify-content:center;}
-.contact-cta-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;color:#fff;margin-bottom:4px;}
-.contact-cta-sub{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:8px;}
-.cta-buttons{display:flex;flex-direction:column;gap:12px;}
-.cta-btn{display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:14px;text-decoration:none;font-size:14px;font-weight:600;transition:all 0.3s;cursor:none;}
-.cta-btn svg{width:20px;height:20px;flex-shrink:0;}
-.cta-btn.wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 20px rgba(37,211,102,0.25);}
-.cta-btn.wa:hover{transform:scale(1.03);box-shadow:0 4px 30px rgba(37,211,102,0.4);}
-.cta-btn.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366);color:#fff;box-shadow:0 4px 20px rgba(220,39,67,0.25);}
+.contact-icon{width:36px;height:36px;border-radius:50%;background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-icon svg{width:16px;height:16px;}
+.contact-detail-key{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px;}
+.contact-detail-val{font-size:14px;font-weight:600;color:#fff;}
+.contact-detail-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;}
+.contact-cta{background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(255,87,51,0.06));border:1px solid rgba(245,200,66,0.15);border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:16px;justify-content:center;}
+.contact-cta-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:3px;color:#fff;margin-bottom:2px;}
+.contact-cta-sub{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:6px;}
+.cta-buttons{display:flex;flex-direction:column;gap:10px;}
+.cta-btn{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.3s;cursor:none;}
+.cta-btn svg{width:18px;height:18px;flex-shrink:0;}
+.cta-btn.wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,0.25);}
+.cta-btn.wa:hover{transform:scale(1.03);}
+.cta-btn.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366);color:#fff;}
 .cta-btn.ig:hover{transform:scale(1.03);}
 .cta-btn.em{background:rgba(255,255,255,0.05);color:#fff;border:1px solid var(--border);}
 .cta-btn.em:hover{border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.06);transform:scale(1.03);}
@@ -266,101 +302,101 @@ section{position:relative;z-index:2;padding:100px 20px;}
 .cta-btn.ph:hover{background:rgba(245,200,66,0.15);transform:scale(1.03);}
 
 /* FOOTER */
-footer{background:var(--dark);border-top:1px solid var(--border);padding:60px 20px 40px;z-index:2;position:relative;}
-.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:40px;}
-.footer-brand a{display:block;margin-bottom:12px;background:transparent;}
-.footer-brand a img{height:36px;width:auto;object-fit:contain;background:transparent;display:block;}
-.footer-brand p{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.7;max-width:300px;}
-.footer-links{display:flex;flex-direction:column;gap:10px;text-align:right;}
-.footer-links a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
+footer{background:var(--dark);border-top:1px solid var(--border);padding:48px 20px 32px;z-index:2;position:relative;}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start;margin-bottom:32px;}
+.footer-brand a{display:block;margin-bottom:10px;background:transparent;}
+.footer-brand a img{height:30px;width:auto;object-fit:contain;background:transparent;display:block;}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;max-width:280px;}
+.footer-links{display:flex;flex-direction:column;gap:8px;text-align:right;}
+.footer-links a{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
 .footer-links a:hover{color:var(--gold);}
-.footer-bottom{border-top:1px solid var(--border);padding-top:24px;text-align:center;font-size:11px;color:rgba(255,255,255,0.15);letter-spacing:1px;}
+.footer-bottom{border-top:1px solid var(--border);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,0.15);letter-spacing:1px;}
 footer span{color:var(--gold);}
 
 /* MUSIC PLAYER */
-#music-player{position:fixed;bottom:32px;left:32px;z-index:500;display:flex;align-items:center;gap:12px;background:rgba(10,10,14,0.85);border:1px solid rgba(245,200,66,0.25);backdrop-filter:blur(16px);padding:12px 20px;border-radius:60px;cursor:none;transition:all 0.3s;animation:waPop 0.6s 2.2s both;box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+#music-player{position:fixed;bottom:28px;left:28px;z-index:500;display:flex;align-items:center;gap:10px;background:rgba(10,10,14,0.85);border:1px solid rgba(245,200,66,0.25);backdrop-filter:blur(16px);padding:10px 16px;border-radius:60px;cursor:none;transition:all 0.3s;animation:waPop 0.6s 2.2s both;box-shadow:0 8px 28px rgba(0,0,0,0.4);}
 #music-player:hover{border-color:rgba(245,200,66,0.6);}
-#music-toggle{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--amber));border:none;cursor:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.2s;box-shadow:0 0 20px rgba(245,200,66,0.4);}
+#music-toggle{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--amber));border:none;cursor:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.2s;box-shadow:0 0 16px rgba(245,200,66,0.4);}
 #music-toggle:hover{transform:scale(1.1);}
-#music-toggle svg{width:16px;height:16px;fill:#000;}
-.music-info{display:flex;flex-direction:column;gap:2px;}
-.music-title{font-size:12px;font-weight:600;color:#fff;letter-spacing:0.5px;white-space:nowrap;}
-.music-status{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
-.music-bars{display:flex;align-items:flex-end;gap:3px;height:20px;}
+#music-toggle svg{width:14px;height:14px;fill:#000;}
+.music-info{display:flex;flex-direction:column;gap:1px;}
+.music-title{font-size:11px;font-weight:600;color:#fff;letter-spacing:0.5px;white-space:nowrap;}
+.music-status{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.music-bars{display:flex;align-items:flex-end;gap:3px;height:18px;}
 .music-bars span{width:3px;background:var(--gold);border-radius:2px;height:4px;}
 .music-bars.playing span:nth-child(1){animation:bar1 0.8s ease-in-out infinite;}
 .music-bars.playing span:nth-child(2){animation:bar2 0.9s ease-in-out infinite 0.1s;}
 .music-bars.playing span:nth-child(3){animation:bar1 0.7s ease-in-out infinite 0.2s;}
 .music-bars.playing span:nth-child(4){animation:bar2 1s ease-in-out infinite 0.05s;}
-@keyframes bar1{0%,100%{height:4px;}50%{height:18px;}}
-@keyframes bar2{0%,100%{height:10px;}50%{height:6px;}}
-#vol-wrap{display:flex;align-items:center;gap:8px;}
-#vol-icon svg{width:14px;height:14px;fill:rgba(255,255,255,0.3);}
-#vol-slider{-webkit-appearance:none;appearance:none;width:70px;height:3px;border-radius:2px;background:rgba(255,255,255,0.15);outline:none;cursor:none;}
-#vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--gold);cursor:none;}
+@keyframes bar1{0%,100%{height:4px;}50%{height:16px;}}
+@keyframes bar2{0%,100%{height:8px;}50%{height:4px;}}
+#vol-wrap{display:flex;align-items:center;gap:6px;}
+#vol-icon svg{width:13px;height:13px;fill:rgba(255,255,255,0.3);}
+#vol-slider{-webkit-appearance:none;appearance:none;width:60px;height:3px;border-radius:2px;background:rgba(255,255,255,0.15);outline:none;cursor:none;}
+#vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--gold);cursor:none;}
 
 /* WHATSAPP */
-#wa-btn{position:fixed;bottom:32px;right:32px;z-index:500;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#25D366,#128C7E);padding:14px 20px;border-radius:60px;cursor:none;box-shadow:0 8px 32px rgba(37,211,102,0.35);text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;animation:waPop 0.6s 2s both;}
-#wa-btn:hover{transform:scale(1.06);box-shadow:0 12px 48px rgba(37,211,102,0.5);}
-#wa-btn svg{width:22px;height:22px;fill:#fff;flex-shrink:0;}
-#wa-btn-text{font-size:13px;font-weight:600;color:#fff;letter-spacing:0.5px;white-space:nowrap;}
+#wa-btn{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);padding:12px 18px;border-radius:60px;cursor:none;box-shadow:0 8px 28px rgba(37,211,102,0.35);text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;animation:waPop 0.6s 2s both;}
+#wa-btn:hover{transform:scale(1.06);box-shadow:0 12px 40px rgba(37,211,102,0.5);}
+#wa-btn svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+#wa-btn-text{font-size:12px;font-weight:600;color:#fff;letter-spacing:0.5px;white-space:nowrap;}
 @keyframes waPop{0%{opacity:0;transform:scale(0.5) translateY(20px);}70%{transform:scale(1.1);}100%{opacity:1;transform:scale(1) translateY(0);}}
-.wa-pulse{position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:#25D366;border-radius:50%;}
+.wa-pulse{position:absolute;top:-4px;right:-4px;width:13px;height:13px;background:#25D366;border-radius:50%;}
 .wa-pulse::before{content:'';position:absolute;inset:-4px;background:#25D366;border-radius:50%;opacity:0.5;animation:pulse-ring 2s infinite;}
 @keyframes pulse-ring{0%{transform:scale(1);opacity:0.5;}100%{transform:scale(2);opacity:0;}}
 
-/* SHARE BUTTON */
-#share-btn{position:fixed;bottom:96px;right:32px;z-index:500;width:48px;height:48px;background:rgba(10,10,14,0.85);border:1px solid rgba(245,200,66,0.25);backdrop-filter:blur(16px);border-radius:50%;cursor:none;display:flex;align-items:center;justify-content:center;transition:all 0.3s;animation:waPop 0.6s 2.4s both;box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+/* SHARE */
+#share-btn{position:fixed;bottom:88px;right:28px;z-index:500;width:44px;height:44px;background:rgba(10,10,14,0.85);border:1px solid rgba(245,200,66,0.25);backdrop-filter:blur(16px);border-radius:50%;cursor:none;display:flex;align-items:center;justify-content:center;transition:all 0.3s;animation:waPop 0.6s 2.4s both;box-shadow:0 8px 28px rgba(0,0,0,0.4);}
 #share-btn:hover{border-color:rgba(245,200,66,0.6);background:rgba(245,200,66,0.1);transform:scale(1.1);}
-#share-btn svg{width:18px;height:18px;fill:rgba(255,255,255,0.6);transition:fill 0.3s;}
+#share-btn svg{width:16px;height:16px;fill:rgba(255,255,255,0.6);transition:fill 0.3s;}
 #share-btn:hover svg{fill:var(--gold);}
-#share-popup{position:fixed;bottom:154px;right:26px;z-index:501;background:rgba(10,10,14,0.95);border:1px solid var(--border);backdrop-filter:blur(20px);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:190px;opacity:0;pointer-events:none;transform:translateY(10px) scale(0.95);transition:all 0.25s ease;box-shadow:0 16px 40px rgba(0,0,0,0.6);}
+#share-popup{position:fixed;bottom:142px;right:22px;z-index:501;background:rgba(10,10,14,0.95);border:1px solid var(--border);backdrop-filter:blur(20px);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:180px;opacity:0;pointer-events:none;transform:translateY(10px) scale(0.95);transition:all 0.25s ease;box-shadow:0 16px 40px rgba(0,0,0,0.6);}
 #share-popup.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
-.share-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--glass);cursor:none;text-decoration:none;transition:all 0.2s;font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);}
+.share-option{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:9px;border:1px solid var(--border);background:var(--glass);cursor:none;text-decoration:none;transition:all 0.2s;font-size:12px;font-weight:500;color:rgba(255,255,255,0.7);}
 .share-option:hover{border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.06);color:#fff;}
-.share-option svg{width:16px;height:16px;flex-shrink:0;}
-.share-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 4px;margin-bottom:2px;}
+.share-option svg{width:15px;height:15px;flex-shrink:0;}
+.share-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 3px;margin-bottom:1px;}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 
 /* RESPONSIVE */
 @media(max-width:768px){
-nav{padding:16px 20px;}
+nav{padding:14px 16px;}
 .nav-links{display:none;}
 .hamburger{display:flex;}
 .social-bar{display:none;}
-.timeline::before{left:20px;}
-.tl-item{grid-template-columns:30px 1fr;gap:12px;}
-.tl-item:nth-child(odd) .tl-content,.tl-item:nth-child(even) .tl-content,.tl-item:nth-child(odd) .tl-time,.tl-item:nth-child(even) .tl-time{grid-column:2;text-align:left;}
-.tl-item:nth-child(odd) .tl-dot,.tl-item:nth-child(even) .tl-dot{grid-column:1;}
 .count-sep{display:none;}
 #wa-btn-text{display:none;}
-#wa-btn{padding:14px;}
-#share-btn{bottom:88px;right:24px;}
-#share-popup{right:18px;bottom:146px;min-width:170px;}
+#wa-btn{padding:12px;}
+#share-btn{bottom:80px;right:20px;}
+#share-popup{right:14px;bottom:132px;min-width:165px;}
 .steps-row{gap:0;}
-#music-player{left:16px;bottom:16px;padding:10px 14px;gap:8px;}
+#music-player{left:12px;bottom:12px;padding:8px 12px;gap:6px;}
 #vol-wrap,.music-info{display:none;}
 .footer-inner{grid-template-columns:1fr;text-align:center;}
 .footer-brand p{margin:0 auto;}
 .footer-links{text-align:center;}
-.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
-.map-wrap iframe{height:280px;}
-.testi-grid{grid-template-columns:1fr;}
-.team-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
-.hero-logo-img{max-width:75vw;}
+.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+.map-wrap iframe{height:240px;}
+.testi-grid{grid-template-columns:1fr 1fr;}
+.team-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+.hero-logo-img{max-width:72vw;}
 .editions-grid{grid-template-columns:1fr;}
-.event-details-grid{grid-template-columns:1fr 1fr;}
-.contact-grid{grid-template-columns:1fr;}
 .event-poster-wrap{grid-template-columns:1fr !important;}
+.contact-grid{grid-template-columns:1fr;}
+.event-details-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+.testi-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
+<!-- LOADER with logo + welcome text -->
 <div id="loader">
-  <div class="loader-logo">GB</div>
+  <img class="loader-logo-img" src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<div class=loader-logo-text>GB</div>'">
+  <div class="loader-welcome">Welcome to Gaana Bajaana 🎵</div>
   <div class="loader-bar"><div class="loader-fill"></div></div>
 </div>
 
@@ -382,9 +418,6 @@ nav{padding:16px 20px;}
   <div class="mobile-social">
     <a href="https://www.instagram.com/gaanabajaana._" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    </a>
-    <a href="https://www.youtube.com" target="_blank">
-      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
     </a>
     <a href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -437,15 +470,12 @@ nav{padding:16px 20px;}
   </a>
 </div>
 
-<!-- SOCIAL BAR (desktop) -->
+<!-- SOCIAL BAR (desktop, no YouTube) -->
 <div class="social-bar">
   <a href="https://www.instagram.com/gaanabajaana._" target="_blank" title="Instagram">
     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
   </a>
-  <a href="https://www.youtube.com" target="_blank" title="YouTube">
-    <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-  </a>
-  <a href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank" title="WhatsApp">
+  <a href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank" title="WhatsApp Community">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
 </div>
@@ -501,21 +531,21 @@ nav{padding:16px 20px;}
       <span class="section-label">Who We Are</span>
       <h2 class="section-title">ABOUT<br>US</h2>
     </div>
-    <div class="reveal" style="max-width:900px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;">
-      <div style="background:var(--dark2);padding:36px 32px;">
-        <div style="font-size:28px;margin-bottom:12px;">🎵</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);margin-bottom:10px;">Community Platform</div>
-        <div style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;">Gaana Bajaana is a community-driven music platform where people come together to jam, perform, and experience live musical vibes.</div>
+    <div class="reveal" style="max-width:900px;margin:32px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+      <div style="background:var(--dark2);padding:28px 24px;">
+        <div style="font-size:24px;margin-bottom:10px;">🎵</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">Community Platform</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">Gaana Bajaana is a community-driven music platform where people come together to jam, perform, and experience live musical vibes.</div>
       </div>
-      <div style="background:var(--dark2);padding:36px 32px;">
-        <div style="font-size:28px;margin-bottom:12px;">🤝</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);margin-bottom:10px;">Welcoming Spaces</div>
-        <div style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;">We create welcoming spaces for singers, musicians, and music lovers to connect, collaborate, and share their passion for music.</div>
+      <div style="background:var(--dark2);padding:28px 24px;">
+        <div style="font-size:24px;margin-bottom:10px;">🤝</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">Welcoming Spaces</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">We create welcoming spaces for singers, musicians, and music lovers to connect, collaborate, and share their passion for music.</div>
       </div>
-      <div style="background:var(--dark2);padding:36px 32px;">
-        <div style="font-size:28px;margin-bottom:12px;">🥁</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);margin-bottom:10px;">Jam Culture</div>
-        <div style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;">Our aim is to build a vibrant jam culture that brings voices, instruments, and people together.</div>
+      <div style="background:var(--dark2);padding:28px 24px;">
+        <div style="font-size:24px;margin-bottom:10px;">🥁</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">Jam Culture</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">Our aim is to build a vibrant jam culture that brings voices, instruments, and people together.</div>
       </div>
     </div>
   </div>
@@ -554,8 +584,8 @@ nav{padding:16px 20px;}
 <section style="background:var(--dark2);border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal"><span class="section-label">The Event</span><h2 class="section-title">EVENT<br>DETAILS</h2></div>
-    <div class="reveal event-poster-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px;">
-      <div style="width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 60px rgba(245,200,66,0.12);aspect-ratio:3/4;background:var(--dark3);display:flex;align-items:center;justify-content:center;">
+    <div class="reveal event-poster-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px;">
+      <div style="width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 40px rgba(245,200,66,0.1);aspect-ratio:3/4;background:var(--dark3);display:flex;align-items:center;justify-content:center;">
         <img src="poster2.jpg" alt="Gaana Bajaana Edition 2 Poster" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
       </div>
       <div>
@@ -567,9 +597,7 @@ nav{padding:16px 20px;}
           <div class="event-detail-item"><div class="event-detail-key">Experience</div><div class="event-detail-val">Sing · Jam · Vibe</div></div>
           <div class="event-detail-item"><div class="event-detail-key">Entry Fee</div><div class="event-detail-val gold">₹99 Early Bird · ₹149 Regular</div></div>
         </div>
-        <div style="margin-top:28px;">
-          <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Get Your Pass →</a>
-        </div>
+        <div style="margin-top:20px;"><a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Get Your Pass →</a></div>
       </div>
     </div>
   </div>
@@ -581,15 +609,15 @@ nav{padding:16px 20px;}
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Memories</span>
       <h2 class="section-title">PHOTO<br>GALLERY</h2>
-      <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-top:-8px;">Moments from our last jam session</p>
+      <p style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:-8px;">Moments from our last jam session</p>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo1.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo1.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo2.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo2.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo3.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo3.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo4.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo4.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo5.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo5.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo6.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo6.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo1.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=36 height=36 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo1.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo2.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=36 height=36 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo2.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo3.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=36 height=36 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo3.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo4.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=36 height=36 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo4.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo5.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=36 height=36 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo5.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="photo6.jpg" alt="Jam Session" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder><svg width=36 height=36 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.1)\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><span>photo6.jpg</span></div>'"><div class="gallery-overlay"><span>View Photo</span></div></div>
     </div>
   </div>
 </section>
@@ -599,10 +627,16 @@ nav{padding:16px 20px;}
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<!-- TIMELINE -->
+<!-- TIMELINE with music animation -->
 <section id="timeline" style="background:var(--dark2);border-top:1px solid var(--border);">
   <div class="container">
-    <div class="reveal" style="text-align:center;"><span class="section-label">Event Schedule</span><h2 class="section-title">THE NIGHT<br>UNFOLDS</h2></div>
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Event Schedule</span>
+      <h2 class="section-title">THE NIGHT<br>UNFOLDS</h2>
+      <div class="music-anim">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
     <div class="timeline reveal">
       <div class="tl-item">
         <div class="tl-content">Doors open, meet &amp; greet. Get your pass scanned and settle in.</div>
@@ -623,25 +657,6 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section style="background:var(--dark2);border-top:1px solid var(--border);">
-  <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">Heard It From Them</span>
-      <h2 class="section-title">WHAT PEOPLE<br>SAY</h2>
-    </div>
-    <div class="testi-grid reveal">
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Even though it was a low-budget session, it had everything you’d want from a true jamming space,great music, passionate people, and a relaxed vibe where everyone could just enjoy singing together.
-      It felt less like an event and more like a community of people who love music ir love to escape the hustle. Honestly, it’s the kind of place where I’d happily spend all my weekends just jamming and listening.</div><div class="testi-author"><div class="testi-avatar">RK</div><div><div class="testi-name"> Golla Vedant</div><div class="testi-handle">Student · Attendee</div></div></div></div>
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">I always wanted to attend a jamming event, but most were in the IT area, which felt tiring after working there all week. Gaana Bajaana, being closer to my place, finally gave me the chance to experience what I had been missing good music, fun moments, and a much-needed break from the routine. It truly felt refreshing and uplifting. Really appreciate the team for creating such a wonderful space for people to relax, connect, and enjoy music together.</div><div class="testi-author"><div class="testi-avatar">NV</div><div><div class="testi-name">Kavya</div><div class="testi-handle"> Working Professional at Cognizant · Attendee</div></div></div></div>
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">The spontaneous collabs were insane. I jammed with a tabla player I'd never met and we created something magical. Only at GB!</div><div class="testi-author"><div class="testi-avatar">AM</div><div><div class="testi-name">Aditya M.</div><div class="testi-handle">Pianist · Attendee</div></div></div></div>
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">The vibe was unmatched. You could feel the passion in the room — everyone was there for the love of music. Truly a special experience.</div><div class="testi-author"><div class="testi-avatar">PS</div><div><div class="testi-name">Priya S.</div><div class="testi-handle">Singer · Attendee</div></div></div></div>
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">As someone who was nervous to perform in public, Gaana Bajaana gave me the confidence and the crowd I needed. Incredible community!</div><div class="testi-author"><div class="testi-avatar">KR</div><div><div class="testi-name">Karan R.</div><div class="testi-handle">Bassist · First-timer</div></div></div></div>
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Honestly one of the best evenings I've had in Hyderabad. The organizers put so much heart into it. Already counting down to Edition 2!</div><div class="testi-author"><div class="testi-avatar">SL</div><div><div class="testi-name">Sneha L.</div><div class="testi-handle">Flutist · Attendee</div></div></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- VIBES -->
 <section id="vibes" style="border-top:1px solid var(--border);">
   <div class="container">
@@ -649,6 +664,24 @@ nav{padding:16px 20px;}
     <div class="reels-grid reveal">
       <div class="reel-frame"><iframe src="https://www.instagram.com/reel/DVtiyu7D1uP/embed" width="320" height="550" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
       <div class="reel-frame"><iframe src="https://www.instagram.com/reel/DVwCqbaD5OS/embed" width="320" height="550" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — after vibes -->
+<section style="background:var(--dark2);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Heard It From Them</span>
+      <h2 class="section-title">WHAT PEOPLE<br>SAY</h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">I walked in as a stranger and left with a band. The energy was electric — everyone vibing together, no judgement, pure music.</div><div class="testi-author"><div class="testi-avatar">RK</div><div><div class="testi-name">Rahul K.</div><div class="testi-handle">Guitarist · Attendee</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Never thought I'd find my people in Hyderabad. Gaana Bajaana is exactly what every musician needs!</div><div class="testi-author"><div class="testi-avatar">NV</div><div><div class="testi-name">Nisha V.</div><div class="testi-handle">Vocalist · Attendee</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Spontaneous collabs were insane. Jammed with a tabla player I'd never met and we created something magical. Only at GB!</div><div class="testi-author"><div class="testi-avatar">AM</div><div><div class="testi-name">Aditya M.</div><div class="testi-handle">Pianist · Attendee</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">The vibe was unmatched. You could feel the passion in the room — everyone was there for the love of music.</div><div class="testi-author"><div class="testi-avatar">PS</div><div><div class="testi-name">Priya S.</div><div class="testi-handle">Singer · Attendee</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Gaana Bajaana gave me the confidence to perform in front of people for the first time. Incredible community!</div><div class="testi-author"><div class="testi-avatar">KR</div><div><div class="testi-name">Karan R.</div><div class="testi-handle">Bassist · First-timer</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">One of the best evenings in Hyderabad. The organizers put so much heart into it. Counting down to Edition 2!</div><div class="testi-author"><div class="testi-avatar">SL</div><div><div class="testi-name">Sneha L.</div><div class="testi-handle">Flutist · Attendee</div></div></div></div>
     </div>
   </div>
 </section>
@@ -666,61 +699,35 @@ nav{padding:16px 20px;}
         <div class="map-info-item"><div class="map-info-key">Entry</div><div class="map-info-val">₹99 / ₹149</div></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:20px;">
+    <div style="text-align:center;margin-top:16px;">
       <a class="btn-outline" href="https://maps.app.goo.gl/22K5KparADzUgU4T7" target="_blank">📍 Open in Google Maps</a>
     </div>
   </div>
 </section>
 
-<!-- SPONSORS -->
-<!-- To add logos: upload sponsor1.png, sponsor2.png etc. to your repo and replace the src values below -->
+<!-- SPONSORS — equal scrolling, no tiers -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="sponsors">
   <div class="container">
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Powered By</span>
       <h2 class="section-title">SPONSORS &amp;<br>PARTNERS</h2>
-      <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-top:-8px;">The amazing brands that make this possible</p>
     </div>
-    <div class="sponsor-tiers reveal">
-      <div>
-        <div class="sponsor-tier-label">Title Sponsors</div>
-        <div class="sponsor-row">
-          <a class="sponsor-card large" href="https://yoursponsorswebsite.com" target="_blank">
-            <img src="sponsor1.png" alt="Sponsor 1" onerror="this.style.display='none'">
-            <div class="sponsor-name">SPONSOR NAME</div>
-            <div class="sponsor-link">yoursponsorswebsite.com</div>
-          </a>
-          <a class="sponsor-card large" href="https://yoursponsorswebsite.com" target="_blank">
-            <img src="sponsor2.png" alt="Sponsor 2" onerror="this.style.display='none'">
-            <div class="sponsor-name">SPONSOR NAME</div>
-            <div class="sponsor-link">yoursponsorswebsite.com</div>
-          </a>
-        </div>
-      </div>
-      <div>
-        <div class="sponsor-tier-label">Community Partners</div>
-        <div class="sponsor-row">
-          <a class="sponsor-card" href="https://yourpartnerpage.com" target="_blank">
-            <img src="sponsor3.png" alt="Partner 1" onerror="this.style.display='none'">
-            <div class="sponsor-name">PARTNER NAME</div>
-            <div class="sponsor-link">instagram or website</div>
-          </a>
-          <a class="sponsor-card" href="https://yourpartnerpage.com" target="_blank">
-            <img src="sponsor4.png" alt="Partner 2" onerror="this.style.display='none'">
-            <div class="sponsor-name">PARTNER NAME</div>
-            <div class="sponsor-link">instagram or website</div>
-          </a>
-          <a class="sponsor-card" href="https://yourpartnerpage.com" target="_blank">
-            <img src="sponsor5.png" alt="Partner 3" onerror="this.style.display='none'">
-            <div class="sponsor-name">PARTNER NAME</div>
-            <div class="sponsor-link">instagram or website</div>
-          </a>
-          <a class="sponsor-card" href="https://yourpartnerpage.com" target="_blank">
-            <img src="sponsor6.png" alt="Partner 4" onerror="this.style.display='none'">
-            <div class="sponsor-name">PARTNER NAME</div>
-            <div class="sponsor-link">instagram or website</div>
-          </a>
-        </div>
+    <div class="sponsors-scroll-wrap reveal">
+      <div class="sponsors-scroll-track">
+        <!-- ADD YOUR SPONSORS: upload sponsor1.png etc. and update name + href -->
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor1.png" alt="Sponsor 1" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 1</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor2.png" alt="Sponsor 2" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 2</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor3.png" alt="Sponsor 3" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 3</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor4.png" alt="Sponsor 4" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 4</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor5.png" alt="Sponsor 5" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 5</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor6.png" alt="Sponsor 6" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 6</div><div class="sponsor-link">website.com</div></a>
+        <!-- duplicate for seamless loop -->
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor1.png" alt="Sponsor 1" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 1</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor2.png" alt="Sponsor 2" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 2</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor3.png" alt="Sponsor 3" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 3</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor4.png" alt="Sponsor 4" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 4</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor5.png" alt="Sponsor 5" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 5</div><div class="sponsor-link">website.com</div></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor6.png" alt="Sponsor 6" onerror="this.style.display='none'"><div class="sponsor-name">SPONSOR 6</div><div class="sponsor-link">website.com</div></a>
       </div>
     </div>
     <div class="sponsor-cta reveal">
@@ -737,10 +744,10 @@ nav{padding:16px 20px;}
       <div class="reveal">
         <span class="section-label">Grab Your Spot</span>
         <h2 class="section-title">HOW TO<br>GET IN</h2>
-        <p style="color:rgba(255,255,255,0.4);font-size:15px;line-height:1.7;margin-top:12px;">Early Bird: ₹99 &nbsp;·&nbsp; Regular: ₹149 &nbsp;·&nbsp; Slots are limited!</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:14px;line-height:1.7;margin-top:10px;">Early Bird: ₹99 &nbsp;·&nbsp; Regular: ₹149 &nbsp;·&nbsp; Slots are limited!</p>
       </div>
       <div class="steps-row reveal">
-        <div class="step"><div class="step-num">1</div><div class="step-text">Fill the form</div></div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">Register</div></div>
         <div class="step"><div class="step-num">2</div><div class="step-text">Receive entry pass</div></div>
         <div class="step"><div class="step-num">3</div><div class="step-text">Show at entry</div></div>
       </div>
@@ -749,63 +756,67 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- TEAM -->
-<section id="team" style="background:var(--dark2);border-top:1px solid var(--border);">
+<!-- TEAM — COLLAPSIBLE (click to expand) -->
+<section id="team" class="accordion-section" style="background:var(--dark2);">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">The People</span>
-      <h2 class="section-title">MEET THE<br>TEAM</h2>
-      <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-top:-8px;">The minds and hearts behind Gaana Bajaana</p>
+    <div class="accordion-header" onclick="toggleAccordion('team')">
+      <div>
+        <span class="section-label">The People</span>
+        <h2 class="section-title" style="margin-bottom:0;">MEET THE<br>TEAM</h2>
+      </div>
+      <div class="accordion-toggle">
+        <svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </div>
     </div>
-    <div class="team-grid reveal">
-      <div class="team-card"><div class="team-avatar"><img src="team1.jpg" alt="" onerror="this.parentElement.textContent='SJ'"></div><div class="team-name">Sainandhan Jilla</div><div class="team-role">Team Member</div><div class="team-bio">Passionate about music and bringing people together through unforgettable experiences.</div><div class="team-social"><a href="https://www.linkedin.com/in/sainandhan-jilla-21a816224/" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
-      <div class="team-card"><div class="team-avatar"><img src="team2.jpg" alt="" onerror="this.parentElement.textContent='AD'"></div><div class="team-name">Akhil Davula</div><div class="team-role">Team Member</div><div class="team-bio">Creative energy and dedication poured into every event, making each session unforgettable.</div><div class="team-social"><a href="https://www.linkedin.com/in/akhil-davula" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
-      <div class="team-card"><div class="team-avatar"><img src="team3.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div><div class="team-name">Anji Reddy Boda</div><div class="team-role">Operations Lead</div><div class="team-bio">The backbone of the event — logistics, registrations, and everything that keeps it smooth.</div><div class="team-social"><a href="https://www.linkedin.com/in/anjireddyboda" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
-      <div class="team-card"><div class="team-avatar"><img src="team4.jpg" alt="" onerror="this.parentElement.textContent='SB'"></div><div class="team-name">Shiva Sai Balbari</div><div class="team-role">Team Member</div><div class="team-bio">Bringing rhythm and structure to everything we do, on stage and behind the scenes.</div><div class="team-social"><a href="https://www.linkedin.com/in/shiva-sai-balbari" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
-      <div class="team-card"><div class="team-avatar"><img src="team5.jpg" alt="" onerror="this.parentElement.textContent='AS'"></div><div class="team-name">Agrati Sheela</div><div class="team-role">Team Member</div><div class="team-bio">Keeps the community connected and the creative spark alive at every Gaana Bajaana event.</div><div class="team-social"><a href="https://www.linkedin.com/in/agrati-sheela-01b874253" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
-      <div class="team-card"><div class="team-avatar"><img src="team6.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div><div class="team-name">Abhiram Beemari</div><div class="team-role">Team Member</div><div class="team-bio">Fuels the energy and passion that makes every jam session a night to remember.</div><div class="team-social"><a href="https://www.linkedin.com/in/abhiram-beemari" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+    <div class="accordion-body">
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar"><img src="team1.jpg" alt="" onerror="this.parentElement.textContent='SJ'"></div><div class="team-name">Sainandhan Jilla</div><div class="team-role">Team Member</div><div class="team-bio">Passionate about music and bringing people together through unforgettable experiences.</div><div class="team-social"><a href="https://www.linkedin.com/in/sainandhan-jilla-21a816224/" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="team2.jpg" alt="" onerror="this.parentElement.textContent='AD'"></div><div class="team-name">Akhil Davula</div><div class="team-role">Team Member</div><div class="team-bio">Creative energy and dedication poured into every event, making each session unforgettable.</div><div class="team-social"><a href="https://www.linkedin.com/in/akhil-davula" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="team3.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div><div class="team-name">Anji Reddy Boda</div><div class="team-role">Operations Lead</div><div class="team-bio">The backbone of the event — logistics, registrations, and everything that keeps it smooth.</div><div class="team-social"><a href="https://www.linkedin.com/in/anjireddyboda" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="team4.jpg" alt="" onerror="this.parentElement.textContent='SB'"></div><div class="team-name">Shiva Sai Balbari</div><div class="team-role">Team Member</div><div class="team-bio">Bringing rhythm and structure to everything we do, on stage and behind the scenes.</div><div class="team-social"><a href="https://www.linkedin.com/in/shiva-sai-balbari" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="team5.jpg" alt="" onerror="this.parentElement.textContent='AS'"></div><div class="team-name">Agrati Sheela</div><div class="team-role">Team Member</div><div class="team-bio">Keeps the community connected and the creative spark alive at every Gaana Bajaana event.</div><div class="team-social"><a href="https://www.linkedin.com/in/agrati-sheela-01b874253" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="team6.jpg" alt="" onerror="this.parentElement.textContent='AB'"></div><div class="team-name">Abhiram Beemari</div><div class="team-role">Team Member</div><div class="team-bio">Fuels the energy and passion that makes every jam session a night to remember.</div><div class="team-social"><a href="https://www.linkedin.com/in/abhiram-beemari" target="_blank"><svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PAST EDITIONS -->
-<section id="editions" style="border-top:1px solid var(--border);">
+<!-- PAST EDITIONS — COLLAPSIBLE -->
+<section id="editions" class="accordion-section" style="border-top:1px solid var(--border);">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">Where It All Started</span>
-      <h2 class="section-title">PAST<br>EDITIONS</h2>
-      <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-top:-8px;">Every edition is a memory we carry forward</p>
-    </div>
-    <div class="editions-grid reveal">
-      <div class="edition-card">
-        <img class="edition-thumb" src="edition1.jpg" alt="Gaana Bajaana Edition 1" onerror="this.outerHTML='<div class=edition-thumb-placeholder><svg width=48 height=48 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.08)\'><path d=\'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z\'/></svg></div>'">
-        <div class="edition-body">
-          <div class="edition-badge">Edition 1</div>
-          <div class="edition-title">GAANA BAJAANA</div>
-          <div class="edition-meta">
-            <span>📅 <strong>March 7, 2026</strong></span>
-            <span>📍 <strong>Hyderabad</strong></span>
-          </div>
-          <div class="edition-stats">
-            <div class="edition-stat"><div class="edition-stat-num">60+</div><div class="edition-stat-label">Attendees</div></div>
-            <div class="edition-stat"><div class="edition-stat-num">20+</div><div class="edition-stat-label">Songs</div></div>
-            <div class="edition-stat"><div class="edition-stat-num">5+</div><div class="edition-stat-label">Collabs</div></div>
-          </div>
-        </div>
+    <div class="accordion-header" onclick="toggleAccordion('editions')">
+      <div>
+        <span class="section-label">Where It All Started</span>
+        <h2 class="section-title" style="margin-bottom:0;">PAST<br>EDITIONS</h2>
       </div>
-      <div class="edition-card" style="border-color:rgba(245,200,66,0.2);background:linear-gradient(135deg,rgba(245,200,66,0.05),rgba(255,87,51,0.03));">
-        <div class="edition-thumb-placeholder" style="background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(255,87,51,0.05));">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(245,200,66,0.3)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        </div>
-        <div class="edition-body">
-          <div class="edition-badge">Edition 2</div>
-          <div class="edition-title">GAANA BAJAANA</div>
-          <div class="edition-meta">
-            <span>📅 <strong>April 4, 2026</strong></span>
-            <span>📍 <strong>Narepally, Hyd</strong></span>
+      <div class="accordion-toggle">
+        <svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="editions-grid">
+        <div class="edition-card">
+          <img class="edition-thumb" src="edition1.jpg" alt="Gaana Bajaana Edition 1" onerror="this.outerHTML='<div class=edition-thumb-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.08)\'><path d=\'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z\'/></svg></div>'">
+          <div class="edition-body">
+            <div class="edition-badge">Edition 1</div>
+            <div class="edition-title">GAANA BAJAANA</div>
+            <div class="edition-meta"><span>📅 <strong>2025</strong></span><span>📍 <strong>Hyderabad</strong></span></div>
+            <div class="edition-stats">
+              <div class="edition-stat"><div class="edition-stat-num">60+</div><div class="edition-stat-label">Attendees</div></div>
+              <div class="edition-stat"><div class="edition-stat-num">20+</div><div class="edition-stat-label">Songs</div></div>
+              <div class="edition-stat"><div class="edition-stat-num">5+</div><div class="edition-stat-label">Collabs</div></div>
+            </div>
           </div>
-          <div style="margin-top:16px;">
-            <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" style="padding:12px 28px;font-size:13px;">Register Now →</a>
+        </div>
+        <div class="edition-card" style="border-color:rgba(245,200,66,0.2);background:linear-gradient(135deg,rgba(245,200,66,0.05),rgba(255,87,51,0.03));">
+          <div class="edition-thumb-placeholder" style="background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(255,87,51,0.05));">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(245,200,66,0.3)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="edition-body">
+            <div class="edition-badge">Edition 2</div>
+            <div class="edition-title">GAANA BAJAANA</div>
+            <div class="edition-meta"><span>📅 <strong>April 4, 2026</strong></span><span>📍 <strong>Narepally, Hyd</strong></span></div>
+            <div style="margin-top:14px;"><a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" style="padding:10px 24px;font-size:12px;">Register Now →</a></div>
           </div>
         </div>
       </div>
@@ -829,7 +840,7 @@ nav{padding:16px 20px;}
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (no venue address) -->
 <section id="contact" style="border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal" style="text-align:center;">
@@ -849,10 +860,6 @@ nav{padding:16px 20px;}
         <a class="contact-item" href="mailto:gaanabajaana@gmail.com">
           <div class="contact-icon"><svg viewBox="0 0 24 24" fill="var(--gold)"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
           <div><div class="contact-detail-key">Email</div><div class="contact-detail-val">gaanabajaana@gmail.com</div><div class="contact-detail-sub">We reply within 24 hours</div></div>
-        </a>
-        <a class="contact-item" href="https://maps.app.goo.gl/22K5KparADzUgU4T7" target="_blank">
-          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="var(--coral)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-          <div><div class="contact-detail-key">Venue Address</div><div class="contact-detail-val">McDonald's, Narepally</div><div class="contact-detail-sub">Hyderabad, Telangana · Tap for directions</div></div>
         </a>
         <a class="contact-item" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">
           <div class="contact-icon"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
@@ -891,7 +898,7 @@ nav{padding:16px 20px;}
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="#"><img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span style=\'font-family:Bebas Neue,sans-serif;font-size:32px;letter-spacing:3px;color:#F5C842;\'>GAANA BAJAANA</span>'"></a>
+      <a href="#"><img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span style=\'font-family:Bebas Neue,sans-serif;font-size:28px;letter-spacing:3px;color:#F5C842;\'>GAANA BAJAANA</span>'"></a>
       <p>An intimate music experience for those who live and breathe music. Hyderabad's most vibrant jam community.</p>
     </div>
     <div class="footer-links">
@@ -919,35 +926,41 @@ const cur=document.getElementById('cursor'),trail=document.getElementById('curso
 let mx=0,my=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';});
 (function animC(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=(tx-15)+'px';trail.style.top=(ty-15)+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button,.faq-q,.gallery-item').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(3)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
+document.querySelectorAll('a,button,.faq-q,.gallery-item,.accordion-header').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(3)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
 
 /* HAMBURGER */
 function toggleMobileMenu(){const m=document.getElementById('mobile-menu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('active');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
 function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('active');document.body.style.overflow='';}
+
+/* ACCORDION for Team & Past Editions */
+function toggleAccordion(id){
+  const section=document.getElementById(id);
+  section.classList.toggle('open');
+}
 
 /* BG PARTICLES */
 const bgC=document.getElementById('bg-canvas'),bgX=bgC.getContext('2d');
 bgC.width=window.innerWidth;bgC.height=window.innerHeight;
 const notes=['♩','♪','♫','♬','𝄞'];
 let pts=[];
-for(let i=0;i<55;i++)pts.push({x:Math.random()*bgC.width,y:Math.random()*bgC.height,size:Math.random()*14+8,speed:Math.random()*0.4+0.1,opacity:Math.random()*0.12+0.02,note:notes[Math.floor(Math.random()*notes.length)],drift:(Math.random()-0.5)*0.3});
+for(let i=0;i<55;i++)pts.push({x:Math.random()*bgC.width,y:Math.random()*bgC.height,size:Math.random()*12+6,speed:Math.random()*0.4+0.1,opacity:Math.random()*0.12+0.02,note:notes[Math.floor(Math.random()*notes.length)],drift:(Math.random()-0.5)*0.3});
 (function animB(){bgX.clearRect(0,0,bgC.width,bgC.height);pts.forEach(p=>{p.y-=p.speed;p.x+=p.drift;if(p.y<-30)p.y=bgC.height+30;if(p.x<-30)p.x=bgC.width+30;if(p.x>bgC.width+30)p.x=-30;bgX.save();bgX.globalAlpha=p.opacity;bgX.fillStyle='#F5C842';bgX.font=p.size+'px serif';bgX.fillText(p.note,p.x,p.y);bgX.restore();});requestAnimationFrame(animB);})();
 window.addEventListener('resize',()=>{bgC.width=window.innerWidth;bgC.height=window.innerHeight;});
 
 /* WAVEFORM */
 const wC=document.getElementById('wave-canvas'),wX=wC.getContext('2d');
 let phase=0;
-(function dW(){const W=wC.width=wC.offsetWidth,H=wC.height=wC.offsetHeight;wX.clearRect(0,0,W,H);wX.beginPath();for(let x=0;x<=W;x++){const y=H/2+Math.sin(x*0.03+phase)*18+Math.sin(x*0.07+phase*1.3)*9+Math.sin(x*0.015+phase*0.5)*12;x===0?wX.moveTo(x,y):wX.lineTo(x,y);}const g=wX.createLinearGradient(0,0,W,0);g.addColorStop(0,'rgba(245,200,66,0)');g.addColorStop(0.2,'rgba(245,200,66,0.8)');g.addColorStop(0.5,'rgba(232,144,10,1)');g.addColorStop(0.8,'rgba(255,87,51,0.8)');g.addColorStop(1,'rgba(255,87,51,0)');wX.strokeStyle=g;wX.lineWidth=2;wX.stroke();phase+=0.025;requestAnimationFrame(dW);})();
+(function dW(){const W=wC.width=wC.offsetWidth,H=wC.height=wC.offsetHeight;wX.clearRect(0,0,W,H);wX.beginPath();for(let x=0;x<=W;x++){const y=H/2+Math.sin(x*0.03+phase)*14+Math.sin(x*0.07+phase*1.3)*7+Math.sin(x*0.015+phase*0.5)*10;x===0?wX.moveTo(x,y):wX.lineTo(x,y);}const g=wX.createLinearGradient(0,0,W,0);g.addColorStop(0,'rgba(245,200,66,0)');g.addColorStop(0.2,'rgba(245,200,66,0.8)');g.addColorStop(0.5,'rgba(232,144,10,1)');g.addColorStop(0.8,'rgba(255,87,51,0.8)');g.addColorStop(1,'rgba(255,87,51,0)');wX.strokeStyle=g;wX.lineWidth=2;wX.stroke();phase+=0.025;requestAnimationFrame(dW);})();
 
 /* COUNTDOWN */
 function updateCD(){const t=new Date('April 4, 2026 18:00:00').getTime(),d=t-Date.now();if(d<=0){['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id=>document.getElementById(id).textContent='00');return;}document.getElementById('cd-days').textContent=String(Math.floor(d/(864e5))).padStart(2,'0');document.getElementById('cd-hrs').textContent=String(Math.floor((d%864e5)/36e5)).padStart(2,'0');document.getElementById('cd-min').textContent=String(Math.floor((d%36e5)/6e4)).padStart(2,'0');document.getElementById('cd-sec').textContent=String(Math.floor((d%6e4)/1000)).padStart(2,'0');}
 updateCD();setInterval(updateCD,1000);
 
 /* REVEAL */
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* STAT COUNTERS — triggers every time scrolled into view */
+/* STAT COUNTERS */
 function animateStats(){document.querySelectorAll('.stat-num[data-target]').forEach(el=>{const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',duration=1600,start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1),ease=1-Math.pow(1-progress,3);el.textContent=Math.floor(ease*target)+suffix;if(progress<1)requestAnimationFrame(step);else el.textContent=target+suffix;}requestAnimationFrame(step);});}
 const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)animateStats();});},{threshold:0.3});
 const statsGrid=document.getElementById('stats-grid');
