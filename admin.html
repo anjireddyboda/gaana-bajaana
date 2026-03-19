@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GB Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<style>
+:root{--gold:#F5C842;--coral:#FF5733;--dark:#070709;--dark2:#0E0E12;--dark3:#13131A;--border:rgba(255,255,255,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--dark);color:#fff;min-height:100vh;}
+#login-screen{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;z-index:100;}
+.login-box{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:40px 36px;width:min(400px,90vw);text-align:center;}
+.login-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:4px;background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
+.login-sub{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
+.login-input{width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:14px 18px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;margin-bottom:14px;transition:border-color 0.3s;}
+.login-input:focus{border-color:rgba(245,200,66,0.5);}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--coral));border:none;border-radius:10px;padding:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#000;cursor:pointer;letter-spacing:1px;text-transform:uppercase;}
+.login-error{font-size:12px;color:var(--coral);margin-top:10px;display:none;}
+#dashboard{display:none;}
+header{background:var(--dark2);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
+.header-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:var(--gold);}
+.logout-btn{background:transparent;border:1px solid var(--border);color:rgba(255,255,255,0.4);border-radius:8px;padding:8px 16px;font-size:12px;cursor:pointer;letter-spacing:1px;transition:all 0.3s;}
+.logout-btn:hover{border-color:var(--coral);color:var(--coral);}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:28px 32px;}
+.stat-box{background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:24px 20px;text-align:center;}
+.stat-box-num{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-box-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:6px;}
+.tabs{display:flex;gap:0;padding:0 32px;border-bottom:1px solid var(--border);}
+.tab{padding:14px 24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,0.35);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.3s;}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-badge{background:var(--coral);color:#fff;border-radius:20px;padding:1px 7px;font-size:10px;margin-left:6px;}
+.tab-content{display:none;padding:28px 32px;}
+.tab-content.active{display:block;}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table th{text-align:left;padding:12px 16px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);border-bottom:1px solid var(--border);}
+.data-table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.04);color:rgba(255,255,255,0.75);vertical-align:top;}
+.data-table tr:hover td{background:var(--dark2);}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;letter-spacing:1px;font-weight:600;}
+.badge-confirmed{background:rgba(37,211,102,0.15);color:#25D366;}
+.badge-pending{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);}
+.action-btn{padding:6px 14px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:1px;border:none;transition:all 0.2s;}
+.approve-btn{background:rgba(37,211,102,0.15);color:#25D366;border:1px solid rgba(37,211,102,0.3);}
+.approve-btn:hover{background:rgba(37,211,102,0.3);}
+.delete-btn{background:rgba(255,87,51,0.1);color:var(--coral);border:1px solid rgba(255,87,51,0.25);margin-left:6px;}
+.delete-btn:hover{background:rgba(255,87,51,0.25);}
+.empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,0.2);}
+.empty-state div:first-child{font-size:40px;margin-bottom:12px;}
+.review-text{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:280px;font-style:italic;}
+.stars-display{color:var(--gold);font-size:12px;}
+@media(max-width:768px){
+  header{padding:14px 16px;}
+  .stats-row{padding:16px;}
+  .tabs{padding:0 16px;overflow-x:auto;}
+  .tab{padding:12px 14px;white-space:nowrap;font-size:11px;}
+  .tab-content{padding:16px;}
+  .data-table{font-size:12px;}
+  .data-table th,.data-table td{padding:10px 8px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-title">GB ADMIN</div>
+    <div class="login-sub">Gaana Bajaana · Control Panel</div>
+    <input class="login-input" type="password" id="pw-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Login →</button>
+    <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <header>
+    <div class="header-title">🎵 GAANA BAJAANA ADMIN</div>
+    <button class="logout-btn" onclick="doLogout()">Logout</button>
+  </header>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-box-num" id="stat-messages">—</div>
+      <div class="stat-box-label">Total Messages</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-num" id="stat-unread">—</div>
+      <div class="stat-box-label">Unread Messages</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-num" id="stat-reviews">—</div>
+      <div class="stat-box-label">Total Reviews</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-num" id="stat-pending">—</div>
+      <div class="stat-box-label">Pending Approval</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-num" id="stat-live">—</div>
+      <div class="stat-box-label">Live on Website</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('messages')">
+      Messages <span class="tab-badge" id="tab-badge-msg">0</span>
+    </div>
+    <div class="tab" onclick="switchTab('testimonials')">
+      Reviews <span class="tab-badge" id="tab-badge-testi">0</span>
+    </div>
+  </div>
+
+  <!-- Messages Tab -->
+  <div class="tab-content active" id="tab-messages">
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="msg-tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="msg-empty" style="display:none;">
+      <div>📭</div>
+      <div>No messages yet</div>
+    </div>
+  </div>
+
+  <!-- Reviews Tab -->
+  <div class="tab-content" id="tab-testimonials">
+    <div style="margin-bottom:20px;padding:10px 16px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:10px;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px;">
+      ⏳ Approve reviews below to make them appear live on the website
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Handle</th>
+            <th>Rating</th>
+            <th>Review</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="testi-tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="testi-empty" style="display:none;">
+      <div>🌟</div>
+      <div>No reviews submitted yet</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── YOUR PASSWORD — change this to something only you know ───
+const ADMIN_PASSWORD = 'GB@Gaana2026';
+
+// ── YOUR FIREBASE CONFIG ─────────────────────────────────────
+firebase.initializeApp({
+  apiKey:            "AIzaSyDL7R7tT8RtXe8N4MI_iZXvDxMfbn95rXQ",
+  authDomain:        "gaana-bajaana-9210f.firebaseapp.com",
+  projectId:         "gaana-bajaana-9210f",
+  storageBucket:     "gaana-bajaana-9210f.firebasestorage.app",
+  messagingSenderId: "211802419467",
+  appId:             "1:211802419467:web:6da1d0673a80278759720e"
+});
+const db = firebase.firestore();
+
+/* ── AUTH ──────────────────────────────────────────────────── */
+function doLogin(){
+  const pw=document.getElementById('pw-input').value;
+  if(pw===ADMIN_PASSWORD){
+    sessionStorage.setItem('gb_admin','1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    loadAll();
+  }else{
+    document.getElementById('login-error').style.display='block';
+    document.getElementById('pw-input').style.borderColor='var(--coral)';
+  }
+}
+
+function doLogout(){
+  sessionStorage.removeItem('gb_admin');
+  location.reload();
+}
+
+if(sessionStorage.getItem('gb_admin')==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  loadAll();
+}
+
+/* ── TABS ──────────────────────────────────────────────────── */
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active',['messages','testimonials'][i]===name);
+  });
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+/* ── DATA ──────────────────────────────────────────────────── */
+let allMessages=[];
+let allTestimonials=[];
+
+async function loadAll(){
+  await Promise.all([loadMessages(),loadTestimonials()]);
+}
+
+async function loadMessages(){
+  const snap=await db.collection('messages').orderBy('timestamp','desc').get();
+  allMessages=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderMessages();
+  updateStats();
+}
+
+async function loadTestimonials(){
+  const snap=await db.collection('testimonials').orderBy('timestamp','desc').get();
+  allTestimonials=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderTestimonials();
+  updateStats();
+}
+
+function updateStats(){
+  const unread=allMessages.filter(m=>!m.read).length;
+  const pending=allTestimonials.filter(t=>!t.approved).length;
+  const live=allTestimonials.filter(t=>t.approved).length;
+  document.getElementById('stat-messages').textContent=allMessages.length;
+  document.getElementById('stat-unread').textContent=unread;
+  document.getElementById('stat-reviews').textContent=allTestimonials.length;
+  document.getElementById('stat-pending').textContent=pending;
+  document.getElementById('stat-live').textContent=live;
+  document.getElementById('tab-badge-msg').textContent=unread;
+  document.getElementById('tab-badge-testi').textContent=pending;
+}
+
+function fmtDate(ts){
+  if(!ts)return'—';
+  const d=ts.toDate?ts.toDate():new Date(ts);
+  return d.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+
+function renderMessages(){
+  const tbody=document.getElementById('msg-tbody');
+  document.getElementById('msg-empty').style.display=allMessages.length?'none':'block';
+  tbody.innerHTML=allMessages.map((m,i)=>`
+    <tr>
+      <td style="color:rgba(255,255,255,0.3);">${i+1}</td>
+      <td><strong style="color:${m.read?'rgba(255,255,255,0.6)':'#fff'}">${m.name||'—'}</strong>${!m.read?'<span style="background:var(--gold);color:#000;border-radius:20px;padding:1px 7px;font-size:9px;font-weight:700;margin-left:8px;">NEW</span>':''}</td>
+      <td style="font-size:12px;color:rgba(255,255,255,0.5);">${m.email||'—'}</td>
+      <td><div class="review-text">${m.message||'—'}</div></td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.35);white-space:nowrap;">${fmtDate(m.timestamp)}</td>
+      <td style="white-space:nowrap;">
+        <a href="mailto:${m.email}?subject=Re: Your message to Gaana Bajaana" class="action-btn approve-btn" style="text-decoration:none;display:inline-block;" onclick="markRead('${m.id}')">Reply</a>
+        <button class="action-btn delete-btn" onclick="deleteDoc('messages','${m.id}')">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+function renderTestimonials(){
+  const tbody=document.getElementById('testi-tbody');
+  document.getElementById('testi-empty').style.display=allTestimonials.length?'none':'block';
+  tbody.innerHTML=allTestimonials.map((t,i)=>`
+    <tr id="testi-row-${t.id}">
+      <td style="color:rgba(255,255,255,0.3);">${i+1}</td>
+      <td><strong>${t.name||'—'}</strong></td>
+      <td style="font-size:12px;color:rgba(255,255,255,0.5);">${t.handle||'—'}</td>
+      <td><div class="stars-display">${'★'.repeat(t.rating||5)}${'☆'.repeat(5-(t.rating||5))}</div></td>
+      <td><div class="review-text">${t.text||'—'}</div></td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.35);white-space:nowrap;">${fmtDate(t.timestamp)}</td>
+      <td><span class="badge ${t.approved?'badge-confirmed':'badge-pending'}">${t.approved?'✓ Live on site':'⏳ Pending'}</span></td>
+      <td style="white-space:nowrap;">
+        ${!t.approved?`<button class="action-btn approve-btn" onclick="approveTestimonial('${t.id}',this)">Approve</button>`:''}
+        <button class="action-btn delete-btn" onclick="deleteDoc('testimonials','${t.id}')">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+async function markRead(id){
+  await db.collection('messages').doc(id).update({read:true});
+  const m=allMessages.find(x=>x.id===id);
+  if(m)m.read=true;
+  renderMessages();
+  updateStats();
+}
+
+async function approveTestimonial(id,btn){
+  btn.textContent='...';
+  btn.disabled=true;
+  await db.collection('testimonials').doc(id).update({approved:true});
+  const t=allTestimonials.find(x=>x.id===id);
+  if(t)t.approved=true;
+  renderTestimonials();
+  updateStats();
+}
+
+async function deleteDoc(collection,id){
+  if(!confirm('Delete this permanently? This cannot be undone.'))return;
+  await db.collection(collection).doc(id).delete();
+  if(collection==='messages'){
+    allMessages=allMessages.filter(x=>x.id!==id);
+    renderMessages();
+  }else{
+    allTestimonials=allTestimonials.filter(x=>x.id!==id);
+    renderTestimonials();
+  }
+  updateStats();
+}
+</script>
+</body>
+</html>
