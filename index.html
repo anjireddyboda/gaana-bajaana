@@ -23,16 +23,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 #loader.hidden{opacity:0;visibility:hidden;}
 .loader-logo-img{height:80px;width:auto;object-fit:contain;background:transparent;animation:loaderPulse 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(245,200,66,0.4));}
 .loader-logo-text{font-family:'Bebas Neue',sans-serif;font-size:60px;letter-spacing:6px;background:linear-gradient(135deg,#fff,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:loaderPulse 1.5s ease-in-out infinite;}
-.loader-welcome{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;text-align:center;}
+.loader-welcome{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);text-align:center;}
 .loader-bar{width:180px;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
 .loader-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--coral));animation:loaderFill 1.8s ease forwards;}
 @keyframes loaderPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
 @keyframes loaderFill{from{width:0;}to{width:100%;}}
-
-/* POST-EVENT BANNER */
-#post-event-banner{display:none;background:linear-gradient(135deg,rgba(245,200,66,0.1),rgba(255,87,51,0.08));border-bottom:1px solid rgba(245,200,66,0.2);padding:16px 20px;text-align:center;z-index:101;position:relative;}
-#post-event-banner p{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--gold);}
-#post-event-banner span{font-size:13px;letter-spacing:1px;color:rgba(255,255,255,0.5);font-family:'Plus Jakarta Sans',sans-serif;display:block;margin-top:4px;}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(7,7,9,0.95),transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
@@ -94,14 +89,9 @@ canvas#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;po
 .scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite;}
 @keyframes scrollPulse{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 
-/* LIVE BADGE */
-.live-badge-wrap{display:none;flex-direction:column;align-items:center;gap:12px;padding:40px 20px;}
-.live-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(255,50,50,0.12);border:1px solid rgba(255,50,50,0.35);border-radius:60px;padding:14px 32px;}
-.live-dot{width:12px;height:12px;background:#ff3232;border-radius:50%;animation:livePulse 1s ease-in-out infinite;flex-shrink:0;}
-.live-text{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;color:#ff6060;}
-.live-checkin-count{font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--gold);line-height:1;text-shadow:0 0 30px rgba(245,200,66,0.4);}
-.live-checkin-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
-@keyframes livePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
+/* POST EVENT BANNER */
+#post-event-banner{display:none;background:linear-gradient(135deg,rgba(245,200,66,0.12),rgba(255,87,51,0.08));border-bottom:1px solid rgba(245,200,66,0.2);padding:14px 20px;text-align:center;z-index:2;position:relative;}
+.post-event-banner-text{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
 section{position:relative;z-index:2;padding:70px 20px;}
 .container{max-width:1100px;margin:0 auto;}
@@ -135,6 +125,17 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .count-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:6px;}
 .count-sep{font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(255,255,255,0.1);align-self:center;}
 
+/* LIVE BADGE */
+#live-section{display:none;background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 20px;text-align:center;}
+.live-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(255,87,51,0.1);border:1px solid rgba(255,87,51,0.3);border-radius:60px;padding:12px 32px;margin-bottom:24px;}
+.live-dot{width:12px;height:12px;background:var(--coral);border-radius:50%;animation:livePulse 1s ease-in-out infinite;}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
+.live-badge-text{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:6px;color:var(--coral);}
+.live-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+.live-stat-box{text-align:center;}
+.live-stat-num{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;color:var(--gold);}
+.live-stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+
 /* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:40px;}
 .stat-item{background:var(--dark2);padding:32px 20px;text-align:center;transition:background 0.3s;}
@@ -149,6 +150,20 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .live-counter-num{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;transition:all 0.4s ease;}
 .live-counter-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;}
 
+/* ANIMATED POSTER */
+.poster-container{position:relative;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 40px rgba(245,200,66,0.1);aspect-ratio:3/4;background:var(--dark3);}
+.poster-container img{width:100%;height:100%;object-fit:cover;display:block;}
+.poster-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(7,7,9,0.95) 0%,rgba(7,7,9,0.6) 60%,transparent 100%);padding:20px;text-align:center;}
+.poster-overlay-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+.poster-countdown-nums{display:flex;gap:8px;justify-content:center;align-items:flex-start;}
+.poster-count-block{text-align:center;}
+.poster-count-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,40px);line-height:1;color:var(--gold);}
+.poster-count-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.poster-sep{font-family:'Bebas Neue',sans-serif;font-size:32px;color:rgba(245,200,66,0.3);margin-top:4px;}
+.poster-live-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,87,51,0.2);border:1px solid rgba(255,87,51,0.4);border-radius:40px;padding:8px 20px;}
+.poster-live-dot{width:8px;height:8px;background:var(--coral);border-radius:50%;animation:livePulse 1s ease-in-out infinite;}
+.poster-live-text{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;color:var(--coral);}
+
 /* EVENT DETAILS */
 .event-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:0;}
 .event-detail-item{background:var(--dark2);padding:22px 24px;transition:background 0.3s;}
@@ -156,18 +171,6 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .event-detail-key{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:6px;}
 .event-detail-val{font-size:16px;font-weight:700;color:#fff;}
 .event-detail-val.gold{color:var(--gold);}
-
-/* ANIMATED POSTER OVERLAY */
-.poster-wrap{position:relative;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 40px rgba(245,200,66,0.1);aspect-ratio:3/4;background:var(--dark3);}
-.poster-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
-.poster-countdown-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(7,7,9,0.96) 0%,rgba(7,7,9,0.7) 50%,transparent 100%);padding:20px;text-align:center;}
-.poster-cd-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
-.poster-cd-nums{display:flex;justify-content:center;gap:12px;align-items:center;}
-.poster-cd-block{text-align:center;}
-.poster-cd-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1;}
-.poster-cd-unit{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
-.poster-cd-sep{font-family:'Bebas Neue',sans-serif;font-size:24px;color:rgba(245,200,66,0.3);align-self:flex-start;margin-top:4px;}
-.poster-event-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
 
 /* TIMELINE */
 .timeline{max-width:680px;margin:40px auto 0;position:relative;}
@@ -213,51 +216,10 @@ section{position:relative;z-index:2;padding:70px 20px;}
 #lightbox-close:hover{color:#fff;}
 
 /* UPLOAD PROGRESS */
-.upload-progress-wrap{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:10px;display:none;}
-.upload-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--coral));border-radius:2px;width:0%;transition:width 0.2s;}
-.upload-btn{background:linear-gradient(135deg,var(--dark2),var(--dark3));border:2px dashed rgba(245,200,66,0.3);border-radius:12px;padding:28px;text-align:center;cursor:none;transition:all 0.3s;width:100%;}
-.upload-btn:hover{border-color:rgba(245,200,66,0.6);background:rgba(245,200,66,0.05);}
-.upload-btn svg{width:32px;height:32px;fill:var(--gold);margin-bottom:10px;}
-.upload-btn p{font-size:13px;color:rgba(255,255,255,0.5);}
-.upload-btn strong{color:var(--gold);}
-#file-input{display:none;}
-
-/* SONG VOTING */
-.song-submit-row{display:flex;gap:10px;margin-bottom:24px;}
-.song-input{background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;flex:1;transition:border-color 0.3s;}
-.song-input:focus{border-color:rgba(245,200,66,0.4);}
-.song-input::placeholder{color:rgba(255,255,255,0.25);}
-.add-song-btn{background:linear-gradient(135deg,var(--gold),var(--amber));border:none;border-radius:10px;padding:12px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:#000;cursor:none;white-space:nowrap;transition:all 0.2s;}
-.add-song-btn:hover{transform:scale(1.03);}
-.song-vote-list{display:flex;flex-direction:column;gap:10px;}
-.song-vote-item{display:flex;align-items:center;gap:12px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:12px 16px;transition:all 0.3s;position:relative;overflow:hidden;}
-.song-vote-item::before{content:'';position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(245,200,66,0.08),transparent);transition:width 0.6s ease;width:0%;}
-.song-rank{font-family:'Bebas Neue',sans-serif;font-size:20px;color:rgba(255,255,255,0.2);min-width:28px;text-align:center;}
-.song-rank.top{color:var(--gold);}
-.song-info{flex:1;}
-.song-title{font-size:14px;font-weight:600;color:#fff;}
-.song-artist{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-top:2px;}
-.song-votes-num{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);min-width:32px;text-align:right;}
-.vote-btn{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.25);border-radius:8px;padding:6px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;color:var(--gold);cursor:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.vote-btn:hover:not(:disabled){background:rgba(245,200,66,0.2);transform:scale(1.05);}
-.vote-btn:disabled{opacity:0.35;cursor:not-allowed;}
-.vote-btn.voted{background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3);color:#25D366;}
-
-/* SCROLLING TESTIMONIALS */
-.testi-scroll-wrap{overflow:hidden;margin-top:40px;padding:8px 0;}
-.testi-scroll-track{display:flex;gap:20px;animation:testiScroll 55s linear infinite;width:max-content;}
-.testi-scroll-track:hover{animation-play-state:paused;}
-@keyframes testiScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.testi-card{background:var(--dark3);border:1px solid var(--border);border-radius:14px;padding:20px;width:280px;flex-shrink:0;transition:all 0.3s;}
-.testi-card:hover{border-color:rgba(245,200,66,0.15);transform:translateY(-2px);}
-.testi-quote{font-size:28px;line-height:1;color:var(--gold);opacity:0.25;font-family:'Bebas Neue',sans-serif;margin-bottom:4px;}
-.testi-text{font-size:12px;line-height:1.6;color:rgba(255,255,255,0.7);font-style:italic;margin-bottom:12px;}
-.testi-stars{display:flex;gap:3px;margin-bottom:8px;}
-.testi-stars span{color:var(--gold);font-size:11px;}
-.testi-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:12px;}
-.testi-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--coral));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:#000;flex-shrink:0;}
-.testi-name{font-size:13px;font-weight:600;color:#fff;}
-.testi-handle{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px;}
+.upload-progress-wrap{display:none;margin-top:12px;}
+.upload-progress-bar{height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
+.upload-progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--coral));border-radius:2px;transition:width 0.3s ease;width:0%;}
+.upload-progress-text{font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;text-align:center;letter-spacing:1px;}
 
 /* TEAM */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;}
@@ -277,6 +239,25 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .team-social a:hover svg{fill:var(--gold);}
 .li-svg{width:12px;height:12px;fill:rgba(255,255,255,0.4);}
 .team-social a:hover .li-svg{fill:var(--gold);}
+
+/* SCROLLING TESTIMONIALS */
+.testi-scroll-wrap{overflow:hidden;padding:8px 0;margin-top:40px;position:relative;}
+.testi-scroll-wrap::before,.testi-scroll-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.testi-scroll-wrap::before{left:0;background:linear-gradient(to right,var(--dark2),transparent);}
+.testi-scroll-wrap::after{right:0;background:linear-gradient(to left,var(--dark2),transparent);}
+.testi-scroll-track{display:flex;gap:16px;width:max-content;animation:testiScroll 50s linear infinite;}
+.testi-scroll-track:hover{animation-play-state:paused;}
+@keyframes testiScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.testi-card{background:var(--dark3);border:1px solid var(--border);border-radius:14px;padding:20px;width:300px;flex-shrink:0;transition:all 0.3s;}
+.testi-card:hover{border-color:rgba(245,200,66,0.2);}
+.testi-quote{font-size:28px;line-height:1;color:var(--gold);opacity:0.25;font-family:'Bebas Neue',sans-serif;margin-bottom:4px;}
+.testi-text{font-size:12px;line-height:1.6;color:rgba(255,255,255,0.7);font-style:italic;margin-bottom:14px;}
+.testi-stars{display:flex;gap:3px;margin-bottom:8px;}
+.testi-stars span{color:var(--gold);font-size:11px;}
+.testi-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:12px;}
+.testi-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--coral));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:#000;flex-shrink:0;}
+.testi-name{font-size:13px;font-weight:600;color:#fff;}
+.testi-handle{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px;}
 
 /* EDITIONS */
 .editions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
@@ -304,6 +285,23 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .faq-item.open .faq-icon{background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.3);color:var(--gold);transform:rotate(45deg);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;padding:0 22px;}
 .faq-item.open .faq-a{max-height:300px;padding:0 22px 18px;}
+
+/* SONG VOTING */
+.song-input-row{display:flex;gap:12px;margin-bottom:28px;}
+.song-leaderboard{display:flex;flex-direction:column;gap:10px;}
+.song-row{display:flex;align-items:center;gap:14px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px 18px;transition:all 0.3s;}
+.song-row:hover{border-color:rgba(245,200,66,0.2);}
+.song-rank{font-family:'Bebas Neue',sans-serif;font-size:24px;color:rgba(255,255,255,0.15);width:32px;flex-shrink:0;text-align:center;}
+.song-rank.top3{color:var(--gold);}
+.song-info{flex:1;min-width:0;}
+.song-name{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.song-artist{font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;}
+.song-bar-wrap{flex:1;max-width:160px;}
+.song-bar{height:5px;background:linear-gradient(90deg,var(--gold),var(--coral));border-radius:3px;transition:width 0.6s ease;}
+.song-votes{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);min-width:40px;text-align:right;}
+.vote-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--glass);cursor:none;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:16px;flex-shrink:0;}
+.vote-btn:hover{border-color:rgba(245,200,66,0.4);background:rgba(245,200,66,0.08);}
+.vote-btn.voted{border-color:var(--gold);background:rgba(245,200,66,0.15);cursor:not-allowed;}
 
 /* MAP */
 .map-wrap{margin-top:40px;border-radius:16px;overflow:hidden;border:1px solid var(--border);}
@@ -335,16 +333,10 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--amber));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#000;margin-bottom:10px;box-shadow:0 0 20px rgba(245,200,66,0.3);}
 .step-text{font-size:11px;letter-spacing:1px;text-align:center;color:rgba(255,255,255,0.5);max-width:80px;}
 
-/* WHATSAPP OPT-IN */
-.wa-optin-box{background:linear-gradient(135deg,rgba(37,211,102,0.08),rgba(37,211,102,0.04));border:1px solid rgba(37,211,102,0.2);border-radius:14px;padding:24px;margin-top:28px;}
-.wa-optin-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#fff;margin-bottom:6px;}
-.wa-optin-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.5;}
-.wa-optin-row{display:flex;gap:10px;}
-.wa-optin-input{background:var(--dark3);border:1px solid rgba(37,211,102,0.2);border-radius:10px;padding:12px 16px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;flex:1;transition:border-color 0.3s;}
-.wa-optin-input:focus{border-color:rgba(37,211,102,0.5);}
-.wa-optin-input::placeholder{color:rgba(255,255,255,0.25);}
-.wa-optin-btn{background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:10px;padding:12px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:#fff;cursor:none;white-space:nowrap;transition:all 0.2s;}
-.wa-optin-btn:hover{transform:scale(1.03);}
+/* WHATSAPP REMINDER OPT-IN */
+.reminder-form{background:linear-gradient(135deg,rgba(37,211,102,0.06),rgba(37,211,102,0.03));border:1px solid rgba(37,211,102,0.15);border-radius:16px;padding:28px 24px;margin-top:28px;text-align:left;}
+.reminder-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;margin-bottom:6px;}
+.reminder-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:18px;line-height:1.6;}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;}
@@ -405,7 +397,7 @@ footer span{color:var(--gold);}
 #vol-slider{-webkit-appearance:none;appearance:none;width:60px;height:3px;border-radius:2px;background:rgba(255,255,255,0.15);outline:none;cursor:none;}
 #vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--gold);cursor:none;}
 
-/* WHATSAPP BTN */
+/* WHATSAPP */
 #wa-btn{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);padding:12px 18px;border-radius:60px;cursor:none;box-shadow:0 8px 28px rgba(37,211,102,0.35);text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;animation:waPop 0.6s 2s both;}
 #wa-btn:hover{transform:scale(1.06);}
 #wa-btn svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
@@ -431,6 +423,10 @@ footer span{color:var(--gold);}
 .gb-input{background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:13px 16px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;transition:border-color 0.3s;}
 .gb-input:focus{border-color:rgba(245,200,66,0.4);}
 .gb-input::placeholder{color:rgba(255,255,255,0.25);}
+.file-upload-label{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--dark3);border:2px dashed rgba(245,200,66,0.3);border-radius:10px;padding:20px;cursor:none;transition:all 0.3s;font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:1px;}
+.file-upload-label:hover{border-color:var(--gold);color:var(--gold);background:rgba(245,200,66,0.04);}
+.file-upload-label svg{width:20px;height:20px;fill:currentColor;}
+#photo-file-input{display:none;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 
@@ -462,6 +458,8 @@ nav{padding:14px 16px;}
 .live-counter-box{flex-direction:column;}
 .live-counter-cell{border-right:none !important;border-bottom:1px solid var(--border);}
 .live-counter-cell:last-child{border-bottom:none;}
+.song-input-row{flex-direction:column;}
+.song-bar-wrap{display:none;}
 .timeline::before{left:16px;transform:none;}
 .tl-item{grid-template-columns:32px 1fr !important;gap:10px !important;margin-bottom:24px;}
 .tl-item .tl-dot{grid-column:1 !important;grid-row:1;margin:0;margin-top:4px;}
@@ -469,14 +467,11 @@ nav{padding:14px 16px;}
 .tl-item .tl-content{grid-column:2 !important;grid-row:2;text-align:left !important;}
 .modal-inner .team-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
 .modal-inner .editions-grid{grid-template-columns:1fr;}
-.song-submit-row{flex-direction:column;}
-.wa-optin-row{flex-direction:column;}
-.poster-cd-nums{gap:6px;}
-.poster-cd-num{font-size:24px;}
+.live-stats{gap:20px;}
 }
 @media(max-width:480px){
 .steps-row .step-text{font-size:10px;max-width:64px;}
-.testi-card{width:240px;}
+.poster-countdown-nums{gap:4px;}
 }
 </style>
 </head>
@@ -487,12 +482,6 @@ nav{padding:14px 16px;}
   <img class="loader-logo-img" src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<div class=loader-logo-text>GB</div>'">
   <div class="loader-welcome">Welcome to Gaana Bajaana 🎵</div>
   <div class="loader-bar"><div class="loader-fill"></div></div>
-</div>
-
-<!-- POST-EVENT BANNER (auto-shows after event) -->
-<div id="post-event-banner">
-  <p>🎵 THANK YOU HYDERABAD — EDITION 2 WAS INCREDIBLE!</p>
-  <span>See you at Edition 3 · Follow us on Instagram for updates</span>
 </div>
 
 <div id="cursor"></div>
@@ -532,9 +521,9 @@ nav{padding:14px 16px;}
           <div class="edition-title">GAANA BAJAANA</div>
           <div class="edition-meta"><span>📅 <strong>2025</strong></span><span>📍 <strong>Hyderabad</strong></span></div>
           <div class="edition-stats">
-            <div><div class="edition-stat-num">60+</div><div class="edition-stat-label">Attendees</div></div>
-            <div><div class="edition-stat-num">20+</div><div class="edition-stat-label">Songs</div></div>
-            <div><div class="edition-stat-num">5+</div><div class="edition-stat-label">Collabs</div></div>
+            <div class="edition-stat"><div class="edition-stat-num">60+</div><div class="edition-stat-label">Attendees</div></div>
+            <div class="edition-stat"><div class="edition-stat-num">20+</div><div class="edition-stat-label">Songs</div></div>
+            <div class="edition-stat"><div class="edition-stat-num">5+</div><div class="edition-stat-label">Collabs</div></div>
           </div>
         </div>
       </div>
@@ -560,12 +549,12 @@ nav{padding:14px 16px;}
     </div>
     <div class="faq-list">
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a registration fee?<span class="faq-icon">+</span></div><div class="faq-a">Yes. The registration fee is ₹99 for Early Bird and ₹149 for Regular Entry. Early registration is recommended as slots are limited.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Not at all. Gaana Bajaana is open to everyone — from beginners to experienced performers. If you love music, you belong here.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician to attend?<span class="faq-icon">+</span></div><div class="faq-a">Not at all. Gaana Bajaana is open to everyone — from beginners to experienced performers. If you love music, you belong here.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring my own instrument?<span class="faq-icon">+</span></div><div class="faq-a">Yes, you are welcome to bring instruments such as guitar, keyboard, tabla, cajon, etc. However, it is not mandatory.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How will I receive my entry pass?<span class="faq-icon">+</span></div><div class="faq-a">Once you complete the registration, you will receive a confirmation email with your entry pass within 1 hour.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How will I receive my entry pass after registration?<span class="faq-icon">+</span></div><div class="faq-a">Once you complete the registration, you will receive a confirmation email with your entry pass within 1 hour.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I attend with a group of friends?<span class="faq-icon">+</span></div><div class="faq-a">Yes, groups are welcome. However, each attendee must register individually and carry their own entry pass.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will food be provided?<span class="faq-icon">+</span></div><div class="faq-a">Food is not included. Drinking water will be available at the venue. You can order food at the venue at your own expense.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community for real-time updates. Follow us on Instagram for event highlights and future editions.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will food be provided during the event?<span class="faq-icon">+</span></div><div class="faq-a">Food is not included in the registration. Drinking water will be available at the venue.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated about event details?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community for real-time updates and follow us on Instagram for event highlights.</div></div>
     </div>
   </div>
 </div>
@@ -574,8 +563,8 @@ nav{padding:14px 16px;}
 <div id="mobile-menu">
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+  <a href="#vote" onclick="closeMobileMenu()">Song Vote</a>
   <a href="#timeline" onclick="closeMobileMenu()">Schedule</a>
-  <a href="#vote" onclick="closeMobileMenu()">Vote Songs</a>
   <a href="#vibes" onclick="closeMobileMenu()">Vibes</a>
   <a href="#register" onclick="closeMobileMenu()">Register</a>
   <a href="#" onclick="openModal('team-modal');closeMobileMenu();">Team</a>
@@ -642,8 +631,8 @@ nav{padding:14px 16px;}
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
+    <a href="#vote">Song Vote</a>
     <a href="#timeline">Schedule</a>
-    <a href="#vote">Vote Songs</a>
     <a href="#vibes">Vibes</a>
     <a href="#register">Register</a>
     <a href="#" onclick="openModal('team-modal');return false;">Team</a>
@@ -654,14 +643,19 @@ nav{padding:14px 16px;}
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 </nav>
 
+<!-- POST EVENT BANNER (hidden until event ends) -->
+<div id="post-event-banner">
+  <div class="post-event-banner-text">🎵 EDITION 2 WAS INCREDIBLE — SEE YOU AT EDITION 3! &nbsp;·&nbsp; JOIN COMMUNITY TO STAY UPDATED 🎵</div>
+</div>
+
 <!-- HERO -->
 <div class="hero">
-  <p class="hero-eyebrow">🎵 An Intimate Music Experience</p>
+  <p class="hero-eyebrow" id="hero-eyebrow">🎵 An Intimate Music Experience</p>
   <img class="hero-logo-img" src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<h1 class=hero-title>GAANA<br>BAJAANA</h1>'">
-  <p class="hero-sub">Sing &nbsp;·&nbsp; Jam &nbsp;·&nbsp; Vibe</p>
-  <div class="hero-date-badge" id="hero-date-badge"><span>March 28, 2026</span>&nbsp;·&nbsp;6:00 PM Onwards&nbsp;·&nbsp;<span>Hyderabad</span></div>
-  <div class="hero-cta" id="hero-cta">
-    <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" id="hero-register-btn">🎟 Register Now</a>
+  <p class="hero-sub" id="hero-sub">Sing &nbsp;·&nbsp; Jam &nbsp;·&nbsp; Vibe</p>
+  <div class="hero-date-badge"><span id="hero-date">March 28, 2026</span>&nbsp;·&nbsp;<span id="hero-time-label">6:00 PM Onwards</span>&nbsp;·&nbsp;<span>Hyderabad</span></div>
+  <div class="hero-cta">
+    <a class="btn-primary" id="hero-cta-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a>
     <a class="btn-outline" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">Join Community</a>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -684,6 +678,35 @@ nav{padding:14px 16px;}
 
 <div class="wave-section"><canvas id="wave-canvas"></canvas></div>
 
+<!-- COUNTDOWN (hidden on event day / post event) -->
+<section class="countdown-section" id="countdown-section">
+  <div class="container" style="text-align:center;">
+    <div class="reveal"><span class="section-label">Event Starts In</span><h2 class="section-title">COUNTING<br>DOWN</h2></div>
+    <div class="countdown-grid reveal">
+      <div class="count-block"><div class="count-number" id="cd-days">--</div><div class="count-label">Days</div></div>
+      <div class="count-sep">:</div>
+      <div class="count-block"><div class="count-number" id="cd-hrs">--</div><div class="count-label">Hours</div></div>
+      <div class="count-sep">:</div>
+      <div class="count-block"><div class="count-number" id="cd-min">--</div><div class="count-label">Minutes</div></div>
+      <div class="count-sep">:</div>
+      <div class="count-block"><div class="count-number" id="cd-sec">--</div><div class="count-label">Seconds</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE SECTION (shown only during event) -->
+<div id="live-section">
+  <div class="container" style="text-align:center;">
+    <div class="live-badge"><div class="live-dot"></div><div class="live-badge-text">LIVE NOW</div></div>
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);letter-spacing:4px;margin-bottom:8px;">GAANA BAJAANA<br>IS HAPPENING!</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:24px;">McDonald's, Narepally · 6:00 PM – 9:30 PM</p>
+    <div class="live-stats">
+      <div class="live-stat-box"><div class="live-stat-num" id="live-checkin-count">0</div><div class="live-stat-label">Checked In 🎵</div></div>
+      <div class="live-stat-box"><div class="live-stat-num" id="live-reg-display">0</div><div class="live-stat-label">Registered</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- ABOUT -->
 <section style="background:var(--dark2);border-top:1px solid var(--border);" id="about">
   <div class="container">
@@ -692,31 +715,6 @@ nav{padding:14px 16px;}
       <div style="background:var(--dark2);padding:28px 24px;"><div style="font-size:24px;margin-bottom:10px;">🎵</div><div style="font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">Community Platform</div><div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">Gaana Bajaana is a community-driven music platform where people come together to jam, perform, and experience live musical vibes.</div></div>
       <div style="background:var(--dark2);padding:28px 24px;"><div style="font-size:24px;margin-bottom:10px;">🤝</div><div style="font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">Welcoming Spaces</div><div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">We create welcoming spaces for singers, musicians, and music lovers to connect, collaborate, and share their passion for music.</div></div>
       <div style="background:var(--dark2);padding:28px 24px;"><div style="font-size:24px;margin-bottom:10px;">🥁</div><div style="font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">Jam Culture</div><div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">Our aim is to build a vibrant jam culture that brings voices, instruments, and people together.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- COUNTDOWN / LIVE BADGE -->
-<section class="countdown-section" id="countdown-section">
-  <div class="container" style="text-align:center;">
-    <!-- Normal countdown -->
-    <div id="normal-countdown">
-      <div class="reveal"><span class="section-label">Event Starts In</span><h2 class="section-title">COUNTING<br>DOWN</h2></div>
-      <div class="countdown-grid reveal">
-        <div class="count-block"><div class="count-number" id="cd-days">--</div><div class="count-label">Days</div></div>
-        <div class="count-sep">:</div>
-        <div class="count-block"><div class="count-number" id="cd-hrs">--</div><div class="count-label">Hours</div></div>
-        <div class="count-sep">:</div>
-        <div class="count-block"><div class="count-number" id="cd-min">--</div><div class="count-label">Minutes</div></div>
-        <div class="count-sep">:</div>
-        <div class="count-block"><div class="count-number" id="cd-sec">--</div><div class="count-label">Seconds</div></div>
-      </div>
-    </div>
-    <!-- LIVE badge (shown on event day) -->
-    <div class="live-badge-wrap" id="live-mode-display">
-      <div class="live-badge"><div class="live-dot"></div><div class="live-text">GAANA BAJAANA IS LIVE NOW</div></div>
-      <div class="live-checkin-count" id="live-checkin-num">0</div>
-      <div class="live-checkin-label">People are here right now 🎵</div>
     </div>
   </div>
 </section>
@@ -740,19 +738,30 @@ nav{padding:14px 16px;}
     <div class="reveal"><span class="section-label">The Event</span><h2 class="section-title">EVENT<br>DETAILS</h2></div>
     <div class="reveal event-poster-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:36px;">
       <!-- Animated Poster -->
-      <div class="poster-wrap">
+      <div class="poster-container">
         <img src="poster2.jpg" alt="Gaana Bajaana Edition 2" onerror="this.style.display='none'">
-        <div class="poster-countdown-overlay">
-          <div class="poster-event-name">GAANA BAJAANA EDITION 2</div>
-          <div class="poster-cd-label">Starts In</div>
-          <div class="poster-cd-nums">
-            <div class="poster-cd-block"><div class="poster-cd-num" id="pcd-d">--</div><div class="poster-cd-unit">Days</div></div>
-            <div class="poster-cd-sep">:</div>
-            <div class="poster-cd-block"><div class="poster-cd-num" id="pcd-h">--</div><div class="poster-cd-unit">Hrs</div></div>
-            <div class="poster-cd-sep">:</div>
-            <div class="poster-cd-block"><div class="poster-cd-num" id="pcd-m">--</div><div class="poster-cd-unit">Min</div></div>
-            <div class="poster-cd-sep">:</div>
-            <div class="poster-cd-block"><div class="poster-cd-num" id="pcd-s">--</div><div class="poster-cd-unit">Sec</div></div>
+        <div class="poster-overlay">
+          <!-- PRE-EVENT countdown overlay -->
+          <div id="poster-pre">
+            <div class="poster-overlay-label">Event begins in</div>
+            <div class="poster-countdown-nums">
+              <div class="poster-count-block"><div class="poster-count-num" id="p-days">--</div><div class="poster-count-label">Days</div></div>
+              <div class="poster-sep">:</div>
+              <div class="poster-count-block"><div class="poster-count-num" id="p-hrs">--</div><div class="poster-count-label">Hrs</div></div>
+              <div class="poster-sep">:</div>
+              <div class="poster-count-block"><div class="poster-count-num" id="p-min">--</div><div class="poster-count-label">Min</div></div>
+              <div class="poster-sep">:</div>
+              <div class="poster-count-block"><div class="poster-count-num" id="p-sec">--</div><div class="poster-count-label">Sec</div></div>
+            </div>
+          </div>
+          <!-- LIVE overlay -->
+          <div id="poster-live" style="display:none;">
+            <div class="poster-live-badge"><div class="poster-live-dot"></div><div class="poster-live-text">LIVE NOW 🎵</div></div>
+          </div>
+          <!-- POST-EVENT overlay -->
+          <div id="poster-post" style="display:none;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:var(--gold);">EDITION 2 ✓</div>
+            <div style="font-size:11px;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-top:4px;">SOLD OUT · THANK YOU HYDERABAD</div>
           </div>
         </div>
       </div>
@@ -766,7 +775,7 @@ nav{padding:14px 16px;}
           <div class="event-detail-item"><div class="event-detail-key">Experience</div><div class="event-detail-val">Sing · Jam · Vibe</div></div>
           <div class="event-detail-item"><div class="event-detail-key">Entry Fee</div><div class="event-detail-val gold">₹99 Early Bird · ₹149 Regular</div></div>
         </div>
-        <div style="margin-top:20px;"><a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Get Your Pass →</a></div>
+        <div style="margin-top:20px;"><a class="btn-primary" id="event-cta" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Get Your Pass →</a></div>
       </div>
     </div>
   </div>
@@ -778,7 +787,7 @@ nav{padding:14px 16px;}
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Memories</span>
       <h2 class="section-title">PHOTO<br>GALLERY</h2>
-      <p style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:-8px;">Moments from our last jam session</p>
+      <p style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:-8px;">Moments from our jam sessions</p>
     </div>
     <div class="gallery-grid reveal" id="gallery-grid-dynamic">
       <div class="gallery-item" onclick="openLightbox(this)"><img src="photo1.jpg" alt="Jam Session" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>View Photo</span></div></div>
@@ -789,35 +798,35 @@ nav{padding:14px 16px;}
       <div class="gallery-item" onclick="openLightbox(this)"><img src="photo6.jpg" alt="Jam Session" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>View Photo</span></div></div>
     </div>
 
-    <!-- Direct File Upload Form -->
+    <!-- DIRECT PHOTO UPLOAD (Firebase Storage) -->
     <div style="max-width:520px;margin:40px auto 0;">
-      <div id="photo-upload-form" style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;">
+      <div id="photo-form" style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;">
         <div style="text-align:center;margin-bottom:20px;">
           <span class="section-label">Share Your Memory</span>
           <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#fff;margin:4px 0;">SUBMIT A PHOTO</h3>
-          <p style="font-size:11px;color:rgba(255,255,255,0.3);">Choose from your gallery or camera — we'll review and add to the gallery!</p>
+          <p style="font-size:11px;color:rgba(255,255,255,0.3);">Choose from your gallery or camera · We'll review before publishing</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <input id="photo-name-up" type="text" placeholder="Your Name *" class="gb-input">
-          <input id="photo-caption-up" type="text" placeholder="Caption (optional)" class="gb-input">
-          <!-- File picker button -->
-          <div class="upload-btn" onclick="document.getElementById('file-input').click()">
-            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-            <p><strong>Tap to upload photo</strong><br>Choose from gallery or camera</p>
-          </div>
-          <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(this)">
-          <div id="file-preview" style="display:none;border-radius:10px;overflow:hidden;border:1px solid var(--border);"><img id="preview-img" style="width:100%;max-height:200px;object-fit:cover;display:block;"></div>
+          <input id="photo-name-input" type="text" placeholder="Your Name *" class="gb-input">
+          <input id="photo-caption-input" type="text" placeholder="Caption — e.g. Jamming with the band!" class="gb-input">
+          <!-- File Upload -->
+          <label class="file-upload-label" for="photo-file-input" id="file-label">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span id="file-label-text">📸 Choose Photo from Gallery / Camera</span>
+          </label>
+          <input type="file" id="photo-file-input" accept="image/*" onchange="onFileSelected(this)">
+          <!-- Upload progress -->
           <div class="upload-progress-wrap" id="upload-progress-wrap">
-            <div class="upload-progress-bar" id="upload-progress-bar"></div>
+            <div class="upload-progress-bar"><div class="upload-progress-fill" id="upload-fill"></div></div>
+            <div class="upload-progress-text" id="upload-progress-text">Uploading... 0%</div>
           </div>
-          <div id="upload-status" style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;display:none;"></div>
-          <button id="photo-upload-btn" onclick="uploadPhotoFile()" class="btn-primary" style="padding:13px;border-radius:10px;font-size:13px;display:none;">📸 Submit Photo →</button>
+          <button id="photo-submit-btn" onclick="submitPhoto()" class="btn-primary" style="padding:13px;border-radius:10px;font-size:13px;" disabled>📸 Submit Photo →</button>
         </div>
       </div>
-      <div id="photo-upload-success" style="display:none;text-align:center;padding:28px;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:16px;">
+      <div id="photo-success" style="display:none;text-align:center;padding:28px;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:16px;">
         <div style="font-size:36px;margin-bottom:8px;">📸</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;">PHOTO SUBMITTED!</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">It will appear in the gallery once we approve it.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">It will appear in the gallery once approved.</div>
       </div>
     </div>
   </div>
@@ -848,27 +857,39 @@ nav{padding:14px 16px;}
 <section id="vote" style="border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal" style="text-align:center;">
-      <span class="section-label">Tell Us What To Play</span>
-      <h2 class="section-title">VOTE YOUR<br>SONGS 🗳️</h2>
-      <p style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:-8px;">Top voted songs get played on event day · Live results update instantly</p>
+      <span class="section-label">Community Choice</span>
+      <h2 class="section-title">SONG<br>VOTE 🎵</h2>
+      <p style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:-8px;">Vote for songs you want played at the event — top songs get priority!</p>
     </div>
-    <div class="reveal" style="max-width:700px;margin:32px auto 0;">
-      <!-- Add song form -->
-      <div class="song-submit-row">
-        <input class="song-input" id="song-title-inp" type="text" placeholder="Song name *" maxlength="60">
-        <input class="song-input" id="song-artist-inp" type="text" placeholder="Artist / Film" maxlength="40">
-        <button class="add-song-btn" onclick="addSongVote()">+ Add &amp; Vote</button>
+    <!-- Submit a song -->
+    <div style="max-width:600px;margin:32px auto 0;" class="reveal">
+      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div class="song-input-row">
+          <input id="vote-song" type="text" placeholder="Song name *" class="gb-input" style="flex:2;" onkeydown="if(event.key==='Enter')submitSongVote()">
+          <input id="vote-artist" type="text" placeholder="Artist name" class="gb-input" style="flex:1;" onkeydown="if(event.key==='Enter')submitSongVote()">
+          <button onclick="submitSongVote()" class="btn-primary" style="padding:13px 24px;border-radius:10px;white-space:nowrap;">Add Vote →</button>
+        </div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px;margin-top:-4px;">You can vote for multiple songs. Each song gets one vote per device.</p>
       </div>
-      <!-- Live leaderboard -->
-      <div id="song-vote-list" class="song-vote-list">
-        <div style="text-align:center;padding:40px;color:rgba(255,255,255,0.2);font-size:13px;">🎵 Be the first to suggest a song!</div>
+    </div>
+    <!-- Live leaderboard -->
+    <div style="max-width:700px;margin:24px auto 0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:rgba(255,255,255,0.4);">LIVE LEADERBOARD</div>
+        <div id="total-votes-display" style="font-size:12px;color:rgba(255,255,255,0.25);letter-spacing:2px;"></div>
+      </div>
+      <div class="song-leaderboard" id="song-leaderboard">
+        <div style="text-align:center;padding:40px;color:rgba(255,255,255,0.2);">
+          <div style="font-size:36px;margin-bottom:8px;">🎵</div>
+          <div style="font-size:13px;letter-spacing:1px;">Be the first to request a song!</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- VIBES -->
-<section id="vibes" style="border-top:1px solid var(--border);">
+<section id="vibes" style="background:var(--dark2);border-top:1px solid var(--border);">
   <div class="container">
     <div class="reveal" style="text-align:center;"><span class="section-label">From Last Time</span><h2 class="section-title">CATCH THE<br>VIBES 🎥</h2></div>
     <div class="reels-grid reveal">
@@ -878,55 +899,55 @@ nav{padding:14px 16px;}
   </div>
 </section>
 
-<!-- TESTIMONIALS — SCROLLING STRIP -->
-<section style="background:var(--dark2);border-top:1px solid var(--border);">
+<!-- TESTIMONIALS (scrolling strip) -->
+<section style="border-top:1px solid var(--border);padding-bottom:40px;">
   <div class="container">
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Heard It From Them</span>
       <h2 class="section-title">WHAT PEOPLE<br>SAY</h2>
-      <p style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:-10px;letter-spacing:1px;">Hover to pause · Scroll to read</p>
     </div>
-    <!-- Scrolling testimonials strip -->
-    <div class="testi-scroll-wrap reveal">
-      <div class="testi-scroll-track" id="testi-scroll-track">
-        <!-- Default testimonials — Firebase approved ones append here -->
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Even though it was a low-budget session, it had everything you'd want — great music, passionate people, and a relaxed vibe where everyone could just enjoy singing together.</div><div class="testi-author"><div class="testi-avatar">GV</div><div><div class="testi-name">Golla Vedant</div><div class="testi-handle">Student · Attendee</div></div></div></div>
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Gaana Bajaana finally gave me the chance to experience what I had been missing — good music, fun moments, and a much-needed break from the routine. Really appreciate the team!</div><div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kavya</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">As an introvert I just agreed to go with my friend. But I actually enjoyed and sang along to almost every song! It's a core memory now. Totally recommend!</div><div class="testi-author"><div class="testi-avatar">SG</div><div><div class="testi-name">Sameeksha &amp; Gouthami</div><div class="testi-handle">Students · Attendees</div></div></div></div>
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">I need a day like Gaana Bajaana in every month of my life. Such a blissful place for all the music lovers.</div><div class="testi-author"><div class="testi-avatar">AB</div><div><div class="testi-name">Abhay</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
-        <!-- duplicated for seamless loop — more added by Firebase -->
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Even though it was a low-budget session, it had everything you'd want — great music, passionate people, and a relaxed vibe where everyone could just enjoy singing together.</div><div class="testi-author"><div class="testi-avatar">GV</div><div><div class="testi-name">Golla Vedant</div><div class="testi-handle">Student · Attendee</div></div></div></div>
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Gaana Bajaana finally gave me the chance to experience what I had been missing — good music, fun moments, and a much-needed break from the routine.</div><div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kavya</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">As an introvert I just agreed to go with my friend. But I actually enjoyed and sang along to almost every song! Totally recommend!</div><div class="testi-author"><div class="testi-avatar">SG</div><div><div class="testi-name">Sameeksha &amp; Gouthami</div><div class="testi-handle">Students · Attendees</div></div></div></div>
-        <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">I need a day like Gaana Bajaana in every month of my life. Such a blissful place for all the music lovers.</div><div class="testi-author"><div class="testi-avatar">AB</div><div><div class="testi-name">Abhay</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
-      </div>
+  </div>
+  <!-- Full width scrolling strip -->
+  <div class="testi-scroll-wrap reveal" id="testi-scroll-container">
+    <div class="testi-scroll-track" id="testi-scroll-track">
+      <!-- Default testimonials — always present -->
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Even though it was a low-budget session, it had everything you'd want — great music, passionate people, and a relaxed vibe where everyone could just enjoy singing together.</div><div class="testi-author"><div class="testi-avatar">GV</div><div><div class="testi-name">Golla Vedant</div><div class="testi-handle">Student · Attendee</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Gaana Bajaana finally gave me the chance to experience what I had been missing — good music, fun moments, and a much-needed break from the routine.</div><div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kavya</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">As an introvert I just agreed to go with my friend. But I actually enjoyed and sang along to almost every song! It's a core memory now. Totally recommend!</div><div class="testi-author"><div class="testi-avatar">SG</div><div><div class="testi-name">Sameeksha &amp; Gouthami</div><div class="testi-handle">Students · Attendees</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">I need a day like Gaana Bajaana in every month of my life. Such a blissful place for all the music lovers.</div><div class="testi-author"><div class="testi-avatar">AB</div><div><div class="testi-name">Abhay</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
+      <!-- Firebase approved testimonials append here via JS -->
     </div>
-
-    <!-- Submit review form -->
+  </div>
+  <!-- Submit review -->
+  <div class="container">
     <div style="max-width:600px;margin:32px auto 0;">
-      <div id="testi-form" style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:24px;">
-        <div style="text-align:center;margin-bottom:18px;">
-          <span class="section-label">Attended Edition 1?</span>
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;margin:4px 0;">LEAVE A REVIEW</h3>
+      <div id="testi-form" style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;">
+        <div style="text-align:center;margin-bottom:20px;">
+          <span class="section-label">Share Your Experience</span>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#fff;margin:4px 0;">ATTENDED EDITION 1?</h3>
+          <p style="font-size:12px;color:rgba(255,255,255,0.35);">Leave a review — it might appear on our website!</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
           <input id="testi-name" type="text" placeholder="Your Name *" class="gb-input">
           <input id="testi-handle" type="text" placeholder="Your role (e.g. Guitarist · Attendee)" class="gb-input">
-          <div style="display:flex;gap:10px;" id="star-row">
-            <span class="rate-star" onclick="setRating(1)" style="font-size:26px;cursor:none;color:var(--gold);">★</span>
-            <span class="rate-star" onclick="setRating(2)" style="font-size:26px;cursor:none;color:var(--gold);">★</span>
-            <span class="rate-star" onclick="setRating(3)" style="font-size:26px;cursor:none;color:var(--gold);">★</span>
-            <span class="rate-star" onclick="setRating(4)" style="font-size:26px;cursor:none;color:var(--gold);">★</span>
-            <span class="rate-star" onclick="setRating(5)" style="font-size:26px;cursor:none;color:var(--gold);">★</span>
+          <div>
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Rating</div>
+            <div style="display:flex;gap:10px;">
+              <span class="rate-star" onclick="setRating(1)" style="font-size:28px;cursor:none;color:var(--gold);">★</span>
+              <span class="rate-star" onclick="setRating(2)" style="font-size:28px;cursor:none;color:var(--gold);">★</span>
+              <span class="rate-star" onclick="setRating(3)" style="font-size:28px;cursor:none;color:var(--gold);">★</span>
+              <span class="rate-star" onclick="setRating(4)" style="font-size:28px;cursor:none;color:var(--gold);">★</span>
+              <span class="rate-star" onclick="setRating(5)" style="font-size:28px;cursor:none;color:var(--gold);">★</span>
+            </div>
           </div>
           <textarea id="testi-text" placeholder="Share your experience *" rows="3" class="gb-input" style="resize:vertical;"></textarea>
-          <button id="testi-submit" onclick="submitTestimonial()" class="btn-primary" style="padding:12px;border-radius:10px;font-size:13px;">Submit Review →</button>
+          <button id="testi-submit" onclick="submitTestimonial()" class="btn-primary" style="padding:13px;border-radius:10px;font-size:13px;">Submit Review →</button>
         </div>
       </div>
-      <div id="testi-form-success" style="display:none;text-align:center;padding:24px;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:16px;">
+      <div id="testi-form-success" style="display:none;text-align:center;padding:28px;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:16px;">
         <div style="font-size:32px;margin-bottom:8px;">🎵</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;">THANKS!</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">Your review will appear once approved.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">Your review appears once approved.</div>
       </div>
     </div>
   </div>
@@ -961,12 +982,12 @@ nav{padding:14px 16px;}
         <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor4.png" alt="Sponsor 4" onerror="this.style.opacity='0'"></a>
         <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor5.png" alt="Sponsor 5" onerror="this.style.opacity='0'"></a>
         <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor6.png" alt="Sponsor 6" onerror="this.style.opacity='0'"></a>
-        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor1.png" alt="Sponsor 1" onerror="this.style.opacity='0'"></a>
-        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor2.png" alt="Sponsor 2" onerror="this.style.opacity='0'"></a>
-        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor3.png" alt="Sponsor 3" onerror="this.style.opacity='0'"></a>
-        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor4.png" alt="Sponsor 4" onerror="this.style.opacity='0'"></a>
-        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor5.png" alt="Sponsor 5" onerror="this.style.opacity='0'"></a>
-        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor6.png" alt="Sponsor 6" onerror="this.style.opacity='0'"></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor1.png" alt="" onerror="this.style.opacity='0'"></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor2.png" alt="" onerror="this.style.opacity='0'"></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor3.png" alt="" onerror="this.style.opacity='0'"></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor4.png" alt="" onerror="this.style.opacity='0'"></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor5.png" alt="" onerror="this.style.opacity='0'"></a>
+        <a class="sponsor-card" href="https://yoursponsorswebsite.com" target="_blank"><img src="sponsor6.png" alt="" onerror="this.style.opacity='0'"></a>
       </div>
     </div>
     <div class="sponsor-cta reveal">
@@ -976,11 +997,11 @@ nav{padding:14px 16px;}
   </div>
 </section>
 
-<!-- REGISTER -->
+<!-- REGISTER + LIVE COUNTER + WHATSAPP REMINDER -->
 <section class="register-section" id="register">
   <div class="container">
     <div class="register-inner">
-      <div class="reveal">
+      <div class="reveal" id="register-title-wrap">
         <span class="section-label">Grab Your Spot</span>
         <h2 class="section-title">HOW TO<br>GET IN</h2>
         <p style="color:rgba(255,255,255,0.4);font-size:14px;line-height:1.7;margin-top:10px;">Early Bird: ₹99 &nbsp;·&nbsp; Regular: ₹149</p>
@@ -998,24 +1019,29 @@ nav{padding:14px 16px;}
           </div>
         </div>
       </div>
-      <div class="steps-row reveal">
+      <div class="steps-row reveal" id="steps-row">
         <div class="step"><div class="step-num">1</div><div class="step-text">Register</div></div>
         <div class="step"><div class="step-num">2</div><div class="step-text">Receive entry pass</div></div>
         <div class="step"><div class="step-num">3</div><div class="step-text">Show at entry</div></div>
       </div>
-      <div class="reveal"><a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a></div>
-
-      <!-- WhatsApp Reminder Opt-in -->
-      <div class="wa-optin-box reveal" style="margin-top:32px;text-align:left;">
-        <div class="wa-optin-title">📲 Get Event Reminders</div>
-        <div class="wa-optin-sub">Enter your WhatsApp number to receive a reminder the day before the event. Zero spam — one message only.</div>
-        <div class="wa-optin-row">
-          <input class="wa-optin-input" id="optin-name" type="text" placeholder="Your Name">
-          <input class="wa-optin-input" id="optin-phone" type="tel" placeholder="+91 XXXXX XXXXX">
-          <button class="wa-optin-btn" onclick="submitReminder()">Remind Me</button>
-        </div>
-        <div id="optin-success" style="display:none;font-size:12px;color:#25D366;margin-top:10px;letter-spacing:1px;">✅ You'll receive a reminder before the event!</div>
+      <div class="reveal" id="register-btn-wrap">
+        <a class="btn-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a>
       </div>
+
+      <!-- WHATSAPP REMINDER OPT-IN -->
+      <div class="reminder-form reveal" id="reminder-section">
+        <div class="reminder-title">📲 Get a Reminder</div>
+        <div class="reminder-sub">Already registered? Leave your number and we'll send you a WhatsApp reminder the day before the event.</div>
+        <div id="reminder-form-inner" style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <input id="reminder-name" type="text" placeholder="Your Name *" class="gb-input" style="flex:1;min-width:140px;">
+            <input id="reminder-phone" type="tel" placeholder="WhatsApp Number *" class="gb-input" style="flex:1;min-width:140px;">
+          </div>
+          <button onclick="submitReminder()" class="btn-primary" style="padding:13px;border-radius:10px;font-size:13px;background:linear-gradient(135deg,#25D366,#128C7E);">💬 Remind Me →</button>
+        </div>
+        <div id="reminder-success" style="display:none;text-align:center;padding:16px;font-size:13px;color:#25D366;letter-spacing:1px;">✅ You'll receive a WhatsApp reminder before the event!</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1043,19 +1069,20 @@ nav{padding:14px 16px;}
     </div>
     <!-- Contact Form -->
     <div id="contact-form-wrap" style="margin-top:32px;max-width:600px;margin-left:auto;margin-right:auto;">
-      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:24px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:#fff;margin-bottom:16px;">SEND A MESSAGE</div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;margin-bottom:18px;">SEND A MESSAGE</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
           <input id="cf-name" type="text" placeholder="Your Name *" class="gb-input">
           <input id="cf-email" type="email" placeholder="Email Address *" class="gb-input">
           <textarea id="cf-message" placeholder="Your Message *" rows="4" class="gb-input" style="resize:vertical;"></textarea>
-          <button id="cf-submit" onclick="submitContactForm()" class="btn-primary" style="padding:12px;border-radius:10px;font-size:13px;">Send Message →</button>
+          <button id="cf-submit" onclick="submitContactForm()" class="btn-primary" style="padding:13px;border-radius:10px;font-size:13px;">Send Message →</button>
         </div>
       </div>
     </div>
-    <div id="contact-success" style="display:none;text-align:center;padding:24px;background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:16px;max-width:600px;margin:16px auto 0;">
-      <div style="font-size:28px;margin-bottom:8px;">✅</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;">MESSAGE SENT!</div>
+    <div id="contact-success" style="display:none;text-align:center;padding:28px;background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:16px;max-width:600px;margin:16px auto 0;">
+      <div style="font-size:32px;margin-bottom:8px;">✅</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;">MESSAGE SENT!</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">We'll get back to you within 24 hours.</div>
     </div>
   </div>
 </section>
@@ -1070,8 +1097,8 @@ nav{padding:14px 16px;}
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#gallery">Gallery</a>
+      <a href="#vote">Song Vote</a>
       <a href="#timeline">Schedule</a>
-      <a href="#vote">Vote Songs</a>
       <a href="#register">Register</a>
       <a href="#" onclick="openModal('team-modal');return false;">Team</a>
       <a href="#" onclick="openModal('editions-modal');return false;">Past Editions</a>
@@ -1085,123 +1112,8 @@ nav{padding:14px 16px;}
 </footer>
 
 <script>
-/* ── LOADER ──────────────────────────────────────────────── */
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},1900);});
-
-/* ── CURSOR ──────────────────────────────────────────────── */
-const cur=document.getElementById('cursor'),trail=document.getElementById('cursor-trail');
-let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';});
-(function animC(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=(tx-15)+'px';trail.style.top=(ty-15)+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button,.faq-q,.gallery-item,.modal-close,.rate-star,.vote-btn,.add-song-btn').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(3)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
-
-/* ── HAMBURGER ───────────────────────────────────────────── */
-function toggleMobileMenu(){const m=document.getElementById('mobile-menu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('active');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
-function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('active');document.body.style.overflow='';}
-
-/* ── MODALS ──────────────────────────────────────────────── */
-function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';document.getElementById(id).scrollTop=0;}
-function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();['team-modal','editions-modal','faq-modal'].forEach(id=>closeModal(id));}});
-['team-modal','editions-modal','faq-modal'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)closeModal(id);});});
-
-/* ── BG PARTICLES ────────────────────────────────────────── */
-const bgC=document.getElementById('bg-canvas'),bgX=bgC.getContext('2d');
-bgC.width=window.innerWidth;bgC.height=window.innerHeight;
-const notes=['♩','♪','♫','♬','𝄞'];
-let pts=[];
-for(let i=0;i<55;i++)pts.push({x:Math.random()*bgC.width,y:Math.random()*bgC.height,size:Math.random()*12+6,speed:Math.random()*0.4+0.1,opacity:Math.random()*0.12+0.02,note:notes[Math.floor(Math.random()*notes.length)],drift:(Math.random()-0.5)*0.3});
-(function animB(){bgX.clearRect(0,0,bgC.width,bgC.height);pts.forEach(p=>{p.y-=p.speed;p.x+=p.drift;if(p.y<-30)p.y=bgC.height+30;if(p.x<-30)p.x=bgC.width+30;if(p.x>bgC.width+30)p.x=-30;bgX.save();bgX.globalAlpha=p.opacity;bgX.fillStyle='#F5C842';bgX.font=p.size+'px serif';bgX.fillText(p.note,p.x,p.y);bgX.restore();});requestAnimationFrame(animB);})();
-window.addEventListener('resize',()=>{bgC.width=window.innerWidth;bgC.height=window.innerHeight;});
-
-/* ── WAVEFORM ────────────────────────────────────────────── */
-const wC=document.getElementById('wave-canvas'),wX=wC.getContext('2d');
-let phase=0;
-(function dW(){const W=wC.width=wC.offsetWidth,H=wC.height=wC.offsetHeight;wX.clearRect(0,0,W,H);wX.beginPath();for(let x=0;x<=W;x++){const y=H/2+Math.sin(x*0.03+phase)*14+Math.sin(x*0.07+phase*1.3)*7+Math.sin(x*0.015+phase*0.5)*10;x===0?wX.moveTo(x,y):wX.lineTo(x,y);}const g=wX.createLinearGradient(0,0,W,0);g.addColorStop(0,'rgba(245,200,66,0)');g.addColorStop(0.2,'rgba(245,200,66,0.8)');g.addColorStop(0.5,'rgba(232,144,10,1)');g.addColorStop(0.8,'rgba(255,87,51,0.8)');g.addColorStop(1,'rgba(255,87,51,0)');wX.strokeStyle=g;wX.lineWidth=2;wX.stroke();phase+=0.025;requestAnimationFrame(dW);})();
-
-/* ── EVENT MODE CHECK ────────────────────────────────────── */
-// Event: March 28, 2026, 6:00 PM - 9:30 PM IST
-const EVENT_START = new Date('2026-03-28T18:00:00+05:30');
-const EVENT_END   = new Date('2026-03-28T21:30:00+05:30');
-
-function checkEventMode(){
-  const now=new Date();
-  if(now>=EVENT_START && now<=EVENT_END){
-    // LIVE MODE
-    document.getElementById('normal-countdown').style.display='none';
-    document.getElementById('live-mode-display').style.display='flex';
-    document.getElementById('hero-date-badge').innerHTML='<span style="color:#ff6060">🔴 HAPPENING NOW</span>';
-    document.getElementById('hero-register-btn').textContent='🎵 We\'re Live!';
-  } else if(now>EVENT_END){
-    // POST-EVENT MODE
-    document.getElementById('post-event-banner').style.display='block';
-    document.getElementById('hero-register-btn').textContent='🎵 See you at Edition 3!';
-    document.getElementById('hero-register-btn').removeAttribute('href');
-    document.getElementById('normal-countdown').style.display='none';
-    document.getElementById('live-mode-display').style.display='none';
-    document.getElementById('countdown-section').style.display='none';
-  }
-}
-checkEventMode();
-setInterval(checkEventMode, 30000); // re-check every 30s
-
-/* ── COUNTDOWN ───────────────────────────────────────────── */
-function updateCD(){
-  const d=EVENT_START.getTime()-Date.now();
-  if(d<=0){['cd-days','cd-hrs','cd-min','cd-sec','pcd-d','pcd-h','pcd-m','pcd-s'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='00';});return;}
-  const pad=n=>String(Math.floor(n)).padStart(2,'0');
-  const days=Math.floor(d/864e5);
-  const hrs=Math.floor((d%864e5)/36e5);
-  const min=Math.floor((d%36e5)/6e4);
-  const sec=Math.floor((d%6e4)/1000);
-  document.getElementById('cd-days').textContent=pad(days);
-  document.getElementById('cd-hrs').textContent=pad(hrs);
-  document.getElementById('cd-min').textContent=pad(min);
-  document.getElementById('cd-sec').textContent=pad(sec);
-  // Poster countdown
-  document.getElementById('pcd-d').textContent=pad(days);
-  document.getElementById('pcd-h').textContent=pad(hrs);
-  document.getElementById('pcd-m').textContent=pad(min);
-  document.getElementById('pcd-s').textContent=pad(sec);
-}
-updateCD();setInterval(updateCD,1000);
-
-/* ── REVEAL ──────────────────────────────────────────────── */
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-/* ── STAT COUNTERS ───────────────────────────────────────── */
-function animateStats(){document.querySelectorAll('.stat-num[data-target]').forEach(el=>{const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',duration=1600,start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1),ease=1-Math.pow(1-progress,3);el.textContent=Math.floor(ease*target)+suffix;if(progress<1)requestAnimationFrame(step);else el.textContent=target+suffix;}requestAnimationFrame(step);});}
-const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)animateStats();});},{threshold:0.3});
-const statsGrid=document.getElementById('stats-grid');
-if(statsGrid)statsObs.observe(statsGrid);
-
-/* ── MUSIC ───────────────────────────────────────────────── */
-const audio=document.getElementById('bg-music');
-const pI=document.getElementById('icon-play'),paI=document.getElementById('icon-pause'),mS=document.getElementById('music-status'),mB=document.getElementById('music-bars');
-let playing=false;audio.volume=0.6;
-function toggleMusic(){if(playing){audio.pause();playing=false;pI.style.display='block';paI.style.display='none';mS.textContent='Paused';mB.classList.remove('playing');}else{audio.play().then(()=>{playing=true;pI.style.display='none';paI.style.display='block';mS.textContent='Now Playing';mB.classList.add('playing');}).catch(()=>{mS.textContent='Click to play';});}}
-function setVolume(v){audio.volume=v/100;}
-let ap=false;document.addEventListener('click',function(){if(!ap){ap=true;audio.play().then(()=>{playing=true;pI.style.display='none';paI.style.display='block';mS.textContent='Now Playing';mB.classList.add('playing');}).catch(()=>{});}},{once:true});
-
-/* ── FAQ ─────────────────────────────────────────────────── */
-function toggleFaq(el){const item=el.parentElement;document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open');});item.classList.toggle('open');}
-
-/* ── GALLERY ─────────────────────────────────────────────── */
-function openLightbox(el){const img=el.querySelector('img');if(!img||!img.complete||img.naturalWidth===0)return;document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
-
-/* ── SHARE ───────────────────────────────────────────────── */
-const siteURL=encodeURIComponent(window.location.href);
-const shareMsg=encodeURIComponent('🎵 Check out Gaana Bajaana — an intimate music jam in Hyderabad! Register now 👇');
-document.getElementById('share-wa').href=`https://wa.me/?text=${shareMsg}%20${siteURL}`;
-let shareOpen=false;
-function toggleSharePopup(){shareOpen=!shareOpen;document.getElementById('share-popup').classList.toggle('open',shareOpen);}
-document.addEventListener('click',e=>{if(!e.target.closest('#share-btn')&&!e.target.closest('#share-popup')){shareOpen=false;document.getElementById('share-popup').classList.remove('open');}});
-function copyLink(e){e.preventDefault();navigator.clipboard.writeText(window.location.href).then(()=>{const lbl=document.getElementById('copy-label');lbl.textContent='Copied!';setTimeout(()=>{lbl.textContent='Copy Link';},2000);});}
-
 /* ============================================================
-   FIREBASE
+   FIREBASE CONFIG
    ============================================================ */
 firebase.initializeApp({
   apiKey:            "AIzaSyDL7R7tT8RtXe8N4MI_iZXvDxMfbn95rXQ",
@@ -1211,10 +1123,195 @@ firebase.initializeApp({
   messagingSenderId: "211802419467",
   appId:             "1:211802419467:web:6da1d0673a80278759720e"
 });
-const db=firebase.firestore();
-const storage=firebase.storage();
+const db = firebase.firestore();
+const storage = firebase.storage();
 
-/* ── CONTACT FORM ────────────────────────────────────────── */
+/* ============================================================
+   EVENT MODE — PRE / LIVE / POST
+   ============================================================ */
+const EVENT_START = new Date('March 28, 2026 18:00:00').getTime();
+const EVENT_END   = new Date('March 28, 2026 21:30:00').getTime();
+
+function getEventMode() {
+  const now = Date.now();
+  if (now >= EVENT_START && now <= EVENT_END) return 'LIVE';
+  if (now > EVENT_END) return 'POST';
+  return 'PRE';
+}
+
+function applyEventMode() {
+  const mode = getEventMode();
+  const cdSection = document.getElementById('countdown-section');
+  const liveSection = document.getElementById('live-section');
+  const postBanner = document.getElementById('post-event-banner');
+  const posterPre = document.getElementById('poster-pre');
+  const posterLive = document.getElementById('poster-live');
+  const posterPost = document.getElementById('poster-post');
+  const heroCta = document.getElementById('hero-cta-primary');
+  const eventCta = document.getElementById('event-cta');
+  const heroEyebrow = document.getElementById('hero-eyebrow');
+  const heroSub = document.getElementById('hero-sub');
+  const heroBadge = document.getElementById('hero-date');
+  const heroTimeLabel = document.getElementById('hero-time-label');
+  const reminderSection = document.getElementById('reminder-section');
+
+  if (mode === 'LIVE') {
+    cdSection.style.display = 'none';
+    liveSection.style.display = 'block';
+    posterPre.style.display = 'none';
+    posterLive.style.display = 'block';
+    heroBadge.textContent = '🔴 LIVE NOW';
+    heroTimeLabel.textContent = 'Happening Right Now';
+    if(heroCta){ heroCta.textContent = '🎵 We\'re Live!'; heroCta.removeAttribute('href'); heroCta.style.opacity='0.6'; heroCta.style.cursor='default'; }
+    if(reminderSection) reminderSection.style.display='none';
+
+  } else if (mode === 'POST') {
+    cdSection.style.display = 'none';
+    liveSection.style.display = 'none';
+    postBanner.style.display = 'block';
+    posterPre.style.display = 'none';
+    posterPost.style.display = 'block';
+    heroEyebrow.textContent = '🎵 Thank You Hyderabad';
+    heroSub.textContent = 'See You · At · Edition 3';
+    heroBadge.textContent = 'Edition 2 · Was Incredible';
+    heroTimeLabel.textContent = 'March 28, 2026';
+    if(heroCta){ heroCta.textContent = '💬 Join Community'; heroCta.href='https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD'; heroCta.target='_blank'; }
+    if(eventCta){ eventCta.textContent = '📸 View Gallery'; eventCta.href='#gallery'; }
+    if(reminderSection) reminderSection.style.display='none';
+    // Hide registration section title, show thank you
+    const regTitleWrap = document.getElementById('register-title-wrap');
+    const stepsRow = document.getElementById('steps-row');
+    const regBtnWrap = document.getElementById('register-btn-wrap');
+    if(regTitleWrap) regTitleWrap.innerHTML = '<span class="section-label">Edition 2</span><h2 class="section-title">SOLD OUT<br>✓ THANK YOU!</h2><p style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:10px;">Edition 2 was an incredible night. See you at Edition 3!</p>';
+    if(stepsRow) stepsRow.style.display='none';
+    if(regBtnWrap) regBtnWrap.innerHTML='<a class="btn-outline" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">Join Community for Edition 3 →</a>';
+
+  } else {
+    // PRE — default state
+    cdSection.style.display = 'block';
+    liveSection.style.display = 'none';
+    posterPre.style.display = 'block';
+  }
+}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},1900);});
+
+/* ============================================================
+   CURSOR
+   ============================================================ */
+const cur=document.getElementById('cursor'),trail=document.getElementById('cursor-trail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';});
+(function animC(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=(tx-15)+'px';trail.style.top=(ty-15)+'px';requestAnimationFrame(animC);})();
+document.querySelectorAll('a,button,.faq-q,.gallery-item,.modal-close,.rate-star,.vote-btn').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(3)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
+
+/* ============================================================
+   NAV / HAMBURGER
+   ============================================================ */
+function toggleMobileMenu(){const m=document.getElementById('mobile-menu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('active');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('active');document.body.style.overflow='';}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';document.getElementById(id).scrollTop=0;}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();['team-modal','editions-modal','faq-modal'].forEach(id=>closeModal(id));}});
+['team-modal','editions-modal','faq-modal'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)closeModal(id);});});
+
+/* ============================================================
+   BG PARTICLES
+   ============================================================ */
+const bgC=document.getElementById('bg-canvas'),bgX=bgC.getContext('2d');
+bgC.width=window.innerWidth;bgC.height=window.innerHeight;
+const notes=['♩','♪','♫','♬','𝄞'];
+let pts=[];
+for(let i=0;i<55;i++)pts.push({x:Math.random()*bgC.width,y:Math.random()*bgC.height,size:Math.random()*12+6,speed:Math.random()*0.4+0.1,opacity:Math.random()*0.12+0.02,note:notes[Math.floor(Math.random()*notes.length)],drift:(Math.random()-0.5)*0.3});
+(function animB(){bgX.clearRect(0,0,bgC.width,bgC.height);pts.forEach(p=>{p.y-=p.speed;p.x+=p.drift;if(p.y<-30)p.y=bgC.height+30;if(p.x<-30)p.x=bgC.width+30;if(p.x>bgC.width+30)p.x=-30;bgX.save();bgX.globalAlpha=p.opacity;bgX.fillStyle='#F5C842';bgX.font=p.size+'px serif';bgX.fillText(p.note,p.x,p.y);bgX.restore();});requestAnimationFrame(animB);})();
+window.addEventListener('resize',()=>{bgC.width=window.innerWidth;bgC.height=window.innerHeight;});
+
+/* ============================================================
+   WAVEFORM
+   ============================================================ */
+const wC=document.getElementById('wave-canvas'),wX=wC.getContext('2d');
+let phase=0;
+(function dW(){const W=wC.width=wC.offsetWidth,H=wC.height=wC.offsetHeight;wX.clearRect(0,0,W,H);wX.beginPath();for(let x=0;x<=W;x++){const y=H/2+Math.sin(x*0.03+phase)*14+Math.sin(x*0.07+phase*1.3)*7+Math.sin(x*0.015+phase*0.5)*10;x===0?wX.moveTo(x,y):wX.lineTo(x,y);}const g=wX.createLinearGradient(0,0,W,0);g.addColorStop(0,'rgba(245,200,66,0)');g.addColorStop(0.2,'rgba(245,200,66,0.8)');g.addColorStop(0.5,'rgba(232,144,10,1)');g.addColorStop(0.8,'rgba(255,87,51,0.8)');g.addColorStop(1,'rgba(255,87,51,0)');wX.strokeStyle=g;wX.lineWidth=2;wX.stroke();phase+=0.025;requestAnimationFrame(dW);})();
+
+/* ============================================================
+   COUNTDOWN (main + poster overlay)
+   ============================================================ */
+function updateAllCountdowns(){
+  const t=EVENT_START;
+  const d=t-Date.now();
+  if(d<=0){
+    ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='00';});
+    ['p-days','p-hrs','p-min','p-sec'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='00';});
+    return;
+  }
+  const days=String(Math.floor(d/(864e5))).padStart(2,'0');
+  const hrs=String(Math.floor((d%864e5)/36e5)).padStart(2,'0');
+  const min=String(Math.floor((d%36e5)/6e4)).padStart(2,'0');
+  const sec=String(Math.floor((d%6e4)/1000)).padStart(2,'0');
+  ['cd-days','p-days'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=days;});
+  ['cd-hrs','p-hrs'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=hrs;});
+  ['cd-min','p-min'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=min;});
+  ['cd-sec','p-sec'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=sec;});
+}
+updateAllCountdowns();
+setInterval(updateAllCountdowns,1000);
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ============================================================
+   STAT COUNTERS
+   ============================================================ */
+function animateStats(){document.querySelectorAll('.stat-num[data-target]').forEach(el=>{const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',duration=1600,start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1),ease=1-Math.pow(1-progress,3);el.textContent=Math.floor(ease*target)+suffix;if(progress<1)requestAnimationFrame(step);else el.textContent=target+suffix;}requestAnimationFrame(step);});}
+const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)animateStats();});},{threshold:0.3});
+const statsGrid=document.getElementById('stats-grid');
+if(statsGrid)statsObs.observe(statsGrid);
+
+/* ============================================================
+   MUSIC
+   ============================================================ */
+const audio=document.getElementById('bg-music');
+const pI=document.getElementById('icon-play'),paI=document.getElementById('icon-pause'),mS=document.getElementById('music-status'),mB=document.getElementById('music-bars');
+let playing=false;audio.volume=0.6;
+function toggleMusic(){if(playing){audio.pause();playing=false;pI.style.display='block';paI.style.display='none';mS.textContent='Paused';mB.classList.remove('playing');}else{audio.play().then(()=>{playing=true;pI.style.display='none';paI.style.display='block';mS.textContent='Now Playing';mB.classList.add('playing');}).catch(()=>{mS.textContent='Click to play';});}}
+function setVolume(v){audio.volume=v/100;}
+let ap=false;document.addEventListener('click',function(){if(!ap){ap=true;audio.play().then(()=>{playing=true;pI.style.display='none';paI.style.display='block';mS.textContent='Now Playing';mB.classList.add('playing');}).catch(()=>{});}},{once:true});
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+function toggleFaq(el){const item=el.parentElement;document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open');});item.classList.toggle('open');}
+
+/* ============================================================
+   GALLERY LIGHTBOX
+   ============================================================ */
+function openLightbox(el){const img=el.querySelector('img');if(!img||!img.complete||img.naturalWidth===0)return;document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+
+/* ============================================================
+   SHARE
+   ============================================================ */
+const siteURL=encodeURIComponent(window.location.href);
+const shareMsg=encodeURIComponent('🎵 Check out Gaana Bajaana — an intimate music jam in Hyderabad! Register now 👇');
+document.getElementById('share-wa').href=`https://wa.me/?text=${shareMsg}%20${siteURL}`;
+let shareOpen=false;
+function toggleSharePopup(){shareOpen=!shareOpen;document.getElementById('share-popup').classList.toggle('open',shareOpen);}
+document.addEventListener('click',e=>{if(!e.target.closest('#share-btn')&&!e.target.closest('#share-popup')){shareOpen=false;document.getElementById('share-popup').classList.remove('open');}});
+function copyLink(e){e.preventDefault();navigator.clipboard.writeText(window.location.href).then(()=>{const lbl=document.getElementById('copy-label');lbl.textContent='Copied!';setTimeout(()=>{lbl.textContent='Copy Link';},2000);});}
+
+/* ============================================================
+   FIREBASE: CONTACT FORM
+   ============================================================ */
 async function submitContactForm(){
   const name=document.getElementById('cf-name').value.trim();
   const email=document.getElementById('cf-email').value.trim();
@@ -1226,12 +1323,18 @@ async function submitContactForm(){
     await db.collection('messages').add({name,email,message,timestamp:firebase.firestore.FieldValue.serverTimestamp(),read:false});
     document.getElementById('contact-form-wrap').style.display='none';
     document.getElementById('contact-success').style.display='block';
-  }catch(e){alert('Error. Please WhatsApp us directly.');btn.textContent='Send Message →';btn.disabled=false;}
+  }catch(e){
+    alert('Error. Please WhatsApp us directly.');
+    btn.textContent='Send Message →';btn.disabled=false;
+  }
 }
 
-/* ── TESTIMONIAL FORM ────────────────────────────────────── */
+/* ============================================================
+   FIREBASE: TESTIMONIALS
+   ============================================================ */
 let selectedRating=5;
 function setRating(r){selectedRating=r;document.querySelectorAll('.rate-star').forEach((s,i)=>{s.style.color=i<r?'var(--gold)':'rgba(255,255,255,0.2)';});}
+
 async function submitTestimonial(){
   const name=document.getElementById('testi-name').value.trim();
   const handle=document.getElementById('testi-handle').value.trim();
@@ -1243,41 +1346,20 @@ async function submitTestimonial(){
     await db.collection('testimonials').add({name,handle:handle||'Attendee',text,rating:selectedRating,approved:false,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
     document.getElementById('testi-form').style.display='none';
     document.getElementById('testi-form-success').style.display='block';
-  }catch(e){alert('Error. Please try again.');btn.textContent='Submit Review →';btn.disabled=false;}
+  }catch(e){
+    alert('Error submitting. Please try again.');
+    btn.textContent='Submit Review →';btn.disabled=false;
+  }
 }
 
-/* ── LOAD & APPEND APPROVED TESTIMONIALS TO SCROLL STRIP ─── */
 async function loadTestimonials(){
   try{
-    const snap=await db.collection('testimonials').where('approved','==',true).orderBy('timestamp','desc').limit(8).get();
+    const snap=await db.collection('testimonials').where('approved','==',true).orderBy('timestamp','desc').limit(10).get();
     if(snap.empty)return;
     const track=document.getElementById('testi-scroll-track');
-    // Append to existing defaults (don't replace, preserve defaults)
     snap.forEach(doc=>{
       const d=doc.data();
-      if(document.getElementById('ft-'+doc.id))return;
       const stars=Array.from({length:5},(_,i)=>`<span style="color:${i<d.rating?'var(--gold)':'rgba(255,255,255,0.15)'}">★</span>`).join('');
       const card=document.createElement('div');
-      card.className='testi-card';card.id='ft-'+doc.id;
-      card.innerHTML=`<div class="testi-quote">"</div><div class="testi-stars">${stars}</div><div class="testi-text">${d.text}</div><div class="testi-author"><div class="testi-avatar">${d.name.charAt(0).toUpperCase()}</div><div><div class="testi-name">${d.name}</div><div class="testi-handle">${d.handle}</div></div></div>`;
-      track.appendChild(card);
-    });
-  }catch(e){console.log('Testimonials:',e);}
-}
-
-/* ── PHOTO FILE UPLOAD ───────────────────────────────────── */
-let selectedFile=null;
-function handleFileSelect(input){
-  const file=input.files[0];
-  if(!file)return;
-  selectedFile=file;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    document.getElementById('preview-img').src=e.target.result;
-    document.getElementById('file-preview').style.display='block';
-    document.getElementById('photo-upload-btn').style.display='block';
-  };
-  reader.readAsDataURL(file);
-}
-
-async function
+      card.className='testi-card';
+      card.innerHTML=`<div class="testi-quote">"</div><div class="testi-stars">${stars}</div><div class="testi-text">${d.text}</div><div class="testi-author"><div class="testi-avatar">${d.name.charAt(0).toUpperCase()}</div><div><div class="testi-name">${d.name}</div><div class="testi-handle">${d.handle}</div>
