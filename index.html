@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
 <style>
 :root{--gold:#F5C842;--amber:#E8900A;--coral:#FF5733;--dark:#070709;--dark2:#0E0E12;--dark3:#13131A;--glass:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.07);}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -1124,7 +1123,6 @@ firebase.initializeApp({
   appId:             "1:211802419467:web:6da1d0673a80278759720e"
 });
 const db = firebase.firestore();
-const storage = firebase.storage();
 
 /* ============================================================
    EVENT MODE — PRE / LIVE / POST
@@ -1371,59 +1369,60 @@ async function loadTestimonials(){
   }catch(e){console.log('Testimonials:',e);}
 }
 
-/* ============================================================
-   FIREBASE: PHOTO UPLOAD (Direct to Firebase Storage)
-   ============================================================ */
-let selectedFile = null;
-
-function onFileSelected(input) {
-  if(input.files && input.files[0]) {
-    selectedFile = input.files[0];
-    const label = document.getElementById('file-label-text');
-    label.textContent = '✅ ' + selectedFile.name;
-    document.getElementById('photo-submit-btn').disabled = false;
-  }
+ <!-- PHOTO SUBMISSION (Google Drive link — free) -->
+ 
+<div style="max-width:520px;margin:40px auto 0;">
+  <div id="photo-form" style="background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <span class="section-label">Share Your Memory</span>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#fff;margin:4px 0;">SUBMIT A PHOTO</h3>
+    </div>
+    <div style="background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">How to share your photo:</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.8;">
+        1. Open Google Drive → Upload your photo<br>
+        2. Right click the photo → Share<br>
+        3. Change to "Anyone with the link"<br>
+        4. Copy link → Paste below
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <input id="photo-name-input" type="text" placeholder="Your Name *" class="gb-input">
+      <input id="photo-url-input" type="url" placeholder="Paste Google Drive link here *" class="gb-input">
+      <input id="photo-caption-input" type="text" placeholder="Caption — e.g. Jamming with the band!" class="gb-input">
+      <button id="photo-submit-btn" onclick="submitPhoto()" class="btn-primary" style="padding:13px;border-radius:10px;font-size:13px;">📸 Submit Photo →</button>
+    </div>
+  </div>
+  <div id="photo-success" style="display:none;text-align:center;padding:28px;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:16px;">
+    <div style="font-size:36px;margin-bottom:8px;">📸</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;">PHOTO SUBMITTED!</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">It will appear in the gallery once approved.</div>
+  </div>
+</div>
+function convertDriveUrl(url) {
+  if(!url) return '';
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if(match) return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+  return url;
 }
 
 async function submitPhoto() {
   const name = document.getElementById('photo-name-input').value.trim();
+  const url = document.getElementById('photo-url-input').value.trim();
   const caption = document.getElementById('photo-caption-input').value.trim();
-  if(!name) { alert('Please enter your name.'); return; }
-  if(!selectedFile) { alert('Please choose a photo first.'); return; }
-
+  if(!name || !url) { alert('Please fill in your name and photo link.'); return; }
   const btn = document.getElementById('photo-submit-btn');
-  btn.textContent = 'Uploading...'; btn.disabled = true;
-  document.getElementById('upload-progress-wrap').style.display = 'block';
-
+  btn.textContent = 'Submitting...'; btn.disabled = true;
   try {
-    const fileName = Date.now() + '_' + selectedFile.name.replace(/[^a-zA-Z0-9.]/g,'_');
-    const ref = storage.ref('photos/' + fileName);
-    const uploadTask = ref.put(selectedFile);
-
-    uploadTask.on('state_changed',
-      snapshot => {
-        const pct = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        document.getElementById('upload-fill').style.width = pct + '%';
-        document.getElementById('upload-progress-text').textContent = 'Uploading... ' + pct + '%';
-      },
-      err => {
-        alert('Upload failed. Please try again.');
-        btn.textContent = '📸 Submit Photo →'; btn.disabled = false;
-        document.getElementById('upload-progress-wrap').style.display = 'none';
-      },
-      async () => {
-        const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
-        await db.collection('photoSubmissions').add({
-          submitterName: name,
-          photoUrl: downloadURL,
-          caption: caption || '',
-          approved: false,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        });
-        document.getElementById('photo-form').style.display = 'none';
-        document.getElementById('photo-success').style.display = 'block';
-      }
-    );
+    await db.collection('photoSubmissions').add({
+      submitterName: name,
+      photoUrl: url,
+      caption: caption || '',
+      approved: false,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    document.getElementById('photo-form').style.display = 'none';
+    document.getElementById('photo-success').style.display = 'block';
   } catch(e) {
     alert('Error. Please try again.');
     btn.textContent = '📸 Submit Photo →'; btn.disabled = false;
