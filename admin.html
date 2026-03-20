@@ -24,64 +24,69 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--dark);color:#ff
 header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .header-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--gold);}
 .header-right{display:flex;align-items:center;gap:10px;}
-.preview-btn{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.25);color:var(--gold);border-radius:8px;padding:8px 16px;font-size:11px;cursor:pointer;letter-spacing:1px;text-decoration:none;display:inline-block;transition:all 0.2s;}
-.preview-btn:hover{background:rgba(245,200,66,0.2);}
-.logout-btn{background:transparent;border:1px solid var(--border);color:rgba(255,255,255,0.4);border-radius:8px;padding:8px 16px;font-size:11px;cursor:pointer;letter-spacing:1px;transition:all 0.3s;}
+.preview-btn{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.25);color:var(--gold);border-radius:8px;padding:8px 16px;font-size:11px;cursor:pointer;letter-spacing:1px;text-decoration:none;display:inline-block;}
+.logout-btn{background:transparent;border:1px solid var(--border);color:rgba(255,255,255,0.4);border-radius:8px;padding:8px 16px;font-size:11px;cursor:pointer;letter-spacing:1px;}
 .logout-btn:hover{border-color:var(--coral);color:var(--coral);}
-.quick-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;padding:20px 28px;}
-.qs-box{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:16px 14px;text-align:center;}
-.qs-num{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.quick-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;padding:18px 28px;}
+.qs-box{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+.qs-num{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .qs-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:4px;}
 .tabs{display:flex;gap:0;padding:0 28px;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
 .tabs::-webkit-scrollbar{display:none;}
 .tab{padding:12px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,0.3);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.3s;white-space:nowrap;flex-shrink:0;}
 .tab.active{color:var(--gold);border-bottom-color:var(--gold);}
 .tab-badge{background:var(--coral);color:#fff;border-radius:20px;padding:1px 6px;font-size:9px;margin-left:4px;}
-.tab-content{display:none;padding:24px 28px;}
+.tab-content{display:none;padding:22px 28px;}
 .tab-content.active{display:block;}
-.card{background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:22px;}
-.card+.card{margin-top:16px;}
-.card-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;}
-.field{display:flex;flex-direction:column;gap:6px;}
+.card{background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:20px;}
+.card+.card{margin-top:14px;}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:#fff;margin-bottom:14px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;}
+.field{display:flex;flex-direction:column;gap:5px;}
 .field-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
-.admin-input{background:var(--dark3);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;transition:border-color 0.3s;}
+.admin-input{background:var(--dark3);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;transition:border-color 0.3s;}
 .admin-input:focus{border-color:rgba(245,200,66,0.4);}
 .admin-input::placeholder{color:rgba(255,255,255,0.2);}
-.admin-textarea{resize:vertical;min-height:80px;}
-.save-btn{background:linear-gradient(135deg,var(--gold),var(--coral));border:none;border-radius:8px;padding:11px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:#000;cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;}
-.save-btn:hover{opacity:0.9;}
-.add-btn{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.25);border-radius:8px;padding:10px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;color:var(--gold);cursor:pointer;letter-spacing:1px;transition:all 0.2s;}
-.add-btn:hover{background:rgba(245,200,66,0.2);}
-.toast{display:none;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);border-radius:8px;padding:10px 16px;font-size:12px;color:#25D366;margin-top:12px;text-align:center;}
+.admin-textarea{resize:vertical;min-height:70px;}
+.save-btn{background:linear-gradient(135deg,var(--gold),var(--coral));border:none;border-radius:8px;padding:10px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:#000;cursor:pointer;letter-spacing:1px;text-transform:uppercase;}
+.add-btn{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.25);border-radius:8px;padding:9px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;color:var(--gold);cursor:pointer;}
+.toast{display:none;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);border-radius:8px;padding:9px 14px;font-size:12px;color:#25D366;margin-top:10px;text-align:center;}
 .data-table{width:100%;border-collapse:collapse;font-size:12px;}
-.data-table th{text-align:left;padding:10px 14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);border-bottom:1px solid var(--border);}
-.data-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.03);color:rgba(255,255,255,0.7);vertical-align:middle;}
+.data-table th{text-align:left;padding:9px 12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);border-bottom:1px solid var(--border);}
+.data-table td{padding:11px 12px;border-bottom:1px solid rgba(255,255,255,0.03);color:rgba(255,255,255,0.7);vertical-align:middle;}
 .data-table tr:hover td{background:rgba(255,255,255,0.02);}
-.action-btn{padding:5px 12px;border-radius:6px;font-size:10px;font-weight:600;cursor:pointer;letter-spacing:1px;border:none;transition:all 0.2s;}
+.action-btn{padding:5px 11px;border-radius:6px;font-size:10px;font-weight:600;cursor:pointer;letter-spacing:1px;border:none;transition:all 0.2s;}
 .approve-btn{background:rgba(37,211,102,0.15);color:#25D366;border:1px solid rgba(37,211,102,0.3);}
-.approve-btn:hover{background:rgba(37,211,102,0.3);}
-.delete-btn{background:rgba(255,87,51,0.1);color:var(--coral);border:1px solid rgba(255,87,51,0.25);margin-left:6px;}
+.edit-btn{background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.25);margin-left:4px;}
+.delete-btn{background:rgba(255,87,51,0.1);color:var(--coral);border:1px solid rgba(255,87,51,0.25);margin-left:4px;}
 .delete-btn:hover{background:rgba(255,87,51,0.25);}
-.badge-live{display:inline-block;padding:3px 9px;border-radius:20px;font-size:9px;letter-spacing:1px;font-weight:600;background:rgba(37,211,102,0.15);color:#25D366;}
-.badge-pending{display:inline-block;padding:3px 9px;border-radius:20px;font-size:9px;letter-spacing:1px;font-weight:600;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);}
+.badge-live{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;letter-spacing:1px;font-weight:600;background:rgba(37,211,102,0.15);color:#25D366;}
+.badge-pending{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;letter-spacing:1px;font-weight:600;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);}
+.badge-verified{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:600;background:rgba(245,200,66,0.15);color:var(--gold);}
 .empty-state{text-align:center;padding:40px 20px;color:rgba(255,255,255,0.2);}
 .empty-state div:first-child{font-size:32px;margin-bottom:8px;}
-.review-text{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;max-width:240px;font-style:italic;}
-.stars{color:var(--gold);font-size:11px;}
-.thumb{width:52px;height:52px;object-fit:cover;border-radius:6px;border:1px solid var(--border);}
-.divider{height:1px;background:var(--border);margin:20px 0;}
-.info-tip{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.5px;line-height:1.6;margin-top:8px;}
-.section-heading{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.review-text{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;max-width:220px;font-style:italic;}
+.thumb{width:48px;height:48px;object-fit:cover;border-radius:6px;border:1px solid var(--border);}
+.divider{height:1px;background:var(--border);margin:18px 0;}
+.section-heading{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin:18px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.info-tip{font-size:11px;color:rgba(255,255,255,0.25);line-height:1.6;}
+
+/* EDIT MODAL */
+.edit-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.edit-modal.open{display:flex;}
+.edit-modal-box{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;position:relative;}
+.edit-modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--dark3);cursor:pointer;color:rgba(255,255,255,0.5);font-size:18px;display:flex;align-items:center;justify-content:center;}
+.edit-modal-close:hover{color:#fff;border-color:var(--coral);}
+
 @media(max-width:768px){
   header{padding:12px 14px;}
-  .quick-stats{padding:14px;grid-template-columns:repeat(3,1fr);}
+  .quick-stats{padding:12px;grid-template-columns:repeat(3,1fr);}
   .tabs{padding:0 14px;}
-  .tab-content{padding:16px 14px;}
+  .tab-content{padding:14px;}
   .grid-2,.grid-3{grid-template-columns:1fr;}
-  .data-table th,.data-table td{padding:8px 8px;font-size:11px;}
+  .data-table th,.data-table td{padding:8px;font-size:11px;}
 }
 </style>
 </head>
@@ -94,7 +99,21 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
     <div class="login-sub">Gaana Bajaana · Control Panel</div>
     <input class="login-input" type="password" id="pw-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="login-btn" onclick="doLogin()">Login →</button>
-    <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+    <div class="login-error" id="login-error">Incorrect password.</div>
+  </div>
+</div>
+
+<!-- EDIT MODAL (reused for all edit operations) -->
+<div id="edit-modal" class="edit-modal">
+  <div class="edit-modal-box">
+    <button class="edit-modal-close" onclick="closeEditModal()">×</button>
+    <div class="card-title" id="edit-modal-title">Edit Item</div>
+    <div id="edit-modal-body"></div>
+    <div style="margin-top:16px;display:flex;gap:10px;">
+      <button class="save-btn" onclick="saveEdit()">Save Changes →</button>
+      <button onclick="closeEditModal()" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:10px 18px;color:rgba(255,255,255,0.5);cursor:pointer;font-size:12px;">Cancel</button>
+    </div>
+    <div class="toast" id="toast-edit">✅ Updated!</div>
   </div>
 </div>
 
@@ -103,241 +122,276 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
   <header>
     <div class="header-title">🎵 GAANA BAJAANA ADMIN</div>
     <div class="header-right">
-      <a class="preview-btn" href="https://anjireddyboda.github.io/gaana-bajaana" target="_blank">👁 Preview Site</a>
+      <a class="preview-btn" href="https://anjireddyboda.github.io/gaana-bajaana" target="_blank">👁 Preview</a>
       <button class="logout-btn" onclick="doLogout()">Logout</button>
     </div>
   </header>
 
-  <!-- Quick Stats -->
   <div class="quick-stats">
     <div class="qs-box"><div class="qs-num" id="qs-registered">—</div><div class="qs-label">Registered</div></div>
     <div class="qs-box"><div class="qs-num" id="qs-seats">—</div><div class="qs-label">Seats Left</div></div>
     <div class="qs-box"><div class="qs-num" id="qs-checkin">—</div><div class="qs-label">Checked In</div></div>
+    <div class="qs-box"><div class="qs-num" id="qs-pending-pay">—</div><div class="qs-label">Pending Pay</div></div>
     <div class="qs-box"><div class="qs-num" id="qs-messages">—</div><div class="qs-label">New Msgs</div></div>
     <div class="qs-box"><div class="qs-num" id="qs-reviews">—</div><div class="qs-label">Pending Reviews</div></div>
     <div class="qs-box"><div class="qs-num" id="qs-photos">—</div><div class="qs-label">Pending Photos</div></div>
     <div class="qs-box"><div class="qs-num" id="qs-votes">—</div><div class="qs-label">Song Votes</div></div>
-    <div class="qs-box"><div class="qs-num" id="qs-reminders">—</div><div class="qs-label">Reminders</div></div>
   </div>
 
-  <!-- Tabs -->
   <div class="tabs">
-    <div class="tab active"  onclick="switchTab('event')">📋 Event</div>
+    <div class="tab active" onclick="switchTab('event')">📋 Event</div>
     <div class="tab" onclick="switchTab('links')">🔗 Links</div>
     <div class="tab" onclick="switchTab('counter')">📊 Counter</div>
+    <div class="tab" onclick="switchTab('registrations')">🎟 Registrations <span class="tab-badge" id="badge-reg">0</span></div>
     <div class="tab" onclick="switchTab('sponsors')">🏢 Sponsors</div>
     <div class="tab" onclick="switchTab('faq')">❓ FAQ</div>
     <div class="tab" onclick="switchTab('reels')">🎥 Reels</div>
     <div class="tab" onclick="switchTab('gallery')">🖼 Gallery</div>
     <div class="tab" onclick="switchTab('team')">👤 Team</div>
-    <div class="tab" onclick="switchTab('wall')">👥 Wall <span class="tab-badge" id="badge-wall">0</span></div>
+    <div class="tab" onclick="switchTab('songs')">🎵 Song Votes</div>
+    <div class="tab" onclick="switchTab('wall')">👥 Wall</div>
     <div class="tab" onclick="switchTab('photos')">📸 Photos <span class="tab-badge" id="badge-photos">0</span></div>
     <div class="tab" onclick="switchTab('messages')">💬 Messages <span class="tab-badge" id="badge-msg">0</span></div>
     <div class="tab" onclick="switchTab('reviews')">⭐ Reviews <span class="tab-badge" id="badge-testi">0</span></div>
+    <div class="tab" onclick="switchTab('reminders')">📲 Reminders</div>
   </div>
 
-  <!-- TAB: Event Details -->
+  <!-- TAB: Event -->
   <div class="tab-content active" id="tab-event">
     <div class="card">
       <div class="card-title">📋 Event Details</div>
-      <p class="info-tip" style="margin-bottom:16px;">These update live on the website the moment you save. No code changes needed ever.</p>
       <div class="grid-2" style="margin-bottom:14px;">
         <div class="field"><div class="field-label">Event Name</div><input class="admin-input" id="ev-name" placeholder="Gaana Bajaana Edition 2"></div>
-        <div class="field"><div class="field-label">Edition Number</div><input class="admin-input" id="ev-edition" type="number" placeholder="2"></div>
         <div class="field"><div class="field-label">Date (shown on site)</div><input class="admin-input" id="ev-date" placeholder="March 28, 2026"></div>
-        <div class="field"><div class="field-label">Countdown Target (exact)</div><input class="admin-input" id="ev-countdown" placeholder="March 28, 2026 18:00:00"></div>
         <div class="field"><div class="field-label">Time</div><input class="admin-input" id="ev-time" placeholder="6:00 PM – 9:30 PM"></div>
         <div class="field"><div class="field-label">Venue</div><input class="admin-input" id="ev-venue" placeholder="McDonald's, Narepally"></div>
         <div class="field"><div class="field-label">City</div><input class="admin-input" id="ev-city" placeholder="Hyderabad"></div>
         <div class="field"><div class="field-label">Hero Eyebrow Text</div><input class="admin-input" id="ev-eyebrow" placeholder="🎵 An Intimate Music Experience"></div>
       </div>
-      <button class="save-btn" onclick="saveEventDetails()">Save Event Details →</button>
-      <div class="toast" id="toast-event">✅ Event details updated live on website!</div>
+      <button class="save-btn" onclick="saveEventDetails()">Save Event →</button>
+      <div class="toast" id="toast-event">✅ Updated live!</div>
     </div>
   </div>
 
-  <!-- TAB: Links & Pricing -->
+  <!-- TAB: Links -->
   <div class="tab-content" id="tab-links">
     <div class="card">
-      <div class="card-title">🔗 Links & Pricing</div>
-      <div class="section-heading">Registration & Social</div>
-      <div class="grid-2" style="margin-bottom:14px;">
-        <div class="field"><div class="field-label">Google Forms Registration Link</div><input class="admin-input" id="lk-reglink" placeholder="https://forms.gle/..."></div>
-        <div class="field"><div class="field-label">WhatsApp Number (with country code)</div><input class="admin-input" id="lk-wanum" placeholder="+918367463908"></div>
-        <div class="field"><div class="field-label">WhatsApp Community Link</div><input class="admin-input" id="lk-wacomm" placeholder="https://chat.whatsapp.com/..."></div>
-        <div class="field"><div class="field-label">Instagram Handle (without @)</div><input class="admin-input" id="lk-ig" placeholder="gaanabajaana._"></div>
-        <div class="field"><div class="field-label">Email Address</div><input class="admin-input" id="lk-email" placeholder="gaanabajaana@gmail.com"></div>
-      </div>
-      <div class="section-heading">Pricing</div>
-      <div class="grid-3" style="margin-bottom:14px;">
+      <div class="card-title">🔗 Links, Pricing & Config</div>
+      <div class="section-heading">Registration & Payments</div>
+      <div class="grid-2" style="margin-bottom:12px;">
+        <div class="field"><div class="field-label">Apps Script Web App URL (for email)</div><input class="admin-input" id="lk-appsscript" placeholder="https://script.google.com/macros/s/..."></div>
+        <div class="field"><div class="field-label">Payment QR Image URL (Google Drive)</div><input class="admin-input" id="lk-payqr" placeholder="https://drive.google.com/file/d/.../view"></div>
         <div class="field"><div class="field-label">Early Bird Price (₹)</div><input class="admin-input" id="lk-earlyprice" type="number" placeholder="99"></div>
         <div class="field"><div class="field-label">Regular Price (₹)</div><input class="admin-input" id="lk-regprice" type="number" placeholder="149"></div>
         <div class="field"><div class="field-label">Total Seats</div><input class="admin-input" id="lk-seats" type="number" placeholder="100"></div>
       </div>
+      <div class="section-heading">Social & Contact</div>
+      <div class="grid-2" style="margin-bottom:12px;">
+        <div class="field"><div class="field-label">WhatsApp Number</div><input class="admin-input" id="lk-wanum" placeholder="+918367463908"></div>
+        <div class="field"><div class="field-label">WhatsApp Community Link</div><input class="admin-input" id="lk-wacomm" placeholder="https://chat.whatsapp.com/..."></div>
+        <div class="field"><div class="field-label">Instagram Handle</div><input class="admin-input" id="lk-ig" placeholder="gaanabajaana._"></div>
+        <div class="field"><div class="field-label">Email Address</div><input class="admin-input" id="lk-email" placeholder="gaanabajaana@gmail.com"></div>
+      </div>
       <div class="section-heading">Maps</div>
-      <div class="grid-2" style="margin-bottom:14px;">
+      <div class="grid-2" style="margin-bottom:12px;">
         <div class="field"><div class="field-label">Google Maps Embed URL</div><input class="admin-input" id="lk-mapsembed" placeholder="https://maps.google.com/maps?q=...&output=embed"></div>
         <div class="field"><div class="field-label">Google Maps Direct Link</div><input class="admin-input" id="lk-mapslink" placeholder="https://maps.app.goo.gl/..."></div>
       </div>
-      <button class="save-btn" onclick="saveLinks()">Save Links & Pricing →</button>
-      <div class="toast" id="toast-links">✅ Links & pricing updated live on website!</div>
+      <button class="save-btn" onclick="saveLinks()">Save All Links →</button>
+      <div class="toast" id="toast-links">✅ Links updated live!</div>
     </div>
   </div>
 
-  <!-- TAB: Counter & Stats -->
+  <!-- TAB: Counter -->
   <div class="tab-content" id="tab-counter">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:800px;">
       <div class="card">
-        <div class="card-title">📊 Live Registration Counter</div>
-        <div class="field" style="margin-bottom:14px;"><div class="field-label">People Registered</div><input class="admin-input" type="number" id="inp-registered" placeholder="47" min="0"></div>
-        <div class="field" style="margin-bottom:18px;"><div class="field-label">Total Seats</div><input class="admin-input" type="number" id="inp-totalseats" placeholder="100" min="1"></div>
-        <div class="field" style="margin-bottom:18px;"><div class="field-label">Check-In Count (event day)</div><input class="admin-input" type="number" id="inp-checkin" placeholder="0" min="0"></div>
-        <button class="save-btn" onclick="saveCounter()">Save Counter →</button>
-        <div class="toast" id="toast-counter">✅ Counter updated!</div>
+        <div class="card-title">📊 Registration Counter</div>
+        <div class="field" style="margin-bottom:12px;"><div class="field-label">People Registered</div><input class="admin-input" type="number" id="inp-registered" placeholder="0" min="0"></div>
+        <div class="field" style="margin-bottom:12px;"><div class="field-label">Total Seats</div><input class="admin-input" type="number" id="inp-totalseats" placeholder="100"></div>
+        <div class="field" style="margin-bottom:16px;"><div class="field-label">Check-In Count</div><input class="admin-input" type="number" id="inp-checkin" placeholder="0"></div>
+        <button class="save-btn" onclick="saveCounter()">Save →</button>
+        <div class="toast" id="toast-counter">✅ Updated!</div>
       </div>
       <div class="card">
         <div class="card-title">⚡ Impact Stats</div>
-        <div class="grid-2" style="margin-bottom:18px;">
+        <div class="grid-2" style="margin-bottom:16px;">
           <div class="field"><div class="field-label">Attendees</div><input class="admin-input" type="number" id="inp-attendees" placeholder="60"></div>
-          <div class="field"><div class="field-label">Songs Played</div><input class="admin-input" type="number" id="inp-songs" placeholder="20"></div>
-          <div class="field"><div class="field-label">Live Bands</div><input class="admin-input" type="number" id="inp-bands" placeholder="1"></div>
+          <div class="field"><div class="field-label">Songs</div><input class="admin-input" type="number" id="inp-songs" placeholder="20"></div>
+          <div class="field"><div class="field-label">Bands</div><input class="admin-input" type="number" id="inp-bands" placeholder="1"></div>
           <div class="field"><div class="field-label">Collabs</div><input class="admin-input" type="number" id="inp-collabs" placeholder="5"></div>
         </div>
         <button class="save-btn" onclick="saveStats()">Save Stats →</button>
         <div class="toast" id="toast-stats">✅ Stats updated!</div>
       </div>
     </div>
-    <!-- Check-in quick button -->
-    <div class="card" style="max-width:400px;margin-top:16px;text-align:center;">
-      <div class="card-title" style="justify-content:center;">🎟 Event Day Check-In</div>
-      <p class="info-tip" style="margin-bottom:16px;">Press this button each time someone enters the venue. Live counter updates on website instantly.</p>
-      <button class="save-btn" style="font-size:18px;padding:16px 40px;" onclick="quickCheckin()">+ Check In One Person</button>
-      <div style="margin-top:12px;font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);" id="checkin-display">0</div>
-      <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);">Checked In Today</div>
+    <div class="card" style="max-width:380px;margin-top:14px;text-align:center;">
+      <div class="card-title" style="text-align:center;">🎟 Event Day Check-In</div>
+      <p class="info-tip" style="margin-bottom:14px;">Press each time someone enters the venue.</p>
+      <button class="save-btn" style="font-size:16px;padding:14px 36px;" onclick="quickCheckin()">+ Check In One Person</button>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gold);margin-top:10px;" id="checkin-display">0</div>
+      <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);">Checked In</div>
     </div>
+  </div>
+
+  <!-- TAB: Registrations -->
+  <div class="tab-content" id="tab-registrations">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;">ALL REGISTRATIONS</div>
+        <div class="info-tip">Verify payment → mark as verified. All data also in Google Sheets.</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="add-btn" onclick="exportReminders()">📲 WhatsApp Reminders</button>
+        <button class="add-btn" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3);color:#25D366;" onclick="exportToCSV()">⬇ Export CSV</button>
+      </div>
+    </div>
+    <!-- Filter bar -->
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
+      <button class="action-btn" style="background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.2);color:var(--gold);padding:8px 14px;" onclick="filterRegs('all')" id="filter-all">All</button>
+      <button class="action-btn" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:rgba(255,255,255,0.5);padding:8px 14px;" onclick="filterRegs('pending')" id="filter-pending">⏳ Pending</button>
+      <button class="action-btn" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:rgba(255,255,255,0.5);padding:8px 14px;" onclick="filterRegs('verified')" id="filter-verified">✅ Verified</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Reg ID</th><th>Name</th><th>Email</th><th>WhatsApp</th><th>Age</th><th>Gender</th><th>Method</th><th>UTR</th><th>Screenshot</th><th>Payment</th><th>Actions</th></tr></thead>
+        <tbody id="reg-tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="reg-empty" style="display:none;"><div>🎟</div><div>No registrations yet</div></div>
   </div>
 
   <!-- TAB: Sponsors -->
   <div class="tab-content" id="tab-sponsors">
-    <div class="card" style="max-width:700px;margin-bottom:20px;">
+    <div class="card" style="max-width:680px;margin-bottom:18px;">
       <div class="card-title">➕ Add Sponsor</div>
-      <div class="grid-2" style="margin-bottom:14px;">
+      <div class="grid-2" style="margin-bottom:12px;">
         <div class="field"><div class="field-label">Sponsor Name</div><input class="admin-input" id="sp-name" placeholder="Sponsor Name"></div>
         <div class="field"><div class="field-label">Display Order</div><input class="admin-input" id="sp-order" type="number" placeholder="1"></div>
-        <div class="field"><div class="field-label">Logo Image URL</div><input class="admin-input" id="sp-logo" placeholder="https://... (Google Drive, Imgur, etc)"></div>
-        <div class="field"><div class="field-label">Website URL</div><input class="admin-input" id="sp-website" placeholder="https://theirwebsite.com"></div>
+        <div class="field"><div class="field-label">Logo URL (Google Drive)</div><input class="admin-input" id="sp-logo" placeholder="https://drive.google.com/..."></div>
+        <div class="field"><div class="field-label">Website URL</div><input class="admin-input" id="sp-website" placeholder="https://..."></div>
       </div>
-      <p class="info-tip">For logo: upload to Google Drive → Share → Anyone with link → copy link</p>
-      <br>
       <button class="add-btn" onclick="addSponsor()">Add Sponsor →</button>
-      <div class="toast" id="toast-sponsor">✅ Sponsor added! Appears live on website.</div>
+      <div class="toast" id="toast-sponsor">✅ Sponsor added!</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>Logo</th><th>Name</th><th>Website</th><th>Order</th><th>Status</th><th>Action</th></tr></thead>
+        <thead><tr><th>Logo</th><th>Name</th><th>Website</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="sponsors-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="sponsors-empty" style="display:none;"><div>🏢</div><div>No sponsors added yet</div></div>
+    <div class="empty-state" id="sponsors-empty" style="display:none;"><div>🏢</div><div>No sponsors yet</div></div>
   </div>
 
   <!-- TAB: FAQ -->
   <div class="tab-content" id="tab-faq">
-    <div class="card" style="max-width:700px;margin-bottom:20px;">
-      <div class="card-title">➕ Add FAQ Item</div>
-      <div class="field" style="margin-bottom:14px;"><div class="field-label">Question</div><input class="admin-input" id="faq-q" placeholder="Is there a registration fee?"></div>
-      <div class="field" style="margin-bottom:14px;"><div class="field-label">Answer</div><textarea class="admin-input admin-textarea" id="faq-a" placeholder="Yes, the registration fee is..."></textarea></div>
-      <div class="field" style="margin-bottom:14px;"><div class="field-label">Display Order</div><input class="admin-input" id="faq-order" type="number" placeholder="1" style="max-width:100px;"></div>
+    <div class="card" style="max-width:680px;margin-bottom:18px;">
+      <div class="card-title">➕ Add FAQ</div>
+      <div class="field" style="margin-bottom:12px;"><div class="field-label">Question</div><input class="admin-input" id="faq-q" placeholder="Is there a registration fee?"></div>
+      <div class="field" style="margin-bottom:12px;"><div class="field-label">Answer</div><textarea class="admin-input admin-textarea" id="faq-a" placeholder="Yes..."></textarea></div>
+      <div class="field" style="margin-bottom:12px;max-width:120px;"><div class="field-label">Order</div><input class="admin-input" id="faq-order" type="number" placeholder="1"></div>
       <button class="add-btn" onclick="addFAQ()">Add FAQ →</button>
-      <div class="toast" id="toast-faq">✅ FAQ added! Appears live on website.</div>
+      <div class="toast" id="toast-faq">✅ FAQ added!</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>#</th><th>Question</th><th>Answer</th><th>Order</th><th>Action</th></tr></thead>
+        <thead><tr><th>#</th><th>Question</th><th>Answer</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="faq-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="faq-empty" style="display:none;"><div>❓</div><div>No FAQ items yet — add some above!</div></div>
+    <div class="empty-state" id="faq-empty" style="display:none;"><div>❓</div><div>No FAQ items yet</div></div>
   </div>
 
   <!-- TAB: Reels -->
   <div class="tab-content" id="tab-reels">
-    <div class="card" style="max-width:700px;margin-bottom:20px;">
-      <div class="card-title">➕ Add Instagram Reel</div>
-      <p class="info-tip" style="margin-bottom:14px;">How to get embed URL: Open reel on Instagram → click ••• → Embed → copy the URL from the iframe src attribute</p>
-      <div class="grid-2" style="margin-bottom:14px;">
+    <div class="card" style="max-width:680px;margin-bottom:18px;">
+      <div class="card-title">➕ Add Reel</div>
+      <div class="grid-2" style="margin-bottom:12px;">
         <div class="field"><div class="field-label">Reel Embed URL</div><input class="admin-input" id="reel-url" placeholder="https://www.instagram.com/reel/.../embed"></div>
-        <div class="field"><div class="field-label">Display Order</div><input class="admin-input" id="reel-order" type="number" placeholder="1"></div>
+        <div class="field"><div class="field-label">Order</div><input class="admin-input" id="reel-order" type="number" placeholder="1"></div>
       </div>
       <button class="add-btn" onclick="addReel()">Add Reel →</button>
-      <div class="toast" id="toast-reel">✅ Reel added! Appears live on website.</div>
+      <div class="toast" id="toast-reel">✅ Reel added!</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>#</th><th>Embed URL</th><th>Order</th><th>Action</th></tr></thead>
+        <thead><tr><th>#</th><th>Embed URL</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="reels-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="reels-empty" style="display:none;"><div>🎥</div><div>No reels added yet</div></div>
+    <div class="empty-state" id="reels-empty" style="display:none;"><div>🎥</div><div>No reels yet</div></div>
   </div>
 
   <!-- TAB: Gallery -->
   <div class="tab-content" id="tab-gallery">
-    <div class="card" style="max-width:700px;margin-bottom:20px;">
+    <div class="card" style="max-width:680px;margin-bottom:18px;">
       <div class="card-title">➕ Add Gallery Photo</div>
-      <p class="info-tip" style="margin-bottom:14px;">Upload photo to Google Drive → Share → Anyone with link → Copy link → Paste below</p>
-      <div class="grid-2" style="margin-bottom:14px;">
-        <div class="field"><div class="field-label">Photo URL (Google Drive / direct link)</div><input class="admin-input" id="gal-url" placeholder="https://drive.google.com/file/d/.../view"></div>
+      <div class="grid-2" style="margin-bottom:12px;">
+        <div class="field"><div class="field-label">Photo URL</div><input class="admin-input" id="gal-url" placeholder="https://drive.google.com/..."></div>
         <div class="field"><div class="field-label">Caption</div><input class="admin-input" id="gal-caption" placeholder="Jamming at Edition 1!"></div>
-        <div class="field"><div class="field-label">Display Order</div><input class="admin-input" id="gal-order" type="number" placeholder="1"></div>
+        <div class="field"><div class="field-label">Order</div><input class="admin-input" id="gal-order" type="number" placeholder="1"></div>
       </div>
       <button class="add-btn" onclick="addGalleryPhoto()">Add Photo →</button>
-      <div class="toast" id="toast-gallery">✅ Photo added to gallery!</div>
+      <div class="toast" id="toast-gallery">✅ Photo added!</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>Preview</th><th>Caption</th><th>Order</th><th>Source</th><th>Action</th></tr></thead>
+        <thead><tr><th>Preview</th><th>Caption</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="gallery-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="gallery-empty" style="display:none;"><div>🖼</div><div>No gallery photos added yet</div></div>
+    <div class="empty-state" id="gallery-empty" style="display:none;"><div>🖼</div><div>No photos yet</div></div>
   </div>
 
   <!-- TAB: Team -->
   <div class="tab-content" id="tab-team">
-    <div class="card" style="max-width:700px;margin-bottom:20px;">
+    <div class="card" style="max-width:680px;margin-bottom:18px;">
       <div class="card-title">➕ Add Team Member</div>
-      <div class="grid-2" style="margin-bottom:14px;">
+      <div class="grid-2" style="margin-bottom:12px;">
         <div class="field"><div class="field-label">Full Name</div><input class="admin-input" id="tm-name" placeholder="Sainandhan Jilla"></div>
         <div class="field"><div class="field-label">Role</div><input class="admin-input" id="tm-role" placeholder="Team Member"></div>
-        <div class="field"><div class="field-label">Initials (fallback if no photo)</div><input class="admin-input" id="tm-initials" placeholder="SJ" maxlength="2"></div>
-        <div class="field"><div class="field-label">Display Order</div><input class="admin-input" id="tm-order" type="number" placeholder="1"></div>
-        <div class="field"><div class="field-label">Photo URL (Google Drive)</div><input class="admin-input" id="tm-photo" placeholder="https://drive.google.com/..."></div>
+        <div class="field"><div class="field-label">Initials</div><input class="admin-input" id="tm-initials" placeholder="SJ" maxlength="2"></div>
+        <div class="field"><div class="field-label">Order</div><input class="admin-input" id="tm-order" type="number" placeholder="1"></div>
+        <div class="field"><div class="field-label">Photo URL</div><input class="admin-input" id="tm-photo" placeholder="https://drive.google.com/..."></div>
         <div class="field"><div class="field-label">LinkedIn URL</div><input class="admin-input" id="tm-linkedin" placeholder="https://linkedin.com/in/..."></div>
       </div>
-      <div class="field" style="margin-bottom:14px;"><div class="field-label">Bio (short, 1 sentence)</div><textarea class="admin-input" id="tm-bio" placeholder="Passionate about music and community..." rows="2"></textarea></div>
-      <button class="add-btn" onclick="addTeamMember()">Add Team Member →</button>
-      <div class="toast" id="toast-team">✅ Team member added! Appears in Team modal.</div>
+      <div class="field" style="margin-bottom:12px;"><div class="field-label">Bio</div><textarea class="admin-input" id="tm-bio" placeholder="Short bio..." rows="2"></textarea></div>
+      <button class="add-btn" onclick="addTeamMember()">Add Member →</button>
+      <div class="toast" id="toast-team">✅ Team member added!</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>#</th><th>Name</th><th>Role</th><th>Order</th><th>Action</th></tr></thead>
+        <thead><tr><th>#</th><th>Name</th><th>Role</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="team-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="team-empty" style="display:none;"><div>👤</div><div>No team members added yet</div></div>
+    <div class="empty-state" id="team-empty" style="display:none;"><div>👤</div><div>No team members yet</div></div>
   </div>
 
-  <!-- TAB: Attendee Wall -->
+  <!-- TAB: Song Votes -->
+  <div class="tab-content" id="tab-songs">
+    <div style="margin-bottom:16px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;">SONG LEADERBOARD</div>
+      <div class="info-tip">Updates live from website votes. Delete any song to remove it from leaderboard instantly. No approval needed.</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Rank</th><th>Song</th><th>Artist</th><th>Votes</th><th>Action</th></tr></thead>
+        <tbody id="songs-tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="songs-empty" style="display:none;"><div>🎵</div><div>No song votes yet</div></div>
+  </div>
+
+  <!-- TAB: Wall -->
   <div class="tab-content" id="tab-wall">
-    <div class="card" style="max-width:600px;margin-bottom:20px;">
+    <div class="card" style="max-width:580px;margin-bottom:18px;">
       <div class="card-title">➕ Add Name to Wall</div>
-      <div style="display:flex;gap:12px;align-items:flex-end;">
-        <div class="field" style="flex:1;"><div class="field-label">Attendee Name</div><input class="admin-input" id="wall-name" placeholder="Rahul K." onkeydown="if(event.key==='Enter')addWallName()"></div>
+      <div style="display:flex;gap:10px;align-items:flex-end;">
+        <div class="field" style="flex:1;"><div class="field-label">Name</div><input class="admin-input" id="wall-name" placeholder="Rahul K." onkeydown="if(event.key==='Enter')addWallName()"></div>
         <button class="add-btn" onclick="addWallName()">Add →</button>
       </div>
-      <div class="toast" id="toast-wall">✅ Name added to live wall!</div>
-      <p class="info-tip">Names appear instantly on the scrolling wall on your website.</p>
+      <div class="toast" id="toast-wall">✅ Name added!</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
@@ -345,17 +399,15 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
         <tbody id="wall-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="wall-empty" style="display:none;"><div>👥</div><div>No names added yet</div></div>
+    <div class="empty-state" id="wall-empty" style="display:none;"><div>👥</div><div>No names yet</div></div>
   </div>
 
   <!-- TAB: Photos -->
   <div class="tab-content" id="tab-photos">
-    <div style="margin-bottom:16px;padding:10px 16px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:10px;font-size:12px;color:rgba(255,255,255,0.5);">
-      📸 Approve attendee photo submissions to make them appear in the gallery
-    </div>
+    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">📸 Approve to show in gallery</div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>#</th><th>Preview</th><th>Submitted By</th><th>Caption</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+        <thead><tr><th>#</th><th>Preview</th><th>By</th><th>Caption</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody id="photos-tbody"></tbody>
       </table>
     </div>
@@ -375,9 +427,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
   <!-- TAB: Reviews -->
   <div class="tab-content" id="tab-reviews">
-    <div style="margin-bottom:16px;padding:10px 16px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:10px;font-size:12px;color:rgba(255,255,255,0.5);">
-      ⭐ Approve reviews to make them appear live in the scrolling testimonials strip
-    </div>
+    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">⭐ Approve reviews to show in scrolling strip</div>
     <div style="overflow-x:auto;">
       <table class="data-table">
         <thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Rating</th><th>Review</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
@@ -386,10 +436,28 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
     </div>
     <div class="empty-state" id="testi-empty" style="display:none;"><div>🌟</div><div>No reviews yet</div></div>
   </div>
+
+  <!-- TAB: Reminders -->
+  <div class="tab-content" id="tab-reminders">
+    <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;">WHATSAPP REMINDERS</div>
+        <div class="info-tip">People who opted in for event reminders. Click "Send Reminder" to open WhatsApp with pre-filled message.</div>
+      </div>
+      <button class="save-btn" onclick="openWhatsAppBroadcast()">📲 Send Reminder to All</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Date</th><th>Action</th></tr></thead>
+        <tbody id="reminders-tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="reminders-empty" style="display:none;"><div>📲</div><div>No reminder opt-ins yet</div></div>
+  </div>
 </div>
 
 <script>
-const ADMIN_PASSWORD = 'GB@Gaana2026'; // ← Change this
+const ADMIN_PASSWORD = 'GB@Gaana2026';
 
 firebase.initializeApp({
   apiKey:            "AIzaSyDL7R7tT8RtXe8N4MI_iZXvDxMfbn95rXQ",
@@ -420,7 +488,7 @@ if(sessionStorage.getItem('gb_admin')==='1'){
 }
 
 /* ── TABS ──────────────────────────────────────────────── */
-const TAB_IDS=['event','links','counter','sponsors','faq','reels','gallery','team','wall','photos','messages','reviews'];
+const TAB_IDS=['event','links','counter','registrations','sponsors','faq','reels','gallery','team','songs','wall','photos','messages','reviews','reminders'];
 function switchTab(name){
   document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',TAB_IDS[i]===name));
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
@@ -428,30 +496,49 @@ function switchTab(name){
 }
 
 /* ── UTILS ─────────────────────────────────────────────── */
-function fmtDate(ts){
-  if(!ts) return '—';
-  const d=ts.toDate?ts.toDate():new Date(ts);
-  return d.toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+function fmtDate(ts){if(!ts)return'—';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});}
+function showToast(id){const el=document.getElementById(id);if(!el)return;el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
+function g(id){return document.getElementById(id);}
+function cvt(url){if(!url)return'';const m=url.match(/\/d\/([a-zA-Z0-9_-]+)/);return m?`https://drive.google.com/uc?export=view&id=${m[1]}`:url;}
+
+/* ── EDIT MODAL ────────────────────────────────────────── */
+let editCtx = {}; // {collection, id, fields}
+
+function openEditModal(title, fields, collection, docId, currentData){
+  editCtx = {collection, id: docId};
+  g('edit-modal-title').textContent = title;
+  g('edit-modal-body').innerHTML = fields.map(f=>`
+    <div class="field" style="margin-bottom:12px;">
+      <div class="field-label">${f.label}</div>
+      ${f.type==='textarea'
+        ? `<textarea class="admin-input admin-textarea" id="ef-${f.key}" rows="3">${currentData[f.key]||''}</textarea>`
+        : `<input class="admin-input" id="ef-${f.key}" type="${f.type||'text'}" value="${currentData[f.key]||''}" placeholder="${f.placeholder||''}">`
+      }
+    </div>`).join('');
+  editCtx.fields = fields;
+  document.getElementById('edit-modal').classList.add('open');
 }
-function showToast(id){
-  const el=document.getElementById(id);
-  if(!el) return;
-  el.style.display='block';
-  setTimeout(()=>el.style.display='none',3000);
+
+function closeEditModal(){document.getElementById('edit-modal').classList.remove('open');}
+
+async function saveEdit(){
+  const data = {};
+  editCtx.fields.forEach(f=>{
+    const el = g('ef-'+f.key);
+    if(el) data[f.key] = f.type==='number' ? parseInt(el.value)||0 : el.value.trim();
+  });
+  await db.collection(editCtx.collection).doc(editCtx.id).update(data);
+  showToast('toast-edit');
+  setTimeout(closeEditModal, 1500);
+  // Reload the relevant data
+  loadAll();
 }
-function convertDriveUrl(url){
-  if(!url) return '';
-  const m=url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  return m?`https://drive.google.com/uc?export=view&id=${m[1]}`:url;
-}
-function el(id){return document.getElementById(id);}
 
 /* ── INIT ──────────────────────────────────────────────── */
-let allMsgs=[], allTestis=[], allWall=[], allPhotos=[];
-let allSponsors=[], allFAQ=[], allReels=[], allGallery=[], allTeam=[];
+let allMsgs=[],allTestis=[],allWall=[],allPhotos=[],allSponsors=[],allFAQ=[],allReels=[],allGallery=[],allTeam=[],allSongs=[],allRegistrations=[],allReminders=[];
 
 function initDashboard(){
-  loadEventConfig();
+  listenConfig();
   loadMessages();
   loadTestimonials();
   loadWall();
@@ -461,127 +548,194 @@ function initDashboard(){
   loadReels();
   loadGallery();
   loadTeam();
-  loadQuickStats();
+  loadSongs();
+  loadRegistrations();
+  loadReminders();
 }
 
-/* ── QUICK STATS ───────────────────────────────────────── */
-async function loadQuickStats(){
-  // Load reminders count
-  try{
-    const r=await db.collection('reminderOptIns').get();
-    el('qs-reminders').textContent=r.size;
-  }catch(e){}
-  // Load song votes count
-  try{
-    const v=await db.collection('songVotes').get();
-    let total=0;
-    v.docs.forEach(d=>{ total+=(d.data().votes||0); });
-    el('qs-votes').textContent=total;
-  }catch(e){}
+function loadAll(){
+  loadSponsors();loadFAQ();loadReels();loadGallery();loadTeam();loadSongs();
 }
 
-/* ── EVENT CONFIG ──────────────────────────────────────── */
+/* ── CONFIG ────────────────────────────────────────────── */
 function listenConfig(){
   db.collection('config').doc('event').onSnapshot(doc=>{
-    if(!doc.exists) return;
+    if(!doc.exists)return;
     const d=doc.data();
     const count=d.registeredCount||0;
     const total=d.totalSeats||100;
     const checkin=d.checkInCount||0;
-    el('qs-registered').textContent=count;
-    el('qs-seats').textContent=Math.max(total-count,0);
-    el('qs-checkin').textContent=checkin;
-    el('checkin-display').textContent=checkin;
+    g('qs-registered').textContent=count;
+    g('qs-seats').textContent=Math.max(total-count,0);
+    g('qs-checkin').textContent=checkin;
+    g('checkin-display').textContent=checkin;
     // Prefill event tab
-    if(d.eventName) el('ev-name').value=d.eventName;
-    if(d.editionNumber) el('ev-edition').value=d.editionNumber;
-    if(d.date) el('ev-date').value=d.date;
-    if(d.countdownTarget) el('ev-countdown').value=d.countdownTarget;
-    if(d.time) el('ev-time').value=d.time;
-    if(d.venue) el('ev-venue').value=d.venue;
-    if(d.city) el('ev-city').value=d.city;
-    if(d.heroEyebrow) el('ev-eyebrow').value=d.heroEyebrow;
+    if(d.eventName)g('ev-name').value=d.eventName;
+    if(d.date)g('ev-date').value=d.date;
+    if(d.time)g('ev-time').value=d.time;
+    if(d.venue)g('ev-venue').value=d.venue;
+    if(d.city)g('ev-city').value=d.city;
+    if(d.heroEyebrow)g('ev-eyebrow').value=d.heroEyebrow;
     // Prefill links tab
-    if(d.registrationLink) el('lk-reglink').value=d.registrationLink;
-    if(d.whatsappNumber) el('lk-wanum').value=d.whatsappNumber;
-    if(d.whatsappCommunity) el('lk-wacomm').value=d.whatsappCommunity;
-    if(d.instagram) el('lk-ig').value=d.instagram;
-    if(d.email) el('lk-email').value=d.email;
-    if(d.earlyBirdPrice) el('lk-earlyprice').value=d.earlyBirdPrice;
-    if(d.regularPrice) el('lk-regprice').value=d.regularPrice;
-    if(d.totalSeats) el('lk-seats').value=d.totalSeats;
-    if(d.mapsEmbedUrl) el('lk-mapsembed').value=d.mapsEmbedUrl;
-    if(d.mapsLink) el('lk-mapslink').value=d.mapsLink;
+    if(d.appsScriptUrl)g('lk-appsscript').value=d.appsScriptUrl;
+    if(d.paymentQrUrl)g('lk-payqr').value=d.paymentQrUrl;
+    if(d.earlyBirdPrice)g('lk-earlyprice').value=d.earlyBirdPrice;
+    if(d.regularPrice)g('lk-regprice').value=d.regularPrice;
+    if(d.totalSeats)g('lk-seats').value=d.totalSeats;
+    if(d.whatsappNumber)g('lk-wanum').value=d.whatsappNumber;
+    if(d.whatsappCommunity)g('lk-wacomm').value=d.whatsappCommunity;
+    if(d.instagram)g('lk-ig').value=d.instagram;
+    if(d.email)g('lk-email').value=d.email;
+    if(d.mapsEmbedUrl)g('lk-mapsembed').value=d.mapsEmbedUrl;
+    if(d.mapsLink)g('lk-mapslink').value=d.mapsLink;
     // Prefill counter tab
-    el('inp-registered').value=count;
-    el('inp-totalseats').value=total;
-    el('inp-checkin').value=checkin;
-    if(d.stats){
-      el('inp-attendees').value=d.stats.attendees||60;
-      el('inp-songs').value=d.stats.songs||20;
-      el('inp-bands').value=d.stats.bands||1;
-      el('inp-collabs').value=d.stats.collabs||5;
-    }
+    g('inp-registered').value=count;
+    g('inp-totalseats').value=total;
+    g('inp-checkin').value=checkin;
+    if(d.stats){g('inp-attendees').value=d.stats.attendees||60;g('inp-songs').value=d.stats.songs||20;g('inp-bands').value=d.stats.bands||1;g('inp-collabs').value=d.stats.collabs||5;}
   });
 }
 
-async function loadEventConfig(){ listenConfig(); }
-
 async function saveEventDetails(){
-  const data={
-    eventName: el('ev-name').value.trim()||'Gaana Bajaana Edition 2',
-    editionNumber: parseInt(el('ev-edition').value)||2,
-    date: el('ev-date').value.trim()||'March 28, 2026',
-    countdownTarget: el('ev-countdown').value.trim()||'March 28, 2026 18:00:00',
-    time: el('ev-time').value.trim()||'6:00 PM – 9:30 PM',
-    venue: el('ev-venue').value.trim()||"McDonald's, Narepally",
-    city: el('ev-city').value.trim()||'Hyderabad',
-    heroEyebrow: el('ev-eyebrow').value.trim()||'🎵 An Intimate Music Experience',
-  };
+  const data={eventName:g('ev-name').value.trim(),date:g('ev-date').value.trim(),time:g('ev-time').value.trim(),venue:g('ev-venue').value.trim(),city:g('ev-city').value.trim(),heroEyebrow:g('ev-eyebrow').value.trim()};
   await db.collection('config').doc('event').set(data,{merge:true});
   showToast('toast-event');
 }
 
 async function saveLinks(){
-  const data={
-    registrationLink: el('lk-reglink').value.trim(),
-    whatsappNumber: el('lk-wanum').value.trim(),
-    whatsappCommunity: el('lk-wacomm').value.trim(),
-    instagram: el('lk-ig').value.trim().replace('@',''),
-    email: el('lk-email').value.trim(),
-    earlyBirdPrice: parseInt(el('lk-earlyprice').value)||99,
-    regularPrice: parseInt(el('lk-regprice').value)||149,
-    totalSeats: parseInt(el('lk-seats').value)||100,
-    mapsEmbedUrl: el('lk-mapsembed').value.trim(),
-    mapsLink: el('lk-mapslink').value.trim(),
-  };
+  const data={appsScriptUrl:g('lk-appsscript').value.trim(),paymentQrUrl:g('lk-payqr').value.trim(),earlyBirdPrice:parseInt(g('lk-earlyprice').value)||99,regularPrice:parseInt(g('lk-regprice').value)||149,totalSeats:parseInt(g('lk-seats').value)||100,whatsappNumber:g('lk-wanum').value.trim(),whatsappCommunity:g('lk-wacomm').value.trim(),instagram:g('lk-ig').value.trim().replace('@',''),email:g('lk-email').value.trim(),mapsEmbedUrl:g('lk-mapsembed').value.trim(),mapsLink:g('lk-mapslink').value.trim()};
   await db.collection('config').doc('event').set(data,{merge:true});
   showToast('toast-links');
 }
 
 async function saveCounter(){
-  const registered=parseInt(el('inp-registered').value)||0;
-  const seats=parseInt(el('inp-totalseats').value)||100;
-  const checkin=parseInt(el('inp-checkin').value)||0;
-  await db.collection('config').doc('event').set({registeredCount:registered,totalSeats:seats,checkInCount:checkin},{merge:true});
+  const r=parseInt(g('inp-registered').value)||0,s=parseInt(g('inp-totalseats').value)||100,c=parseInt(g('inp-checkin').value)||0;
+  await db.collection('config').doc('event').set({registeredCount:r,totalSeats:s,checkInCount:c},{merge:true});
   showToast('toast-counter');
 }
 
 async function saveStats(){
-  const stats={
-    attendees:parseInt(el('inp-attendees').value)||60,
-    songs:parseInt(el('inp-songs').value)||20,
-    bands:parseInt(el('inp-bands').value)||1,
-    collabs:parseInt(el('inp-collabs').value)||5
-  };
+  const stats={attendees:parseInt(g('inp-attendees').value)||60,songs:parseInt(g('inp-songs').value)||20,bands:parseInt(g('inp-bands').value)||1,collabs:parseInt(g('inp-collabs').value)||5};
   await db.collection('config').doc('event').set({stats},{merge:true});
   showToast('toast-stats');
 }
 
 async function quickCheckin(){
-  await db.collection('config').doc('event').update({
-    checkInCount: firebase.firestore.FieldValue.increment(1)
+  await db.collection('config').doc('event').update({checkInCount:firebase.firestore.FieldValue.increment(1)});
+}
+
+/* ── REGISTRATIONS ─────────────────────────────────────── */
+let regFilter = 'all';
+
+async function loadRegistrations(){
+  const snap=await db.collection('registrations').orderBy('timestamp','desc').get();
+  allRegistrations=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderRegistrations();
+  const pending=allRegistrations.filter(r=>r.paymentStatus==='Pending').length;
+  g('badge-reg').textContent=allRegistrations.length;
+  g('qs-pending-pay').textContent=pending;
+}
+
+function filterRegs(f){
+  regFilter=f;
+  ['all','pending','verified'].forEach(x=>{
+    const btn=g('filter-'+x);
+    if(btn){
+      btn.style.background=x===f?'rgba(245,200,66,0.2)':'rgba(255,255,255,0.05)';
+      btn.style.color=x===f?'var(--gold)':'rgba(255,255,255,0.5)';
+      btn.style.borderColor=x===f?'rgba(245,200,66,0.4)':'var(--border)';
+    }
   });
+  renderRegistrations();
+}
+
+function renderRegistrations(){
+  const tbody=g('reg-tbody');
+  let list=allRegistrations;
+  if(regFilter==='pending')list=list.filter(r=>r.paymentStatus==='Pending');
+  if(regFilter==='verified')list=list.filter(r=>r.paymentStatus==='Verified');
+  g('reg-empty').style.display=list.length?'none':'block';
+  tbody.innerHTML=list.map((r,i)=>`
+    <tr>
+      <td style="color:rgba(255,255,255,0.3);">${i+1}</td>
+      <td><strong style="color:var(--gold);font-size:11px;">${r.regId||'—'}</strong></td>
+      <td><strong>${r.name||'—'}</strong></td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.4);">${r.email||'—'}</td>
+      <td style="font-size:11px;">${r.whatsapp||'—'}</td>
+      <td style="font-size:11px;">${r.age||'—'}</td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.5);">${r.gender||'—'}</td>
+      <td style="font-size:11px;">${r.paymentMethod||'—'}</td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.5);max-width:120px;overflow:hidden;text-overflow:ellipsis;">${r.utr||'—'}</td>
+      <td>${r.transactionPhoto&&r.transactionPhoto!=='Not provided'?`<a href="${r.transactionPhoto}" target="_blank" style="color:var(--gold);font-size:11px;">View</a>`:'—'}</td>
+      <td><span class="${r.paymentStatus==='Verified'?'badge-verified':'badge-pending'}">${r.paymentStatus||'Pending'}</span></td>
+      <td style="white-space:nowrap;">
+        ${r.paymentStatus!=='Verified'?`<button class="action-btn approve-btn" onclick="verifyPayment('${r.id}',this)">✓ Verify</button>`:''}
+        <button class="action-btn delete-btn" onclick="deleteReg('${r.id}')">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+async function verifyPayment(id,btn){
+  btn.textContent='...';btn.disabled=true;
+  await db.collection('registrations').doc(id).update({paymentStatus:'Verified'});
+  const r=allRegistrations.find(x=>x.id===id);if(r)r.paymentStatus='Verified';
+  renderRegistrations();
+  g('qs-pending-pay').textContent=allRegistrations.filter(r=>r.paymentStatus==='Pending').length;
+}
+
+async function deleteReg(id){
+  if(!confirm('Delete this registration permanently?'))return;
+  await db.collection('registrations').doc(id).delete();
+  allRegistrations=allRegistrations.filter(x=>x.id!==id);
+  renderRegistrations();
+}
+
+function exportToCSV(){
+  const headers=['Timestamp','Name','Email','WhatsApp','Age','Gender','Payment Method','UTR','Screenshot','Payment Status'];
+  const rows=allRegistrations.map(r=>[
+    fmtDate(r.timestamp),r.name,r.email,r.whatsapp,r.age,r.gender,
+    r.paymentMethod,r.utr,r.transactionPhoto,r.paymentStatus
+  ].map(x=>`"${x||''}"`).join(','));
+  const csv='data:text/csv;charset=utf-8,'+[headers.join(','),...rows].join('\n');
+  const a=document.createElement('a');a.href=encodeURI(csv);a.download='GB_Registrations.csv';a.click();
+}
+
+function openWhatsAppBroadcast(){
+  const numbers=allReminders.map(r=>r.phone).filter(Boolean);
+  if(numbers.length===0){alert('No reminder opt-ins yet.');return;}
+  const msg=encodeURIComponent(`Hi! 🎵 This is a reminder that GAANA BAJAANA Edition 2 is TOMORROW — March 28, 2026 at 6:00 PM at McDonald's Narepally. Bring your entry pass. We can't wait to see you! 🎶 — Team Gaana Bajaana`);
+  alert(`Opening WhatsApp. Reminder message is pre-filled. Send to these ${numbers.length} numbers:\n\n${numbers.join('\n')}`);
+  window.open(`https://wa.me/?text=${msg}`,'_blank');
+}
+
+/* ── SONG VOTES ─────────────────────────────────────────── */
+async function loadSongs(){
+  const snap=await db.collection('songVotes').orderBy('votes','desc').get();
+  allSongs=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderSongs();
+  let total=0;allSongs.forEach(s=>total+=(s.votes||0));
+  g('qs-votes').textContent=total;
+}
+
+function renderSongs(){
+  const tbody=g('songs-tbody');
+  g('songs-empty').style.display=allSongs.length?'none':'block';
+  const medals=['🥇','🥈','🥉'];
+  tbody.innerHTML=allSongs.map((s,i)=>`
+    <tr>
+      <td><span style="font-size:18px;">${medals[i]||i+1}</span></td>
+      <td><strong>${s.song||'—'}</strong></td>
+      <td style="color:rgba(255,255,255,0.4);font-size:11px;">${s.artist||'—'}</td>
+      <td><span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);">${s.votes||0}</span></td>
+      <td><button class="action-btn delete-btn" onclick="deleteSong('${s.id}')">Remove</button></td>
+    </tr>`).join('');
+}
+
+async function deleteSong(id){
+  if(!confirm('Remove this song from the leaderboard?'))return;
+  await db.collection('songVotes').doc(id).delete();
+  allSongs=allSongs.filter(x=>x.id!==id);
+  renderSongs();
 }
 
 /* ── SPONSORS ──────────────────────────────────────────── */
@@ -592,247 +746,266 @@ async function loadSponsors(){
 }
 
 async function addSponsor(){
-  const name=el('sp-name').value.trim();
-  const logoUrl=el('sp-logo').value.trim();
-  const website=el('sp-website').value.trim();
-  const order=parseInt(el('sp-order').value)||1;
-  if(!name){alert('Please enter sponsor name.');return;}
-  await db.collection('sponsors').add({name,logoUrl,website,order,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-  el('sp-name').value='';el('sp-logo').value='';el('sp-website').value='';el('sp-order').value='';
-  showToast('toast-sponsor');
-  loadSponsors();
+  const name=g('sp-name').value.trim();
+  if(!name){alert('Enter sponsor name.');return;}
+  await db.collection('sponsors').add({name,logoUrl:g('sp-logo').value.trim(),website:g('sp-website').value.trim(),order:parseInt(g('sp-order').value)||1,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  ['sp-name','sp-logo','sp-website','sp-order'].forEach(id=>g(id).value='');
+  showToast('toast-sponsor');loadSponsors();
+}
+
+function editSponsor(id){
+  const s=allSponsors.find(x=>x.id===id);if(!s)return;
+  openEditModal('Edit Sponsor',[
+    {key:'name',label:'Name',placeholder:'Sponsor Name'},
+    {key:'logoUrl',label:'Logo URL',placeholder:'https://drive.google.com/...'},
+    {key:'website',label:'Website URL',placeholder:'https://...'},
+    {key:'order',label:'Display Order',type:'number'}
+  ],'sponsors',id,s);
 }
 
 async function deleteSponsor(id){
-  if(!confirm('Remove this sponsor?')) return;
+  if(!confirm('Remove sponsor?'))return;
   await db.collection('sponsors').doc(id).delete();
-  allSponsors=allSponsors.filter(x=>x.id!==id);
-  renderSponsors();
+  allSponsors=allSponsors.filter(x=>x.id!==id);renderSponsors();
 }
 
 function renderSponsors(){
-  const tbody=el('sponsors-tbody');
-  el('sponsors-empty').style.display=allSponsors.length?'none':'block';
+  const tbody=g('sponsors-tbody');
+  g('sponsors-empty').style.display=allSponsors.length?'none':'block';
   tbody.innerHTML=allSponsors.map((s,i)=>`
     <tr>
-      <td><img src="${convertDriveUrl(s.logoUrl)||''}" class="thumb" onerror="this.style.display='none'"></td>
+      <td><img src="${cvt(s.logoUrl||'')}" class="thumb" onerror="this.style.display='none'"></td>
       <td><strong>${s.name||'—'}</strong></td>
-      <td style="font-size:11px;color:rgba(255,255,255,0.4);max-width:200px;overflow:hidden;text-overflow:ellipsis;">${s.website||'—'}</td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.4);">${s.website||'—'}</td>
       <td>${s.order||'—'}</td>
-      <td><span class="badge-live">✓ Active</span></td>
-      <td><button class="action-btn delete-btn" onclick="deleteSponsor('${s.id}')">Remove</button></td>
+      <td><button class="action-btn edit-btn" onclick="editSponsor('${s.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteSponsor('${s.id}')">Delete</button></td>
     </tr>`).join('');
 }
 
 /* ── FAQ ───────────────────────────────────────────────── */
 async function loadFAQ(){
   const snap=await db.collection('faqItems').orderBy('order','asc').get();
-  allFAQ=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderFAQ();
+  allFAQ=snap.docs.map(d=>({id:d.id,...d.data()}));renderFAQ();
 }
 
 async function addFAQ(){
-  const question=el('faq-q').value.trim();
-  const answer=el('faq-a').value.trim();
-  const order=parseInt(el('faq-order').value)||1;
-  if(!question||!answer){alert('Please fill in question and answer.');return;}
-  await db.collection('faqItems').add({question,answer,order,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-  el('faq-q').value='';el('faq-a').value='';el('faq-order').value='';
-  showToast('toast-faq');
-  loadFAQ();
+  const question=g('faq-q').value.trim(),answer=g('faq-a').value.trim();
+  if(!question||!answer){alert('Fill question and answer.');return;}
+  await db.collection('faqItems').add({question,answer,order:parseInt(g('faq-order').value)||1,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  ['faq-q','faq-a','faq-order'].forEach(id=>g(id).value='');
+  showToast('toast-faq');loadFAQ();
+}
+
+function editFAQ(id){
+  const f=allFAQ.find(x=>x.id===id);if(!f)return;
+  openEditModal('Edit FAQ',[
+    {key:'question',label:'Question'},
+    {key:'answer',label:'Answer',type:'textarea'},
+    {key:'order',label:'Order',type:'number'}
+  ],'faqItems',id,f);
 }
 
 async function deleteFAQ(id){
-  if(!confirm('Delete this FAQ item?')) return;
+  if(!confirm('Delete FAQ?'))return;
   await db.collection('faqItems').doc(id).delete();
-  allFAQ=allFAQ.filter(x=>x.id!==id);
-  renderFAQ();
+  allFAQ=allFAQ.filter(x=>x.id!==id);renderFAQ();
 }
 
 function renderFAQ(){
-  const tbody=el('faq-tbody');
-  el('faq-empty').style.display=allFAQ.length?'none':'block';
+  const tbody=g('faq-tbody');
+  g('faq-empty').style.display=allFAQ.length?'none':'block';
   tbody.innerHTML=allFAQ.map((f,i)=>`
     <tr>
       <td>${i+1}</td>
-      <td style="font-weight:600;max-width:200px;">${f.question||'—'}</td>
+      <td style="font-weight:600;max-width:180px;">${f.question||'—'}</td>
       <td><div class="review-text">${f.answer||'—'}</div></td>
       <td>${f.order||'—'}</td>
-      <td><button class="action-btn delete-btn" onclick="deleteFAQ('${f.id}')">Delete</button></td>
+      <td><button class="action-btn edit-btn" onclick="editFAQ('${f.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteFAQ('${f.id}')">Delete</button></td>
     </tr>`).join('');
 }
 
 /* ── REELS ─────────────────────────────────────────────── */
 async function loadReels(){
   const snap=await db.collection('reelItems').orderBy('order','asc').get();
-  allReels=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderReels();
+  allReels=snap.docs.map(d=>({id:d.id,...d.data()}));renderReels();
 }
 
 async function addReel(){
-  const embedUrl=el('reel-url').value.trim();
-  const order=parseInt(el('reel-order').value)||1;
-  if(!embedUrl){alert('Please enter reel embed URL.');return;}
-  await db.collection('reelItems').add({embedUrl,order,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-  el('reel-url').value='';el('reel-order').value='';
-  showToast('toast-reel');
-  loadReels();
+  const embedUrl=g('reel-url').value.trim();
+  if(!embedUrl){alert('Enter reel URL.');return;}
+  await db.collection('reelItems').add({embedUrl,order:parseInt(g('reel-order').value)||1,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  g('reel-url').value='';g('reel-order').value='';
+  showToast('toast-reel');loadReels();
+}
+
+function editReel(id){
+  const r=allReels.find(x=>x.id===id);if(!r)return;
+  openEditModal('Edit Reel',[
+    {key:'embedUrl',label:'Embed URL'},
+    {key:'order',label:'Order',type:'number'}
+  ],'reelItems',id,r);
 }
 
 async function deleteReel(id){
-  if(!confirm('Remove this reel?')) return;
+  if(!confirm('Remove reel?'))return;
   await db.collection('reelItems').doc(id).delete();
-  allReels=allReels.filter(x=>x.id!==id);
-  renderReels();
+  allReels=allReels.filter(x=>x.id!==id);renderReels();
 }
 
 function renderReels(){
-  const tbody=el('reels-tbody');
-  el('reels-empty').style.display=allReels.length?'none':'block';
+  const tbody=g('reels-tbody');
+  g('reels-empty').style.display=allReels.length?'none':'block';
   tbody.innerHTML=allReels.map((r,i)=>`
     <tr>
       <td>${i+1}</td>
-      <td style="font-size:11px;color:rgba(255,255,255,0.4);max-width:280px;overflow:hidden;text-overflow:ellipsis;">${r.embedUrl||'—'}</td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.4);max-width:260px;overflow:hidden;text-overflow:ellipsis;">${r.embedUrl||'—'}</td>
       <td>${r.order||'—'}</td>
-      <td><button class="action-btn delete-btn" onclick="deleteReel('${r.id}')">Remove</button></td>
+      <td><button class="action-btn edit-btn" onclick="editReel('${r.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteReel('${r.id}')">Delete</button></td>
     </tr>`).join('');
 }
 
 /* ── GALLERY ───────────────────────────────────────────── */
 async function loadGallery(){
   const snap=await db.collection('galleryStatic').orderBy('order','asc').get();
-  allGallery=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderGallery();
+  allGallery=snap.docs.map(d=>({id:d.id,...d.data()}));renderGallery();
 }
 
 async function addGalleryPhoto(){
-  const imageUrl=el('gal-url').value.trim();
-  const caption=el('gal-caption').value.trim();
-  const order=parseInt(el('gal-order').value)||1;
-  if(!imageUrl){alert('Please enter a photo URL.');return;}
-  await db.collection('galleryStatic').add({imageUrl,caption,order,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-  el('gal-url').value='';el('gal-caption').value='';el('gal-order').value='';
-  showToast('toast-gallery');
-  loadGallery();
+  const imageUrl=g('gal-url').value.trim();
+  if(!imageUrl){alert('Enter photo URL.');return;}
+  await db.collection('galleryStatic').add({imageUrl,caption:g('gal-caption').value.trim(),order:parseInt(g('gal-order').value)||1,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  ['gal-url','gal-caption','gal-order'].forEach(id=>g(id).value='');
+  showToast('toast-gallery');loadGallery();
+}
+
+function editGallery(id){
+  const ga=allGallery.find(x=>x.id===id);if(!ga)return;
+  openEditModal('Edit Gallery Photo',[
+    {key:'imageUrl',label:'Image URL'},
+    {key:'caption',label:'Caption'},
+    {key:'order',label:'Order',type:'number'}
+  ],'galleryStatic',id,ga);
 }
 
 async function deleteGalleryPhoto(id){
-  if(!confirm('Remove this photo from gallery?')) return;
+  if(!confirm('Remove photo?'))return;
   await db.collection('galleryStatic').doc(id).delete();
-  allGallery=allGallery.filter(x=>x.id!==id);
-  renderGallery();
+  allGallery=allGallery.filter(x=>x.id!==id);renderGallery();
 }
 
 function renderGallery(){
-  const tbody=el('gallery-tbody');
-  el('gallery-empty').style.display=allGallery.length?'none':'block';
-  tbody.innerHTML=allGallery.map((g,i)=>`
+  const tbody=g('gallery-tbody');
+  g('gallery-empty').style.display=allGallery.length?'none':'block';
+  tbody.innerHTML=allGallery.map((ga,i)=>`
     <tr>
-      <td><img src="${convertDriveUrl(g.imageUrl)}" class="thumb" onerror="this.style.display='none'"></td>
-      <td>${g.caption||'—'}</td>
-      <td>${g.order||'—'}</td>
-      <td><span class="badge-live">✓ Live</span></td>
-      <td><button class="action-btn delete-btn" onclick="deleteGalleryPhoto('${g.id}')">Remove</button></td>
+      <td><img src="${cvt(ga.imageUrl)}" class="thumb" onerror="this.style.display='none'"></td>
+      <td>${ga.caption||'—'}</td>
+      <td>${ga.order||'—'}</td>
+      <td><button class="action-btn edit-btn" onclick="editGallery('${ga.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteGalleryPhoto('${ga.id}')">Delete</button></td>
     </tr>`).join('');
 }
 
 /* ── TEAM ──────────────────────────────────────────────── */
 async function loadTeam(){
   const snap=await db.collection('teamMembers').orderBy('order','asc').get();
-  allTeam=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderTeam();
+  allTeam=snap.docs.map(d=>({id:d.id,...d.data()}));renderTeam();
 }
 
 async function addTeamMember(){
-  const name=el('tm-name').value.trim();
-  const role=el('tm-role').value.trim();
-  const initials=el('tm-initials').value.trim().toUpperCase();
-  const order=parseInt(el('tm-order').value)||1;
-  const photoUrl=el('tm-photo').value.trim();
-  const linkedin=el('tm-linkedin').value.trim();
-  const bio=el('tm-bio').value.trim();
-  if(!name){alert('Please enter name.');return;}
-  await db.collection('teamMembers').add({name,role,initials,order,photoUrl,linkedin,bio,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-  ['tm-name','tm-role','tm-initials','tm-order','tm-photo','tm-linkedin','tm-bio'].forEach(id=>el(id).value='');
-  showToast('toast-team');
-  loadTeam();
+  const name=g('tm-name').value.trim();
+  if(!name){alert('Enter name.');return;}
+  await db.collection('teamMembers').add({name,role:g('tm-role').value.trim(),initials:g('tm-initials').value.trim().toUpperCase(),order:parseInt(g('tm-order').value)||1,photoUrl:g('tm-photo').value.trim(),linkedin:g('tm-linkedin').value.trim(),bio:g('tm-bio').value.trim(),active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  ['tm-name','tm-role','tm-initials','tm-order','tm-photo','tm-linkedin','tm-bio'].forEach(id=>g(id).value='');
+  showToast('toast-team');loadTeam();
+}
+
+function editTeam(id){
+  const t=allTeam.find(x=>x.id===id);if(!t)return;
+  openEditModal('Edit Team Member',[
+    {key:'name',label:'Full Name'},
+    {key:'role',label:'Role'},
+    {key:'initials',label:'Initials (2 chars)'},
+    {key:'order',label:'Order',type:'number'},
+    {key:'photoUrl',label:'Photo URL'},
+    {key:'linkedin',label:'LinkedIn URL'},
+    {key:'bio',label:'Bio',type:'textarea'}
+  ],'teamMembers',id,t);
 }
 
 async function deleteTeamMember(id){
-  if(!confirm('Remove this team member?')) return;
+  if(!confirm('Remove team member?'))return;
   await db.collection('teamMembers').doc(id).delete();
-  allTeam=allTeam.filter(x=>x.id!==id);
-  renderTeam();
+  allTeam=allTeam.filter(x=>x.id!==id);renderTeam();
 }
 
 function renderTeam(){
-  const tbody=el('team-tbody');
-  el('team-empty').style.display=allTeam.length?'none':'block';
+  const tbody=g('team-tbody');
+  g('team-empty').style.display=allTeam.length?'none':'block';
   tbody.innerHTML=allTeam.map((t,i)=>`
     <tr>
       <td>${i+1}</td>
       <td><strong>${t.name||'—'}</strong></td>
       <td style="color:rgba(255,255,255,0.5);">${t.role||'—'}</td>
       <td>${t.order||'—'}</td>
-      <td><button class="action-btn delete-btn" onclick="deleteTeamMember('${t.id}')">Remove</button></td>
+      <td><button class="action-btn edit-btn" onclick="editTeam('${t.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteTeamMember('${t.id}')">Delete</button></td>
     </tr>`).join('');
 }
 
-/* ── ATTENDEE WALL ─────────────────────────────────────── */
+/* ── WALL ──────────────────────────────────────────────── */
 async function loadWall(){
   const snap=await db.collection('attendees').orderBy('timestamp','desc').get();
-  allWall=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderWall();
-  el('badge-wall').textContent=allWall.length;
+  allWall=snap.docs.map(d=>({id:d.id,...d.data()}));renderWall();
 }
 
 async function addWallName(){
-  const name=el('wall-name').value.trim();
-  if(!name){alert('Please enter a name.');return;}
+  const name=g('wall-name').value.trim();
+  if(!name){alert('Enter a name.');return;}
   await db.collection('attendees').add({name,approved:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-  el('wall-name').value='';
-  showToast('toast-wall');
-  loadWall();
+  g('wall-name').value='';showToast('toast-wall');loadWall();
+}
+
+function editWallName(id){
+  const w=allWall.find(x=>x.id===id);if(!w)return;
+  openEditModal('Edit Name',[{key:'name',label:'Name'}],'attendees',id,w);
 }
 
 async function deleteWallName(id){
-  if(!confirm('Remove from wall?')) return;
+  if(!confirm('Remove from wall?'))return;
   await db.collection('attendees').doc(id).delete();
-  allWall=allWall.filter(x=>x.id!==id);
-  renderWall();
+  allWall=allWall.filter(x=>x.id!==id);renderWall();
 }
 
 function renderWall(){
-  const tbody=el('wall-tbody');
-  el('wall-empty').style.display=allWall.length?'none':'block';
+  const tbody=g('wall-tbody');
+  g('wall-empty').style.display=allWall.length?'none':'block';
   tbody.innerHTML=allWall.map((w,i)=>`
     <tr>
       <td>${i+1}</td>
       <td><strong>${w.name||'—'}</strong></td>
       <td style="font-size:11px;color:rgba(255,255,255,0.35);">${fmtDate(w.timestamp)}</td>
-      <td><button class="action-btn delete-btn" onclick="deleteWallName('${w.id}')">Remove</button></td>
+      <td><button class="action-btn edit-btn" onclick="editWallName('${w.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteWallName('${w.id}')">Remove</button></td>
     </tr>`).join('');
 }
 
 /* ── PHOTOS ────────────────────────────────────────────── */
 async function loadPhotos(){
   const snap=await db.collection('photoSubmissions').orderBy('timestamp','desc').get();
-  allPhotos=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderPhotos();
-  el('badge-photos').textContent=allPhotos.filter(p=>!p.approved).length;
-  el('qs-photos').textContent=allPhotos.filter(p=>!p.approved).length;
+  allPhotos=snap.docs.map(d=>({id:d.id,...d.data()}));renderPhotos();
+  const pending=allPhotos.filter(p=>!p.approved).length;
+  g('badge-photos').textContent=pending;
+  g('qs-photos').textContent=pending;
 }
 
 function renderPhotos(){
-  const tbody=el('photos-tbody');
-  el('photos-empty').style.display=allPhotos.length?'none':'block';
+  const tbody=g('photos-tbody');
+  g('photos-empty').style.display=allPhotos.length?'none':'block';
   tbody.innerHTML=allPhotos.map((p,i)=>`
     <tr>
       <td>${i+1}</td>
-      <td><a href="${p.photoUrl}" target="_blank"><img src="${convertDriveUrl(p.photoUrl)}" class="thumb" onerror="this.style.display='none'"></a></td>
+      <td><a href="${p.photoUrl}" target="_blank"><img src="${cvt(p.photoUrl)}" class="thumb" onerror="this.style.display='none'"></a></td>
       <td><strong>${p.submitterName||'—'}</strong></td>
       <td style="font-size:11px;color:rgba(255,255,255,0.5);">${p.caption||'—'}</td>
-      <td style="font-size:11px;color:rgba(255,255,255,0.35);">${fmtDate(p.timestamp)}</td>
+      <td style="font-size:10px;color:rgba(255,255,255,0.3);">${fmtDate(p.timestamp)}</td>
       <td><span class="${p.approved?'badge-live':'badge-pending'}">${p.approved?'✓ Live':'⏳ Pending'}</span></td>
       <td style="white-space:nowrap;">
         ${!p.approved?`<button class="action-btn approve-btn" onclick="approvePhoto('${p.id}',this)">Approve</button>`:''}
@@ -845,30 +1018,27 @@ async function approvePhoto(id,btn){
   btn.textContent='...';btn.disabled=true;
   await db.collection('photoSubmissions').doc(id).update({approved:true});
   const p=allPhotos.find(x=>x.id===id);if(p)p.approved=true;
-  renderPhotos();
-  el('badge-photos').textContent=allPhotos.filter(x=>!x.approved).length;
+  renderPhotos();g('badge-photos').textContent=allPhotos.filter(x=>!x.approved).length;
 }
 
 async function deletePhoto(id){
-  if(!confirm('Delete this photo submission permanently?')) return;
+  if(!confirm('Delete photo?'))return;
   await db.collection('photoSubmissions').doc(id).delete();
-  allPhotos=allPhotos.filter(x=>x.id!==id);
-  renderPhotos();
+  allPhotos=allPhotos.filter(x=>x.id!==id);renderPhotos();
 }
 
 /* ── MESSAGES ──────────────────────────────────────────── */
 async function loadMessages(){
   const snap=await db.collection('messages').orderBy('timestamp','desc').get();
-  allMsgs=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderMessages();
+  allMsgs=snap.docs.map(d=>({id:d.id,...d.data()}));renderMessages();
   const unread=allMsgs.filter(m=>!m.read).length;
-  el('badge-msg').textContent=unread;
-  el('qs-messages').textContent=unread;
+  g('badge-msg').textContent=unread;
+  g('qs-messages').textContent=unread;
 }
 
 function renderMessages(){
-  const tbody=el('msg-tbody');
-  el('msg-empty').style.display=allMsgs.length?'none':'block';
+  const tbody=g('msg-tbody');
+  g('msg-empty').style.display=allMsgs.length?'none':'block';
   tbody.innerHTML=allMsgs.map((m,i)=>`
     <tr>
       <td>${i+1}</td>
@@ -888,36 +1058,32 @@ async function markMsgRead(id){
   const m=allMsgs.find(x=>x.id===id);if(m)m.read=true;
   renderMessages();
   const unread=allMsgs.filter(x=>!x.read).length;
-  el('badge-msg').textContent=unread;
-  el('qs-messages').textContent=unread;
+  g('badge-msg').textContent=unread;g('qs-messages').textContent=unread;
 }
 
 async function deleteMsg(id){
-  if(!confirm('Delete message?')) return;
+  if(!confirm('Delete message?'))return;
   await db.collection('messages').doc(id).delete();
-  allMsgs=allMsgs.filter(x=>x.id!==id);
-  renderMessages();
+  allMsgs=allMsgs.filter(x=>x.id!==id);renderMessages();
 }
 
 /* ── TESTIMONIALS ──────────────────────────────────────── */
 async function loadTestimonials(){
   const snap=await db.collection('testimonials').orderBy('timestamp','desc').get();
-  allTestis=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderTestimonials();
+  allTestis=snap.docs.map(d=>({id:d.id,...d.data()}));renderTestimonials();
   const pending=allTestis.filter(t=>!t.approved).length;
-  el('badge-testi').textContent=pending;
-  el('qs-reviews').textContent=pending;
+  g('badge-testi').textContent=pending;g('qs-reviews').textContent=pending;
 }
 
 function renderTestimonials(){
-  const tbody=el('testi-tbody');
-  el('testi-empty').style.display=allTestis.length?'none':'block';
+  const tbody=g('testi-tbody');
+  g('testi-empty').style.display=allTestis.length?'none':'block';
   tbody.innerHTML=allTestis.map((t,i)=>`
     <tr>
       <td>${i+1}</td>
       <td><strong>${t.name||'—'}</strong></td>
       <td style="font-size:11px;color:rgba(255,255,255,0.4);">${t.handle||'—'}</td>
-      <td><div class="stars">${'★'.repeat(t.rating||5)}${'☆'.repeat(5-(t.rating||5))}</div></td>
+      <td><span style="color:var(--gold);">${'★'.repeat(t.rating||5)}${'☆'.repeat(5-(t.rating||5))}</span></td>
       <td><div class="review-text">${t.text||'—'}</div></td>
       <td style="font-size:10px;color:rgba(255,255,255,0.3);">${fmtDate(t.timestamp)}</td>
       <td><span class="${t.approved?'badge-live':'badge-pending'}">${t.approved?'✓ Live':'⏳ Pending'}</span></td>
@@ -932,15 +1098,48 @@ async function approveTesti(id,btn){
   btn.textContent='...';btn.disabled=true;
   await db.collection('testimonials').doc(id).update({approved:true});
   const t=allTestis.find(x=>x.id===id);if(t)t.approved=true;
-  renderTestimonials();
-  el('badge-testi').textContent=allTestis.filter(x=>!x.approved).length;
+  renderTestimonials();g('badge-testi').textContent=allTestis.filter(x=>!x.approved).length;
 }
 
 async function deleteTesti(id){
-  if(!confirm('Delete this review permanently?')) return;
+  if(!confirm('Delete review?'))return;
   await db.collection('testimonials').doc(id).delete();
-  allTestis=allTestis.filter(x=>x.id!==id);
-  renderTestimonials();
+  allTestis=allTestis.filter(x=>x.id!==id);renderTestimonials();
+}
+
+/* ── REMINDERS ─────────────────────────────────────────── */
+async function loadReminders(){
+  const snap=await db.collection('reminderOptIns').orderBy('timestamp','desc').get();
+  allReminders=snap.docs.map(d=>({id:d.id,...d.data()}));renderReminders();
+}
+
+function renderReminders(){
+  const tbody=g('reminders-tbody');
+  g('reminders-empty').style.display=allReminders.length?'none':'block';
+  tbody.innerHTML=allReminders.map((r,i)=>`
+    <tr>
+      <td>${i+1}</td>
+      <td><strong>${r.name||'—'}</strong></td>
+      <td>${r.phone||'—'}</td>
+      <td style="font-size:10px;color:rgba(255,255,255,0.3);">${fmtDate(r.timestamp)}</td>
+      <td>
+        <a href="https://wa.me/${(r.phone||'').replace(/\D/g,'')}" target="_blank" class="action-btn approve-btn" style="text-decoration:none;display:inline-block;">WhatsApp</a>
+        <button class="action-btn delete-btn" onclick="deleteReminder('${r.id}')">Remove</button>
+      </td>
+    </tr>`).join('');
+}
+
+async function deleteReminder(id){
+  if(!confirm('Remove this reminder opt-in?'))return;
+  await db.collection('reminderOptIns').doc(id).delete();
+  allReminders=allReminders.filter(x=>x.id!==id);renderReminders();
+}
+
+function exportReminders(){
+  const nums=allReminders.map(r=>r.phone).filter(Boolean).join('\n');
+  if(!nums){alert('No opt-ins yet.');return;}
+  const blob=new Blob([nums],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='reminder_numbers.txt';a.click();
 }
 </script>
 </body>
