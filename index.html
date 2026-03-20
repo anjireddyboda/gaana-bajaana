@@ -20,7 +20,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 /* LOADER */
 #loader{position:fixed;inset:0;background:var(--dark);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity 0.6s ease,visibility 0.6s ease;}
 #loader.hidden{opacity:0;visibility:hidden;}
-.loader-logo-img{height:80px;width:auto;object-fit:contain;background:transparent;animation:loaderPulse 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(245,200,66,0.4));}
+.loader-logo-img{height:80px;width:auto;object-fit:contain;animation:loaderPulse 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(245,200,66,0.4));}
 .loader-logo-text{font-family:'Bebas Neue',sans-serif;font-size:60px;letter-spacing:6px;background:linear-gradient(135deg,#fff,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .loader-welcome{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);text-align:center;}
 .loader-bar{width:180px;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
@@ -30,8 +30,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(7,7,9,0.95),transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{text-decoration:none;display:flex;align-items:center;background:transparent;}
-.nav-logo img{height:32px;width:auto;object-fit:contain;background:transparent;display:block;}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:32px;width:auto;object-fit:contain;display:block;}
 .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--gold);}
 .nav-links{display:flex;gap:24px;align-items:center;}
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;cursor:none;}
@@ -45,7 +45,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:fl
 /* MOBILE MENU */
 #mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,7,9,0.97);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow-y:auto;padding:80px 20px 40px;}
 #mobile-menu.open{display:flex;}
-#mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;padding:3px 0;cursor:none;}
+#mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;cursor:none;}
 #mobile-menu a:hover{color:var(--gold);}
 .mobile-social{display:flex;gap:20px;margin-top:12px;padding-top:16px;border-top:1px solid var(--border);}
 .mobile-social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.3s;cursor:none;}
@@ -60,13 +60,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:fl
 .modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;gap:20px;}
 .modal-close{width:48px;height:48px;border-radius:50%;border:1px solid var(--border);background:var(--glass);cursor:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(255,255,255,0.6);font-size:24px;transition:all 0.3s;line-height:1;}
 .modal-close:hover{border-color:var(--gold);color:var(--gold);}
-
-/* REGISTRATION MODAL */
-#reg-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);z-index:300;overflow-y:auto;padding:20px;}
-#reg-modal.open{display:flex;align-items:flex-start;justify-content:center;}
-.reg-modal-box{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:32px 28px;max-width:600px;width:100%;margin:auto;position:relative;}
-.reg-modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--dark3);cursor:none;color:rgba(255,255,255,0.5);font-size:22px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
-.reg-modal-close:hover{color:#fff;border-color:var(--coral);}
 
 /* PHOTO MODAL */
 #photo-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:8000;padding:20px;}
@@ -89,7 +82,7 @@ canvas#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;po
 /* HERO */
 .hero{position:relative;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;z-index:2;}
 .hero-eyebrow{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
-.hero-logo-img{max-width:min(400px,80vw);width:100%;height:auto;object-fit:contain;background:transparent;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 40px rgba(245,200,66,0.3));margin-bottom:8px;}
+.hero-logo-img{max-width:min(400px,80vw);width:100%;height:auto;object-fit:contain;opacity:0;animation:fadeUp 0.9s 0.5s forwards;filter:drop-shadow(0 0 40px rgba(245,200,66,0.3));margin-bottom:8px;}
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,11vw,140px);line-height:0.88;letter-spacing:6px;background:linear-gradient(135deg,#fff 0%,var(--gold) 50%,var(--coral) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 0.9s 0.5s forwards;}
 .hero-sub{font-size:clamp(12px,1.8vw,16px);letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:16px;opacity:0;animation:fadeUp 0.9s 0.7s forwards;}
 .hero-date-badge{margin-top:24px;display:inline-flex;gap:12px;align-items:center;background:var(--glass);border:1px solid var(--border);padding:10px 24px;border-radius:60px;font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:1px;opacity:0;animation:fadeUp 0.9s 0.9s forwards;}
@@ -161,7 +154,7 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .live-counter-num{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;}
 .live-counter-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;}
 
-/* ANIMATED POSTER */
+/* POSTER */
 .poster-container{position:relative;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 40px rgba(245,200,66,0.1);aspect-ratio:3/4;background:var(--dark3);}
 .poster-container img{width:100%;height:100%;object-fit:cover;display:block;}
 .poster-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(7,7,9,0.95) 0%,rgba(7,7,9,0.6) 60%,transparent 100%);padding:20px;text-align:center;}
@@ -189,7 +182,7 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .tl-item:nth-child(even) .tl-content{grid-column:3;text-align:left;}
 .tl-dot{width:12px;height:12px;background:var(--gold);border-radius:50%;margin:0 auto;box-shadow:0 0 14px rgba(245,200,66,0.6);position:relative;z-index:2;}
 .tl-time{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);letter-spacing:2px;}
-.tl-content{background:var(--glass);border:1px solid var(--border);padding:12px 16px;border-radius:12px;font-size:13px;color:rgba(255,255,255,0.75);font-weight:500;}
+.tl-content{background:var(--glass);border:1px solid var(--border);padding:12px 16px;border-radius:12px;font-size:13px;color:rgba(255,255,255,0.75);}
 
 /* MUSIC ANIM */
 .music-anim{display:flex;align-items:flex-end;gap:4px;height:28px;justify-content:center;margin:0 auto 28px;}
@@ -237,7 +230,7 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .team-social a:hover svg{fill:var(--gold);}
 .li-svg{width:12px;height:12px;fill:rgba(255,255,255,0.4);}
 
-/* SCROLLING TESTIMONIALS */
+/* TESTIMONIALS */
 .testi-scroll-wrap{overflow:hidden;padding:8px 0;margin-top:40px;position:relative;}
 .testi-scroll-wrap::before,.testi-scroll-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
 .testi-scroll-wrap::before{left:0;background:linear-gradient(to right,var(--dark2),transparent);}
@@ -320,7 +313,7 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .sponsor-cta{text-align:center;margin-top:28px;padding-top:24px;border-top:1px solid var(--border);}
 .sponsor-cta p{color:rgba(255,255,255,0.35);font-size:13px;margin-bottom:16px;}
 
-/* REGISTER SECTION */
+/* REGISTER */
 .register-section{background:var(--dark2);border-top:1px solid var(--border);}
 .register-inner{max-width:640px;margin:0 auto;text-align:center;}
 .steps-row{display:flex;gap:0;justify-content:center;margin:32px 0;}
@@ -330,7 +323,7 @@ section{position:relative;z-index:2;padding:70px 20px;}
 .step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--amber));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#000;margin-bottom:10px;}
 .step-text{font-size:11px;letter-spacing:1px;text-align:center;color:rgba(255,255,255,0.5);max-width:80px;}
 
-/* REMINDER FORM */
+/* REMINDER */
 .reminder-form{background:linear-gradient(135deg,rgba(37,211,102,0.06),rgba(37,211,102,0.03));border:1px solid rgba(37,211,102,0.15);border-radius:14px;padding:22px;margin-top:24px;text-align:left;}
 .reminder-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:#fff;margin-bottom:4px;}
 .reminder-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:14px;line-height:1.6;}
@@ -412,19 +405,10 @@ footer span{color:var(--gold);}
 .share-option svg{width:15px;height:15px;flex-shrink:0;}
 .share-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 3px;}
 
-/* FORM INPUTS */
+/* INPUTS */
 .gb-input{background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;transition:border-color 0.3s;}
 .gb-input:focus{border-color:rgba(245,200,66,0.4);}
 .gb-input::placeholder{color:rgba(255,255,255,0.25);}
-select.gb-input option{background:var(--dark3);color:#fff;}
-
-/* REGISTRATION FORM STYLES */
-.reg-field-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:6px;display:block;}
-.reg-section-heading{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);padding-bottom:8px;border-bottom:1px solid var(--border);margin:16px 0 12px;}
-.radio-group{display:flex;gap:8px;flex-wrap:wrap;}
-.radio-label{display:flex;align-items:center;gap:7px;background:var(--dark3);border:1px solid var(--border);border-radius:8px;padding:9px 14px;cursor:none;transition:all 0.2s;font-size:12px;color:rgba(255,255,255,0.7);}
-.radio-label:hover{border-color:rgba(245,200,66,0.3);}
-.radio-label input{accent-color:var(--gold);}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 
@@ -464,11 +448,8 @@ nav{padding:14px 16px;}
 .tl-item .tl-time{grid-column:2 !important;grid-row:1;text-align:left !important;font-size:18px;}
 .tl-item .tl-content{grid-column:2 !important;grid-row:2;text-align:left !important;}
 .live-stats{gap:20px;}
-.reg-modal-box{padding:24px 18px;}
 }
-@media(max-width:480px){
-.steps-row .step-text{font-size:10px;max-width:64px;}
-}
+@media(max-width:480px){.steps-row .step-text{font-size:10px;max-width:64px;}}
 </style>
 </head>
 <body>
@@ -484,119 +465,6 @@ nav{padding:14px 16px;}
 <div id="cursor-trail"></div>
 <canvas id="bg-canvas"></canvas>
 
-<!-- ============================================================
-     REGISTRATION MODAL
-     Opens when any "Register Now" button is clicked
-     ============================================================ -->
-<div id="reg-modal">
-  <div class="reg-modal-box">
-    <button class="reg-modal-close" onclick="closeRegModal()">×</button>
-
-    <!-- FORM STATE -->
-    <div id="reg-form-state">
-      <div style="text-align:center;margin-bottom:22px;">
-        <span class="section-label">Gaana Bajaana Edition 2</span>
-        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:#fff;margin:4px 0;">REGISTER NOW</h2>
-        <p style="font-size:12px;color:rgba(255,255,255,0.35);">Fill form · Pay via QR · Get confirmation email</p>
-      </div>
-
-      <!-- Personal Details -->
-      <div class="reg-section-heading">Personal Details</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;" id="reg-personal-grid">
-        <div>
-          <span class="reg-field-label">Full Name *</span>
-          <input id="reg-name" type="text" placeholder="Your full name" class="gb-input">
-        </div>
-        <div>
-          <span class="reg-field-label">Email *</span>
-          <input id="reg-email" type="email" placeholder="For confirmation email" class="gb-input">
-        </div>
-        <div>
-          <span class="reg-field-label">WhatsApp Number *</span>
-          <input id="reg-whatsapp" type="tel" placeholder="+91 XXXXX XXXXX" class="gb-input">
-        </div>
-        <div>
-          <span class="reg-field-label">Age *</span>
-          <select id="reg-age" class="gb-input">
-            <option value="">Select Age</option>
-            <option>16</option><option>17</option><option>18</option><option>19</option>
-            <option>20</option><option>21</option><option>22</option><option>23</option>
-            <option>24</option><option>25</option><option>26</option><option>27</option>
-            <option>28</option><option>29</option><option>30</option>
-          </select>
-        </div>
-      </div>
-      <div style="margin-bottom:14px;">
-        <span class="reg-field-label">Gender *</span>
-        <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="reg-gender" value="Male"> Male</label>
-          <label class="radio-label"><input type="radio" name="reg-gender" value="Female"> Female</label>
-          <label class="radio-label"><input type="radio" name="reg-gender" value="Prefer not to say"> Prefer not to say</label>
-        </div>
-      </div>
-
-      <!-- Payment -->
-      <div class="reg-section-heading">Payment</div>
-
-      <!-- QR Code -->
-      <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;margin-bottom:14px;">
-        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px;">Scan & Pay</div>
-        <div style="display:flex;justify-content:center;margin-bottom:10px;">
-          <img id="reg-payment-qr" src="" alt="Payment QR" style="width:160px;height:160px;border-radius:8px;border:2px solid rgba(245,200,66,0.3);object-fit:cover;background:var(--dark2);" onerror="this.outerHTML='<div style=width:160px;height:160px;border-radius:8px;border:2px dashed rgba(245,200,66,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,0.3)>QR loading...</div>'">
-        </div>
-        <div style="font-size:15px;font-weight:700;color:var(--gold);" id="reg-price-display">₹99 Early Bird · ₹149 Regular</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;">Pay then fill the details below</div>
-      </div>
-
-      <div style="margin-bottom:12px;">
-        <span class="reg-field-label">Paid Through *</span>
-        <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="reg-payment" value="GPay"> GPay</label>
-          <label class="radio-label"><input type="radio" name="reg-payment" value="PhonePe"> PhonePe</label>
-          <label class="radio-label"><input type="radio" name="reg-payment" value="Paytm"> Paytm</label>
-          <label class="radio-label"><input type="radio" name="reg-payment" value="Others"> Others</label>
-        </div>
-      </div>
-
-      <div style="margin-bottom:12px;">
-        <span class="reg-field-label">UTR / Transaction Number *</span>
-        <input id="reg-utr" type="text" placeholder="Enter UTR or transaction ID" class="gb-input">
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <span class="reg-field-label">Transaction Screenshot Link *</span>
-        <p style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.7;margin-bottom:8px;">
-          Upload screenshot to Google Drive → Right click → Share → Anyone with link → Copy link → Paste below
-        </p>
-        <input id="reg-txn-photo" type="url" placeholder="Paste Google Drive link of screenshot" class="gb-input">
-      </div>
-
-      <!-- WhatsApp Community -->
-      <div style="background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" flex-shrink="0" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        <div>
-          <div style="font-size:12px;font-weight:600;color:#25D366;margin-bottom:3px;">Join WhatsApp Community for Updates</div>
-          <a id="reg-wa-comm-link" href="https://chat.whatsapp.com/CnbzyWPb5gp1M00TpMu6zX" target="_blank" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;">Join Now →</a>
-        </div>
-      </div>
-
-      <button id="reg-submit-btn" onclick="submitRegistration()" class="btn-primary" style="width:100%;padding:14px;border-radius:12px;font-size:14px;letter-spacing:2px;">🎟 SUBMIT REGISTRATION →</button>
-      <p style="font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:10px;">Confirmation email sent after payment verification</p>
-    </div>
-
-    <!-- SUCCESS STATE -->
-    <div id="reg-success-state" style="display:none;text-align:center;padding:20px 0;">
-      <div style="font-size:52px;margin-bottom:14px;">🎵</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:4px;background:linear-gradient(135deg,var(--gold),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">REGISTERED!</div>
-      <div id="reg-success-id" style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);margin:10px 0;letter-spacing:3px;"></div>
-      <p style="color:rgba(255,255,255,0.5);font-size:13px;line-height:1.8;margin-bottom:20px;">Check your email for confirmation. We'll verify your payment and send your QR entry pass.<br><span style="font-size:11px;color:rgba(255,255,255,0.3);">Check spam/promotions if not received within 10 mins.</span></p>
-      <a class="btn-outline" id="reg-success-wa-link" href="https://chat.whatsapp.com/CnbzyWPb5gp1M00TpMu6zX" target="_blank" style="margin-bottom:12px;display:inline-block;">Join Community →</a>
-      <br>
-      <button onclick="closeRegModal()" style="background:none;border:none;color:rgba(255,255,255,0.3);font-size:12px;cursor:none;margin-top:8px;letter-spacing:1px;">Close</button>
-    </div>
-  </div>
-</div>
-
 <!-- PHOTO MODAL -->
 <div id="photo-modal">
   <div class="photo-modal-box">
@@ -607,23 +475,22 @@ nav{padding:14px 16px;}
         <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;margin:4px 0;">SUBMIT A PHOTO</h3>
       </div>
       <div style="background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:10px;padding:14px;margin-bottom:14px;font-size:11px;color:rgba(255,255,255,0.4);line-height:1.9;">
-        1. Open Google Drive → Upload your photo<br>
-        2. Right click the photo → Share<br>
-        3. Change to "Anyone with the link" → Copy link<br>
-        4. Paste the link below
+        1. Upload photo to Google Drive<br>
+        2. Right click → Share → Anyone with link<br>
+        3. Copy link → Paste below
       </div>
       <div style="display:flex;flex-direction:column;gap:11px;">
-        <div><span class="reg-field-label">Your Name *</span><input id="photo-name-input" type="text" placeholder="Your name" class="gb-input"></div>
-        <div><span class="reg-field-label">Google Drive Photo Link *</span><input id="photo-url-input" type="url" placeholder="https://drive.google.com/file/d/..." class="gb-input"></div>
-        <div><span class="reg-field-label">Caption (optional)</span><input id="photo-caption-input" type="text" placeholder="Jamming with the band!" class="gb-input"></div>
-        <button id="photo-submit-btn" onclick="submitPhoto()" class="btn-primary" style="padding:13px;border-radius:10px;">📸 Submit Photo →</button>
+        <div><span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:5px;display:block;">Your Name *</span><input id="photo-name-input" type="text" placeholder="Your name" class="gb-input"></div>
+        <div><span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:5px;display:block;">Google Drive Link *</span><input id="photo-url-input" type="url" placeholder="https://drive.google.com/..." class="gb-input"></div>
+        <div><span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:5px;display:block;">Caption (optional)</span><input id="photo-caption-input" type="text" placeholder="Jamming at Edition 2!" class="gb-input"></div>
+        <button id="photo-submit-btn" onclick="submitPhoto()" class="btn-primary" style="padding:13px;border-radius:10px;border:none;">📸 Submit Photo →</button>
       </div>
     </div>
     <div id="photo-success" style="display:none;text-align:center;padding:28px 0;">
       <div style="font-size:40px;margin-bottom:10px;">📸</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;">SUBMITTED!</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;">Appears in gallery once approved.</div>
-      <button onclick="closePhotoModal()" class="btn-outline" style="margin-top:16px;padding:10px 24px;">Close</button>
+      <button onclick="closePhotoModal()" class="btn-outline" style="margin-top:16px;padding:10px 24px;border:1px solid var(--border);">Close</button>
     </div>
   </div>
 </div>
@@ -655,7 +522,7 @@ nav{padding:14px 16px;}
     </div>
     <div class="editions-grid">
       <div class="edition-card"><img class="edition-thumb" src="edition1.jpg" alt="Edition 1" onerror="this.outerHTML='<div class=edition-thumb-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'rgba(255,255,255,0.08)\'><path d=\'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z\'/></svg></div>'"><div class="edition-body"><div class="edition-badge">Edition 1</div><div class="edition-title">GAANA BAJAANA</div><div class="edition-meta"><span>📅 <strong>2025</strong></span><span>📍 <strong>Hyderabad</strong></span></div><div class="edition-stats"><div class="edition-stat"><div class="edition-stat-num">60+</div><div class="edition-stat-label">Attendees</div></div><div class="edition-stat"><div class="edition-stat-num">20+</div><div class="edition-stat-label">Songs</div></div><div class="edition-stat"><div class="edition-stat-num">5+</div><div class="edition-stat-label">Collabs</div></div></div></div></div>
-      <div class="edition-card" style="border-color:rgba(245,200,66,0.2);background:linear-gradient(135deg,rgba(245,200,66,0.05),rgba(255,87,51,0.03));"><div class="edition-thumb-placeholder" style="background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(255,87,51,0.05));"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(245,200,66,0.3)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><div class="edition-body"><div class="edition-badge">Edition 2</div><div class="edition-title">GAANA BAJAANA</div><div class="edition-meta"><span>📅 <strong id="ed2-date">March 28, 2026</strong></span><span>📍 <strong id="ed2-venue">Narepally, Hyd</strong></span></div><div style="margin-top:14px;"><button class="btn-primary" onclick="closeModal('editions-modal');openRegModal();" style="padding:10px 24px;font-size:12px;border:none;">Register Now →</button></div></div></div>
+      <div class="edition-card" style="border-color:rgba(245,200,66,0.2);background:linear-gradient(135deg,rgba(245,200,66,0.05),rgba(255,87,51,0.03));"><div class="edition-thumb-placeholder" style="background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(255,87,51,0.05));"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(245,200,66,0.3)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><div class="edition-body"><div class="edition-badge">Edition 2</div><div class="edition-title">GAANA BAJAANA</div><div class="edition-meta"><span>📅 <strong id="ed2-date">March 28, 2026</strong></span><span>📍 <strong id="ed2-venue">Narepally, Hyd</strong></span></div><div style="margin-top:14px;"><a class="btn-primary" id="ed2-reg-btn" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" style="padding:10px 24px;font-size:12px;">Register Now →</a></div></div></div>
     </div>
   </div>
 </div>
@@ -668,12 +535,12 @@ nav{padding:14px 16px;}
       <button class="modal-close" onclick="closeModal('faq-modal')">×</button>
     </div>
     <div class="faq-list" id="faq-list-dynamic">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a registration fee?<span class="faq-icon">+</span></div><div class="faq-a">Yes. The registration fee is ₹99 for Early Bird and ₹149 for Regular Entry.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Not at all. Gaana Bajaana is open to everyone — from beginners to experienced performers.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a registration fee?<span class="faq-icon">+</span></div><div class="faq-a">Yes. ₹99 for Early Bird and ₹149 for Regular Entry. Register early as slots are limited!</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be a professional musician?<span class="faq-icon">+</span></div><div class="faq-a">Not at all. Gaana Bajaana is open to everyone — beginners to experienced performers. If you love music, you belong here.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring my own instrument?<span class="faq-icon">+</span></div><div class="faq-a">Yes, instruments are welcome but not mandatory.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How will I receive my entry pass?<span class="faq-icon">+</span></div><div class="faq-a">You will receive a confirmation email within 1 hour of registration. Check spam/promotions if not received.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I attend with friends?<span class="faq-icon">+</span></div><div class="faq-a">Yes! Groups are welcome. Each person must register individually.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will food be provided?<span class="faq-icon">+</span></div><div class="faq-a">Food is not included. Drinking water will be available. Order food at your own expense.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How will I receive my entry pass?<span class="faq-icon">+</span></div><div class="faq-a">After registering and paying, you'll receive a confirmation email with your QR entry pass within 1 hour. Check spam if not received.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I attend with friends?<span class="faq-icon">+</span></div><div class="faq-a">Yes! Groups welcome. Each person must register individually.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will food be provided?<span class="faq-icon">+</span></div><div class="faq-a">Food is not included. Drinking water available. Order food at venue at your own expense.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I stay updated?<span class="faq-icon">+</span></div><div class="faq-a">Join our WhatsApp community and follow us on Instagram for all updates.</div></div>
     </div>
   </div>
@@ -736,7 +603,7 @@ nav{padding:14px 16px;}
     <a href="#vote">Song Vote</a>
     <a href="#timeline">Schedule</a>
     <a href="#vibes">Vibes</a>
-    <a href="#register">Register</a>
+    <a href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank" id="nav-reg-link">Register</a>
     <a href="#" onclick="openModal('team-modal');return false;">Team</a>
     <a href="#" onclick="openModal('editions-modal');return false;">Past Editions</a>
     <a href="#" onclick="openModal('faq-modal');return false;">FAQ</a>
@@ -757,7 +624,7 @@ nav{padding:14px 16px;}
   <p class="hero-sub" id="hero-sub">Sing &nbsp;·&nbsp; Jam &nbsp;·&nbsp; Vibe</p>
   <div class="hero-date-badge"><span id="hero-date">March 28, 2026</span>&nbsp;·&nbsp;<span id="hero-time-label">6:00 PM Onwards</span>&nbsp;·&nbsp;<span>Hyderabad</span></div>
   <div class="hero-cta">
-    <button class="btn-primary" id="hero-cta-primary" onclick="openRegModal()">🎟 Register Now</button>
+    <a class="btn-primary" id="hero-cta-primary" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a>
     <a class="btn-outline" id="hero-cta-community" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">Join Community</a>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -855,7 +722,7 @@ nav{padding:14px 16px;}
           <div class="event-detail-item"><div class="event-detail-key">Experience</div><div class="event-detail-val">Sing · Jam · Vibe</div></div>
           <div class="event-detail-item"><div class="event-detail-key">Entry Fee</div><div class="event-detail-val gold" id="detail-price">₹99 Early Bird · ₹149 Regular</div></div>
         </div>
-        <div style="margin-top:20px;"><button class="btn-primary" id="event-cta" onclick="openRegModal()" style="border:none;">Get Your Pass →</button></div>
+        <div style="margin-top:20px;"><a class="btn-primary" id="event-cta" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Get Your Pass →</a></div>
       </div>
     </div>
   </div>
@@ -873,7 +740,6 @@ nav{padding:14px 16px;}
       <div class="gallery-item" onclick="openLightbox(this)"><img src="photo5.jpg" alt="Jam Session" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>View Photo</span></div></div>
       <div class="gallery-item" onclick="openLightbox(this)"><img src="photo6.jpg" alt="Jam Session" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>View Photo</span></div></div>
     </div>
-    <!-- + Button to open photo submission modal -->
     <div style="text-align:center;margin-top:28px;">
       <button onclick="openPhotoModal()" style="background:rgba(245,200,66,0.08);border:2px dashed rgba(245,200,66,0.3);border-radius:12px;padding:16px 36px;cursor:none;color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s;" onmouseover="this.style.background='rgba(245,200,66,0.14)'" onmouseout="this.style.background='rgba(245,200,66,0.08)'">
         <span style="font-size:24px;line-height:1;">+</span> SHARE YOUR MEMORY
@@ -894,7 +760,7 @@ nav{padding:14px 16px;}
     <div class="timeline reveal">
       <div class="tl-item"><div class="tl-content">Doors open, meet &amp; greet. Get your pass scanned and settle in.</div><div class="tl-dot"></div><div class="tl-time">6:00 PM</div></div>
       <div class="tl-item"><div class="tl-time">6:15 PM</div><div class="tl-dot"></div><div class="tl-content">The Jam Begins — Where Voices Become Memories.</div></div>
-      <div class="tl-item"><div class="tl-content">Wind down, connect with fellow music lovers, build your tribe.</div><div class="tl-dot"></div><div class="tl-time">9:30 PM</div></div>
+      <div class="tl-item"><div class="tl-content">Wind down, connect with fellow music lovers and build your tribe.</div><div class="tl-dot"></div><div class="tl-time">9:30 PM</div></div>
     </div>
   </div>
 </section>
@@ -914,8 +780,16 @@ nav{padding:14px 16px;}
       </div>
     </div>
     <div style="max-width:700px;margin:20px auto 0;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:rgba(255,255,255,0.4);">LIVE LEADERBOARD</div><div id="total-votes-display" style="font-size:12px;color:rgba(255,255,255,0.25);letter-spacing:2px;"></div></div>
-      <div class="song-leaderboard" id="song-leaderboard"><div style="text-align:center;padding:40px;color:rgba(255,255,255,0.2);"><div style="font-size:36px;margin-bottom:8px;">🎵</div><div>Be the first to request a song!</div></div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:rgba(255,255,255,0.4);">LIVE LEADERBOARD</div>
+        <div id="total-votes-display" style="font-size:12px;color:rgba(255,255,255,0.25);letter-spacing:2px;"></div>
+      </div>
+      <div class="song-leaderboard" id="song-leaderboard">
+        <div style="text-align:center;padding:40px;color:rgba(255,255,255,0.2);">
+          <div style="font-size:36px;margin-bottom:8px;">🎵</div>
+          <div>Be the first to request a song!</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -940,7 +814,7 @@ nav{padding:14px 16px;}
     <div class="testi-scroll-track" id="testi-scroll-track">
       <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Even though it was a low-budget session, it had everything you'd want — great music, passionate people, and a relaxed vibe where everyone could just enjoy singing together.</div><div class="testi-author"><div class="testi-avatar">GV</div><div><div class="testi-name">Golla Vedant</div><div class="testi-handle">Student · Attendee</div></div></div></div>
       <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">Gaana Bajaana finally gave me the chance to experience what I had been missing — good music, fun moments, and a much-needed break from the routine.</div><div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kavya</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
-      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">As an introvert I just agreed to go. But I actually enjoyed and sang along to almost every song! It's a core memory now. Totally recommend!</div><div class="testi-author"><div class="testi-avatar">SG</div><div><div class="testi-name">Sameeksha &amp; Gouthami</div><div class="testi-handle">Students · Attendees</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">As an introvert I just agreed to go. But I actually enjoyed and sang along to almost every song! It's a core memory now.</div><div class="testi-author"><div class="testi-avatar">SG</div><div><div class="testi-name">Sameeksha &amp; Gouthami</div><div class="testi-handle">Students · Attendees</div></div></div></div>
       <div class="testi-card"><div class="testi-quote">"</div><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-text">I need a day like Gaana Bajaana every month. Such a blissful place for all music lovers.</div><div class="testi-author"><div class="testi-avatar">AB</div><div><div class="testi-name">Abhay</div><div class="testi-handle">Working Professional · Attendee</div></div></div></div>
     </div>
   </div>
@@ -997,14 +871,14 @@ nav{padding:14px 16px;}
   </div>
 </section>
 
-<!-- REGISTER SECTION -->
+<!-- REGISTER -->
 <section class="register-section" id="register">
   <div class="container">
     <div class="register-inner">
       <div class="reveal" id="register-title-wrap">
         <span class="section-label">Grab Your Spot</span>
         <h2 class="section-title">HOW TO<br>GET IN</h2>
-        <p class="register-price-text" style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:10px;">Early Bird: ₹99 &nbsp;·&nbsp; Regular: ₹149</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:10px;" id="reg-price-text">Early Bird: ₹99 &nbsp;·&nbsp; Regular: ₹149</p>
       </div>
       <div style="text-align:center;" class="reveal">
         <div class="live-counter-box">
@@ -1013,17 +887,16 @@ nav{padding:14px 16px;}
         </div>
       </div>
       <div class="steps-row reveal">
-        <div class="step"><div class="step-num">1</div><div class="step-text">Register</div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-text">Pay via QR</div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-text">Get entry pass</div></div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open Form</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Pay & Fill</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Get QR Pass</div></div>
       </div>
       <div class="reveal" id="register-btn-wrap">
-        <button class="btn-primary" onclick="openRegModal()" style="border:none;">🎟 Register Now</button>
+        <a class="btn-primary" id="main-reg-btn" href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">🎟 Register Now</a>
       </div>
-      <!-- WA Reminder opt-in -->
       <div class="reminder-form reveal" id="reminder-section">
         <div class="reminder-title">📲 Get a Reminder</div>
-        <div class="reminder-sub">Already registered? Leave your number — we'll send a WhatsApp reminder the day before the event.</div>
+        <div class="reminder-sub">Already registered? Leave your number — we'll send a WhatsApp reminder the day before.</div>
         <div id="reminder-form-inner" style="display:flex;flex-direction:column;gap:10px;">
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <input id="reminder-name" type="text" placeholder="Your Name *" class="gb-input" style="flex:1;min-width:130px;">
@@ -1031,7 +904,7 @@ nav{padding:14px 16px;}
           </div>
           <button onclick="submitReminder()" class="btn-primary" style="padding:12px;border-radius:10px;font-size:12px;background:linear-gradient(135deg,#25D366,#128C7E);border:none;">💬 Remind Me →</button>
         </div>
-        <div id="reminder-success" style="display:none;text-align:center;padding:10px;font-size:13px;color:#25D366;letter-spacing:1px;margin-top:8px;">✅ You'll receive a WhatsApp reminder before the event!</div>
+        <div id="reminder-success" style="display:none;text-align:center;padding:10px;font-size:13px;color:#25D366;letter-spacing:1px;margin-top:8px;">✅ You'll receive a reminder before the event!</div>
       </div>
     </div>
   </div>
@@ -1049,19 +922,18 @@ nav{padding:14px 16px;}
         <a class="contact-item" id="wa-community-link" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><div><div class="contact-detail-key">Community</div><div class="contact-detail-val">Join WhatsApp Group</div><div class="contact-detail-sub">Updates, collabs &amp; more</div></div></a>
       </div>
       <div class="contact-cta">
-        <div><div class="contact-cta-title">REACH OUT<br>ANYTIME</div><div class="contact-cta-sub">Have a question, want to collab, or interested in sponsoring?</div></div>
+        <div><div class="contact-cta-title">REACH OUT<br>ANYTIME</div><div class="contact-cta-sub">Question, collab, or sponsorship?</div></div>
         <div class="cta-buttons">
           <a class="cta-btn wa" id="cta-wa" href="https://wa.me/+918367463908?text=Hi!" target="_blank"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Message on WhatsApp</a>
           <a class="cta-btn ph" id="cta-phone" href="tel:+918367463908"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>Call Us Directly</a>
-          <a class="cta-btn em" id="cta-email" href="mailto:gaanabajaana@gmail.com"><svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Send us an Email</a>
+          <a class="cta-btn em" id="cta-email" href="mailto:gaanabajaana@gmail.com"><svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Send an Email</a>
           <a class="cta-btn ig" id="cta-ig" href="https://www.instagram.com/gaanabajaana._" target="_blank"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>Follow on Instagram</a>
         </div>
       </div>
     </div>
-    <!-- Contact Form — compact, merged in contact section -->
     <div id="contact-form-wrap" style="margin-top:24px;background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:22px;max-width:600px;margin-left:auto;margin-right:auto;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#fff;margin-bottom:14px;">SEND A MESSAGE</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;" id="cf-name-email-grid"><input id="cf-name" type="text" placeholder="Your Name *" class="gb-input"><input id="cf-email" type="email" placeholder="Email *" class="gb-input"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;"><input id="cf-name" type="text" placeholder="Your Name *" class="gb-input"><input id="cf-email" type="email" placeholder="Email *" class="gb-input"></div>
       <textarea id="cf-message" placeholder="Your Message *" rows="3" class="gb-input" style="resize:none;margin-bottom:10px;"></textarea>
       <button id="cf-submit" onclick="submitContactForm()" class="btn-primary" style="padding:12px;border-radius:8px;font-size:12px;width:100%;border:none;">Send Message →</button>
     </div>
@@ -1073,12 +945,17 @@ nav{padding:14px 16px;}
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><a href="#"><img src="logo.png" alt="Gaana Bajaana" onerror="this.outerHTML='<span style=\'font-family:Bebas Neue,sans-serif;font-size:28px;letter-spacing:3px;color:#F5C842;\'>GAANA BAJAANA</span>'"></a><p>An intimate music experience for those who live and breathe music. Hyderabad's most vibrant jam community.</p></div>
-    <div class="footer-links"><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#vote">Song Vote</a><a href="#timeline">Schedule</a><a href="#register">Register</a><a href="#" onclick="openModal('team-modal');return false;">Team</a><a href="#" onclick="openModal('editions-modal');return false;">Past Editions</a><a href="#" onclick="openModal('faq-modal');return false;">FAQ</a><a href="#contact">Contact</a></div>
+    <div class="footer-links"><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#vote">Song Vote</a><a href="#timeline">Schedule</a><a href="https://forms.gle/Ls1kxJGaEMtfmMf27" target="_blank">Register</a><a href="#" onclick="openModal('team-modal');return false;">Team</a><a href="#" onclick="openModal('editions-modal');return false;">Past Editions</a><a href="#" onclick="openModal('faq-modal');return false;">FAQ</a><a href="#contact">Contact</a></div>
   </div>
   <div class="footer-bottom"><p>Made with ♥ for the music community &nbsp;·&nbsp; <span>Gaana Bajaana</span> © 2026 &nbsp;·&nbsp; Hyderabad</p></div>
 </footer>
 
 <script>
+/* ============================================================
+   GOOGLE FORM LINK — update this one place to change everywhere
+   ============================================================ */
+const GOOGLE_FORM = 'https://forms.gle/Ls1kxJGaEMtfmMf27';
+
 /* ============================================================
    FIREBASE
    ============================================================ */
@@ -1100,29 +977,33 @@ const EVENT_END   = new Date('March 28, 2026 21:30:00').getTime();
 function getEventMode(){const n=Date.now();if(n>=EVENT_START&&n<=EVENT_END)return'LIVE';if(n>EVENT_END)return'POST';return'PRE';}
 
 function applyEventMode(){
-  const mode=getEventMode();
-  const g=id=>document.getElementById(id);
+  const mode = getEventMode();
+  const g    = id => document.getElementById(id);
   if(mode==='LIVE'){
     g('countdown-section').style.display='none';
     g('live-section').style.display='block';
     g('poster-live').style.display='block';
     g('hero-date').textContent='🔴 LIVE NOW';
     g('hero-time-label').textContent='Happening Right Now';
-    const c=g('hero-cta-primary');if(c){c.textContent='🎵 We\'re Live!';c.onclick=null;c.style.opacity='0.6';}
+    const c=g('hero-cta-primary');
+    if(c){c.textContent='🎵 We\'re Live!';c.removeAttribute('href');c.style.opacity='0.6';c.style.pointerEvents='none';}
     g('reminder-section').style.display='none';
-  }else if(mode==='POST'){
+  } else if(mode==='POST'){
     g('countdown-section').style.display='none';
     g('post-event-banner').style.display='block';
     g('poster-post').style.display='block';
     g('hero-eyebrow').textContent='🎵 Thank You Hyderabad';
     g('hero-sub').textContent='See You · At · Edition 3';
     g('hero-date').textContent='Edition 2 · Was Incredible';
-    const c=g('hero-cta-primary');if(c){c.textContent='💬 Join Community';c.onclick=null;c.addEventListener('click',()=>window.open('https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD','_blank'));}
-    const ec=g('event-cta');if(ec){ec.textContent='📸 View Gallery';ec.onclick=null;ec.addEventListener('click',()=>{document.getElementById('gallery').scrollIntoView({behavior:'smooth'});});}
+    const c=g('hero-cta-primary');
+    if(c){c.textContent='💬 Join Community';c.href='https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD';c.target='_blank';}
+    const ec=g('event-cta');
+    if(ec){ec.textContent='📸 View Gallery';ec.href='#gallery';ec.removeAttribute('target');}
     g('reminder-section').style.display='none';
-    const rtw=g('register-title-wrap');if(rtw)rtw.innerHTML='<span class="section-label">Edition 2</span><h2 class="section-title">SOLD OUT<br>✓ THANK YOU!</h2><p style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:10px;">Edition 2 was incredible. See you at Edition 3!</p>';
-    const sr=g('steps-row');if(sr)sr.style.display='none';
-    const rb=g('register-btn-wrap');if(rb)rb.innerHTML='<a class="btn-outline" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">Join Community for Edition 3 →</a>';
+    const rtw=g('register-title-wrap');
+    if(rtw)rtw.innerHTML='<span class="section-label">Edition 2</span><h2 class="section-title">SOLD OUT<br>✓ THANK YOU!</h2><p style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:10px;">Edition 2 was incredible. See you at Edition 3!</p>';
+    const rb=g('register-btn-wrap');
+    if(rb)rb.innerHTML='<a class="btn-outline" href="https://chat.whatsapp.com/BDjqZ4XbeIVJutMPhTJ3TD" target="_blank">Join Community for Edition 3 →</a>';
   }
 }
 
@@ -1138,7 +1019,10 @@ const cur=document.getElementById('cursor'),trail=document.getElementById('curso
 let mx=0,my=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';});
 (function animC(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=(tx-15)+'px';trail.style.top=(ty-15)+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button,.faq-q,.gallery-item,.modal-close,.rate-star,.vote-btn,.radio-label').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(3)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
+document.querySelectorAll('a,button,.faq-q,.gallery-item,.modal-close,.rate-star,.vote-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.style.transform='scale(3)');
+  el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');
+});
 
 /* ============================================================
    NAV / MODALS
@@ -1147,42 +1031,14 @@ function toggleMobileMenu(){const m=document.getElementById('mobile-menu'),b=doc
 function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('active');document.body.style.overflow='';}
 function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';document.getElementById(id).scrollTop=0;}
 function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();closeRegModal();closePhotoModal();['team-modal','editions-modal','faq-modal'].forEach(id=>closeModal(id));}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();closePhotoModal();['team-modal','editions-modal','faq-modal'].forEach(id=>closeModal(id));}});
 ['team-modal','editions-modal','faq-modal'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)closeModal(id);});});
-
-/* ============================================================
-   REGISTRATION MODAL
-   ============================================================ */
-function openRegModal(){
-  if(getEventMode()!=='PRE') return;
-  document.getElementById('reg-modal').classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('reg-modal').scrollTop=0;
-}
-
-function closeRegModal(){
-  document.getElementById('reg-modal').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-// Close when clicking outside
-document.getElementById('reg-modal').addEventListener('click',function(e){
-  if(e.target===this) closeRegModal();
-});
 
 /* ============================================================
    PHOTO MODAL
    ============================================================ */
-function openPhotoModal(){
-  document.getElementById('photo-modal').classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('photo-form').style.display='block';
-  document.getElementById('photo-success').style.display='none';
-}
-function closePhotoModal(){
-  document.getElementById('photo-modal').classList.remove('open');
-  document.body.style.overflow='';
-}
+function openPhotoModal(){document.getElementById('photo-modal').classList.add('open');document.body.style.overflow='hidden';document.getElementById('photo-form').style.display='block';document.getElementById('photo-success').style.display='none';}
+function closePhotoModal(){document.getElementById('photo-modal').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('photo-modal').addEventListener('click',function(e){if(e.target===this)closePhotoModal();});
 
 /* ============================================================
@@ -1225,7 +1081,7 @@ const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
 const statsGrid=document.getElementById('stats-grid');if(statsGrid)statsObs.observe(statsGrid);
 
 /* ============================================================
-   MUSIC
+   MUSIC PLAYER
    ============================================================ */
 const audio=document.getElementById('bg-music');
 const pI=document.getElementById('icon-play'),paI=document.getElementById('icon-pause'),mS=document.getElementById('music-status'),mB=document.getElementById('music-bars');
@@ -1265,8 +1121,11 @@ async function submitContactForm(){
   const message=document.getElementById('cf-message').value.trim();
   if(!name||!email||!message){alert('Please fill in all fields.');return;}
   const btn=document.getElementById('cf-submit');btn.textContent='Sending...';btn.disabled=true;
-  try{await db.collection('messages').add({name,email,message,timestamp:firebase.firestore.FieldValue.serverTimestamp(),read:false});document.getElementById('contact-form-wrap').style.display='none';document.getElementById('contact-success').style.display='block';}
-  catch(e){alert('Error. Please WhatsApp us.');btn.textContent='Send Message →';btn.disabled=false;}
+  try{
+    await db.collection('messages').add({name,email,message,timestamp:firebase.firestore.FieldValue.serverTimestamp(),read:false});
+    document.getElementById('contact-form-wrap').style.display='none';
+    document.getElementById('contact-success').style.display='block';
+  }catch(e){alert('Error. Please WhatsApp us.');btn.textContent='Send Message →';btn.disabled=false;}
 }
 
 let selectedRating=5;
@@ -1278,8 +1137,11 @@ async function submitTestimonial(){
   const text=document.getElementById('testi-text').value.trim();
   if(!name||!text){alert('Please fill in name and review.');return;}
   const btn=document.getElementById('testi-submit');btn.textContent='Submitting...';btn.disabled=true;
-  try{await db.collection('testimonials').add({name,handle:handle||'Attendee',text,rating:selectedRating,approved:false,timestamp:firebase.firestore.FieldValue.serverTimestamp()});document.getElementById('testi-form').style.display='none';document.getElementById('testi-form-success').style.display='block';}
-  catch(e){alert('Error. Please try again.');btn.textContent='Submit Review →';btn.disabled=false;}
+  try{
+    await db.collection('testimonials').add({name,handle:handle||'Attendee',text,rating:selectedRating,approved:false,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+    document.getElementById('testi-form').style.display='none';
+    document.getElementById('testi-form-success').style.display='block';
+  }catch(e){alert('Error. Please try again.');btn.textContent='Submit Review →';btn.disabled=false;}
 }
 
 function convertDriveUrl(url){if(!url)return'';const m=url.match(/\/d\/([a-zA-Z0-9_-]+)/);return m?`https://drive.google.com/uc?export=view&id=${m[1]}`:url;}
@@ -1290,101 +1152,26 @@ async function submitPhoto(){
   const caption=document.getElementById('photo-caption-input').value.trim();
   if(!name||!url){alert('Please fill in name and photo link.');return;}
   const btn=document.getElementById('photo-submit-btn');btn.textContent='Submitting...';btn.disabled=true;
-  try{await db.collection('photoSubmissions').add({submitterName:name,photoUrl:url,caption:caption||'',approved:false,timestamp:firebase.firestore.FieldValue.serverTimestamp()});document.getElementById('photo-form').style.display='none';document.getElementById('photo-success').style.display='block';}
-  catch(e){alert('Error. Please try again.');btn.textContent='📸 Submit Photo →';btn.disabled=false;}
+  try{
+    await db.collection('photoSubmissions').add({submitterName:name,photoUrl:url,caption:caption||'',approved:false,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+    document.getElementById('photo-form').style.display='none';
+    document.getElementById('photo-success').style.display='block';
+  }catch(e){alert('Error. Please try again.');btn.textContent='📸 Submit Photo →';btn.disabled=false;}
 }
 
 async function submitReminder(){
   const name=document.getElementById('reminder-name').value.trim();
   const phone=document.getElementById('reminder-phone').value.trim();
   if(!name||!phone){alert('Please enter name and number.');return;}
-  try{await db.collection('reminderOptIns').add({name,phone,timestamp:firebase.firestore.FieldValue.serverTimestamp()});document.getElementById('reminder-form-inner').style.display='none';document.getElementById('reminder-success').style.display='block';}
-  catch(e){alert('Error. Please try again.');}
+  try{
+    await db.collection('reminderOptIns').add({name,phone,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+    document.getElementById('reminder-form-inner').style.display='none';
+    document.getElementById('reminder-success').style.display='block';
+  }catch(e){alert('Error. Please try again.');}
 }
 
 /* ============================================================
-   REGISTRATION SUBMIT
-   ============================================================ */
-async function submitRegistration(){
-  const name       = document.getElementById('reg-name').value.trim();
-  const email      = document.getElementById('reg-email').value.trim();
-  const whatsapp   = document.getElementById('reg-whatsapp').value.trim();
-  const age        = document.getElementById('reg-age').value;
-  const genderEl   = document.querySelector('input[name="reg-gender"]:checked');
-  const paymentEl  = document.querySelector('input[name="reg-payment"]:checked');
-  const utr        = document.getElementById('reg-utr').value.trim();
-  const txnPhoto   = document.getElementById('reg-txn-photo').value.trim();
-
-  // Validation
-  if(!name)             { alert('Please enter your name.');return; }
-  if(!email||!email.includes('@')){ alert('Please enter a valid email.');return; }
-  if(!whatsapp)         { alert('Please enter your WhatsApp number.');return; }
-  if(!age)              { alert('Please select your age.');return; }
-  if(!genderEl)         { alert('Please select your gender.');return; }
-  if(!paymentEl)        { alert('Please select your payment method.');return; }
-  if(!utr)              { alert('Please enter your UTR/Transaction number.');return; }
-
-  const btn = document.getElementById('reg-submit-btn');
-  btn.textContent = 'Submitting...';
-  btn.disabled = true;
-
-  try {
-    // Step 1 — Save registration to Firebase
-    const regData = {
-      name, email, whatsapp, age,
-      gender        : genderEl.value,
-      paymentMethod : paymentEl.value,
-      utr,
-      transactionPhoto : txnPhoto || 'Not provided',
-      paymentStatus : 'Pending',
-      attended      : false,
-      timestamp     : firebase.firestore.FieldValue.serverTimestamp()
-    };
-
-    await db.collection('registrations').add(regData);
-
-    // Step 2 — Increment counter (use set+merge so it works even if doc missing)
-    try {
-      await db.collection('config').doc('event').set(
-        { registeredCount: firebase.firestore.FieldValue.increment(1) },
-        { merge: true }
-      );
-    } catch(counterErr) {
-      console.log('Counter update failed (non-critical):', counterErr);
-    }
-
-    // Step 3 — Call Apps Script (non-blocking, failure is OK)
-    try {
-      const configDoc = await db.collection('config').doc('event').get();
-      const appsScriptUrl = configDoc.exists ? configDoc.data().appsScriptUrl : null;
-      if(appsScriptUrl) {
-        const formData = new URLSearchParams();
-        formData.append('payload', JSON.stringify(regData));
-        fetch(appsScriptUrl, {
-          method : 'POST',
-          body   : formData,
-          mode   : 'no-cors'
-        });
-      }
-    } catch(scriptErr) {
-      console.log('Apps Script call failed (non-critical):', scriptErr);
-    }
-
-    // Step 4 — Show success
-    document.getElementById('reg-form-state').style.display  = 'none';
-    document.getElementById('reg-success-state').style.display = 'block';
-    document.getElementById('reg-modal').scrollTop = 0;
-
-  } catch(e) {
-    console.error('Registration error:', e);
-    alert('Error: ' + e.message + '\n\nPlease WhatsApp us at +91 83674 63908');
-    btn.textContent = '🎟 SUBMIT REGISTRATION →';
-    btn.disabled    = false;
-  }
-}
-
-/* ============================================================
-   SONG VOTING
+   SONG VOTING — LIVE LEADERBOARD
    ============================================================ */
 const votedSongs=JSON.parse(localStorage.getItem('gb_voted_songs')||'[]');
 
@@ -1408,31 +1195,41 @@ function listenToSongLeaderboard(){
     const board=document.getElementById('song-leaderboard');
     const totalDisplay=document.getElementById('total-votes-display');
     if(snap.empty)return;
-    let totalVotes=0;snap.docs.forEach(d=>{totalVotes+=(d.data().votes||0);});
-    totalDisplay.textContent=totalVotes+' TOTAL VOTES';
+    let total=0;snap.docs.forEach(d=>{total+=(d.data().votes||0);});
+    totalDisplay.textContent=total+' TOTAL VOTES';
     const maxVotes=snap.docs[0].data().votes||1;
     board.innerHTML=snap.docs.map((doc,i)=>{
       const d=doc.data();
       const pct=Math.round((d.votes/maxVotes)*100);
-      const isTop3=i<3;
       const isVoted=votedSongs.includes(d.songLower||d.song.toLowerCase());
       const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
-      return`<div class="song-row"><div class="song-rank ${isTop3?'top3':''}">${medal||(i+1)}</div><div class="song-info"><div class="song-name">${d.song}</div>${d.artist?`<div class="song-artist">${d.artist}</div>`:''}</div><div class="song-bar-wrap"><div class="song-bar" style="width:${pct}%"></div></div><div class="song-votes">${d.votes}</div><button class="vote-btn ${isVoted?'voted':''}" onclick="quickVote('${doc.id}','${d.songLower||d.song.toLowerCase()}')" ${isVoted?'disabled':''} title="${isVoted?'Voted':'Vote'}">${isVoted?'✓':'🎵'}</button></div>`;
+      return`<div class="song-row">
+        <div class="song-rank ${i<3?'top3':''}">${medal||(i+1)}</div>
+        <div class="song-info"><div class="song-name">${d.song}</div>${d.artist?`<div class="song-artist">${d.artist}</div>`:''}</div>
+        <div class="song-bar-wrap"><div class="song-bar" style="width:${pct}%"></div></div>
+        <div class="song-votes">${d.votes}</div>
+        <button class="vote-btn ${isVoted?'voted':''}" onclick="quickVote('${doc.id}','${(d.songLower||d.song.toLowerCase()).replace(/'/g,"\\'")}')" ${isVoted?'disabled':''}>
+          ${isVoted?'✓':'🎵'}
+        </button>
+      </div>`;
     }).join('');
   },err=>console.log('Leaderboard:',err));
 }
 
 async function quickVote(docId,songLower){
   if(votedSongs.includes(songLower))return;
-  try{await db.collection('songVotes').doc(docId).update({votes:firebase.firestore.FieldValue.increment(1)});votedSongs.push(songLower);localStorage.setItem('gb_voted_songs',JSON.stringify(votedSongs));}
-  catch(e){}
+  try{
+    await db.collection('songVotes').doc(docId).update({votes:firebase.firestore.FieldValue.increment(1)});
+    votedSongs.push(songLower);
+    localStorage.setItem('gb_voted_songs',JSON.stringify(votedSongs));
+  }catch(e){}
 }
 
 /* ============================================================
-   DYNAMIC SITE CONFIG FROM FIREBASE
+   LOAD CONFIG FROM FIREBASE
    ============================================================ */
 function g(id){return document.getElementById(id);}
-function setText(id,text){const e=g(id);if(e)e.textContent=text;}
+function setText(id,val){const e=g(id);if(e)e.textContent=val;}
 
 async function loadSiteConfig(){
   try{
@@ -1440,100 +1237,120 @@ async function loadSiteConfig(){
     if(!doc.exists)return;
     const d=doc.data();
 
-    // Event details
     if(d.eventName)setText('detail-name',d.eventName);
-    if(d.date)setText('detail-date',d.date);
-    if(d.time)setText('detail-time',d.time);
-    if(d.venue)setText('detail-venue',d.venue);
-    if(d.earlyBirdPrice&&d.regularPrice)setText('detail-price',`₹${d.earlyBirdPrice} Early Bird · ₹${d.regularPrice} Regular`);
-    if(d.venue)setText('map-venue',d.venue);
-    if(d.date)setText('map-date',d.date);
-    if(d.time)setText('map-time',d.time);
-    if(d.earlyBirdPrice&&d.regularPrice)setText('map-entry',`₹${d.earlyBirdPrice} / ₹${d.regularPrice}`);
-    if(d.mapsEmbedUrl){const f=g('map-iframe');if(f)f.src=d.mapsEmbedUrl;}
-    if(d.mapsLink){const a=g('map-link');if(a)a.href=d.mapsLink;}
-    if(getEventMode()==='PRE'){
-      if(d.heroEyebrow)setText('hero-eyebrow',d.heroEyebrow);
-      if(d.date){const hd=g('hero-date');if(hd)hd.textContent=d.date;}
+    if(d.date){setText('detail-date',d.date);setText('map-date',d.date);if(g('ed2-date'))g('ed2-date').textContent=d.date;if(getEventMode()==='PRE'&&g('hero-date'))g('hero-date').textContent=d.date;}
+    if(d.time){setText('detail-time',d.time);setText('map-time',d.time);}
+    if(d.venue){setText('detail-venue',d.venue);setText('map-venue',d.venue);if(g('ed2-venue'))g('ed2-venue').textContent=d.venue;const lv=g('live-venue-display');if(lv&&d.time)lv.textContent=d.venue+' · '+d.time;}
+    if(d.earlyBirdPrice&&d.regularPrice){
+      setText('detail-price','₹'+d.earlyBirdPrice+' Early Bird · ₹'+d.regularPrice+' Regular');
+      setText('map-entry','₹'+d.earlyBirdPrice+' / ₹'+d.regularPrice);
+      setText('reg-price-text','Early Bird: ₹'+d.earlyBirdPrice+' · Regular: ₹'+d.regularPrice);
     }
-    if(d.date){const e=g('ed2-date');if(e)e.textContent=d.date;}
-    if(d.venue){const e=g('ed2-venue');if(e)e.textContent=d.venue;}
+    if(d.mapsEmbedUrl&&g('map-iframe'))g('map-iframe').src=d.mapsEmbedUrl;
+    if(d.mapsLink&&g('map-link'))g('map-link').href=d.mapsLink;
+    if(d.heroEyebrow&&getEventMode()==='PRE')setText('hero-eyebrow',d.heroEyebrow);
 
-    // Registration QR
-    if(d.paymentQrUrl){const img=g('reg-payment-qr');if(img){img.src=convertDriveUrl(d.paymentQrUrl);}}
-    if(d.earlyBirdPrice&&d.regularPrice){const el=g('reg-price-display');if(el)el.textContent=`₹${d.earlyBirdPrice} Early Bird · ₹${d.regularPrice} Regular`;}
+    // Registration link — update all register buttons from admin
+    const regLink=d.registrationLink||GOOGLE_FORM;
+    [g('hero-cta-primary'),g('event-cta'),g('main-reg-btn'),g('ed2-reg-btn'),g('nav-reg-link')].forEach(a=>{
+      if(a&&getEventMode()==='PRE')a.href=regLink;
+    });
 
-    // WA community links
+    // WhatsApp community links
     if(d.whatsappCommunity){
-      [g('reg-wa-comm-link'),g('reg-success-wa-link'),g('mob-wa-comm'),g('wa-community-link')].forEach(a=>{if(a)a.href=d.whatsappCommunity;});
-      [g('hero-cta-community'),g('sidebar-wa')].forEach(a=>{if(a)a.href=d.whatsappCommunity;});
+      [g('hero-cta-community'),g('mob-wa-comm'),g('wa-community-link'),g('sidebar-wa')].forEach(a=>{if(a)a.href=d.whatsappCommunity;});
     }
-
-    // Price text
-    if(d.earlyBirdPrice&&d.regularPrice){document.querySelectorAll('.register-price-text').forEach(e=>{e.textContent=`Early Bird: ₹${d.earlyBirdPrice} · Regular: ₹${d.regularPrice}`;});}
 
     // WhatsApp number
-    const waMsg=encodeURIComponent('Hi! I have a query about Gaana Bajaana 🎵');
     if(d.whatsappNumber){
       const n=d.whatsappNumber.replace(/\s/g,'');
-      [g('wa-btn'),g('wa-contact-link'),g('cta-wa')].forEach(a=>{if(a)a.href=`https://wa.me/${n}?text=${waMsg}`;});
+      const msg=encodeURIComponent('Hi! I have a query about Gaana Bajaana 🎵');
+      [g('wa-btn'),g('wa-contact-link'),g('cta-wa')].forEach(a=>{if(a)a.href=`https://wa.me/${n}?text=${msg}`;});
       [g('phone-link'),g('cta-phone')].forEach(a=>{if(a)a.href=`tel:${n}`;});
       document.querySelectorAll('.phone-display').forEach(e=>e.textContent=d.whatsappNumber);
+      if(g('sponsor-wa-link'))g('sponsor-wa-link').href=`https://wa.me/${n}?text=${encodeURIComponent("Hi! I'm interested in sponsoring Gaana Bajaana")}`;
     }
 
     // Instagram
-    if(d.instagram){const igUrl=`https://www.instagram.com/${d.instagram.replace('@','')}`;[g('share-ig-link'),g('sidebar-ig'),g('mob-ig-link'),g('cta-ig')].forEach(a=>{if(a)a.href=igUrl;});}
+    if(d.instagram){
+      const igUrl='https://www.instagram.com/'+d.instagram.replace('@','');
+      [g('share-ig-link'),g('sidebar-ig'),g('mob-ig-link'),g('cta-ig')].forEach(a=>{if(a)a.href=igUrl;});
+    }
 
     // Email
-    if(d.email){[g('email-link'),g('cta-email')].forEach(a=>{if(a)a.href=`mailto:${d.email}`;});document.querySelectorAll('.email-display').forEach(e=>e.textContent=d.email);}
+    if(d.email){
+      [g('email-link'),g('cta-email')].forEach(a=>{if(a)a.href='mailto:'+d.email;});
+      document.querySelectorAll('.email-display').forEach(e=>e.textContent=d.email);
+    }
 
-    // Sponsor WA
-    if(d.whatsappNumber&&g('sponsor-wa-link')){const n=d.whatsappNumber.replace(/\s/g,'');g('sponsor-wa-link').href=`https://wa.me/${n}?text=${encodeURIComponent("Hi! I'm interested in sponsoring Gaana Bajaana")}`;}
-
-    // Live counters
-    const count=d.registeredCount||0;const total=d.totalSeats||100;
-    setText('live-reg-count',count);setText('live-seats-remaining',Math.max(total-count,0));setText('live-reg-display',count);
+    // Counters
+    const count=d.registeredCount||0;
+    const total=d.totalSeats||100;
+    setText('live-reg-count',count);
+    setText('live-seats-remaining',Math.max(total-count,0));
+    setText('live-reg-display',count);
     if(d.checkInCount!==undefined)setText('live-checkin-count',d.checkInCount);
 
     // Impact stats
-    if(d.stats){const s=d.stats;const statEls=document.querySelectorAll('.stat-num[data-target]');const vals=[s.attendees||60,s.songs||20,s.bands||1,s.collabs||5];statEls.forEach((el,i)=>{if(vals[i]!==undefined){el.dataset.target=vals[i];el.textContent=vals[i]+(el.dataset.suffix||'');}});}
+    if(d.stats){
+      const s=d.stats;const vals=[s.attendees||60,s.songs||20,s.bands||1,s.collabs||5];
+      document.querySelectorAll('.stat-num[data-target]').forEach((el,i)=>{if(vals[i]!==undefined){el.dataset.target=vals[i];el.textContent=vals[i]+(el.dataset.suffix||'');}});
+    }
 
-    // Live section venue
-    if(d.venue&&d.time){const lv=g('live-venue-display');if(lv)lv.textContent=`${d.venue} · ${d.time}`;}
-
-  }catch(e){console.log('Config:',e);}
+  }catch(e){console.log('Config error:',e);}
 }
 
-/* ── SPONSORS ───────────────────────────────────────────── */
+/* ── LIVE COUNTER LISTENER ──────────────────────────── */
+function listenToCounter(){
+  db.collection('config').doc('event').onSnapshot(doc=>{
+    if(!doc.exists)return;
+    const d=doc.data();
+    const count=d.registeredCount||0;
+    const total=d.totalSeats||100;
+    setText('live-reg-count',count);
+    setText('live-seats-remaining',Math.max(total-count,0));
+    setText('live-reg-display',count);
+    if(d.checkInCount!==undefined)setText('live-checkin-count',d.checkInCount);
+  },err=>console.log('Counter listener:',err));
+}
+
+/* ── SPONSORS ───────────────────────────────────────── */
 function listenToSponsors(){
   db.collection('sponsors').orderBy('order','asc').onSnapshot(snap=>{
     const track=g('sponsors-scroll-track');if(!track)return;
     const active=snap.docs.filter(d=>d.data().active!==false);
     if(active.length===0)return;
-    const cards=active.map(doc=>{const d=doc.data();const imgUrl=url=>{const m=url&&url.match(/\/d\/([a-zA-Z0-9_-]+)/);return m?`https://drive.google.com/uc?export=view&id=${m[1]}`:url;};return`<a class="sponsor-card" href="${d.website||'#'}" target="_blank"><img src="${imgUrl(d.logoUrl||'')}" alt="${d.name||'Sponsor'}" onerror="this.style.opacity='0'"></a>`;}).join('');
+    const cards=active.map(doc=>{
+      const d=doc.data();
+      const img=url=>{const m=url&&url.match(/\/d\/([a-zA-Z0-9_-]+)/);return m?`https://drive.google.com/uc?export=view&id=${m[1]}`:url;};
+      return`<a class="sponsor-card" href="${d.website||'#'}" target="_blank"><img src="${img(d.logoUrl||'')}" alt="${d.name||''}" onerror="this.style.opacity='0'"></a>`;
+    }).join('');
     track.innerHTML=cards+cards;
-  },err=>console.log('Sponsors:',err));
+  });
 }
 
-/* ── FAQ ────────────────────────────────────────────────── */
+/* ── FAQ ────────────────────────────────────────────── */
 function listenToFAQ(){
   db.collection('faqItems').orderBy('order','asc').onSnapshot(snap=>{
     const list=g('faq-list-dynamic');if(!list)return;
     const active=snap.docs.filter(d=>d.data().active!==false);if(active.length===0)return;
-    list.innerHTML=active.map(doc=>{const d=doc.data();return`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">${d.question}<span class="faq-icon">+</span></div><div class="faq-a">${d.answer}</div></div>`;}).join('');
-  },err=>console.log('FAQ:',err));
+    list.innerHTML=active.map(doc=>{
+      const d=doc.data();
+      return`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">${d.question}<span class="faq-icon">+</span></div><div class="faq-a">${d.answer}</div></div>`;
+    }).join('');
+  });
 }
 
-/* ── REELS ──────────────────────────────────────────────── */
+/* ── REELS ──────────────────────────────────────────── */
 function listenToReels(){
   db.collection('reelItems').orderBy('order','asc').onSnapshot(snap=>{
     const grid=g('reels-grid-dynamic');if(!grid)return;
     const active=snap.docs.filter(d=>d.data().active!==false);if(active.length===0)return;
-    grid.innerHTML=active.map(doc=>{const d=doc.data();return`<div class="reel-frame"><iframe src="${d.embedUrl}" width="320" height="550" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;}).join('');
-  },err=>console.log('Reels:',err));
+    grid.innerHTML=active.map(doc=>`<div class="reel-frame"><iframe src="${doc.data().embedUrl}" width="320" height="550" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`).join('');
+  });
 }
 
-/* ── GALLERY STATIC ─────────────────────────────────────── */
+/* ── GALLERY STATIC ─────────────────────────────────── */
 function listenToGalleryStatic(){
   db.collection('galleryStatic').orderBy('order','asc').onSnapshot(snap=>{
     if(snap.empty)return;
@@ -1544,23 +1361,26 @@ function listenToGalleryStatic(){
       const d=doc.data();const div=document.createElement('div');
       div.className='gallery-item fb-static';div.id='gs-'+doc.id;
       div.onclick=function(){openLightbox(this);};
-      div.innerHTML=`<img src="${convertDriveUrl(d.imageUrl)}" alt="${d.caption||'Event Photo'}" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>${d.caption||'View Photo'}</span></div>`;
+      div.innerHTML=`<img src="${convertDriveUrl(d.imageUrl)}" alt="${d.caption||''}" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>${d.caption||'View Photo'}</span></div>`;
       grid.appendChild(div);
     });
-  },err=>console.log('Gallery:',err));
+  });
 }
 
-/* ── TEAM ───────────────────────────────────────────────── */
+/* ── TEAM ───────────────────────────────────────────── */
 function listenToTeam(){
   db.collection('teamMembers').orderBy('order','asc').onSnapshot(snap=>{
     const grid=g('team-grid-dynamic');if(!grid)return;
     const active=snap.docs.filter(d=>d.data().active!==false);if(active.length===0)return;
-    const liSvg=`<svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`;
-    grid.innerHTML=active.map(doc=>{const d=doc.data();const init=d.initials||d.name.charAt(0).toUpperCase();return`<div class="team-card"><div class="team-avatar"><img src="${convertDriveUrl(d.photoUrl||'')}" alt="" onerror="this.parentElement.textContent='${init}'"></div><div class="team-name">${d.name}</div><div class="team-role">${d.role||''}</div><div class="team-bio">${d.bio||''}</div>${d.linkedin?`<div class="team-social"><a href="${d.linkedin}" target="_blank">${liSvg}</a></div>`:''}</div>`;}).join('');
-  },err=>console.log('Team:',err));
+    const liSvg='<svg class="li-svg" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.327-.025-3.036-1.849-3.036-1.849 0-2.131 1.444-2.131 2.939v5.666H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a1.986 1.986 0 110-3.973 1.986 1.986 0 010 3.973zM6.918 20.452H3.756V9h3.162v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
+    grid.innerHTML=active.map(doc=>{
+      const d=doc.data();const init=d.initials||d.name.charAt(0).toUpperCase();
+      return`<div class="team-card"><div class="team-avatar"><img src="${convertDriveUrl(d.photoUrl||'')}" alt="" onerror="this.parentElement.textContent='${init}'"></div><div class="team-name">${d.name}</div><div class="team-role">${d.role||''}</div><div class="team-bio">${d.bio||''}</div>${d.linkedin?`<div class="team-social"><a href="${d.linkedin}" target="_blank">${liSvg}</a></div>`:''}</div>`;
+    }).join('');
+  });
 }
 
-/* ── ATTENDEE WALL ──────────────────────────────────────── */
+/* ── ATTENDEE WALL ──────────────────────────────────── */
 function listenToAttendeeWall(){
   db.collection('attendees').where('approved','==',true).orderBy('timestamp','desc').onSnapshot(snap=>{
     const wrap=g('attendee-wall-wrap'),track=g('attendee-wall-track');
@@ -1570,10 +1390,10 @@ function listenToAttendeeWall(){
     const names=snap.docs.map(d=>d.data().name);
     const doubled=[...names,...names];
     track.innerHTML=doubled.map(n=>`<span class="wall-item"><span>🎵</span> ${n}</span>`).join('');
-  },err=>console.log('Wall:',err));
+  });
 }
 
-/* ── APPROVED PHOTOS ────────────────────────────────────── */
+/* ── APPROVED PHOTOS ────────────────────────────────── */
 function listenToApprovedPhotos(){
   db.collection('photoSubmissions').where('approved','==',true).orderBy('timestamp','desc').onSnapshot(snap=>{
     if(snap.empty)return;
@@ -1583,13 +1403,13 @@ function listenToApprovedPhotos(){
       const d=doc.data();const div=document.createElement('div');
       div.className='gallery-item';div.id='fphoto-'+doc.id;
       div.onclick=function(){openLightbox(this);};
-      div.innerHTML=`<img src="${d.photoUrl}" alt="${d.caption||'Event Photo'}" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>${d.caption||'View Photo'}</span></div>`;
+      div.innerHTML=`<img src="${d.photoUrl}" alt="${d.caption||''}" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span>${d.caption||'View Photo'}</span></div>`;
       grid.prepend(div);
     });
-  },err=>console.log('Photos:',err));
+  });
 }
 
-/* ── TESTIMONIALS ───────────────────────────────────────── */
+/* ── TESTIMONIALS ───────────────────────────────────── */
 async function loadTestimonials(){
   try{
     const snap=await db.collection('testimonials').where('approved','==',true).orderBy('timestamp','desc').limit(10).get();
@@ -1599,7 +1419,7 @@ async function loadTestimonials(){
       const d=doc.data();
       const stars=Array.from({length:5},(_,i)=>`<span style="color:${i<d.rating?'var(--gold)':'rgba(255,255,255,0.15)'}">★</span>`).join('');
       const card=document.createElement('div');card.className='testi-card';
-      card.innerHTML=`<div class="testi-quote">"</div><div class="testi-stars">${stars}</div><div class="testi-text">${d.text}</div><div class="testi-author"><div class="testi-avatar">${d.name.charAt(0).toUpperCase()}</div><div><div class="testi-name">${d.name}</div><div class="testi-handle">${d.handle}</div></div></div>`;
+      card.innerHTML=`<div class="testi-quote">"</div><div class="testi-stars">${stars}</div><div class="testi-text">${d.text}</div><div class="testi-author"><div class="testi-avatar">${d.name.charAt(0).toUpperCase()}</div><div><div class="testi-name">${d.name}</div><div class="testi-handle">${d.handle||'Attendee'}</div></div></div>`;
       track.appendChild(card);
     });
     Array.from(track.querySelectorAll('.testi-card')).forEach(card=>track.appendChild(card.cloneNode(true)));
@@ -1611,6 +1431,7 @@ async function loadTestimonials(){
    ============================================================ */
 applyEventMode();
 loadSiteConfig();
+listenToCounter();
 loadTestimonials();
 listenToSponsors();
 listenToFAQ();
