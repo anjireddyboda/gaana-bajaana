@@ -1341,7 +1341,18 @@ async function submitRegistration(){
     // Save to Firebase
     await db.collection('registrations').add(regData);
 
-    // Call Apps Script for email + Google Sheets
+    // Call Apps Script — send as form data (works without CORS issues)
+if(appsScriptUrl){
+  try{
+    const formData = new URLSearchParams();
+    formData.append('payload', JSON.stringify({...registrationData}));
+    fetch(appsScriptUrl, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    });
+  }catch(fe){ console.log('Script called'); }
+}// Call Apps Script for email + Google Sheets
     const configDoc=await db.collection('config').doc('event').get();
     const appsScriptUrl=configDoc.exists?configDoc.data().appsScriptUrl:null;
     if(appsScriptUrl){
