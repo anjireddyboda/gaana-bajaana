@@ -1556,6 +1556,127 @@ listenToTeam();
 listenToAttendeeWall();
 listenToApprovedPhotos();
 listenToSongLeaderboard();
+/* ============================================================
+   REGISTRATION SYSTEM
+   ============================================================ */
+
+// Load payment QR and community link from Firebase config
+async function loadRegistrationConfig(){
+  try{
+    const doc = await db.collection('config').doc('event').get();
+    if(!doc.exists) return;
+    const d = doc.data();
+
+    // Payment QR
+    if(d.paymentQrUrl){
+      const img = document.getElementById('payment-qr-img');
+      const fallback = document.getElementById('qr-fallback');
+      if(img){
+        img.src = convertDriveUrl(d.paymentQrUrl);
+        img.style.display = 'block';
+        if(fallback) fallback.style.display = 'none';
+      }
+    }
+
+    // Payment amount display
+    if(d.earlyBirdPrice){
+      const el = document.getElementById('payment-amount-display');
+      if(el) el.textContent = `₹${d.earlyBirdPrice} (Early Bird) · ₹${d.regularPrice||149} (Regular)`;
+    }
+
+    // WA community link for registration section
+    if(d.whatsappCommunity){
+      const link = document.getElementById('reg-wa-community-link');
+      const successLink = document.getElementById('reg-success-wa');
+      if(link){ link.href = d.whatsappCommunity; link.textContent = 'Join Now →'; }
+      if(successLink) successLink.href = d.whatsappCommunity;
+    }
+  }catch(e){ console.log('Reg config:', e); }
+}
+
+async function submitRegistration(){
+  const name = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const whatsapp = document.getElementById('reg-whatsapp').value.trim();
+  const age = document.getElementById('reg-age').value;
+  const gender = document.querySelector('input[name="reg-gender"]:checked');
+  const paymentMethod = document.querySelector('input[name="reg-payment"]:checked');
+  const utr = document.getElementById('reg-utr').value.trim();
+  const txnPhoto = document.getElementById('reg-txn-photo').value.trim();
+
+  if(!name){ alert('Please enter your name.'); return; }
+  if(!email){ alert('Please enter your email for confirmation.'); return; }
+  if(!whatsapp){ alert('Please enter your WhatsApp number.'); return; }
+  if(!age){ alert('Please select your age.'); return; }
+  if(!gender){ alert('Please select your gender.'); return; }
+  if(!paymentMethod){ alert('Please select payment method.'); return; }
+  if(!utr){ alert('Please enter your UTR/Transaction number.'); return; }
+
+  const btn = document.getElementById('reg-submit-btn');
+  btn.textContent = 'Submitting...'; btn.disabled = true;
+
+  const registrationData = {
+    name, email, whatsapp, age,
+    gender: gender.value,
+    paymentMethod: paymentMethod.value,
+    utr,
+    transactionPhoto: txnPhoto || 'Not provided',
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    paymentStatus: 'Pending',
+    attended: false
+  };
+
+  try {
+    // Save to Firebase
+    const docRef = await db.collection('registrations').add(registrationData);
+
+    // Call Apps Script for email + Google Sheets
+    const configDoc = await db.collection('config').doc('event').get();
+    const appsScriptUrl = configDoc.data()?.appsScriptUrl;
+
+    if(appsScriptUrl){
+      try{
+        await fetch(appsScriptUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({...registrationData, firebaseId: docRef.id}),
+          mode: 'no-cors'
+        });
+      }catch(fetchErr){ console.log('Email may have been sent:', fetchErr); }
+    }
+
+    // Show success
+    document.getElementById('reg-form-wrap').style.display = 'none';
+    document.getElementById('reg-success').style.display = 'block';
+
+    // Update counter
+    await db.collection('config').doc('event').update({
+      registeredCount: firebase.firestore.FieldValue.increment(1)
+    });
+
+  } catch(e) {
+    alert('Error submitting. Please try again or WhatsApp us.');
+    btn.textContent = '🎟 REGISTER NOW →';
+    btn.disabled = false;
+  }
+}
+
+/* PHOTO MODAL */
+function openPhotoModal(){
+  const m = document.getElementById('photo-modal');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  // Reset form
+  document.getElementById('photo-form').style.display = 'block';
+  document.getElementById('photo-success').style.display = 'none';
+}
+function closePhotoModal(){
+  document.getElementById('photo-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Call on init
+loadRegistrationConfig();
 </script>
 </body>
 </html>
