@@ -1306,81 +1306,80 @@ async function submitReminder(){
    REGISTRATION SUBMIT
    ============================================================ */
 async function submitRegistration(){
-  const name=document.getElementById('reg-name').value.trim();
-  const email=document.getElementById('reg-email').value.trim();
-  const whatsapp=document.getElementById('reg-whatsapp').value.trim();
-  const age=document.getElementById('reg-age').value;
-  const genderEl=document.querySelector('input[name="reg-gender"]:checked');
-  const paymentEl=document.querySelector('input[name="reg-payment"]:checked');
-  const utr=document.getElementById('reg-utr').value.trim();
-  const txnPhoto=document.getElementById('reg-txn-photo').value.trim();
+  const name       = document.getElementById('reg-name').value.trim();
+  const email      = document.getElementById('reg-email').value.trim();
+  const whatsapp   = document.getElementById('reg-whatsapp').value.trim();
+  const age        = document.getElementById('reg-age').value;
+  const genderEl   = document.querySelector('input[name="reg-gender"]:checked');
+  const paymentEl  = document.querySelector('input[name="reg-payment"]:checked');
+  const utr        = document.getElementById('reg-utr').value.trim();
+  const txnPhoto   = document.getElementById('reg-txn-photo').value.trim();
 
-  if(!name){alert('Please enter your name.');return;}
-  if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}
-  if(!whatsapp){alert('Please enter your WhatsApp number.');return;}
-  if(!age){alert('Please select your age.');return;}
-  if(!genderEl){alert('Please select your gender.');return;}
-  if(!paymentEl){alert('Please select your payment method.');return;}
-  if(!utr){alert('Please enter your UTR/Transaction number.');return;}
+  // Validation
+  if(!name)             { alert('Please enter your name.');return; }
+  if(!email||!email.includes('@')){ alert('Please enter a valid email.');return; }
+  if(!whatsapp)         { alert('Please enter your WhatsApp number.');return; }
+  if(!age)              { alert('Please select your age.');return; }
+  if(!genderEl)         { alert('Please select your gender.');return; }
+  if(!paymentEl)        { alert('Please select your payment method.');return; }
+  if(!utr)              { alert('Please enter your UTR/Transaction number.');return; }
 
-  const btn=document.getElementById('reg-submit-btn');
-  btn.textContent='Submitting...';btn.disabled=true;
+  const btn = document.getElementById('reg-submit-btn');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
 
-  const regData={
-    name,email,whatsapp,age,
-    gender:genderEl.value,
-    paymentMethod:paymentEl.value,
-    utr,
-    transactionPhoto:txnPhoto||'Not provided',
-    paymentStatus:'Pending',
-    attended:false,
-    timestamp:firebase.firestore.FieldValue.serverTimestamp()
-  };
+  try {
+    // Step 1 — Save registration to Firebase
+    const regData = {
+      name, email, whatsapp, age,
+      gender        : genderEl.value,
+      paymentMethod : paymentEl.value,
+      utr,
+      transactionPhoto : txnPhoto || 'Not provided',
+      paymentStatus : 'Pending',
+      attended      : false,
+      timestamp     : firebase.firestore.FieldValue.serverTimestamp()
+    };
 
-  try{
-    // Save to Firebase
     await db.collection('registrations').add(regData);
 
-    // Call Apps Script — send as form data (works without CORS issues)
-if(appsScriptUrl){
-  try{
-    const formData = new URLSearchParams();
-    formData.append('payload', JSON.stringify({...registrationData}));
-    fetch(appsScriptUrl, {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors'
-    });
-
-    
-  }catch(fe){ console.log('Script called'); }
-}// Call Apps Script for email + Google Sheets
-    const configDoc=await db.collection('config').doc('event').get();
-    const appsScriptUrl=configDoc.exists?configDoc.data().appsScriptUrl:null;
-    if(appsScriptUrl){
-      try{
-        await fetch(appsScriptUrl,{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify(regData),
-          mode:'no-cors'
-        });
-      }catch(fe){console.log('Script called:',fe);}
+    // Step 2 — Increment counter (use set+merge so it works even if doc missing)
+    try {
+      await db.collection('config').doc('event').set(
+        { registeredCount: firebase.firestore.FieldValue.increment(1) },
+        { merge: true }
+      );
+    } catch(counterErr) {
+      console.log('Counter update failed (non-critical):', counterErr);
     }
 
-    // Update counter
-    await db.collection('config').doc('event').update({
-      registeredCount:firebase.firestore.FieldValue.increment(1)
-    });
+    // Step 3 — Call Apps Script (non-blocking, failure is OK)
+    try {
+      const configDoc = await db.collection('config').doc('event').get();
+      const appsScriptUrl = configDoc.exists ? configDoc.data().appsScriptUrl : null;
+      if(appsScriptUrl) {
+        const formData = new URLSearchParams();
+        formData.append('payload', JSON.stringify(regData));
+        fetch(appsScriptUrl, {
+          method : 'POST',
+          body   : formData,
+          mode   : 'no-cors'
+        });
+      }
+    } catch(scriptErr) {
+      console.log('Apps Script call failed (non-critical):', scriptErr);
+    }
 
-    // Show success
-    document.getElementById('reg-form-state').style.display='none';
-    document.getElementById('reg-success-state').style.display='block';
-    document.getElementById('reg-modal').scrollTop=0;
+    // Step 4 — Show success
+    document.getElementById('reg-form-state').style.display  = 'none';
+    document.getElementById('reg-success-state').style.display = 'block';
+    document.getElementById('reg-modal').scrollTop = 0;
 
-  }catch(e){
-    alert('Error submitting. Please try again or WhatsApp us directly.');
-    btn.textContent='🎟 SUBMIT REGISTRATION →';btn.disabled=false;
+  } catch(e) {
+    console.error('Registration error:', e);
+    alert('Error: ' + e.message + '\n\nPlease WhatsApp us at +91 83674 63908');
+    btn.textContent = '🎟 SUBMIT REGISTRATION →';
+    btn.disabled    = false;
   }
 }
 
