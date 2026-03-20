@@ -1351,6 +1351,8 @@ if(appsScriptUrl){
       body: formData,
       mode: 'no-cors'
     });
+
+    
   }catch(fe){ console.log('Script called'); }
 }// Call Apps Script for email + Google Sheets
     const configDoc=await db.collection('config').doc('event').get();
