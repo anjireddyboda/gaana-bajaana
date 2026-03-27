@@ -43,7 +43,6 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 .card-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:#fff;margin-bottom:14px;}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
-.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;}
 .field{display:flex;flex-direction:column;gap:5px;}
 .field-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
 .admin-input{background:var(--dark3);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;transition:border-color 0.3s;}
@@ -72,14 +71,15 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 .divider{height:1px;background:var(--border);margin:18px 0;}
 .section-heading{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin:18px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
 .info-tip{font-size:11px;color:rgba(255,255,255,0.25);line-height:1.6;}
-
+/* image tip box */
+.img-tip{background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:8px;padding:10px 13px;font-size:11px;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:12px;}
+.img-tip strong{color:var(--gold);}
 /* EDIT MODAL */
 .edit-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center;padding:20px;}
 .edit-modal.open{display:flex;}
 .edit-modal-box{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;position:relative;}
 .edit-modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--dark3);cursor:pointer;color:rgba(255,255,255,0.5);font-size:18px;display:flex;align-items:center;justify-content:center;}
 .edit-modal-close:hover{color:#fff;border-color:var(--coral);}
-
 @media(max-width:768px){
   header{padding:12px 14px;}
   .quick-stats{padding:12px;grid-template-columns:repeat(3,1fr);}
@@ -103,7 +103,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
   </div>
 </div>
 
-<!-- EDIT MODAL (reused for all edit operations) -->
+<!-- EDIT MODAL -->
 <div id="edit-modal" class="edit-modal">
   <div class="edit-modal-box">
     <button class="edit-modal-close" onclick="closeEditModal()">×</button>
@@ -179,8 +179,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
       <div class="card-title">🔗 Links, Pricing & Config</div>
       <div class="section-heading">Registration & Payments</div>
       <div class="grid-2" style="margin-bottom:12px;">
-        <div class="field"><div class="field-label">Apps Script Web App URL (for email)</div><input class="admin-input" id="lk-appsscript" placeholder="https://script.google.com/macros/s/..."></div>
-        <div class="field"><div class="field-label">Payment QR Image URL (Google Drive)</div><input class="admin-input" id="lk-payqr" placeholder="https://drive.google.com/file/d/.../view"></div>
+        <div class="field"><div class="field-label">Registration Form URL</div><input class="admin-input" id="lk-reglink" placeholder="https://forms.gle/..."></div>
         <div class="field"><div class="field-label">Early Bird Price (₹)</div><input class="admin-input" id="lk-earlyprice" type="number" placeholder="99"></div>
         <div class="field"><div class="field-label">Regular Price (₹)</div><input class="admin-input" id="lk-regprice" type="number" placeholder="149"></div>
         <div class="field"><div class="field-label">Total Seats</div><input class="admin-input" id="lk-seats" type="number" placeholder="100"></div>
@@ -227,7 +226,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
     </div>
     <div class="card" style="max-width:380px;margin-top:14px;text-align:center;">
       <div class="card-title" style="text-align:center;">🎟 Event Day Check-In</div>
-      <p class="info-tip" style="margin-bottom:14px;">Press each time someone enters the venue.</p>
+      <p class="info-tip" style="margin-bottom:14px;">Press each time someone enters the venue. Updates live counter on website instantly.</p>
       <button class="save-btn" style="font-size:16px;padding:14px 36px;" onclick="quickCheckin()">+ Check In One Person</button>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gold);margin-top:10px;" id="checkin-display">0</div>
       <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);">Checked In</div>
@@ -242,11 +241,10 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
         <div class="info-tip">Verify payment → mark as verified. All data also in Google Sheets.</div>
       </div>
       <div style="display:flex;gap:8px;">
-        <button class="add-btn" onclick="exportReminders()">📲 WhatsApp Reminders</button>
+        <button class="add-btn" onclick="exportReminders()">📲 Export Numbers</button>
         <button class="add-btn" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3);color:#25D366;" onclick="exportToCSV()">⬇ Export CSV</button>
       </div>
     </div>
-    <!-- Filter bar -->
     <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
       <button class="action-btn" style="background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.2);color:var(--gold);padding:8px 14px;" onclick="filterRegs('all')" id="filter-all">All</button>
       <button class="action-btn" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:rgba(255,255,255,0.5);padding:8px 14px;" onclick="filterRegs('pending')" id="filter-pending">⏳ Pending</button>
@@ -254,7 +252,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>#</th><th>Reg ID</th><th>Name</th><th>Email</th><th>WhatsApp</th><th>Age</th><th>Gender</th><th>Method</th><th>UTR</th><th>Screenshot</th><th>Payment</th><th>Actions</th></tr></thead>
+        <thead><tr><th>#</th><th>Reg ID</th><th>Name</th><th>Email</th><th>WhatsApp</th><th>Age</th><th>Gender</th><th>Fav Song</th><th>Method</th><th>UTR</th><th>Screenshot</th><th>Payment</th><th>Actions</th></tr></thead>
         <tbody id="reg-tbody"></tbody>
       </table>
     </div>
@@ -263,35 +261,44 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
   <!-- TAB: Sponsors -->
   <div class="tab-content" id="tab-sponsors">
-    <div class="card" style="max-width:680px;margin-bottom:18px;">
+    <div class="card" style="max-width:700px;margin-bottom:18px;">
       <div class="card-title">➕ Add Sponsor</div>
+      <div class="img-tip">
+        📸 <strong>How to add sponsor logo:</strong><br>
+        1. Upload the logo image to your GitHub repo (same folder as index.html)<br>
+        2. Enter just the filename below, e.g. <strong>sponsor1.png</strong><br>
+        OR enter full URL: <strong>https://anjireddyboda.github.io/gaana-bajaana/sponsor1.png</strong><br>
+        OR use <strong>imgur.com</strong> for external images (right-click → copy image address).<br>
+        ⚠️ Google Drive links do NOT work in browsers.
+      </div>
       <div class="grid-2" style="margin-bottom:12px;">
         <div class="field"><div class="field-label">Sponsor Name</div><input class="admin-input" id="sp-name" placeholder="Sponsor Name"></div>
         <div class="field"><div class="field-label">Display Order</div><input class="admin-input" id="sp-order" type="number" placeholder="1"></div>
-        <div class="field"><div class="field-label">Logo URL (Google Drive)</div><input class="admin-input" id="sp-logo" placeholder="https://drive.google.com/..."></div>
+        <div class="field"><div class="field-label">Logo (filename or full URL)</div><input class="admin-input" id="sp-logo" placeholder="sponsor1.png"></div>
         <div class="field"><div class="field-label">Website URL</div><input class="admin-input" id="sp-website" placeholder="https://..."></div>
       </div>
       <button class="add-btn" onclick="addSponsor()">Add Sponsor →</button>
-      <div class="toast" id="toast-sponsor">✅ Sponsor added!</div>
+      <div class="toast" id="toast-sponsor">✅ Sponsor added! Appears on website instantly.</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>Logo</th><th>Name</th><th>Website</th><th>Order</th><th>Actions</th></tr></thead>
+        <thead><tr><th>Preview</th><th>Name</th><th>Website</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="sponsors-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="sponsors-empty" style="display:none;"><div>🏢</div><div>No sponsors yet</div></div>
+    <div class="empty-state" id="sponsors-empty" style="display:none;"><div>🏢</div><div>No sponsors yet — add one above</div></div>
   </div>
 
   <!-- TAB: FAQ -->
   <div class="tab-content" id="tab-faq">
     <div class="card" style="max-width:680px;margin-bottom:18px;">
       <div class="card-title">➕ Add FAQ</div>
+      <div class="info-tip" style="margin-bottom:12px;">FAQs added here appear on the website immediately, replacing the default ones.</div>
       <div class="field" style="margin-bottom:12px;"><div class="field-label">Question</div><input class="admin-input" id="faq-q" placeholder="Is there a registration fee?"></div>
       <div class="field" style="margin-bottom:12px;"><div class="field-label">Answer</div><textarea class="admin-input admin-textarea" id="faq-a" placeholder="Yes..."></textarea></div>
       <div class="field" style="margin-bottom:12px;max-width:120px;"><div class="field-label">Order</div><input class="admin-input" id="faq-order" type="number" placeholder="1"></div>
       <button class="add-btn" onclick="addFAQ()">Add FAQ →</button>
-      <div class="toast" id="toast-faq">✅ FAQ added!</div>
+      <div class="toast" id="toast-faq">✅ FAQ added! Appears on website instantly.</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
@@ -299,15 +306,16 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
         <tbody id="faq-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="faq-empty" style="display:none;"><div>❓</div><div>No FAQ items yet</div></div>
+    <div class="empty-state" id="faq-empty" style="display:none;"><div>❓</div><div>No FAQ items in Firebase yet — add one above</div></div>
   </div>
 
   <!-- TAB: Reels -->
   <div class="tab-content" id="tab-reels">
     <div class="card" style="max-width:680px;margin-bottom:18px;">
       <div class="card-title">➕ Add Reel</div>
+      <div class="info-tip" style="margin-bottom:12px;">Go to Instagram reel → Share → Embed → copy the URL that ends in <strong>/embed</strong></div>
       <div class="grid-2" style="margin-bottom:12px;">
-        <div class="field"><div class="field-label">Reel Embed URL</div><input class="admin-input" id="reel-url" placeholder="https://www.instagram.com/reel/.../embed"></div>
+        <div class="field"><div class="field-label">Reel Embed URL</div><input class="admin-input" id="reel-url" placeholder="https://www.instagram.com/reel/XXXXX/embed"></div>
         <div class="field"><div class="field-label">Order</div><input class="admin-input" id="reel-order" type="number" placeholder="1"></div>
       </div>
       <button class="add-btn" onclick="addReel()">Add Reel →</button>
@@ -324,10 +332,17 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
   <!-- TAB: Gallery -->
   <div class="tab-content" id="tab-gallery">
-    <div class="card" style="max-width:680px;margin-bottom:18px;">
+    <div class="card" style="max-width:700px;margin-bottom:18px;">
       <div class="card-title">➕ Add Gallery Photo</div>
+      <div class="img-tip">
+        📸 <strong>Image URL options:</strong><br>
+        • Filename from your repo: <strong>photo1.jpg</strong><br>
+        • Full GitHub URL: <strong>https://anjireddyboda.github.io/gaana-bajaana/photo1.jpg</strong><br>
+        • Imgur direct link: <strong>https://i.imgur.com/abc123.jpg</strong><br>
+        ⚠️ Google Drive links do NOT work.
+      </div>
       <div class="grid-2" style="margin-bottom:12px;">
-        <div class="field"><div class="field-label">Photo URL</div><input class="admin-input" id="gal-url" placeholder="https://drive.google.com/..."></div>
+        <div class="field"><div class="field-label">Photo URL (filename or full URL)</div><input class="admin-input" id="gal-url" placeholder="photo1.jpg"></div>
         <div class="field"><div class="field-label">Caption</div><input class="admin-input" id="gal-caption" placeholder="Jamming at Edition 1!"></div>
         <div class="field"><div class="field-label">Order</div><input class="admin-input" id="gal-order" type="number" placeholder="1"></div>
       </div>
@@ -345,34 +360,41 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
   <!-- TAB: Team -->
   <div class="tab-content" id="tab-team">
-    <div class="card" style="max-width:680px;margin-bottom:18px;">
-      <div class="card-title">➕ Add Team Member</div>
+    <div class="card" style="max-width:700px;margin-bottom:18px;">
+      <div class="card-title">➕ Add / Edit Team Member</div>
+      <div class="img-tip">
+        📸 <strong>Photo URL options (Google Drive does NOT work):</strong><br>
+        • Filename from your repo: <strong>team1.jpg</strong><br>
+        • Full GitHub URL: <strong>https://anjireddyboda.github.io/gaana-bajaana/team1.jpg</strong><br>
+        • Imgur direct link: <strong>https://i.imgur.com/abc123.jpg</strong><br>
+        Leave blank to show initials instead of a photo.
+      </div>
       <div class="grid-2" style="margin-bottom:12px;">
         <div class="field"><div class="field-label">Full Name</div><input class="admin-input" id="tm-name" placeholder="Sainandhan Jilla"></div>
         <div class="field"><div class="field-label">Role</div><input class="admin-input" id="tm-role" placeholder="Team Member"></div>
-        <div class="field"><div class="field-label">Initials</div><input class="admin-input" id="tm-initials" placeholder="SJ" maxlength="2"></div>
-        <div class="field"><div class="field-label">Order</div><input class="admin-input" id="tm-order" type="number" placeholder="1"></div>
-        <div class="field"><div class="field-label">Photo URL</div><input class="admin-input" id="tm-photo" placeholder="https://drive.google.com/..."></div>
+        <div class="field"><div class="field-label">Initials (shown if no photo)</div><input class="admin-input" id="tm-initials" placeholder="SJ" maxlength="2"></div>
+        <div class="field"><div class="field-label">Display Order</div><input class="admin-input" id="tm-order" type="number" placeholder="1"></div>
+        <div class="field"><div class="field-label">Photo URL (filename or full URL)</div><input class="admin-input" id="tm-photo" placeholder="team1.jpg"></div>
         <div class="field"><div class="field-label">LinkedIn URL</div><input class="admin-input" id="tm-linkedin" placeholder="https://linkedin.com/in/..."></div>
       </div>
       <div class="field" style="margin-bottom:12px;"><div class="field-label">Bio</div><textarea class="admin-input" id="tm-bio" placeholder="Short bio..." rows="2"></textarea></div>
       <button class="add-btn" onclick="addTeamMember()">Add Member →</button>
-      <div class="toast" id="toast-team">✅ Team member added!</div>
+      <div class="toast" id="toast-team">✅ Team member added! Appears on website instantly.</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
-        <thead><tr><th>#</th><th>Name</th><th>Role</th><th>Order</th><th>Actions</th></tr></thead>
+        <thead><tr><th>#</th><th>Photo</th><th>Name</th><th>Role</th><th>Order</th><th>Actions</th></tr></thead>
         <tbody id="team-tbody"></tbody>
       </table>
     </div>
-    <div class="empty-state" id="team-empty" style="display:none;"><div>👤</div><div>No team members yet</div></div>
+    <div class="empty-state" id="team-empty" style="display:none;"><div>👤</div><div>No team members in Firebase yet — add one above</div></div>
   </div>
 
   <!-- TAB: Song Votes -->
   <div class="tab-content" id="tab-songs">
     <div style="margin-bottom:16px;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;">SONG LEADERBOARD</div>
-      <div class="info-tip">Updates live from website votes. Delete any song to remove it from leaderboard instantly. No approval needed.</div>
+      <div class="info-tip">Updates live from website votes. Delete any song to remove it instantly.</div>
     </div>
     <div style="overflow-x:auto;">
       <table class="data-table">
@@ -386,7 +408,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
   <!-- TAB: Wall -->
   <div class="tab-content" id="tab-wall">
     <div class="card" style="max-width:580px;margin-bottom:18px;">
-      <div class="card-title">➕ Add Name to Wall</div>
+      <div class="card-title">➕ Add Name to Attendee Wall</div>
       <div style="display:flex;gap:10px;align-items:flex-end;">
         <div class="field" style="flex:1;"><div class="field-label">Name</div><input class="admin-input" id="wall-name" placeholder="Rahul K." onkeydown="if(event.key==='Enter')addWallName()"></div>
         <button class="add-btn" onclick="addWallName()">Add →</button>
@@ -404,7 +426,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
   <!-- TAB: Photos -->
   <div class="tab-content" id="tab-photos">
-    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">📸 Approve to show in gallery</div>
+    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">📸 Approve photo submissions to show them in the gallery on the website.</div>
     <div style="overflow-x:auto;">
       <table class="data-table">
         <thead><tr><th>#</th><th>Preview</th><th>By</th><th>Caption</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
@@ -427,7 +449,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
   <!-- TAB: Reviews -->
   <div class="tab-content" id="tab-reviews">
-    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">⭐ Approve reviews to show in scrolling strip</div>
+    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.15);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">⭐ Approve reviews to show them in the scrolling testimonials strip.</div>
     <div style="overflow-x:auto;">
       <table class="data-table">
         <thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Rating</th><th>Review</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
@@ -442,7 +464,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
     <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
       <div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;">WHATSAPP REMINDERS</div>
-        <div class="info-tip">People who opted in for event reminders. Click "Send Reminder" to open WhatsApp with pre-filled message.</div>
+        <div class="info-tip">People who opted in for event reminders.</div>
       </div>
       <button class="save-btn" onclick="openWhatsAppBroadcast()">📲 Send Reminder to All</button>
     </div>
@@ -458,6 +480,7 @@ header{background:var(--dark2);border-bottom:1px solid var(--border);padding:14p
 
 <script>
 const ADMIN_PASSWORD = 'GB@Gaana2026';
+const GITHUB_BASE = 'https://anjireddyboda.github.io/gaana-bajaana/';
 
 firebase.initializeApp({
   apiKey:            "AIzaSyDL7R7tT8RtXe8N4MI_iZXvDxMfbn95rXQ",
@@ -499,39 +522,53 @@ function switchTab(name){
 function fmtDate(ts){if(!ts)return'—';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});}
 function showToast(id){const el=document.getElementById(id);if(!el)return;el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
 function g(id){return document.getElementById(id);}
-function cvt(url){if(!url)return'';const m=url.match(/\/d\/([a-zA-Z0-9_-]+)/);return m?`https://drive.google.com/uc?export=view&id=${m[1]}`:url;}
+
+/* Resolve image URL — auto-prepend GitHub base for bare filenames */
+function resolveImg(url){
+  if(!url)return'';
+  if(url.startsWith('http')||url.startsWith('//'))return url;
+  return GITHUB_BASE+url;
+}
+
+/* Preview image in admin table — handles filename or full URL */
+function imgThumb(url){
+  const resolved=resolveImg(url);
+  if(!resolved)return'—';
+  return`<img src="${resolved}" class="thumb" onerror="this.outerHTML='<span style=\'font-size:10px;color:rgba(255,255,255,0.3);\'>No img</span>'">`;
+}
 
 /* ── EDIT MODAL ────────────────────────────────────────── */
-let editCtx = {}; // {collection, id, fields}
+let editCtx={};
 
-function openEditModal(title, fields, collection, docId, currentData){
-  editCtx = {collection, id: docId};
-  g('edit-modal-title').textContent = title;
-  g('edit-modal-body').innerHTML = fields.map(f=>`
+function openEditModal(title,fields,collection,docId,currentData){
+  editCtx={collection,id:docId};
+  g('edit-modal-title').textContent=title;
+  g('edit-modal-body').innerHTML=fields.map(f=>`
     <div class="field" style="margin-bottom:12px;">
       <div class="field-label">${f.label}</div>
       ${f.type==='textarea'
-        ? `<textarea class="admin-input admin-textarea" id="ef-${f.key}" rows="3">${currentData[f.key]||''}</textarea>`
-        : `<input class="admin-input" id="ef-${f.key}" type="${f.type||'text'}" value="${currentData[f.key]||''}" placeholder="${f.placeholder||''}">`
+        ?`<textarea class="admin-input admin-textarea" id="ef-${f.key}" rows="3">${currentData[f.key]||''}</textarea>`
+        :`<input class="admin-input" id="ef-${f.key}" type="${f.type||'text'}" value="${(currentData[f.key]||'').toString().replace(/"/g,'&quot;')}" placeholder="${f.placeholder||''}">`
       }
     </div>`).join('');
-  editCtx.fields = fields;
+  editCtx.fields=fields;
   document.getElementById('edit-modal').classList.add('open');
 }
 
 function closeEditModal(){document.getElementById('edit-modal').classList.remove('open');}
 
 async function saveEdit(){
-  const data = {};
+  const data={};
   editCtx.fields.forEach(f=>{
-    const el = g('ef-'+f.key);
-    if(el) data[f.key] = f.type==='number' ? parseInt(el.value)||0 : el.value.trim();
+    const el=g('ef-'+f.key);
+    if(el)data[f.key]=f.type==='number'?parseInt(el.value)||0:el.value.trim();
   });
-  await db.collection(editCtx.collection).doc(editCtx.id).update(data);
-  showToast('toast-edit');
-  setTimeout(closeEditModal, 1500);
-  // Reload the relevant data
-  loadAll();
+  try{
+    await db.collection(editCtx.collection).doc(editCtx.id).update(data);
+    showToast('toast-edit');
+    setTimeout(closeEditModal,1500);
+    loadAll();
+  }catch(e){alert('Error saving: '+e.message);}
 }
 
 /* ── INIT ──────────────────────────────────────────────── */
@@ -562,23 +599,18 @@ function listenConfig(){
   db.collection('config').doc('event').onSnapshot(doc=>{
     if(!doc.exists)return;
     const d=doc.data();
-    const count=d.registeredCount||0;
-    const total=d.totalSeats||100;
-    const checkin=d.checkInCount||0;
+    const count=d.registeredCount||0,total=d.totalSeats||100,checkin=d.checkInCount||0;
     g('qs-registered').textContent=count;
     g('qs-seats').textContent=Math.max(total-count,0);
     g('qs-checkin').textContent=checkin;
     g('checkin-display').textContent=checkin;
-    // Prefill event tab
     if(d.eventName)g('ev-name').value=d.eventName;
     if(d.date)g('ev-date').value=d.date;
     if(d.time)g('ev-time').value=d.time;
     if(d.venue)g('ev-venue').value=d.venue;
     if(d.city)g('ev-city').value=d.city;
     if(d.heroEyebrow)g('ev-eyebrow').value=d.heroEyebrow;
-    // Prefill links tab
-    if(d.appsScriptUrl)g('lk-appsscript').value=d.appsScriptUrl;
-    if(d.paymentQrUrl)g('lk-payqr').value=d.paymentQrUrl;
+    if(d.registrationLink)g('lk-reglink').value=d.registrationLink;
     if(d.earlyBirdPrice)g('lk-earlyprice').value=d.earlyBirdPrice;
     if(d.regularPrice)g('lk-regprice').value=d.regularPrice;
     if(d.totalSeats)g('lk-seats').value=d.totalSeats;
@@ -588,22 +620,44 @@ function listenConfig(){
     if(d.email)g('lk-email').value=d.email;
     if(d.mapsEmbedUrl)g('lk-mapsembed').value=d.mapsEmbedUrl;
     if(d.mapsLink)g('lk-mapslink').value=d.mapsLink;
-    // Prefill counter tab
     g('inp-registered').value=count;
     g('inp-totalseats').value=total;
     g('inp-checkin').value=checkin;
-    if(d.stats){g('inp-attendees').value=d.stats.attendees||60;g('inp-songs').value=d.stats.songs||20;g('inp-bands').value=d.stats.bands||1;g('inp-collabs').value=d.stats.collabs||5;}
+    if(d.stats){
+      g('inp-attendees').value=d.stats.attendees||60;
+      g('inp-songs').value=d.stats.songs||20;
+      g('inp-bands').value=d.stats.bands||1;
+      g('inp-collabs').value=d.stats.collabs||5;
+    }
   });
 }
 
 async function saveEventDetails(){
-  const data={eventName:g('ev-name').value.trim(),date:g('ev-date').value.trim(),time:g('ev-time').value.trim(),venue:g('ev-venue').value.trim(),city:g('ev-city').value.trim(),heroEyebrow:g('ev-eyebrow').value.trim()};
+  const data={
+    eventName:g('ev-name').value.trim(),
+    date:g('ev-date').value.trim(),
+    time:g('ev-time').value.trim(),
+    venue:g('ev-venue').value.trim(),
+    city:g('ev-city').value.trim(),
+    heroEyebrow:g('ev-eyebrow').value.trim()
+  };
   await db.collection('config').doc('event').set(data,{merge:true});
   showToast('toast-event');
 }
 
 async function saveLinks(){
-  const data={appsScriptUrl:g('lk-appsscript').value.trim(),paymentQrUrl:g('lk-payqr').value.trim(),earlyBirdPrice:parseInt(g('lk-earlyprice').value)||99,regularPrice:parseInt(g('lk-regprice').value)||149,totalSeats:parseInt(g('lk-seats').value)||100,whatsappNumber:g('lk-wanum').value.trim(),whatsappCommunity:g('lk-wacomm').value.trim(),instagram:g('lk-ig').value.trim().replace('@',''),email:g('lk-email').value.trim(),mapsEmbedUrl:g('lk-mapsembed').value.trim(),mapsLink:g('lk-mapslink').value.trim()};
+  const data={
+    registrationLink:g('lk-reglink').value.trim(),
+    earlyBirdPrice:parseInt(g('lk-earlyprice').value)||99,
+    regularPrice:parseInt(g('lk-regprice').value)||149,
+    totalSeats:parseInt(g('lk-seats').value)||100,
+    whatsappNumber:g('lk-wanum').value.trim(),
+    whatsappCommunity:g('lk-wacomm').value.trim(),
+    instagram:g('lk-ig').value.trim().replace('@',''),
+    email:g('lk-email').value.trim(),
+    mapsEmbedUrl:g('lk-mapsembed').value.trim(),
+    mapsLink:g('lk-mapslink').value.trim()
+  };
   await db.collection('config').doc('event').set(data,{merge:true});
   showToast('toast-links');
 }
@@ -625,7 +679,7 @@ async function quickCheckin(){
 }
 
 /* ── REGISTRATIONS ─────────────────────────────────────── */
-let regFilter = 'all';
+let regFilter='all';
 
 async function loadRegistrations(){
   const snap=await db.collection('registrations').orderBy('timestamp','desc').get();
@@ -640,11 +694,7 @@ function filterRegs(f){
   regFilter=f;
   ['all','pending','verified'].forEach(x=>{
     const btn=g('filter-'+x);
-    if(btn){
-      btn.style.background=x===f?'rgba(245,200,66,0.2)':'rgba(255,255,255,0.05)';
-      btn.style.color=x===f?'var(--gold)':'rgba(255,255,255,0.5)';
-      btn.style.borderColor=x===f?'rgba(245,200,66,0.4)':'var(--border)';
-    }
+    if(btn){btn.style.background=x===f?'rgba(245,200,66,0.2)':'rgba(255,255,255,0.05)';btn.style.color=x===f?'var(--gold)':'rgba(255,255,255,0.5)';btn.style.borderColor=x===f?'rgba(245,200,66,0.4)':'var(--border)';}
   });
   renderRegistrations();
 }
@@ -664,8 +714,9 @@ function renderRegistrations(){
       <td style="font-size:11px;">${r.whatsapp||'—'}</td>
       <td style="font-size:11px;">${r.age||'—'}</td>
       <td style="font-size:11px;color:rgba(255,255,255,0.5);">${r.gender||'—'}</td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.4);max-width:100px;overflow:hidden;text-overflow:ellipsis;">${r.favSong||'—'}</td>
       <td style="font-size:11px;">${r.paymentMethod||'—'}</td>
-      <td style="font-size:11px;color:rgba(255,255,255,0.5);max-width:120px;overflow:hidden;text-overflow:ellipsis;">${r.utr||'—'}</td>
+      <td style="font-size:11px;color:rgba(255,255,255,0.5);max-width:100px;overflow:hidden;text-overflow:ellipsis;">${r.utr||'—'}</td>
       <td>${r.transactionPhoto&&r.transactionPhoto!=='Not provided'?`<a href="${r.transactionPhoto}" target="_blank" style="color:var(--gold);font-size:11px;">View</a>`:'—'}</td>
       <td><span class="${r.paymentStatus==='Verified'?'badge-verified':'badge-pending'}">${r.paymentStatus||'Pending'}</span></td>
       <td style="white-space:nowrap;">
@@ -686,15 +737,14 @@ async function verifyPayment(id,btn){
 async function deleteReg(id){
   if(!confirm('Delete this registration permanently?'))return;
   await db.collection('registrations').doc(id).delete();
-  allRegistrations=allRegistrations.filter(x=>x.id!==id);
-  renderRegistrations();
+  allRegistrations=allRegistrations.filter(x=>x.id!==id);renderRegistrations();
 }
 
 function exportToCSV(){
-  const headers=['Timestamp','Name','Email','WhatsApp','Age','Gender','Payment Method','UTR','Screenshot','Payment Status'];
+  const headers=['Timestamp','Reg ID','Name','Email','WhatsApp','Age','Gender','Fav Song','Payment Method','UTR','Screenshot','Payment Status'];
   const rows=allRegistrations.map(r=>[
-    fmtDate(r.timestamp),r.name,r.email,r.whatsapp,r.age,r.gender,
-    r.paymentMethod,r.utr,r.transactionPhoto,r.paymentStatus
+    fmtDate(r.timestamp),r.regId,r.name,r.email,r.whatsapp,r.age,r.gender,
+    r.favSong,r.paymentMethod,r.utr,r.transactionPhoto,r.paymentStatus
   ].map(x=>`"${x||''}"`).join(','));
   const csv='data:text/csv;charset=utf-8,'+[headers.join(','),...rows].join('\n');
   const a=document.createElement('a');a.href=encodeURI(csv);a.download='GB_Registrations.csv';a.click();
@@ -703,8 +753,8 @@ function exportToCSV(){
 function openWhatsAppBroadcast(){
   const numbers=allReminders.map(r=>r.phone).filter(Boolean);
   if(numbers.length===0){alert('No reminder opt-ins yet.');return;}
-  const msg=encodeURIComponent(`Hi! 🎵 This is a reminder that GAANA BAJAANA Edition 2 is TOMORROW — March 28, 2026 at 6:00 PM at McDonald's Narepally. Bring your entry pass. We can't wait to see you! 🎶 — Team Gaana Bajaana`);
-  alert(`Opening WhatsApp. Reminder message is pre-filled. Send to these ${numbers.length} numbers:\n\n${numbers.join('\n')}`);
+  const msg=encodeURIComponent(`Hi! 🎵 Reminder: GAANA BAJAANA Edition 2 is TOMORROW — March 28, 2026 at 6:00 PM at McDonald's, Narepally. Bring your QR entry pass. See you! 🎶 — Team Gaana Bajaana`);
+  alert(`${numbers.length} numbers:\n\n${numbers.join('\n')}\n\nWhatsApp will open with pre-filled message.`);
   window.open(`https://wa.me/?text=${msg}`,'_blank');
 }
 
@@ -734,30 +784,37 @@ function renderSongs(){
 async function deleteSong(id){
   if(!confirm('Remove this song from the leaderboard?'))return;
   await db.collection('songVotes').doc(id).delete();
-  allSongs=allSongs.filter(x=>x.id!==id);
-  renderSongs();
+  allSongs=allSongs.filter(x=>x.id!==id);renderSongs();
 }
 
 /* ── SPONSORS ──────────────────────────────────────────── */
 async function loadSponsors(){
   const snap=await db.collection('sponsors').orderBy('order','asc').get();
-  allSponsors=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderSponsors();
+  allSponsors=snap.docs.map(d=>({id:d.id,...d.data()}));renderSponsors();
 }
 
 async function addSponsor(){
   const name=g('sp-name').value.trim();
   if(!name){alert('Enter sponsor name.');return;}
-  await db.collection('sponsors').add({name,logoUrl:g('sp-logo').value.trim(),website:g('sp-website').value.trim(),order:parseInt(g('sp-order').value)||1,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  const logoUrl=g('sp-logo').value.trim();
+  await db.collection('sponsors').add({
+    name,
+    logoUrl,
+    website:g('sp-website').value.trim(),
+    order:parseInt(g('sp-order').value)||1,
+    active:true,
+    timestamp:firebase.firestore.FieldValue.serverTimestamp()
+  });
   ['sp-name','sp-logo','sp-website','sp-order'].forEach(id=>g(id).value='');
-  showToast('toast-sponsor');loadSponsors();
+  showToast('toast-sponsor');
+  loadSponsors();
 }
 
 function editSponsor(id){
   const s=allSponsors.find(x=>x.id===id);if(!s)return;
   openEditModal('Edit Sponsor',[
     {key:'name',label:'Name',placeholder:'Sponsor Name'},
-    {key:'logoUrl',label:'Logo URL',placeholder:'https://drive.google.com/...'},
+    {key:'logoUrl',label:'Logo (filename or full URL)',placeholder:'sponsor1.png'},
     {key:'website',label:'Website URL',placeholder:'https://...'},
     {key:'order',label:'Display Order',type:'number'}
   ],'sponsors',id,s);
@@ -774,7 +831,7 @@ function renderSponsors(){
   g('sponsors-empty').style.display=allSponsors.length?'none':'block';
   tbody.innerHTML=allSponsors.map((s,i)=>`
     <tr>
-      <td><img src="${cvt(s.logoUrl||'')}" class="thumb" onerror="this.style.display='none'"></td>
+      <td>${imgThumb(s.logoUrl)}</td>
       <td><strong>${s.name||'—'}</strong></td>
       <td style="font-size:11px;color:rgba(255,255,255,0.4);">${s.website||'—'}</td>
       <td>${s.order||'—'}</td>
@@ -840,10 +897,7 @@ async function addReel(){
 
 function editReel(id){
   const r=allReels.find(x=>x.id===id);if(!r)return;
-  openEditModal('Edit Reel',[
-    {key:'embedUrl',label:'Embed URL'},
-    {key:'order',label:'Order',type:'number'}
-  ],'reelItems',id,r);
+  openEditModal('Edit Reel',[{key:'embedUrl',label:'Embed URL'},{key:'order',label:'Order',type:'number'}],'reelItems',id,r);
 }
 
 async function deleteReel(id){
@@ -872,7 +926,7 @@ async function loadGallery(){
 
 async function addGalleryPhoto(){
   const imageUrl=g('gal-url').value.trim();
-  if(!imageUrl){alert('Enter photo URL.');return;}
+  if(!imageUrl){alert('Enter photo URL or filename.');return;}
   await db.collection('galleryStatic').add({imageUrl,caption:g('gal-caption').value.trim(),order:parseInt(g('gal-order').value)||1,active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
   ['gal-url','gal-caption','gal-order'].forEach(id=>g(id).value='');
   showToast('toast-gallery');loadGallery();
@@ -881,7 +935,7 @@ async function addGalleryPhoto(){
 function editGallery(id){
   const ga=allGallery.find(x=>x.id===id);if(!ga)return;
   openEditModal('Edit Gallery Photo',[
-    {key:'imageUrl',label:'Image URL'},
+    {key:'imageUrl',label:'Image URL or filename'},
     {key:'caption',label:'Caption'},
     {key:'order',label:'Order',type:'number'}
   ],'galleryStatic',id,ga);
@@ -898,7 +952,7 @@ function renderGallery(){
   g('gallery-empty').style.display=allGallery.length?'none':'block';
   tbody.innerHTML=allGallery.map((ga,i)=>`
     <tr>
-      <td><img src="${cvt(ga.imageUrl)}" class="thumb" onerror="this.style.display='none'"></td>
+      <td>${imgThumb(ga.imageUrl)}</td>
       <td>${ga.caption||'—'}</td>
       <td>${ga.order||'—'}</td>
       <td><button class="action-btn edit-btn" onclick="editGallery('${ga.id}')">Edit</button><button class="action-btn delete-btn" onclick="deleteGalleryPhoto('${ga.id}')">Delete</button></td>
@@ -914,9 +968,20 @@ async function loadTeam(){
 async function addTeamMember(){
   const name=g('tm-name').value.trim();
   if(!name){alert('Enter name.');return;}
-  await db.collection('teamMembers').add({name,role:g('tm-role').value.trim(),initials:g('tm-initials').value.trim().toUpperCase(),order:parseInt(g('tm-order').value)||1,photoUrl:g('tm-photo').value.trim(),linkedin:g('tm-linkedin').value.trim(),bio:g('tm-bio').value.trim(),active:true,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+  await db.collection('teamMembers').add({
+    name,
+    role:g('tm-role').value.trim(),
+    initials:g('tm-initials').value.trim().toUpperCase(),
+    order:parseInt(g('tm-order').value)||1,
+    photoUrl:g('tm-photo').value.trim(),
+    linkedin:g('tm-linkedin').value.trim(),
+    bio:g('tm-bio').value.trim(),
+    active:true,
+    timestamp:firebase.firestore.FieldValue.serverTimestamp()
+  });
   ['tm-name','tm-role','tm-initials','tm-order','tm-photo','tm-linkedin','tm-bio'].forEach(id=>g(id).value='');
-  showToast('toast-team');loadTeam();
+  showToast('toast-team');
+  loadTeam();
 }
 
 function editTeam(id){
@@ -926,7 +991,7 @@ function editTeam(id){
     {key:'role',label:'Role'},
     {key:'initials',label:'Initials (2 chars)'},
     {key:'order',label:'Order',type:'number'},
-    {key:'photoUrl',label:'Photo URL'},
+    {key:'photoUrl',label:'Photo URL or filename (e.g. team1.jpg)'},
     {key:'linkedin',label:'LinkedIn URL'},
     {key:'bio',label:'Bio',type:'textarea'}
   ],'teamMembers',id,t);
@@ -944,6 +1009,7 @@ function renderTeam(){
   tbody.innerHTML=allTeam.map((t,i)=>`
     <tr>
       <td>${i+1}</td>
+      <td>${imgThumb(t.photoUrl)||`<div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,rgba(245,200,66,0.2),rgba(255,87,51,0.1));display:flex;align-items:center;justify-content:center;font-family:Bebas Neue,sans-serif;font-size:16px;color:#F5C842;">${t.initials||'?'}</div>`}</td>
       <td><strong>${t.name||'—'}</strong></td>
       <td style="color:rgba(255,255,255,0.5);">${t.role||'—'}</td>
       <td>${t.order||'—'}</td>
@@ -1002,7 +1068,7 @@ function renderPhotos(){
   tbody.innerHTML=allPhotos.map((p,i)=>`
     <tr>
       <td>${i+1}</td>
-      <td><a href="${p.photoUrl}" target="_blank"><img src="${cvt(p.photoUrl)}" class="thumb" onerror="this.style.display='none'"></a></td>
+      <td><a href="${p.photoUrl||''}" target="_blank"><img src="${p.photoUrl||''}" class="thumb" onerror="this.style.display='none'"></a></td>
       <td><strong>${p.submitterName||'—'}</strong></td>
       <td style="font-size:11px;color:rgba(255,255,255,0.5);">${p.caption||'—'}</td>
       <td style="font-size:10px;color:rgba(255,255,255,0.3);">${fmtDate(p.timestamp)}</td>
