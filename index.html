@@ -892,10 +892,10 @@ function showOfflineBar() {
    EVENT MODE — DYNAMIC dates from Firebase
    EVENT_START / EVENT_END update when Firebase config loads
    ============================================================ */
-let EVENT_START = new Date('March 28, 2026 18:00:00').getTime();
-let EVENT_END   = new Date('March 28, 2026 21:30:00').getTime();
+let EVENT_START = new Date('March 27, 2026 09:51:00').getTime();
+let EVENT_END   = new Date('March 27, 2026 09:55:00').getTime();
 
-/* Parse "March 28, 2026" + "6:00 PM – 9:30 PM" → timestamps */
+/* Parse "March 27, 2026" + "9:51 AM – 9:56 AM" → timestamps */
 function updateEventTimes(dateStr, timeStr) {
   try {
     if (!dateStr || !timeStr) return;
