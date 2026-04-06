@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Gaana Bajaana — Robo Check-In</title>
+<style>
+:root{
+  --gold:#F5C842;--coral:#FF5733;--green:#25D366;
+  --dark:#070709;--dark2:#0E0E12;--dark3:#13131A;
+  --border:rgba(255,255,255,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;background:var(--dark);color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;overflow:hidden;}
+
+.screen{display:none;position:fixed;inset:0;flex-direction:column;
+  align-items:center;justify-content:center;padding:20px;}
+.screen.active{display:flex;}
+
+/* PIN */
+#pin-screen{background:radial-gradient(ellipse at top,#1a1208,var(--dark) 70%);}
+.brand{text-align:center;margin-bottom:28px;}
+.brand h1{font-size:26px;font-weight:900;letter-spacing:6px;
+  background:linear-gradient(135deg,var(--gold),var(--coral));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
+.brand p{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.35);text-transform:uppercase;}
+.pin-card{background:var(--dark2);border:1px solid var(--border);border-radius:20px;
+  padding:28px 24px;width:min(360px,100%);text-align:center;}
+.lock{font-size:44px;margin-bottom:14px;line-height:1;}
+.pin-card h2{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,0.35);
+  text-transform:uppercase;margin-bottom:16px;}
+.pin-input{width:100%;background:var(--dark3);border:2px solid var(--border);
+  border-radius:12px;padding:16px;color:#fff;font-size:30px;text-align:center;
+  letter-spacing:14px;outline:none;font-family:monospace;-moz-appearance:textfield;
+  margin-bottom:12px;transition:border-color .3s;}
+.pin-input::-webkit-outer-spin-button,.pin-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.pin-input:focus{border-color:rgba(245,200,66,.5);}
+.pin-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--coral));
+  border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;
+  color:#000;letter-spacing:2px;cursor:pointer;text-transform:uppercase;}
+.pin-btn:active{opacity:.8;}
+.pin-msg{font-size:11px;margin-top:10px;display:none;letter-spacing:1px;}
+.pin-msg.err{color:var(--coral);}.pin-msg.ok{color:var(--green);}
+
+/* SCANNER */
+#scanner-screen{background:#000;padding:0;}
+#video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+#canvas{display:none;}
+
+.scan-frame{position:fixed;inset:0;z-index:10;pointer-events:none;}
+.scan-frame::before{
+  content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);
+  -webkit-mask:
+    linear-gradient(#000,#000) top/100% calc(50% - 125px),
+    linear-gradient(#000,#000) bottom/100% calc(50% - 125px),
+    linear-gradient(#000,#000) left/calc(50% - 125px) 100%,
+    linear-gradient(#000,#000) right/calc(50% - 125px) 100%;
+  -webkit-mask-composite:destination-out;mask-composite:exclude;
+  mask:
+    linear-gradient(#000,#000) top/100% calc(50% - 125px),
+    linear-gradient(#000,#000) bottom/100% calc(50% - 125px),
+    linear-gradient(#000,#000) left/calc(50% - 125px) 100%,
+    linear-gradient(#000,#000) right/calc(50% - 125px) 100%;
+}
+.scan-box{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:250px;height:250px;}
+.c{position:absolute;width:32px;height:32px;border:3px solid var(--gold);}
+.c.tl{top:0;left:0;border-right:none;border-bottom:none;border-radius:3px 0 0 0;}
+.c.tr{top:0;right:0;border-left:none;border-bottom:none;border-radius:0 3px 0 0;}
+.c.bl{bottom:0;left:0;border-right:none;border-top:none;border-radius:0 0 0 3px;}
+.c.br{bottom:0;right:0;border-left:none;border-top:none;border-radius:0 0 3px 0;}
+.scan-line{position:absolute;left:4px;right:4px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  box-shadow:0 0 8px var(--gold);animation:sl 2s ease-in-out infinite;}
+@keyframes sl{0%,100%{top:4px;}50%{top:244px;}}
+.scan-hint{position:absolute;bottom:-36px;left:50%;transform:translateX(-50%);
+  font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.45);
+  white-space:nowrap;text-transform:uppercase;}
+
+.scan-header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;
+  align-items:center;justify-content:space-between;padding:12px 16px;
+  background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);}
+.scan-logo{font-size:14px;font-weight:900;letter-spacing:4px;
+  background:linear-gradient(135deg,var(--gold),var(--coral));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.scan-st{display:flex;align-items:center;gap:8px;}
+.sdot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:sd 1.5s infinite;}
+@keyframes sd{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.5);}}
+.stxt{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.55);text-transform:uppercase;}
+.exit-btn{font-size:11px;color:rgba(255,255,255,.3);background:none;
+  border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;}
+
+.scan-footer{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;
+  align-items:center;justify-content:space-between;padding:14px 20px;
+  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);}
+.count-box{display:flex;align-items:baseline;gap:8px;}
+.count-lbl{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.35);text-transform:uppercase;}
+.count-num{font-size:32px;font-weight:900;color:var(--gold);font-family:monospace;line-height:1;}
+.btns{display:flex;gap:8px;}
+.ibtn{width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.65);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s;font-size:17px;}
+.ibtn:hover,.ibtn.on{background:rgba(245,200,66,.15);border-color:rgba(245,200,66,.4);}
+.ibtn svg{width:17px;height:17px;}
+
+/* RESULT */
+#result-overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.88);
+  backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;padding:20px;}
+#result-overlay.show{display:flex;}
+.rcard{max-width:320px;width:100%;border-radius:22px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  animation:popin .4s cubic-bezier(.34,1.56,.64,1) forwards;}
+@keyframes popin{from{opacity:0;transform:translateY(50px) scale(.9);}to{opacity:1;transform:translateY(0) scale(1);}}
+.rcard-top{padding:22px 20px 16px;text-align:center;}
+.rcard-icon{font-size:62px;line-height:1;margin-bottom:8px;}
+.rcard-wave{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:22px;}
+.rcard-wave span{width:4px;border-radius:2px;height:4px;background:var(--green);}
+.rcard-wave.on span:nth-child(1){animation:wb .6s ease-in-out infinite;}
+.rcard-wave.on span:nth-child(2){animation:wb .8s ease-in-out infinite .1s;}
+.rcard-wave.on span:nth-child(3){animation:wb .7s ease-in-out infinite .2s;}
+.rcard-wave.on span:nth-child(4){animation:wb .9s ease-in-out infinite .05s;}
+.rcard-wave.on span:nth-child(5){animation:wb .65s ease-in-out infinite .15s;}
+@keyframes wb{0%,100%{height:4px;}50%{height:20px;}}
+.rcard-body{background:var(--dark2);padding:18px 18px 22px;text-align:center;}
+.rcard-status{font-size:15px;font-weight:900;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;}
+.rcard-name{font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.2;}
+.rcard-id{display:inline-block;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.25);
+  border-radius:20px;padding:3px 12px;font-family:monospace;font-size:11px;
+  color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.rcard-sub{font-size:11px;color:rgba(255,255,255,.4);line-height:1.6;}
+
+.tok  .rcard-top{background:linear-gradient(135deg,#091a0f,#0d2a18);}
+.tok  .rcard-status{color:var(--green);}
+.twarn .rcard-top{background:linear-gradient(135deg,#1a1a08,#2a280a);}
+.twarn .rcard-status{color:var(--gold);}
+.terr .rcard-top{background:linear-gradient(135deg,#1a0808,#2a0d0d);}
+.terr .rcard-status{color:var(--coral);}
+.twait .rcard-top{background:var(--dark3);}
+.twait .rcard-status{color:rgba(255,255,255,.4);}
+
+#speak-bar{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);
+  background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);
+  border-radius:30px;padding:6px 14px;font-size:10px;letter-spacing:2px;
+  color:var(--green);text-transform:uppercase;display:none;
+  align-items:center;gap:6px;z-index:60;white-space:nowrap;}
+#speak-bar.on{display:flex;}
+
+@media(max-width:360px){.scan-box{width:210px;height:210px;}.rcard-name{font-size:18px;}}
+</style>
+</head>
+<body>
+
+<!-- PIN SCREEN -->
+<div class="screen active" id="pin-screen">
+  <div class="brand">
+    <h1>GAANA BAJAANA</h1>
+    <p>🤖 Robo Check-In · Edition 2</p>
+  </div>
+  <div class="pin-card">
+    <div class="lock">🔐</div>
+    <h2>Enter Organizer PIN</h2>
+    <input class="pin-input" type="number" id="pin-inp"
+           placeholder="·  ·  ·  ·" maxlength="4"
+           inputmode="numeric" autocomplete="off">
+    <button class="pin-btn" id="start-btn" onclick="startCheckin()">
+      START CHECK-IN →
+    </button>
+    <div class="pin-msg" id="pin-msg"></div>
+  </div>
+</div>
+
+<!-- SCANNER SCREEN -->
+<div class="screen" id="scanner-screen">
+  <video id="video" playsinline autoplay muted></video>
+  <canvas id="canvas"></canvas>
+
+  <div class="scan-frame">
+    <div class="scan-box">
+      <div class="c tl"></div><div class="c tr"></div>
+      <div class="c bl"></div><div class="c br"></div>
+      <div class="scan-line"></div>
+      <div class="scan-hint">Align QR inside the frame</div>
+    </div>
+  </div>
+
+  <div class="scan-header">
+    <div class="scan-logo">GAANA BAJAANA</div>
+    <div class="scan-st">
+      <div class="sdot"></div>
+      <div class="stxt" id="scan-stxt">Scanning</div>
+    </div>
+    <button class="exit-btn" onclick="stopCheckin()">✕ Exit</button>
+  </div>
+
+  <div class="scan-footer">
+    <div class="count-box">
+      <div class="count-lbl">Checked In</div>
+      <div class="count-num" id="count-num">0</div>
+    </div>
+    <div class="btns">
+      <div class="ibtn" id="torch-btn" onclick="toggleTorch()">🔦</div>
+      <div class="ibtn" id="vol-btn"   onclick="toggleVoice()">
+        <svg id="ico-on"  viewBox="0 0 24 24" fill="rgba(255,255,255,.65)">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <svg id="ico-off" viewBox="0 0 24 24" fill="var(--coral)" style="display:none">
+          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT CARD -->
+<div id="result-overlay" onclick="dismissCard()">
+  <div class="rcard" id="rcard" onclick="event.stopPropagation()">
+    <div class="rcard-top">
+      <div class="rcard-icon" id="rc-icon">🎵</div>
+      <div class="rcard-wave" id="rc-wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="rcard-body">
+      <div class="rcard-status" id="rc-status">WELCOME!</div>
+      <div class="rcard-name"   id="rc-name">Loading…</div>
+      <div class="rcard-id"     id="rc-id">GB2-000</div>
+      <div class="rcard-sub"    id="rc-sub"></div>
+    </div>
+  </div>
+</div>
+
+<div id="speak-bar">🎤 Speaking…</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════════════════════ */
+const ORG_PIN    = '55';
+const EVENT_NAME = 'Gaana Bajaana Edition 2';
+const FB_PROJECT = 'gaana-bajaana-9210f';
+const FS_BASE    = `https://firestore.googleapis.com/v1/projects/${FB_PROJECT}/databases/(default)/documents`;
+
+// Apps Script URL — only used for fire-and-forget sheet update (no-cors)
+const AS_URL = 'https://script.google.com/macros/s/AKfycbyZJMnn98BL3pYQZZqPVDcNpOqxMUklKlmqVE-kr6dURiLsyYn2zz1YuAvfjpIYMZs_/exec';
+
+/* ═══════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════ */
+let camStream = null, scanning = false, raf = null;
+let busy = false, lastQR = '', lastTime = 0;
+const DEBOUNCE = 8000;
+
+let voiceOn = true, torchTrack = null, torchOn = false;
+let checkins = 0, cardTimer = null;
+const synth = window.speechSynthesis;
+let voices = [];
+
+/* ═══════════════════════════════════════════════════════
+   PIN SCREEN
+═══════════════════════════════════════════════════════ */
+document.getElementById('pin-inp').addEventListener('keydown', e => {
+  if (e.key === 'Enter') startCheckin();
+});
+
+async function startCheckin() {
+  const pin = document.getElementById('pin-inp').value.trim();
+  if (!pin)            { pinMsg('Enter the organizer PIN.', 'err'); return; }
+  if (pin !== ORG_PIN) {
+    pinMsg('Wrong PIN — try again.', 'err');
+    document.getElementById('pin-inp').value = '';
+    return;
+  }
+
+  pinMsg('Opening camera…', 'ok');
+  document.getElementById('start-btn').disabled = true;
+
+  // Unlock speech synthesis on user gesture (mandatory on mobile)
+  unlockSpeech();
+  loadVoices();
+
+  // Request camera
+  try {
+    camStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+      audio: false
+    });
+  } catch(e) {
+    try {
+      camStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    } catch(e2) {
+      pinMsg('Camera denied — enable camera and retry.', 'err');
+      document.getElementById('start-btn').disabled = false;
+      return;
+    }
+  }
+
+  const vid = document.getElementById('video');
+  vid.srcObject = camStream;
+  const trks = camStream.getVideoTracks();
+  if (trks.length) torchTrack = trks[0];
+
+  loadCheckinCount();
+  showScreen('scanner-screen');
+
+  const begin = () => {
+    vid.play().catch(() => {});
+    scanning = true;
+    raf = requestAnimationFrame(scanLoop);
+  };
+  vid.onloadedmetadata = begin;
+  if (vid.readyState >= 2) begin();
+}
+
+function stopCheckin() {
+  scanning = false;
+  if (raf) { cancelAnimationFrame(raf); raf = null; }
+  if (camStream) { camStream.getTracks().forEach(t => t.stop()); camStream = null; }
+  synth.cancel();
+  dismissCard();
+  showScreen('pin-screen');
+  document.getElementById('start-btn').disabled = false;
+  document.getElementById('pin-msg').style.display = 'none';
+  document.getElementById('pin-inp').value = '';
+  setSt('Scanning');
+}
+
+function pinMsg(t, c) {
+  const el = document.getElementById('pin-msg');
+  el.textContent = t; el.className = 'pin-msg ' + c; el.style.display = 'block';
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCAN LOOP
+═══════════════════════════════════════════════════════ */
+function scanLoop() {
+  if (!scanning) return;
+
+  const vid = document.getElementById('video');
+  const cvs = document.getElementById('canvas');
+  const ctx = cvs.getContext('2d', { willReadFrequently: true });
+
+  if (vid.readyState === vid.HAVE_ENOUGH_DATA && vid.videoWidth > 0) {
+    cvs.width  = vid.videoWidth;
+    cvs.height = vid.videoHeight;
+    ctx.drawImage(vid, 0, 0, cvs.width, cvs.height);
+    try {
+      const px   = ctx.getImageData(0, 0, cvs.width, cvs.height);
+      const code = jsQR(px.data, px.width, px.height, { inversionAttempts: 'attemptBoth' });
+      if (code?.data) {
+        const now  = Date.now();
+        const same = code.data === lastQR && (now - lastTime) < DEBOUNCE;
+        if (!same && !busy) {
+          lastQR = code.data; lastTime = now;
+          handleQR(code.data);
+        }
+      }
+    } catch(e) {}
+  }
+  raf = requestAnimationFrame(scanLoop);
+}
+
+/* ═══════════════════════════════════════════════════════
+   HANDLE QR — extract regId from the scanned URL
+═══════════════════════════════════════════════════════ */
+async function handleQR(qrText) {
+  let regId = '';
+  try {
+    const u = new URL(qrText);
+    regId = (u.searchParams.get('id') || '').trim();
+  } catch(e) {
+    const t = qrText.trim();
+    if (/^GB/i.test(t)) regId = t;
+  }
+  if (!regId) return; // not a GB QR — ignore
+
+  busy = true;
+  setSt('Verifying…');
+  card('twait','⏳',false,'CHECKING…','Please wait',regId,'',0);
+
+  try {
+    await doCheckIn(regId);
+  } catch(e) {
+    console.error('CheckIn error:', e);
+    card('terr','⚠️',false,'TRY AGAIN','Something went wrong',regId,
+      'Please rescan. If issue persists, check Google Sheets.', 5000);
+    speak('Error. Please try again.');
+    setSt('Error');
+    setTimeout(() => setSt('Scanning'), 5000);
+  }
+
+  setTimeout(() => { busy = false; }, 800);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CORE CHECK-IN LOGIC
+
+   HOW THIS WORKS (bypasses CORS completely):
+   ┌─────────────────────────────────────────────────────┐
+   │ 1. Read registration from Firebase REST API         │
+   │    (Firebase has proper CORS headers — always works)│
+   │ 2. If already attended → show "already in"          │
+   │ 3. If valid:                                        │
+   │    a) Write attended=true to Firebase REST API      │
+   │    b) Increment checkInCount in Firebase            │
+   │    c) Call Apps Script with mode:'no-cors'          │
+   │       (fire & forget — marks Google Sheet Col O)    │
+   │ 4. Show welcome card + speak welcome message        │
+   └─────────────────────────────────────────────────────┘
+   No dependency on Apps Script response → no CORS error
+═══════════════════════════════════════════════════════ */
+async function doCheckIn(regId) {
+  const now      = new Date();
+  const timeStr  = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+  const fullTime = timeStr + ', ' + now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+  // ── 1. Read registration from Firestore ───────────────
+  let reg = null;
+  try {
+    const r = await fetch(`${FS_BASE}/registrations/${encodeURIComponent(regId)}`);
+    if (r.ok) {
+      const doc = await r.json();
+      if (doc.fields) reg = fsToObj(doc.fields);
+    }
+  } catch(e) {
+    console.warn('Firebase read error:', e);
+  }
+
+  // ── Not found ─────────────────────────────────────────
+  if (!reg) {
+    card('terr','❓',false,'NOT FOUND',
+      'Registration not found', regId,
+      'This QR is not in the system. Contact team.', 4000);
+    speak('Registration not found. Please contact the event team.');
+    setSt('Not Found');
+    setTimeout(() => setSt('Scanning'), 4000);
+    return;
+  }
+
+  const name = reg.name || 'Guest';
+
+  // ── Already checked in ────────────────────────────────
+  if (reg.attended === true) {
+    card('twarn','⚠️',false,'ALREADY IN',
+      name, regId,
+      'Already checked in at ' + (reg.checkedInAt || 'earlier') + '.', 4000);
+    speak(name + ' has already checked in.');
+    setSt('Already In');
+    setTimeout(() => setSt('Scanning'), 4000);
+    return;
+  }
+
+  // ── Valid — mark attended ─────────────────────────────
+
+  // 3a. Update Firebase attendance
+  try {
+    await fetch(
+      `${FS_BASE}/registrations/${encodeURIComponent(regId)}` +
+      '?updateMask.fieldPaths=attended&updateMask.fieldPaths=checkedInAt',
+      {
+        method  : 'PATCH',
+        headers : { 'Content-Type': 'application/json' },
+        body    : JSON.stringify({
+          fields: {
+            attended    : { booleanValue: true },
+            checkedInAt : { stringValue: fullTime }
+          }
+        })
+      }
+    );
+  } catch(e) { console.warn('FB attendance write failed:', e); }
+
+  // 3b. Increment Firebase checkInCount
+  try {
+    const cfgR = await fetch(`${FS_BASE}/config/event`);
+    if (cfgR.ok) {
+      const cfg  = await cfgR.json();
+      const curr = parseInt(cfg.fields?.checkInCount?.integerValue || '0');
+      await fetch(`${FS_BASE}/config/event?updateMask.fieldPaths=checkInCount`, {
+        method  : 'PATCH',
+        headers : { 'Content-Type': 'application/json' },
+        body    : JSON.stringify({ fields: { checkInCount: { integerValue: String(curr + 1) } } })
+      });
+    }
+  } catch(e) { console.warn('Counter update failed:', e); }
+
+  // 3c. Fire Apps Script (no-cors — updates Google Sheet Col O)
+  //     We don't need the response; Firebase is our source of truth.
+  try {
+    fetch(AS_URL + '?id=' + encodeURIComponent(regId) + '&format=json', { mode: 'no-cors' });
+  } catch(e) { /* silent */ }
+
+  // ── 4. Show success ───────────────────────────────────
+  checkins++;
+  document.getElementById('count-num').textContent = checkins;
+
+  card('tok','🎵',true,'WELCOME!',
+    name, regId,
+    '✅ Entry confirmed · ' + timeStr, 6000);
+  speak(welcome(name));
+  setSt('✓ Checked In');
+  setTimeout(() => setSt('Scanning'), 6000);
+}
+
+/* Convert Firestore REST field map → plain JS object */
+function fsToObj(fields) {
+  const o = {};
+  for (const [k, v] of Object.entries(fields)) {
+    if      ('stringValue'  in v) o[k] = v.stringValue;
+    else if ('booleanValue' in v) o[k] = v.booleanValue;
+    else if ('integerValue' in v) o[k] = parseInt(v.integerValue);
+    else if ('doubleValue'  in v) o[k] = v.doubleValue;
+    else                          o[k] = null;
+  }
+  return o;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESULT CARD
+═══════════════════════════════════════════════════════ */
+function card(theme, icon, wave, status, name, id, sub, autoDismiss) {
+  document.getElementById('rcard').className       = 'rcard ' + theme;
+  document.getElementById('rc-icon').textContent   = icon;
+  document.getElementById('rc-status').textContent = status;
+  document.getElementById('rc-name').textContent   = name;
+  document.getElementById('rc-id').textContent     = id;
+  document.getElementById('rc-id').style.display   = id ? 'inline-block' : 'none';
+  document.getElementById('rc-sub').textContent    = sub;
+  document.getElementById('rc-wave').className     = 'rcard-wave' + (wave ? ' on' : '');
+  document.getElementById('result-overlay').classList.add('show');
+  clearTimeout(cardTimer);
+  if (autoDismiss > 0) cardTimer = setTimeout(dismissCard, autoDismiss);
+}
+
+function dismissCard() {
+  document.getElementById('result-overlay').classList.remove('show');
+  clearTimeout(cardTimer);
+}
+
+/* ═══════════════════════════════════════════════════════
+   VOICE
+═══════════════════════════════════════════════════════ */
+function unlockSpeech() {
+  if (!synth) return;
+  const u = new SpeechSynthesisUtterance(''); u.volume = 0; synth.speak(u);
+}
+
+function loadVoices() {
+  voices = synth.getVoices();
+  if (!voices.length) synth.addEventListener('voiceschanged', () => { voices = synth.getVoices(); });
+}
+
+function bestVoice() {
+  return voices.find(v => v.lang === 'en-IN')
+      || voices.find(v => v.lang.startsWith('en-'))
+      || voices[0] || null;
+}
+
+function speak(text) {
+  if (!voiceOn || !synth) return;
+  synth.cancel();
+  const go = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-IN'; u.rate = 0.9; u.pitch = 1.0; u.volume = 1.0;
+    const v = bestVoice(); if (v) u.voice = v;
+    u.onstart = () => document.getElementById('speak-bar').classList.add('on');
+    u.onend   = () => document.getElementById('speak-bar').classList.remove('on');
+    u.onerror = () => document.getElementById('speak-bar').classList.remove('on');
+    synth.speak(u);
+  };
+  voices.length ? go() : setTimeout(() => { voices = synth.getVoices(); go(); }, 300);
+}
+
+function welcome(name) {
+  const msgs = [
+    `Welcome to ${EVENT_NAME}, ${name}! Your entry is confirmed. Enjoy the music!`,
+    `${name}, you are in! Welcome to ${EVENT_NAME}. Get ready to sing and vibe!`,
+    `Hello ${name}! Entry confirmed. Welcome to ${EVENT_NAME}. Enjoy the jam tonight!`,
+    `${name}, welcome! Your pass is verified. Have an amazing time!`,
+    `Woohoo! Welcome ${name}! Entry confirmed for ${EVENT_NAME}!`
+  ];
+  return name
+    ? msgs[Math.floor(Math.random() * msgs.length)]
+    : `Entry confirmed! Welcome to ${EVENT_NAME}!`;
+}
+
+function toggleVoice() {
+  voiceOn = !voiceOn;
+  document.getElementById('ico-on').style.display  = voiceOn ? 'block' : 'none';
+  document.getElementById('ico-off').style.display = voiceOn ? 'none'  : 'block';
+  document.getElementById('vol-btn').classList.toggle('on', !voiceOn);
+  if (!voiceOn) synth.cancel();
+}
+
+/* ═══════════════════════════════════════════════════════
+   TORCH
+═══════════════════════════════════════════════════════ */
+async function toggleTorch() {
+  if (!torchTrack) return;
+  try {
+    torchOn = !torchOn;
+    await torchTrack.applyConstraints({ advanced: [{ torch: torchOn }] });
+    document.getElementById('torch-btn').classList.toggle('on', torchOn);
+  } catch(e) { torchOn = false; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   FIREBASE — load check-in count on open
+═══════════════════════════════════════════════════════ */
+async function loadCheckinCount() {
+  try {
+    const r = await fetch(`${FS_BASE}/config/event`);
+    if (!r.ok) return;
+    const d = await r.json();
+    checkins = parseInt(d.fields?.checkInCount?.integerValue || '0');
+    document.getElementById('count-num').textContent = checkins;
+  } catch(e) {}
+}
+
+/* ═══════════════════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════════════════ */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function setSt(t) { document.getElementById('scan-stxt').textContent = t; }
+
+// Wake lock — keeps screen from sleeping at venue
+(async () => {
+  try { if ('wakeLock' in navigator) await navigator.wakeLock.request('screen'); } catch(e) {}
+})();
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible')
+    navigator.wakeLock?.request('screen').catch(() => {});
+});
+
+window.addEventListener('load', () => { if (synth) loadVoices(); });
+</script>
+</body>
+</html>
