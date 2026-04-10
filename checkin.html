@@ -484,11 +484,17 @@ async function doCheckIn(regId) {
     }
   } catch(e) { console.warn('Counter update failed:', e); }
 
-  // 3c. Fire Apps Script (no-cors — updates Google Sheet Col O)
-  //     We don't need the response; Firebase is our source of truth.
+  // 3c. Call doPost on Apps Script — marks attendance in Google Sheet
+  //     Uses POST with organizer PIN so only the kiosk can write to the sheet.
+  //     Fire-and-forget: we already have Firebase data, sheet write is background.
   try {
-    fetch(AS_URL + '?id=' + encodeURIComponent(regId) + '&format=json', { mode: 'no-cors' });
-  } catch(e) { /* silent */ }
+    fetch(AS_URL, {
+      method  : 'POST',
+      headers : { 'Content-Type': 'application/json' },
+      mode    : 'no-cors',   // CORS blocked for response reading, but POST still executes
+      body    : JSON.stringify({ regId: regId, pin: ORG_PIN })
+    });
+  } catch(e) { /* silent — Firebase is already updated, sheet write is best-effort */ }
 
   // ── 4. Show success ───────────────────────────────────
   checkins++;
