@@ -410,12 +410,12 @@ function speak(text) {
 }
 function buildWelcome(name) {
   const msgs = [
-    `Welcome to ${EVENT_NAME}, ${name}! Your entry is confirmed. Enjoy the music!`,
-    `${name}, you are in! Welcome to ${EVENT_NAME}. Get ready to sing and vibe!`,
-    `Hello ${name}! Entry confirmed. Welcome to ${EVENT_NAME}. Enjoy the jam tonight!`,
-    `${name}, welcome! Your pass is verified. Have an amazing time!`,
-    `Woohoo! Welcome ${name}! Entry confirmed for ${EVENT_NAME}!`
+    `Hi ${name}, welcome to Gaana Bajaana!`,
+    `Hey ${name}, you're in!`,
+    `Welcome ${name}!`,
   ];
+  return name ? msgs[Math.floor(Math.random() * msgs.length)] : 'Welcome to Gaana Bajaana!';
+}
   return name ? msgs[Math.floor(Math.random() * msgs.length)] : `Entry confirmed! Welcome to ${EVENT_NAME}!`;
 }
 function toggleVoice() {
