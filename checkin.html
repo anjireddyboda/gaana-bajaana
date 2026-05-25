@@ -408,6 +408,7 @@ function speak(text) {
   };
   voices.length ? go() : setTimeout(() => { voices = synth.getVoices(); go(); }, 300);
 }
+// ✅ CORRECT
 function buildWelcome(name) {
   const msgs = [
     `Hi ${name}, welcome to Gaana Bajaana!`,
