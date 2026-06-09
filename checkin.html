@@ -166,7 +166,7 @@ const FS_BASE = 'https://firestore.googleapis.com/v1/projects/' + FB_PROJECT + '
 
 let camStream = null, scanning = false, raf = null;
 let busy = false, lastQR = '', lastTime = 0;
-const DEBOUNCE = 8000;
+const DEBOUNCE = 1200;
 let voiceOn = true, torchTrack = null, torchOn = false;
 let checkins = 0, cardTimer = null;
 const synth = window.speechSynthesis;
@@ -370,7 +370,7 @@ async function doCheckIn(regId) {
 
   checkins++;
   document.getElementById('count-num').textContent = checkins;
-  showCard('tok', '🎵', true, 'WELCOME!', name, regId, '✅ Entry confirmed · ' + timeStr, 6000);
+  showCard('tok', '🎵', true, 'WELCOME!', name, regId, '✅ Entry confirmed · ' + timeStr, 1200);
   speak(buildWelcome(name));
   setSt('✓ Checked In');
   setTimeout(function() { setSt('Scanning'); }, 6000);
